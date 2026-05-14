@@ -35,8 +35,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): page: 当前页码，默认值为1
-  - `--page-size` (query): 每页数量,默认为 10
+  - `--page` (query, default `1`, int32): page: 当前页码，默认值为1
+  - `--page-size` (query, default `20`, int32): 每页数量,默认为 10
 - Output: list path `items`; columns `name`, `license`; pagination `offset`
 
 ## Account
@@ -89,7 +89,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--sshkey-id` (path, required): sshkeyId
+  - `--sshkey-id` (path, required, int32): sshkeyId
   - `--id` (query): id
 
 ### `dcectl ghippo account get-certify-info`
@@ -190,7 +190,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--sshkey-id` (path, required): sshkeyId
+  - `--sshkey-id` (path, required, int32): sshkeyId
 
 ### `dcectl ghippo account update-user-first-and-last-name`
 
@@ -232,10 +232,10 @@
   - `--source-name` (query): sourceName
   - `--cluster-name` (query): clusterName
   - `--gproduct` (query): gproduct
-  - `--status` (query, default `all`): status
-  - `--search-type` (query, default `fuzzy`): searchType
+  - `--status` (query, default `all`, one of: all|succeeded|failed): status
+  - `--search-type` (query, default `fuzzy`, one of: fuzzy|exact): searchType
   - `--search-user` (query): searchUser
-  - `--export-type` (query, default `Csv`): exportType
+  - `--export-type` (query, default `Csv`, one of: Csv|Excel): exportType
 - Output: list path `extensions`; columns `@type`
 
 ### `dcectl ghippo audit export-kube-audits`
@@ -251,10 +251,10 @@
   - `--source-type` (query): sourceType
   - `--source-name` (query): sourceName
   - `--cluster-name` (query): clusterName
-  - `--status` (query, default `all`): status
-  - `--search-type` (query, default `fuzzy`): searchType
+  - `--status` (query, default `all`, one of: all|succeeded|failed): status
+  - `--search-type` (query, default `fuzzy`, one of: fuzzy|exact): searchType
   - `--search-user` (query): searchUser
-  - `--export-type` (query, default `Csv`): exportType
+  - `--export-type` (query, default `Csv`, one of: Csv|Excel): exportType
 - Output: list path `extensions`; columns `@type`
 
 ### `dcectl ghippo audit external-audit`
@@ -264,9 +264,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--external-type` (query, default `loginFailed`): externalType
+  - `--external-type` (query, default `loginFailed`, one of: loginFailed|forgetPassword|resetPassword): externalType
   - `--resource-name` (query): resourceName
-  - `--code` (query): code
+  - `--code` (query, int32): code
 
 ### `dcectl ghippo audit get-audit-detail`
 
@@ -314,7 +314,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--module` (query, default `audit`): module
+  - `--module` (query, default `audit`, one of: audit|kube_audit): module
 
 ### `dcectl ghippo audit get-kube-audit-detail`
 
@@ -344,14 +344,14 @@
   - `--source-type` (query): sourceType
   - `--source-name` (query): sourceName
   - `--cluster-name` (query): clusterName
-  - `--status` (query, default `all`): status
-  - `--search-type` (query, default `fuzzy`): searchType
+  - `--status` (query, default `all`, one of: all|succeeded|failed): status
+  - `--search-type` (query, default `fuzzy`, one of: fuzzy|exact): searchType
   - `--search-user` (query): searchUser
   - `--gproduct` (query): gproduct
   - `--start` (query): start
   - `--end` (query): end
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `id`, `auditName`, `client`, `clusterName`, `createdAt`, `gproduct`; pagination `offset`
 - Example: `dcectl ghippo audit list-audits --page-size 100 -o json`
 
@@ -369,8 +369,8 @@
   - `--resource-type` (query): resourceType
   - `--resource-name` (query): resourceName
   - `--verb` (query): verb
-  - `--page` (query): page
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `createdAt`, `gproduct`, `ip`, `operator`, `resourceName`, `resourceType`; pagination `offset`
 
 ### `dcectl ghippo audit list-kube-audits`
@@ -384,13 +384,13 @@
   - `--source-type` (query): sourceType
   - `--source-name` (query): sourceName
   - `--cluster-name` (query): clusterName
-  - `--status` (query, default `all`): status
-  - `--search-type` (query, default `fuzzy`): searchType
+  - `--status` (query, default `all`, one of: all|succeeded|failed): status
+  - `--search-type` (query, default `fuzzy`, one of: fuzzy|exact): searchType
   - `--search-user` (query): searchUser
   - `--start` (query): start
   - `--end` (query): end
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `id`, `auditName`, `client`, `clusterName`, `createdAt`, `ip`; pagination `offset`
 
 ### `dcectl ghippo audit set-auto-clear-audit-setting`
@@ -550,6 +550,7 @@
 - Auth: required
 - Body: required
 - Flags: none
+- Example: `dcectl ghippo group create-group \ --set name=dev-team \ --set description="Development team"`
 
 ### `dcectl ghippo group delete-group`
 
@@ -588,8 +589,8 @@
 - Flags:
   - `--id` (path, required): id
   - `--search` (query): 搜索关键字
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`, `createdAt`, `description`, `email`, `updatedAt`; pagination `offset`
 
 ### `dcectl ghippo group list-group-roles`
@@ -601,8 +602,8 @@
 - Flags:
   - `--id` (path, required): id
   - `--search` (query): 搜索关键字
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
   - `--type` (query): role type
   - `--authorized` (query): 是否授权
 - Output: list path `items`; columns `name`, `type`, `authorized`, `createdAt`, `description`, `updatedAt`; pagination `offset`
@@ -616,8 +617,8 @@
 - Flags:
   - `--id` (path, required): id
   - `--search` (query): search
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `type`, `id`, `roleId`, `roleName`, `subjectName`; pagination `offset`
 
 ### `dcectl ghippo group list-groups`
@@ -628,8 +629,8 @@
 - Body: none
 - Flags:
   - `--search` (query): 搜索关键字
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`, `canAuthorize`, `createdAt`, `description`, `userCount`; pagination `offset`
 
 ### `dcectl ghippo group update-group`
@@ -640,6 +641,7 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
+- Example: `dcectl ghippo group update-group --id <id> \ --set name=dev-team-renamed \ --set description="Renamed team"`
 
 ### `dcectl ghippo group update-group-roles`
 
@@ -977,7 +979,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo message get-messages-count`
 
@@ -1004,9 +1006,9 @@
 - Flags:
   - `--unread-count` (query): 是否只返回统计未读数量
   - `--search` (query): 搜索关键字
-  - `--read` (query, default `all`): 是否只返回已读或未读，传"read"或"unread"来区分，不传返回已读和未读的消息
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--read` (query, default `all`, one of: all|read|unread): 是否只返回已读或未读，传"read"或"unread"来区分，不传返回已读和未读的消息
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `type`, `id`, `createdAt`, `message`, `read`, `subject`; pagination `offset`
 
 ### `dcectl ghippo message set-read-messages`
@@ -1024,7 +1026,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (query): id
+  - `--id` (query, int32): id
   - `--next` (query): next
 
 ## OIDC
@@ -1087,7 +1089,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--provider-type` (query, default `wechatwork`): providerType
+  - `--provider-type` (query, default `wechatwork`, one of: wechatwork): providerType
 
 ### `dcectl ghippo oauth2 get-oauth2`
 
@@ -1183,6 +1185,7 @@
 - Auth: required
 - Body: required
 - Flags: none
+- Example: `# scope: platform | folder | workspace echo '{ "name": "my-role", "description": "Custom role", "scope": "platform", "perms": [ {"gproduct": "ghippo", "resourceType": "User", "action": "get"} ] }' | dcectl ghippo role create-role --file -`
 
 ### `dcectl ghippo role delete-role`
 
@@ -1228,8 +1231,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--search` (query): search
 - Output: list path `items`; columns `name`, `authScope`, `description`; pagination `offset`
 
@@ -1241,8 +1244,8 @@
 - Body: none
 - Flags:
   - `--name` (path, required): name
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--search` (query): search
 - Output: list path `items`; columns `name`, `type`, `id`; pagination `offset`
 
@@ -1254,8 +1257,8 @@
 - Body: none
 - Flags:
   - `--name` (path, required): name
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--search` (query): search
 - Output: list path `items`; columns `folderAlias`, `folderId`, `memberId`, `memberName`, `memberType`; pagination `offset`
 
@@ -1267,8 +1270,8 @@
 - Body: none
 - Flags:
   - `--name` (path, required): name
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--search` (query): search
 - Output: list path `items`; columns `memberId`, `memberName`, `memberType`, `workspaceAlias`, `workspaceId`; pagination `offset`
 
@@ -1280,10 +1283,10 @@
 - Body: none
 - Flags:
   - `--search` (query): 搜索关键字
-  - `--page-size` (query): 每页条数
-  - `--page` (query): 当前页
-  - `--role-type` (query, default `query_all_role_type`): roleType
-  - `--scope` (query, default `query_all_auth_scope`): scope
+  - `--page-size` (query, default `20`, int32): 每页条数
+  - `--page` (query, default `1`, int32): 当前页
+  - `--role-type` (query, default `query_all_role_type`, one of: query_all_role_type|query_system|query_custom): roleType
+  - `--scope` (query, default `query_all_auth_scope`, one of: query_all_auth_scope|query_platform|query_folder|query_workspace): scope
 - Output: list path `items`; columns `name`, `type`, `createdAt`, `description`, `scope`, `updatedAt`; pagination `offset`
 
 ### `dcectl ghippo role list-workspace-role-names`
@@ -1293,8 +1296,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--search` (query): search
 - Output: list path `items`; columns `name`, `authScope`, `description`; pagination `offset`
 
@@ -1306,6 +1309,7 @@
 - Body: required
 - Flags:
   - `--name` (path, required): name
+- Example: `echo '{ "description": "Updated description", "perms": [ {"gproduct": "ghippo", "resourceType": "User", "action": "get"} ] }' | dcectl ghippo role update-role --name <name> --file -`
 
 ## SecurityPolicy
 
@@ -1648,7 +1652,7 @@
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `dcectl ghippo users create-user \ --set name=alice \ --set email=alice@example.com \ --set password=changeme`
+- Example: `dcectl ghippo users create-user \ --set name=alice \ --set password=changeme \ --set description="Alice from dev team" \ --set temporary=false`
 
 ### `dcectl ghippo users create-user-access-token`
 
@@ -1658,6 +1662,7 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
+- Example: `dcectl ghippo users create-user-access-token --id <id> \ --set name=my-token \ --set expiredAt=2026-12-31T00:00:00Z`
 
 ### `dcectl ghippo users create-user-without-password`
 
@@ -1723,8 +1728,8 @@
 - Flags:
   - `--id` (path, required): id
   - `--search` (query): 搜索关键字
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
 ### `dcectl ghippo users list-user-roles`
@@ -1736,8 +1741,8 @@
 - Flags:
   - `--id` (path, required): id
   - `--search` (query): 搜索关键字
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
   - `--type` (query): role type
   - `--authorized` (query): 是否授权
 - Output: list path `items`; columns `name`, `type`, `authorized`, `createdAt`, `description`, `updatedAt`; pagination `offset`
@@ -1751,8 +1756,8 @@
 - Flags:
   - `--id` (path, required): id
   - `--search` (query): search
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `type`, `id`, `roleName`, `subjectName`; pagination `offset`
 
 ### `dcectl ghippo users list-users`
@@ -1763,8 +1768,8 @@
 - Body: none
 - Flags:
   - `--search` (query): 搜索关键字
-  - `--page-size` (query): 每页条数
-  - `--page` (query): 当前页, 大于等于 0，小于等于 1000
+  - `--page-size` (query, default `20`, int32): Number of results per page
+  - `--page` (query, default `1`, int32): 当前页, 大于等于 0，小于等于 1000
 - Output: list path `items`; columns `name`, `id`, `canAuthorize`, `createdAt`, `description`, `email`; pagination `offset`
 - Example: `dcectl ghippo users list-users dcectl ghippo users list-users --page-size 50 -o json`
 
@@ -1785,6 +1790,7 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
+- Example: `dcectl ghippo users set-user-password --id <id> \ --set password=NewP@ssw0rd`
 
 ### `dcectl ghippo users update-user`
 
@@ -1794,6 +1800,7 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
+- Example: `dcectl ghippo users update-user --id <id> \ --set email=newemail@example.com \ --set firstname=Alice \ --set lastname=Smith \ --set description="updated" \ --set enabled=true`
 
 ### `dcectl ghippo users update-user-certify`
 
@@ -1811,6 +1818,7 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
+- Example: `# Add roles echo '{"addRoles":["Admin"],"removeRoles":[]}' | \ dcectl ghippo users update-user-roles --id <id> --file - # Remove roles echo '{"addRoles":[],"removeRoles":["Editor"]}' | \ dcectl ghippo users update-user-roles --id <id> --file -`
 
 ## Webhook
 
@@ -1837,7 +1845,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo webhook delete-webhook-endpoint`
 
@@ -1846,7 +1854,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo webhook get-webhook`
 
@@ -1855,7 +1863,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo webhook get-webhook-record`
 
@@ -1864,7 +1872,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo webhook list-gproduct-webhook-events`
 
@@ -1882,12 +1890,12 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
   - `--event-name` (query): eventName
   - `--gproduct` (query): gproduct
   - `--object-name` (query): objectName
-  - `--page-size` (query): pageSize
-  - `--page` (query): page
+  - `--page-size` (query, default `20`, int32): pageSize
+  - `--page` (query, default `1`, int32): page
 - Output: list path `items`; columns `body`, `eventName`, `gproduct`, `headers`, `method`, `objectName`; pagination `offset`
 
 ### `dcectl ghippo webhook list-webhook-endpoints`
@@ -1901,8 +1909,8 @@
   - `--url` (query): url
   - `--name` (query): name
   - `--enabled` (query): enabled
-  - `--page-size` (query): pageSize
-  - `--page` (query): page
+  - `--page-size` (query, default `20`, int32): pageSize
+  - `--page` (query, default `1`, int32): page
 - Output: list path `items`; columns `name`, `id`, `createdAt`, `domain`, `enabled`, `endpoint`; pagination `offset`
 
 ### `dcectl ghippo webhook list-webhook-records-by-client-id`
@@ -1914,9 +1922,9 @@
 - Flags:
   - `--client-id` (query): clientId
   - `--search` (query): search
-  - `--status` (query, default `all`): status
-  - `--page-size` (query): pageSize
-  - `--page` (query): page
+  - `--status` (query, default `all`, one of: all|successful|failed): status
+  - `--page-size` (query, default `20`, int32): pageSize
+  - `--page` (query, default `1`, int32): page
 - Output: list path `items`; columns `id`, `action`, `clientId`, `errMessage`, `eventData`, `eventTime`; pagination `offset`
 
 ### `dcectl ghippo webhook list-webhooks-by-client-id`
@@ -1927,8 +1935,8 @@
 - Body: none
 - Flags:
   - `--search` (query): search
-  - `--page-size` (query): pageSize
-  - `--page` (query): page
+  - `--page-size` (query, default `20`, int32): pageSize
+  - `--page` (query, default `1`, int32): page
   - `--client-id` (query): clientId
 - Output: list path `items`; columns `name`, `id`, `action`, `clientId`, `createdAt`, `headers`; pagination `offset`
 
@@ -1939,7 +1947,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo webhook update-webhook-endpoint`
 
@@ -1948,7 +1956,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--id` (path, required): id
+  - `--id` (path, required, int32): id
 
 ### `dcectl ghippo webhook webhook-endpoint-connectivity-test`
 
@@ -1962,12 +1970,13 @@
 
 ### `dcectl ghippo workspace authorize`
 
-- Summary: Workspace_Authorize
+- Summary: Grant a role to a user or group within a folder
 - HTTP: `POST /apis/ghippo.io/v1alpha1/folders/{folderId}/authorize`
 - Auth: required
 - Body: required
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
+- Example: `dcectl ghippo workspace authorize --folder-id <folderId> \ --set memberId=<userId> \ --set memberType=user \ --set memberName=alice \ --set-str 'roleNames[0]=Workspace Admin'`
 
 ### `dcectl ghippo workspace bind-exclusive-resource-to-workspace`
 
@@ -1976,7 +1985,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
 
 ### `dcectl ghippo workspace bind-shared-resource-and-set-quota-hard-to-workspace`
 
@@ -1985,7 +1994,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--workspace-id` (path, required): cluster 资源 resource_scope 为空
+  - `--workspace-id` (path, required, int32): cluster 资源 resource_scope 为空
 
 ### `dcectl ghippo workspace bind-shared-resource-to-workspace`
 
@@ -1994,7 +2003,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
 
 ### `dcectl ghippo workspace create-folder`
 
@@ -2003,6 +2012,7 @@
 - Auth: required
 - Body: required
 - Flags: none
+- Example: `# alias is the display name; parentFolderId=0 places it under root dcectl ghippo workspace create-folder \ --set alias=my-folder \ --set parentFolderId=0`
 
 ### `dcectl ghippo workspace create-workspace`
 
@@ -2011,7 +2021,7 @@
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `dcectl ghippo workspace create-workspace --set name=my-workspace`
+- Example: `# alias is the display name; parentFolderId=0 places it under root dcectl ghippo workspace create-workspace \ --set alias=my-workspace \ --set parentFolderId=0`
 
 ### `dcectl ghippo workspace deauthorize`
 
@@ -2020,7 +2030,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
 
 ### `dcectl ghippo workspace delete-folder`
 
@@ -2029,7 +2039,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
 
 ### `dcectl ghippo workspace delete-workspace`
 
@@ -2038,7 +2048,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
 
 ### `dcectl ghippo workspace folder-list-groups`
 
@@ -2047,10 +2057,10 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
   - `--search` (query): 搜索关键字
-  - `--page` (query): 搜索偏移量
-  - `--page-size` (query): 分页大小
+  - `--page` (query, default `1`, int32): 搜索偏移量
+  - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`, `authorized`, `canAuthorize`, `createdAt`, `description`; pagination `offset`
 
 ### `dcectl ghippo workspace folder-list-permissions`
@@ -2060,7 +2070,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
 - Output: list path `permissions`
 
 ### `dcectl ghippo workspace folder-list-users`
@@ -2070,10 +2080,10 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
   - `--search` (query): 搜索关键字
-  - `--page-size` (query): 每页条数
-  - `--page` (query): 当前页
+  - `--page-size` (query, default `20`, int32): 每页条数
+  - `--page` (query, default `1`, int32): 当前页
 - Output: list path `items`; columns `name`, `id`, `authorized`, `canAuthorize`, `description`, `email`; pagination `offset`
 
 ### `dcectl ghippo workspace get-folder`
@@ -2083,7 +2093,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
 
 ### `dcectl ghippo workspace get-workspace`
 
@@ -2092,7 +2102,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
 
 ### `dcectl ghippo workspace get-workspace-shared-resource-quota`
 
@@ -2101,7 +2111,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (query): workspaceId
+  - `--workspace-id` (query, int32): workspaceId
   - `--resource-name` (query): resourceName
   - `--resource-type` (query): resourceType
   - `--not-formatted` (query): notFormatted
@@ -2113,9 +2123,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--workspace-id` (path, required, int32): workspaceId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--resource-name` (query): resourceName
   - `--resource-type` (query): resourceType
   - `--resource-scope` (query): resourceScope
@@ -2128,9 +2138,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--workspace-id` (path, required, int32): workspaceId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--resource-name` (query): resourceName
   - `--resource-type` (query): resourceType
 - Output: list path `items`; columns `bound`, `clusterStatus`, `gproduct`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
@@ -2151,9 +2161,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--workspace-id` (path, required, int32): workspaceId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--resource-name` (query): resourceName
   - `--resource-type` (query): resourceType
 - Output: list path `items`; columns `clusterStatus`, `gproduct`, `module`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
@@ -2173,8 +2183,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `name`, `id`, `alias`; pagination `offset`
 
 ### `dcectl ghippo workspace list-members-roles-by-folder`
@@ -2184,9 +2194,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--folder-id` (path, required): folderId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--folder-id` (path, required, int32): folderId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--member-name` (query): memberName
   - `--member-type` (query): memberType
   - `--role-name` (query): roleName
@@ -2199,9 +2209,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--workspace-id` (path, required, int32): workspaceId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--member-name` (query): memberName
 - Output: list path `items`; columns `memberId`, `memberName`, `memberType`, `roleName`, `workspaceId`; pagination `offset`
 
@@ -2230,9 +2240,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--workspace-id` (path, required, int32): workspaceId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--resource-name` (query): resourceName
 - Output: list path `items`; columns `clusterStatus`, `gproduct`, `module`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
 
@@ -2243,7 +2253,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
   - `--resource-name` (path, required): resourceName
 - Output: list path `gpus`; columns `type`, `alias`, `isDynamic`
 
@@ -2254,8 +2264,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `name`, `id`, `alias`; pagination `offset`
 - Example: `dcectl ghippo workspace list-workspaces dcectl ghippo workspace list-workspaces -o json`
 
@@ -2266,7 +2276,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
 
 ### `dcectl ghippo workspace move-workspace-folder-list`
 
@@ -2275,9 +2285,9 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
-  - `--page` (query): page
-  - `--page-size` (query): pageSize
+  - `--workspace-id` (path, required, int32): workspaceId
+  - `--page` (query, default `1`, int32): page
+  - `--page-size` (query, default `20`, int32): pageSize
   - `--folder` (query): folder
 - Output: list path `items`; columns `folderAlias`, `folderId`, `parentAlias`, `parentId`; pagination `offset`
 
@@ -2288,7 +2298,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
 
 ### `dcectl ghippo workspace set-quota-hard-for-workspace-shared-resource`
 
@@ -2305,7 +2315,7 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
 
 ### `dcectl ghippo workspace update-folder`
 
@@ -2314,7 +2324,8 @@
 - Auth: required
 - Body: required
 - Flags:
-  - `--folder-id` (path, required): folderId
+  - `--folder-id` (path, required, int32): folderId
+- Example: `dcectl ghippo workspace update-folder --folder-id <id> \ --set alias=new-folder-name`
 
 ### `dcectl ghippo workspace update-quota-check`
 

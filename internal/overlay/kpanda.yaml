@@ -19,6 +19,9 @@ commands:
     example: |
       dcectl kpanda cluster list-clusters
       dcectl kpanda cluster list-clusters -o json | jq '.items[].name'
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   create-cluster:
     short: "Register or create a cluster"
@@ -30,6 +33,9 @@ commands:
     aliases: [describe, describe-cluster]
     example: |
       dcectl kpanda cluster get-cluster --name prod-cluster
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   delete-cluster:
     short: "Remove a cluster from management"
@@ -56,9 +62,15 @@ commands:
     aliases: [ls-ns]
     example: |
       dcectl kpanda core list-namespaces --cluster prod-cluster
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-cluster-namespaces:
     short: "List all namespaces across a cluster"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   # ── 工作负载 (Apps) ───────────────────────────────────────────────────
   list-deployments:
@@ -68,38 +80,68 @@ commands:
       dcectl kpanda apps list-deployments \
         --cluster prod-cluster \
         --namespace default
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-stateful-sets:
     short: "List StatefulSets in a namespace"
     aliases: [ls-sts]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-daemon-sets:
     short: "List DaemonSets in a namespace"
     aliases: [ls-ds]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-all-deployments:
     short: "List Deployments across all namespaces in a cluster"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-all-stateful-sets:
     short: "List StatefulSets across all namespaces in a cluster"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-all-daemon-sets:
     short: "List DaemonSets across all namespaces in a cluster"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   # ── 权限 (RBAC) ───────────────────────────────────────────────────────
   list-cluster-roles:
     short: "List ClusterRoles"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-cluster-role-bindings:
     short: "List ClusterRoleBindings"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-role-bindings:
     short: "List RoleBindings in a namespace"
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   # ── 网络 (Networking) ─────────────────────────────────────────────────
   list-ingresses:
     short: "List Ingresses in a namespace"
     aliases: [ls-ing]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   create-ingress:
     short: "Create an Ingress"
@@ -114,19 +156,31 @@ commands:
   list-persistent-volumes:
     short: "List PersistentVolumes in a cluster"
     aliases: [ls-pv]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-persistent-volume-claims:
     short: "List PersistentVolumeClaims in a namespace"
     aliases: [ls-pvc]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   # ── 批处理 (Batch) ────────────────────────────────────────────────────
   list-jobs:
     short: "List Jobs in a namespace"
     aliases: [ls-jobs]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   list-cron-jobs:
     short: "List CronJobs in a namespace"
     aliases: [ls-cj]
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
 
   # ── 插件 (Addon) ──────────────────────────────────────────────────────
   list-addons:
@@ -138,3 +192,309 @@ commands:
 
   uninstall-addon:
     short: "Uninstall an addon from a cluster"
+
+  # ── 分页默认值 (其余分页命令) ─────────────────────────────────────────────
+  list-clusterlcm-ops:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-helm-operations:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-helm-releases:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-helm-charts:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-helm-operations:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-helm-release-resources:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-helm-releases:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-helm-repos:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-custom-resources:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-custom-resource-definitions:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-custom-resources:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-daemon-sets:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-deployments:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-replica-sets:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-stateful-sets:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-controller-revisions:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-replica-sets:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cron-horizontal-pod-autoscalers:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-horizontal-pod-autoscalers:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-vertical-pod-autoscalers:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-all-cron-jobs:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-all-jobs:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-cron-jobs:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-jobs:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-jobs-by-cron-jobs-name:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-all-pods:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-config-maps:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-events:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-limit-ranges:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-persistent-volume-claims:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-pods:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-secrets:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-services:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-config-maps:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-containers-by-pod:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-events:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-limit-ranges:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-nodes:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-pods:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-pods-by-node:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-resource-quotas:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-secrets:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-service-accounts:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-services:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-etcd-backup-strategies:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-artifacts:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-projects:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-registries:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-repositories:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-ingresses:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-network-policies:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-metallb-ip-address-pools:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-network-policies:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-groups:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-roles:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-users:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-accessible-storage-classes:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-cluster-volume-snapshots:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-storage-classes:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-volume-snapshots:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  get-pod-container-log:
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }

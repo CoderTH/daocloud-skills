@@ -8,7 +8,7 @@ import (
 	"github.com/samzong/lathe/pkg/runtime"
 )
 
-const generatedSchemaVersion = 4
+const generatedSchemaVersion = 5
 
 func Mount(root *cobra.Command) error {
 	if err := runtime.AssertSchema(generatedSchemaVersion); err != nil {
@@ -32,6 +32,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"atomic": &runtime.SchemaSpec{Type: "boolean"}, "chart": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "chartName": &runtime.SchemaSpec{Type: "string"}, "description": &runtime.SchemaSpec{Type: "string"}, "releaseName": &runtime.SchemaSpec{Type: "string"}, "values": &runtime.SchemaSpec{Type: "string"}, "version": &runtime.SchemaSpec{Type: "string"}}}, "checkReleaseName": &runtime.SchemaSpec{Type: "boolean"}, "createNamespace": &runtime.SchemaSpec{Type: "boolean"}, "debug": &runtime.SchemaSpec{Type: "boolean"}, "disableHooks": &runtime.SchemaSpec{Type: "boolean"}, "disableOpenApiValidation": &runtime.SchemaSpec{Type: "boolean"}, "repo": &runtime.SchemaSpec{Type: "string"}, "timeout": &runtime.SchemaSpec{Type: "string"}, "wait": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -46,6 +47,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "description": &runtime.SchemaSpec{Type: "string"}, "insecureSkipTLSVerify": &runtime.SchemaSpec{Type: "boolean"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "password": &runtime.SchemaSpec{Type: "string"}, "token": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}, "userName": &runtime.SchemaSpec{Type: "string"}, "verificationMethod": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -75,6 +77,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "disableHooks": &runtime.SchemaSpec{Type: "boolean"}, "dryRun": &runtime.SchemaSpec{Type: "boolean"}, "keepHistory": &runtime.SchemaSpec{Type: "boolean"}, "timeout": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -145,6 +148,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"namespace": &runtime.SchemaSpec{Type: "string"}, "releaseName": &runtime.SchemaSpec{Type: "string"}, "values": &runtime.SchemaSpec{Type: "string"}, "version": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -177,6 +181,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"version": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -264,8 +269,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/helmoperations",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified operation belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the event list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name is used for query. (query)", Required: false},
@@ -286,8 +291,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/helmreleases",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified operation belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the event list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name is used for query. (query)", Required: false},
@@ -322,8 +327,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the chart belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Helm chart name. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "category", Flag: "category", In: "query", GoType: "string", Help: "Category is used for query. (query, one of: CATEGORY_UNSPECIFIED|CATEGORY_OTHERS|CATEGORY_STORAGE|CATEGORY_NETWORKING|CATEGORY_MONITORING|CATEGORY_DATABASE|CATEGORY_DATASERVICE|CATEGORY_ECOAPP|CATEGORY_BIGDATA|CATEGORY_SECURITY|CATEGORY_IOTEDGE|CATEGORY_INFRA)", Required: false, Default: "CATEGORY_UNSPECIFIED", Enum: []string{"CATEGORY_UNSPECIFIED", "CATEGORY_OTHERS", "CATEGORY_STORAGE", "CATEGORY_NETWORKING", "CATEGORY_MONITORING", "CATEGORY_DATABASE", "CATEGORY_DATASERVICE", "CATEGORY_ECOAPP", "CATEGORY_BIGDATA", "CATEGORY_SECURITY", "CATEGORY_IOTEDGE", "CATEGORY_INFRA"}},
 			{Name: "repo", Flag: "repo", In: "query", GoType: "[]string", Help: "The repo name which the charts belongs to. (query)", Required: false},
 			{Name: "required", Flag: "required", In: "query", GoType: "bool", Help: "Required indicates whether to display the charts, which are required to install the cluster. (query)", Required: false},
@@ -344,8 +349,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents which cluster the repository belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced ConfigMap. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the user-specified identifier. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the repository list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the repository list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "releaseName", Flag: "release-name", In: "query", GoType: "string", Help: "Filter helm_operation by release_name, (query)", Required: false},
@@ -370,8 +375,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used to fuzzy search resources which belongs to this helmrelease by resource name. (query)", Required: false},
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "Kind is used to filter resources which belongs to this helmrelease by resource kind. (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase is used to filter resources which belongs to this helmrelease by resource phase. (query, one of: RESOURCE_PHASE_UNSPECIFIED|InProgress|Failed|Current|Terminating|Unknown)", Required: false, Default: "RESOURCE_PHASE_UNSPECIFIED", Enum: []string{"RESOURCE_PHASE_UNSPECIFIED", "InProgress", "Failed", "Current", "Terminating", "Unknown"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the resource list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "SortDir determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by multiple parameters including name. (query)", Required: false},
@@ -407,8 +412,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents which cluster the releases belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced ConfigMap. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the user-specified identifier. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the release list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the release list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by multiple parameters including name. (query)", Required: false},
@@ -428,8 +433,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents which cluster the repository belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the user-specified identifier. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the repository list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the repository list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by multiple parameters including name. (query)", Required: false},
@@ -466,6 +471,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cleanupOnFail": &runtime.SchemaSpec{Type: "boolean"}, "debug": &runtime.SchemaSpec{Type: "boolean"}, "disableHooks": &runtime.SchemaSpec{Type: "boolean"}, "force": &runtime.SchemaSpec{Type: "boolean"}, "maxHistory": &runtime.SchemaSpec{Type: "integer"}, "revision": &runtime.SchemaSpec{Type: "integer"}, "timeout": &runtime.SchemaSpec{Type: "string"}, "wait": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -482,6 +488,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"atomic": &runtime.SchemaSpec{Type: "boolean"}, "chart": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "chartName": &runtime.SchemaSpec{Type: "string"}, "description": &runtime.SchemaSpec{Type: "string"}, "force": &runtime.SchemaSpec{Type: "boolean"}, "releaseName": &runtime.SchemaSpec{Type: "string"}, "resetValues": &runtime.SchemaSpec{Type: "boolean"}, "values": &runtime.SchemaSpec{Type: "string"}, "version": &runtime.SchemaSpec{Type: "string"}}}, "cleanupOnFail": &runtime.SchemaSpec{Type: "boolean"}, "debug": &runtime.SchemaSpec{Type: "boolean"}, "disableHooks": &runtime.SchemaSpec{Type: "boolean"}, "disableOpenApiValidation": &runtime.SchemaSpec{Type: "boolean"}, "force": &runtime.SchemaSpec{Type: "boolean"}, "install": &runtime.SchemaSpec{Type: "boolean"}, "maxHistory": &runtime.SchemaSpec{Type: "integer"}, "repo": &runtime.SchemaSpec{Type: "string"}, "timeout": &runtime.SchemaSpec{Type: "string"}, "wait": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -497,6 +504,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "description": &runtime.SchemaSpec{Type: "string"}, "insecureSkipTLSVerify": &runtime.SchemaSpec{Type: "boolean"}, "labels": &runtime.SchemaSpec{Type: "object"}, "password": &runtime.SchemaSpec{Type: "string"}, "token": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}, "userName": &runtime.SchemaSpec{Type: "string"}, "verificationMethod": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -512,6 +520,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"insecureSkipTLSVerify": &runtime.SchemaSpec{Type: "boolean"}, "password": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}, "userName": &runtime.SchemaSpec{Type: "string"}, "verificationMethod": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -529,6 +538,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -547,6 +557,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -561,6 +572,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -576,6 +588,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "data"},
 	},
@@ -724,8 +737,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "group", Flag: "group", In: "path", GoType: "string", Help: "Group represents the resource group of CustomResources. (path, required)", Required: true},
 			{Name: "version", Flag: "version", In: "path", GoType: "string", Help: "Version represents the resource version of CustomResources. (path, required)", Required: true},
 			{Name: "resource", Flag: "resource", In: "path", GoType: "string", Help: "Resource represents the resource name of CustomResources, which is plural. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name is used for query. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -758,8 +771,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster cluster to be queried (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name search the custom resource definitions fo name (query)", Required: false},
 			{Name: "status", Flag: "status", In: "query", GoType: "[]string", Help: "Status search the custom resource definitions fo status (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -787,8 +800,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "version", Flag: "version", In: "path", GoType: "string", Help: "Version represents the resource version of CustomResources. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the CustomResources belongs to. (path, required)", Required: true},
 			{Name: "resource", Flag: "resource", In: "path", GoType: "string", Help: "Resource represents the resource name of CustomResources, which is plural. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name is used for query. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -819,6 +832,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}, "patchType": &runtime.SchemaSpec{Type: "string"}, "subResources": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 	},
 	{
@@ -837,6 +851,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -855,6 +870,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -874,6 +890,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -889,6 +906,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -908,6 +926,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -924,6 +943,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1068,8 +1088,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "[]string", Help: "Cluster represents which cluster the workloads belongs to. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Cluster represents which namespace the workloads belongs to. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1095,8 +1115,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "[]string", Help: "Cluster represents which cluster the workloads belongs to. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Cluster represents which namespace the workloads belongs to. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1122,8 +1142,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "[]string", Help: "Cluster represents which cluster the workloads belongs to. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Cluster represents which namespace the workloads belongs to. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1148,8 +1168,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/daemonsets",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of Workload to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1173,8 +1193,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/deployments",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of Workload to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1198,8 +1218,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/replicasets",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified replicaset belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "PageSize is the data number per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "PageSize is the data number per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for query. (query)", Required: false},
@@ -1222,8 +1242,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/statefulsets",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of Workload to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1268,8 +1288,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for controllerrevision name, used for fuzzy search. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "SortDir determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
 			{Name: "fieldSelector", Flag: "field-selector", In: "query", GoType: "string", Help: "FieldSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
 		},
@@ -1289,8 +1309,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the deployment belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the deployment belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1317,8 +1337,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the deployment belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the deployment belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1348,8 +1368,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for replicaset name, used for fuzzy search. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "SortDir determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "PageSize is size of every page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "PageSize is size of every page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
 			{Name: "fieldSelector", Flag: "field-selector", In: "query", GoType: "string", Help: "FieldSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by multiple parameters including name. (query)", Required: false},
@@ -1386,8 +1406,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the deployment belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the deployment belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of workloads to search (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase represents the phase of workloads to search (query, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting)", Required: false, Default: "WORKLOAD_STATE_UNSPECIFIED", Enum: []string{"WORKLOAD_STATE_UNSPECIFIED", "Running", "Deleting", "Not_Ready", "Stopped", "Waiting"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -1416,6 +1436,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1432,6 +1453,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1448,6 +1470,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1529,6 +1552,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"revision": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1545,6 +1569,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"revision": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1561,6 +1586,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"revision": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1629,6 +1655,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1646,6 +1673,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1660,6 +1688,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cpuRequestToLimitPercent": &runtime.SchemaSpec{Type: "integer"}, "memoryRequestToLimitPercent": &runtime.SchemaSpec{Type: "integer"}}}}},
 		},
 	},
 	{
@@ -1675,6 +1704,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1690,6 +1720,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1705,6 +1736,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1822,8 +1854,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the hpa belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced hpa. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "The kind of hpa targetRef. (query, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|ReplicaSet)", Required: false, Default: "KIND_UNSPECIFIED", Enum: []string{"KIND_UNSPECIFIED", "Deployment", "StatefulSet", "ReplicaSet"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "The workload name. (query)", Required: false},
 		},
@@ -1855,8 +1887,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the hpa belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced hpa. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "The kind of hpa targetRef. (query, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|ReplicaSet)", Required: false, Default: "KIND_UNSPECIFIED", Enum: []string{"KIND_UNSPECIFIED", "Deployment", "StatefulSet", "ReplicaSet"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "The workload name. (query)", Required: false},
 		},
@@ -1892,8 +1924,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the vpa belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced vpa. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "The kind of vpa targetRef. (query, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet|ReplicaSet|Job|CronJob|ReplicationController)", Required: false, Default: "KIND_UNSPECIFIED", Enum: []string{"KIND_UNSPECIFIED", "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "Job", "CronJob", "ReplicationController"}},
 			{Name: "kindName", Flag: "kind-name", In: "query", GoType: "string", Help: "The name of the targetRef. (query)", Required: false},
 		},
@@ -1914,6 +1946,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cpuRequestToLimitPercent": &runtime.SchemaSpec{Type: "integer"}, "memoryRequestToLimitPercent": &runtime.SchemaSpec{Type: "integer"}}}}},
 		},
 	},
 	{
@@ -1930,6 +1963,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1946,6 +1980,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1962,6 +1997,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2029,8 +2065,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace the specified service belongs to. (query)", Required: false},
 			{Name: "jobState", Flag: "job-state", In: "query", GoType: "string", Help: "Job_state represents the current state of a job. (query, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed)", Required: false, Default: "JOB_STATE_UNSPECIFIED", Enum: []string{"JOB_STATE_UNSPECIFIED", "Waiting", "Running", "Completed", "Deleting", "Failed"}},
 			{Name: "cronjobState", Flag: "cronjob-state", In: "query", GoType: "string", Help: "cronjob_state represents the current state of a cron job. (query, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob)", Required: false, Default: "CRONJOB_STATE_UNSPECIFIED", Enum: []string{"CRONJOB_STATE_UNSPECIFIED", "Waiting_CronJob", "Activated_CronJob", "Stopped_CronJob", "Deleting_CronJob"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name of the job. (query)", Required: false},
@@ -2056,8 +2092,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace the specified service belongs to. (query)", Required: false},
 			{Name: "jobState", Flag: "job-state", In: "query", GoType: "string", Help: "Job_state represents the current state of a job. (query, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed)", Required: false, Default: "JOB_STATE_UNSPECIFIED", Enum: []string{"JOB_STATE_UNSPECIFIED", "Waiting", "Running", "Completed", "Deleting", "Failed"}},
 			{Name: "cronjobState", Flag: "cronjob-state", In: "query", GoType: "string", Help: "cronjob_state represents the current state of a cron job. (query, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob)", Required: false, Default: "CRONJOB_STATE_UNSPECIFIED", Enum: []string{"CRONJOB_STATE_UNSPECIFIED", "Waiting_CronJob", "Activated_CronJob", "Stopped_CronJob", "Deleting_CronJob"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name of the job. (query)", Required: false},
@@ -2083,8 +2119,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace the specified service belongs to. (path, required)", Required: true},
 			{Name: "jobState", Flag: "job-state", In: "query", GoType: "string", Help: "Job_state represents the current state of a job. (query, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed)", Required: false, Default: "JOB_STATE_UNSPECIFIED", Enum: []string{"JOB_STATE_UNSPECIFIED", "Waiting", "Running", "Completed", "Deleting", "Failed"}},
 			{Name: "cronjobState", Flag: "cronjob-state", In: "query", GoType: "string", Help: "cronjob_state represents the current state of a cron job. (query, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob)", Required: false, Default: "CRONJOB_STATE_UNSPECIFIED", Enum: []string{"CRONJOB_STATE_UNSPECIFIED", "Waiting_CronJob", "Activated_CronJob", "Stopped_CronJob", "Deleting_CronJob"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name of the job. (query)", Required: false},
@@ -2110,8 +2146,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace the specified service belongs to. (path, required)", Required: true},
 			{Name: "jobState", Flag: "job-state", In: "query", GoType: "string", Help: "Job_state represents the current state of a job. (query, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed)", Required: false, Default: "JOB_STATE_UNSPECIFIED", Enum: []string{"JOB_STATE_UNSPECIFIED", "Waiting", "Running", "Completed", "Deleting", "Failed"}},
 			{Name: "cronjobState", Flag: "cronjob-state", In: "query", GoType: "string", Help: "cronjob_state represents the current state of a cron job. (query, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob)", Required: false, Default: "CRONJOB_STATE_UNSPECIFIED", Enum: []string{"CRONJOB_STATE_UNSPECIFIED", "Waiting_CronJob", "Activated_CronJob", "Stopped_CronJob", "Deleting_CronJob"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name of the job. (query)", Required: false},
@@ -2137,8 +2173,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified job belongs to. (path, required)", Required: true},
 			{Name: "jobState", Flag: "job-state", In: "query", GoType: "string", Help: "Job_state represents the current state of a job. (query, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed)", Required: false, Default: "JOB_STATE_UNSPECIFIED", Enum: []string{"JOB_STATE_UNSPECIFIED", "Waiting", "Running", "Completed", "Deleting", "Failed"}},
 			{Name: "cronjobState", Flag: "cronjob-state", In: "query", GoType: "string", Help: "cronjob_state represents the current state of a cron job. (query, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob)", Required: false, Default: "CRONJOB_STATE_UNSPECIFIED", Enum: []string{"CRONJOB_STATE_UNSPECIFIED", "Waiting_CronJob", "Activated_CronJob", "Stopped_CronJob", "Deleting_CronJob"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name of the job. (query)", Required: false},
@@ -2164,8 +2200,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified job belongs to. (path, required)", Required: true},
 			{Name: "jobState", Flag: "job-state", In: "query", GoType: "string", Help: "Job_state represents the current state of a job. (query, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed)", Required: false, Default: "JOB_STATE_UNSPECIFIED", Enum: []string{"JOB_STATE_UNSPECIFIED", "Waiting", "Running", "Completed", "Deleting", "Failed"}},
 			{Name: "cronjobState", Flag: "cronjob-state", In: "query", GoType: "string", Help: "cronjob_state represents the current state of a cron job. (query, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob)", Required: false, Default: "CRONJOB_STATE_UNSPECIFIED", Enum: []string{"CRONJOB_STATE_UNSPECIFIED", "Waiting_CronJob", "Activated_CronJob", "Stopped_CronJob", "Deleting_CronJob"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name of the job. (query)", Required: false},
@@ -2191,8 +2227,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the cronjob belongs to. (path, required)", Required: true},
 			{Name: "cronjob", Flag: "cronjob", In: "path", GoType: "string", Help: "Cronjob name. (path, required)", Required: true},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Represents the current state of a cron job. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the job list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the job list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Cronjob name. (query)", Required: false},
@@ -2217,6 +2253,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"paused": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -2233,6 +2270,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"resourceVersion": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2249,6 +2287,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"paused": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -2260,6 +2299,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/cloudshells",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cluster": &runtime.SchemaSpec{Type: "string"}, "container": &runtime.SchemaSpec{Type: "string"}, "data": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"metadata": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "cluster": &runtime.SchemaSpec{Type: "string"}, "creationTimestamp": &runtime.SchemaSpec{Type: "string"}, "deletionTimestamp": &runtime.SchemaSpec{Type: "string"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "ownerReferences": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"apiVersion": &runtime.SchemaSpec{Type: "string"}, "blockOwnerDeletion": &runtime.SchemaSpec{Type: "boolean"}, "controller": &runtime.SchemaSpec{Type: "boolean"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}}}}, "resourceVersion": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}, "workspaceAlias": &runtime.SchemaSpec{Type: "string"}}}, "spec": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cleanup": &runtime.SchemaSpec{Type: "boolean"}, "commandAction": &runtime.SchemaSpec{Type: "string"}, "once": &runtime.SchemaSpec{Type: "boolean"}, "secretRef": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"name": &runtime.SchemaSpec{Type: "string"}}}, "ttl": &runtime.SchemaSpec{Type: "integer"}}}, "status": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"accessUrl": &runtime.SchemaSpec{Type: "string"}, "phase": &runtime.SchemaSpec{Type: "string"}}}}}, "filePath": &runtime.SchemaSpec{Type: "string"}, "logCount": &runtime.SchemaSpec{Type: "integer"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "podName": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2274,6 +2314,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cluster": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2297,6 +2338,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"aliasName": &runtime.SchemaSpec{Type: "string"}, "annotations": &runtime.SchemaSpec{Type: "object"}, "describe": &runtime.SchemaSpec{Type: "string"}, "direct": &runtime.SchemaSpec{Type: "boolean"}, "kubeConfigString": &runtime.SchemaSpec{Type: "string"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "provider": &runtime.SchemaSpec{Type: "string"}, "region": &runtime.SchemaSpec{Type: "string"}, "shimCluster": &runtime.SchemaSpec{Type: "boolean"}, "zone": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2311,6 +2353,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"expirationSeconds": &runtime.SchemaSpec{Type: "integer"}, "kubeSystemID": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2325,6 +2368,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cluster": &runtime.SchemaSpec{Type: "string"}, "expirationSeconds": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -2339,6 +2383,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"deleteInsightAgent": &runtime.SchemaSpec{Type: "boolean"}, "deleteKpandaNamespace": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -2353,6 +2398,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"labels": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -2366,8 +2412,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{name}",
 		Params: []runtime.ParamSpec{
 			{Name: "name", Flag: "name", In: "path", GoType: "string", Help: "Name is the user-specified identifier. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "status", Flag: "status", In: "query", GoType: "[]string", Help: "Status represents the current state of cluster. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -2443,8 +2489,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters",
 		Params: []runtime.ParamSpec{
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the user-specified identifier. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "role", Flag: "role", In: "query", GoType: "string", Help: "role (query, one of: CLUSTER_ROLE_UNSPECIFIED|CLUSTER_ROLE_MANAGER|CLUSTER_ROLE_GLOBAL_SERVICE|CLUSTER_ROLE_WORKER|CLUSTER_ROLE_THIRD_PARTY)", Required: false, Default: "CLUSTER_ROLE_UNSPECIFIED", Enum: []string{"CLUSTER_ROLE_UNSPECIFIED", "CLUSTER_ROLE_MANAGER", "CLUSTER_ROLE_GLOBAL_SERVICE", "CLUSTER_ROLE_WORKER", "CLUSTER_ROLE_THIRD_PARTY"}},
 			{Name: "kubernetesVersion", Flag: "kubernetes-version", In: "query", GoType: "string", Help: "KUBERNETESVERSION cluster k8s version use to support search sub cluster at (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase is used for filter. (query, one of: CLUSTER_PHASE_UNSPECIFIED|Unknown|Creating|Running|Updating|Deleting|Failed|DeleteFailed)", Required: false, Default: "CLUSTER_PHASE_UNSPECIFIED", Enum: []string{"CLUSTER_PHASE_UNSPECIFIED", "Unknown", "Creating", "Running", "Updating", "Deleting", "Failed", "DeleteFailed"}},
@@ -2475,6 +2521,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"aliasName": &runtime.SchemaSpec{Type: "string"}, "annotations": &runtime.SchemaSpec{Type: "object"}, "describe": &runtime.SchemaSpec{Type: "string"}, "kubeConfigString": &runtime.SchemaSpec{Type: "string"}, "labels": &runtime.SchemaSpec{Type: "object"}, "provider": &runtime.SchemaSpec{Type: "string"}, "region": &runtime.SchemaSpec{Type: "string"}, "zone": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2489,6 +2536,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"kubeConfigString": &runtime.SchemaSpec{Type: "string"}, "shimCluster": &runtime.SchemaSpec{Type: "boolean"}, "unjoinCluster": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -2500,6 +2548,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/validate",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"kubeConfigString": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2527,6 +2576,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object"},
 		},
 	},
 	{
@@ -2581,6 +2631,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"settings": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"addonSetting": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enableHelmRepoRefresh": &runtime.SchemaSpec{Type: "boolean"}, "helmOperationBaseImage": &runtime.SchemaSpec{Type: "string"}, "helmOperationHistoryLimit": &runtime.SchemaSpec{Type: "integer"}, "helmOperationJobTemplateResources": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"limits": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cpu": &runtime.SchemaSpec{Type: "string"}, "memory": &runtime.SchemaSpec{Type: "string"}, "resources": &runtime.SchemaSpec{Type: "object"}, "storage": &runtime.SchemaSpec{Type: "string"}}}, "requests": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cpu": &runtime.SchemaSpec{Type: "string"}, "memory": &runtime.SchemaSpec{Type: "string"}, "resources": &runtime.SchemaSpec{Type: "object"}, "storage": &runtime.SchemaSpec{Type: "string"}}}}}, "helmOperationTimeoutSecond": &runtime.SchemaSpec{Type: "string"}, "helmRepoRefreshInterval": &runtime.SchemaSpec{Type: "integer"}}}, "clusterKubeconfigSetting": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"expireWarningThreshold": &runtime.SchemaSpec{Type: "string"}}}, "clusterlcmSetting": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enableDeletionProtection": &runtime.SchemaSpec{Type: "boolean"}, "enableLocalService": &runtime.SchemaSpec{Type: "boolean"}}}, "etcdBackupRestoreSetting": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"baseImage": &runtime.SchemaSpec{Type: "string"}}}, "kubeanSetting": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterOperationsBackEndLimit": &runtime.SchemaSpec{Type: "string"}}}, "network": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}, "externalAddress": &runtime.SchemaSpec{Type: "string"}, "healthy": &runtime.SchemaSpec{Type: "boolean"}, "intelligentDetection": &runtime.SchemaSpec{Type: "boolean"}, "name": &runtime.SchemaSpec{Type: "string"}, "setting": &runtime.SchemaSpec{Type: "string"}}}}, "plugins": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}, "externalAddress": &runtime.SchemaSpec{Type: "string"}, "healthy": &runtime.SchemaSpec{Type: "boolean"}, "intelligentDetection": &runtime.SchemaSpec{Type: "boolean"}, "name": &runtime.SchemaSpec{Type: "string"}, "setting": &runtime.SchemaSpec{Type: "string"}}}}}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "network", DefaultColumns: []string{"name", "enabled", "externalAddress", "healthy", "intelligentDetection", "setting"},
 		},
@@ -2597,6 +2648,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"ansibleExtraArgs": &runtime.SchemaSpec{Type: "object"}, "kubesprayArgs": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"containerdInsecureRegistries": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "dockerInsecureRegistries": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "enableNodeSysctlTuning": &runtime.SchemaSpec{Type: "boolean"}, "params": &runtime.SchemaSpec{Type: "object"}, "sshSecretName": &runtime.SchemaSpec{Type: "string"}, "sysctlParams": &runtime.SchemaSpec{Type: "object"}, "yumRepos": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}}, "nodeInfos": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"dualStackNetwork": &runtime.SchemaSpec{Type: "boolean"}, "hostName": &runtime.SchemaSpec{Type: "string"}, "ip": &runtime.SchemaSpec{Type: "string"}, "osKernelVersion": &runtime.SchemaSpec{Type: "string"}, "pass": &runtime.SchemaSpec{Type: "string"}, "role": &runtime.SchemaSpec{Type: "string"}, "user": &runtime.SchemaSpec{Type: "string"}}}}, "role": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2611,6 +2663,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object"},
 		},
 	},
 	{
@@ -2623,6 +2676,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/cluster-lcm",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"aliasName": &runtime.SchemaSpec{Type: "string"}, "annotations": &runtime.SchemaSpec{Type: "object"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "describe": &runtime.SchemaSpec{Type: "string"}, "dkgClusterName": &runtime.SchemaSpec{Type: "string"}, "kubesprayArgs": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"containerdInsecureRegistries": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "dnsConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enableNodeLocalDns": &runtime.SchemaSpec{Type: "boolean"}, "upstreamDnsServers": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}}, "dockerInsecureRegistries": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "enableNodeSysctlTuning": &runtime.SchemaSpec{Type: "boolean"}, "enableVerboseLogging": &runtime.SchemaSpec{Type: "boolean"}, "highLevelParams": &runtime.SchemaSpec{Type: "string"}, "kubernetesVersion": &runtime.SchemaSpec{Type: "string"}, "networkConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"calicoConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"autoDetectionMethod": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"type": &runtime.SchemaSpec{Type: "string"}, "value": &runtime.SchemaSpec{Type: "string"}}}, "iptablesBackend": &runtime.SchemaSpec{Type: "string"}, "ipv4Tunnel": &runtime.SchemaSpec{Type: "string"}, "ipv6Tunnel": &runtime.SchemaSpec{Type: "string"}}}, "ciliumConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"extraVars": &runtime.SchemaSpec{Type: "object"}}}, "cni": &runtime.SchemaSpec{Type: "string"}, "commonNetworkConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enableDualStack": &runtime.SchemaSpec{Type: "boolean"}, "enableVip": &runtime.SchemaSpec{Type: "boolean"}, "kubeProxyMode": &runtime.SchemaSpec{Type: "string"}, "kubeVipAddr": &runtime.SchemaSpec{Type: "string"}, "kubeVipLbEnable": &runtime.SchemaSpec{Type: "boolean"}, "podIPv4CIDR": &runtime.SchemaSpec{Type: "string"}, "podIPv6CIDR": &runtime.SchemaSpec{Type: "string"}, "serviceIPv4CIDR": &runtime.SchemaSpec{Type: "string"}, "serviceIPv6CIDR": &runtime.SchemaSpec{Type: "string"}}}, "flannelConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"backendType": &runtime.SchemaSpec{Type: "string"}}}, "kubeOvnConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"defaultGatewayIpv4": &runtime.SchemaSpec{Type: "string"}, "defaultGatewayIpv6": &runtime.SchemaSpec{Type: "string"}, "defaultInterfaceName": &runtime.SchemaSpec{Type: "string"}, "defaultVlanId": &runtime.SchemaSpec{Type: "string"}, "networkType": &runtime.SchemaSpec{Type: "string"}}}}}, "nodeConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"ansibleExtraArgs": &runtime.SchemaSpec{Type: "object"}, "nodeInfo": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"dualStackNetwork": &runtime.SchemaSpec{Type: "boolean"}, "hostName": &runtime.SchemaSpec{Type: "string"}, "ip": &runtime.SchemaSpec{Type: "string"}, "osKernelVersion": &runtime.SchemaSpec{Type: "string"}, "pass": &runtime.SchemaSpec{Type: "string"}, "role": &runtime.SchemaSpec{Type: "string"}, "user": &runtime.SchemaSpec{Type: "string"}}}}, "sshInfo": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"pass": &runtime.SchemaSpec{Type: "string"}, "secretName": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}, "user": &runtime.SchemaSpec{Type: "string"}}}}}, "ntpConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enable": &runtime.SchemaSpec{Type: "boolean"}, "servers": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "timezone": &runtime.SchemaSpec{Type: "string"}}}, "params": &runtime.SchemaSpec{Type: "object"}, "runtime": &runtime.SchemaSpec{Type: "string"}, "runtimeVersion": &runtime.SchemaSpec{Type: "string"}, "skipDocker": &runtime.SchemaSpec{Type: "boolean"}, "sysctlParams": &runtime.SchemaSpec{Type: "object"}, "yumRepos": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}}, "labels": &runtime.SchemaSpec{Type: "object"}, "preinstallAddons": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"addons": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"atomic": &runtime.SchemaSpec{Type: "boolean"}, "chart": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "chartName": &runtime.SchemaSpec{Type: "string"}, "description": &runtime.SchemaSpec{Type: "string"}, "releaseName": &runtime.SchemaSpec{Type: "string"}, "values": &runtime.SchemaSpec{Type: "string"}, "version": &runtime.SchemaSpec{Type: "string"}}}, "checkReleaseName": &runtime.SchemaSpec{Type: "boolean"}, "cluster": &runtime.SchemaSpec{Type: "string"}, "createNamespace": &runtime.SchemaSpec{Type: "boolean"}, "debug": &runtime.SchemaSpec{Type: "boolean"}, "disableHooks": &runtime.SchemaSpec{Type: "boolean"}, "disableOpenApiValidation": &runtime.SchemaSpec{Type: "boolean"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "repo": &runtime.SchemaSpec{Type: "string"}, "timeout": &runtime.SchemaSpec{Type: "string"}, "wait": &runtime.SchemaSpec{Type: "boolean"}}}}, "repoUrl": &runtime.SchemaSpec{Type: "string"}}}}, "region": &runtime.SchemaSpec{Type: "string"}, "retry": &runtime.SchemaSpec{Type: "boolean"}, "zone": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2686,6 +2740,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"dkgClusterName": &runtime.SchemaSpec{Type: "string"}, "kubeVersion": &runtime.SchemaSpec{Type: "string"}, "operation": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2712,8 +2767,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "The name of the cluster. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "The fuzzy-name of the clusterclmOps. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "SortDir determines the order of the data. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "targetCluster", Flag: "target-cluster", In: "query", GoType: "string", Help: "targetCluster (query)", Required: false},
@@ -2763,6 +2818,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"dkgClusterName": &runtime.SchemaSpec{Type: "string"}, "kubeVersion": &runtime.SchemaSpec{Type: "string"}, "nodeConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"ansibleExtraArgs": &runtime.SchemaSpec{Type: "object"}, "nodeInfo": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"dualStackNetwork": &runtime.SchemaSpec{Type: "boolean"}, "hostName": &runtime.SchemaSpec{Type: "string"}, "ip": &runtime.SchemaSpec{Type: "string"}, "osKernelVersion": &runtime.SchemaSpec{Type: "string"}, "pass": &runtime.SchemaSpec{Type: "string"}, "role": &runtime.SchemaSpec{Type: "string"}, "user": &runtime.SchemaSpec{Type: "string"}}}}, "sshInfo": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"pass": &runtime.SchemaSpec{Type: "string"}, "secretName": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}, "user": &runtime.SchemaSpec{Type: "string"}}}}}}},
 		},
 	},
 	{
@@ -2789,6 +2845,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object"},
 		},
 	},
 	{
@@ -2803,6 +2860,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"kubernetesVersion": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2817,6 +2875,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"namespace": &runtime.SchemaSpec{Type: "string"}, "nodeNames": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "failedResults", DefaultColumns: []string{"error", "nodeName"},
 		},
@@ -2870,6 +2929,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2885,6 +2945,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2899,6 +2960,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}, "workspaceAlias": &runtime.SchemaSpec{Type: "string"}, "workspaceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -2913,6 +2975,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2928,6 +2991,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2943,6 +3007,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2958,6 +3023,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2973,6 +3039,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2988,6 +3055,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -3118,6 +3186,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object"},
 		},
 	},
 	{
@@ -3133,6 +3202,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"podSecurity": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"level": &runtime.SchemaSpec{Type: "string"}, "mode": &runtime.SchemaSpec{Type: "string"}}}}}},
 		},
 	},
 	{
@@ -3413,8 +3483,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "[]string", Help: "Cluster represents the pods belongs to, it is a array (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced pod. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phases is used for filter. (query, one of: PHASE_UNSPECIFIED|Unknown|Pending|Running|Succeeded|Failed)", Required: false, Default: "PHASE_UNSPECIFIED", Enum: []string{"PHASE_UNSPECIFIED", "Unknown", "Pending", "Running", "Succeeded", "Failed"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -3438,8 +3508,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/configmaps",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified configmap belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the event list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name is used for query. (query)", Required: false},
@@ -3474,8 +3544,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/events",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the events belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "type", Flag: "type", In: "query", GoType: "[]string", Help: "Type is used for query, showing events of specified type. (query)", Required: false},
@@ -3509,8 +3579,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/limitranges",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified LimitRange belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the LimitRange list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the LimitRange list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for fuzzy search. (query)", Required: false},
@@ -3549,8 +3619,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "query", GoType: "int64", Help: "workspace_id the specified namespace belongs to. (query, int32)", Required: false, Format: "int32"},
 			{Name: "workspaceAlias", Flag: "workspace-alias", In: "query", GoType: "string", Help: "workspace_alias the specified namespace belongs to. (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is to filter namespaces by namespace name (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the job list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the job list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
@@ -3586,8 +3656,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumeclaims",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of PVC to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phase is used for filter. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -3612,8 +3682,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the pod belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced pod. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phases is used for filter. (query, one of: PHASE_UNSPECIFIED|Unknown|Pending|Running|Succeeded|Failed)", Required: false, Default: "PHASE_UNSPECIFIED", Enum: []string{"PHASE_UNSPECIFIED", "Unknown", "Pending", "Running", "Succeeded", "Failed"}},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -3640,8 +3710,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/secrets",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the secret belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "The name use to search specific secret (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -3665,8 +3735,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/services",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the specified service belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the service list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the service list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for query. (query)", Required: false},
@@ -3704,8 +3774,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the configmap belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced ConfigMap. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name is used for query. (query)", Required: false},
@@ -3730,8 +3800,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of pod belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the pod belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "path", GoType: "string", Help: "Name represents the name of pod to search (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 		},
@@ -3753,8 +3823,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "Kind represents what type of event is needed. (query, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet|Pod|Service|Ingress|Job|CronJob|HorizontalPodAutoscaler|ReplicaSet|CronHPA|PersistentVolumeClaim|GroupVersionResource)", Required: false, Default: "KIND_UNSPECIFIED", Enum: []string{"KIND_UNSPECIFIED", "Deployment", "StatefulSet", "DaemonSet", "Pod", "Service", "Ingress", "Job", "CronJob", "HorizontalPodAutoscaler", "ReplicaSet", "CronHPA", "PersistentVolumeClaim", "GroupVersionResource"}},
 			{Name: "kindName", Flag: "kind-name", In: "query", GoType: "string", Help: "The name of involvedObject. (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for event name, used for fuzzy search. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the event list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the event list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "type", Flag: "type", In: "query", GoType: "[]string", Help: "Type is used for query, showing events of specified type. (query)", Required: false},
@@ -3780,8 +3850,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the LimitRanges belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace the LimitRanges belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for LimitRange name, used for fuzzy search. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the LimitRange list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the LimitRange list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter. (query)", Required: false},
@@ -3807,8 +3877,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "query", GoType: "int64", Help: "workspace_id the specified namespace belongs to. (query, int32)", Required: false, Format: "int32"},
 			{Name: "workspaceAlias", Flag: "workspace-alias", In: "query", GoType: "string", Help: "workspace_alias the specified namespace belongs to. (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is to filter namespaces by namespace name (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the job list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the job list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
@@ -3847,8 +3917,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the node belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "[]string", Help: "Phase represents the current phase of node. (query)", Required: false},
 			{Name: "nodeIp", Flag: "node-ip", In: "query", GoType: "string", Help: "nodeIp represents node's ip address (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the job list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -3876,8 +3946,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of PVC to belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the PVC belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for fuzzy search by name. (query)", Required: false},
 			{Name: "phase", Flag: "phase", In: "query", GoType: "string", Help: "Phases is used for fuzzy search by phase. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -3903,8 +3973,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the PersistentVolumes belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for PersistentVolume name, used for fuzzy search. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the PersistentVolume list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the PersistentVolume list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter. (query)", Required: false},
@@ -3926,8 +3996,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the pod belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced pod. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "The kind of pod. (query, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet|Service|Job|CronJob|ReplicaSet|NetworkPolicy)", Required: false, Default: "KIND_UNSPECIFIED", Enum: []string{"KIND_UNSPECIFIED", "Deployment", "StatefulSet", "DaemonSet", "Service", "Job", "CronJob", "ReplicaSet", "NetworkPolicy"}},
 			{Name: "kindName", Flag: "kind-name", In: "query", GoType: "string", Help: "Name of kind. (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for pod name, used for fuzzy search. (query)", Required: false},
@@ -3957,8 +4027,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the node belongs to. (path, required)", Required: true},
 			{Name: "node", Flag: "node", In: "path", GoType: "string", Help: "Node represents which node the pod belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is to filter pods by pod name (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the job list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the job list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
@@ -3983,8 +4053,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster the ResourceQuotas belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace the ResourceQuotas belongs to. (path, required)", Required: true},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for ResourceQuota name, used for name fuzzy search. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the ResourceQuota list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the ResourceQuota list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter. (query)", Required: false},
@@ -4006,8 +4076,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the secret belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace is the metadata.namespace of the referenced secret. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "The name use to search specific secret (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -4032,8 +4102,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of sa to belongs to. (path, required)", Required: true},
 			{Name: "namesapce", Flag: "namesapce", In: "query", GoType: "string", Help: "Namespace is the current namespace. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -4059,8 +4129,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "kind", Flag: "kind", In: "query", GoType: "string", Help: "The kind of service. (query, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet)", Required: false, Default: "KIND_UNSPECIFIED", Enum: []string{"KIND_UNSPECIFIED", "Deployment", "StatefulSet", "DaemonSet"}},
 			{Name: "kindName", Flag: "kind-name", In: "query", GoType: "string", Help: "Name of kind. (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name stands for service name, used for fuzzy search. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the service list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the service list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "type", Flag: "type", In: "query", GoType: "[]string", Help: "Type is a array used for frontend filter. (query)", Required: false},
@@ -4088,6 +4158,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4103,6 +4174,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4119,6 +4191,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4135,6 +4208,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4150,6 +4224,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"labels": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4165,6 +4240,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"taints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"effect": &runtime.SchemaSpec{Type: "string"}, "key": &runtime.SchemaSpec{Type: "string"}, "value": &runtime.SchemaSpec{Type: "string"}}}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "taints", DefaultColumns: []string{"effect", "key", "value"},
 		},
@@ -4183,6 +4259,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"capacity": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4210,6 +4287,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"namespace": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4226,6 +4304,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4242,6 +4321,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4257,6 +4337,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4272,6 +4353,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4287,6 +4369,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4302,6 +4385,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"migSpec": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "string"}, "strategy": &runtime.SchemaSpec{Type: "string"}}}, "mode": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4317,6 +4401,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4333,6 +4418,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4349,6 +4435,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4365,6 +4452,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"labels": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -4381,6 +4469,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4397,6 +4486,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4413,6 +4503,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4428,6 +4519,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}, "namespace": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4476,6 +4568,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"name": &runtime.SchemaSpec{Type: "string"}, "strategy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"metadata": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "cluster": &runtime.SchemaSpec{Type: "string"}, "creationTimestamp": &runtime.SchemaSpec{Type: "string"}, "deletionTimestamp": &runtime.SchemaSpec{Type: "string"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "ownerReferences": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"apiVersion": &runtime.SchemaSpec{Type: "string"}, "blockOwnerDeletion": &runtime.SchemaSpec{Type: "boolean"}, "controller": &runtime.SchemaSpec{Type: "boolean"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}}}}, "resourceVersion": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}, "workspaceAlias": &runtime.SchemaSpec{Type: "string"}}}, "spec": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"etcdConnectionConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"caData": &runtime.SchemaSpec{Type: "string"}, "certData": &runtime.SchemaSpec{Type: "string"}, "connectionTimeout": &runtime.SchemaSpec{Type: "string"}, "endpoints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "insecureSkipVerify": &runtime.SchemaSpec{Type: "boolean"}, "insecureTransport": &runtime.SchemaSpec{Type: "boolean"}, "keyData": &runtime.SchemaSpec{Type: "string"}, "serviceEndpoints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "snapshotTimeout": &runtime.SchemaSpec{Type: "string"}}}, "snapStoreConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"container": &runtime.SchemaSpec{Type: "string"}, "prefix": &runtime.SchemaSpec{Type: "string"}, "provider": &runtime.SchemaSpec{Type: "string"}, "s3Config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"accessKeyId": &runtime.SchemaSpec{Type: "string"}, "bucket": &runtime.SchemaSpec{Type: "string"}, "consoleAddress": &runtime.SchemaSpec{Type: "string"}, "endpoint": &runtime.SchemaSpec{Type: "string"}, "region": &runtime.SchemaSpec{Type: "string"}, "secretAccessKey": &runtime.SchemaSpec{Type: "string"}, "storePrefix": &runtime.SchemaSpec{Type: "string"}}}, "tempDir": &runtime.SchemaSpec{Type: "string"}}}, "snapshotterConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"deltaSnapshotMemoryLimit": &runtime.SchemaSpec{Type: "integer"}, "deltaSnapshotPeriod": &runtime.SchemaSpec{Type: "string"}, "fullSnapshotSchedule": &runtime.SchemaSpec{Type: "string"}, "garbageCollectionPeriod": &runtime.SchemaSpec{Type: "string"}, "garbageCollectionPolicy": &runtime.SchemaSpec{Type: "string"}, "maxBackups": &runtime.SchemaSpec{Type: "integer"}}}}}, "maxBackups": &runtime.SchemaSpec{Type: "integer"}, "storeLocation": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}}}, "status": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"phase": &runtime.SchemaSpec{Type: "string"}}}}}}},
 		},
 	},
 	{
@@ -4559,8 +4652,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster represents which cluster the repository belongs to. (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the user-specified identifier. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the repository list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the repository list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 		},
@@ -4620,6 +4713,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"strategy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"metadata": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "cluster": &runtime.SchemaSpec{Type: "string"}, "creationTimestamp": &runtime.SchemaSpec{Type: "string"}, "deletionTimestamp": &runtime.SchemaSpec{Type: "string"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "ownerReferences": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"apiVersion": &runtime.SchemaSpec{Type: "string"}, "blockOwnerDeletion": &runtime.SchemaSpec{Type: "boolean"}, "controller": &runtime.SchemaSpec{Type: "boolean"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}}}}, "resourceVersion": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}, "workspaceAlias": &runtime.SchemaSpec{Type: "string"}}}, "spec": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"etcdConnectionConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"caData": &runtime.SchemaSpec{Type: "string"}, "certData": &runtime.SchemaSpec{Type: "string"}, "connectionTimeout": &runtime.SchemaSpec{Type: "string"}, "endpoints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "insecureSkipVerify": &runtime.SchemaSpec{Type: "boolean"}, "insecureTransport": &runtime.SchemaSpec{Type: "boolean"}, "keyData": &runtime.SchemaSpec{Type: "string"}, "serviceEndpoints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "snapshotTimeout": &runtime.SchemaSpec{Type: "string"}}}, "snapStoreConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"container": &runtime.SchemaSpec{Type: "string"}, "prefix": &runtime.SchemaSpec{Type: "string"}, "provider": &runtime.SchemaSpec{Type: "string"}, "s3Config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"accessKeyId": &runtime.SchemaSpec{Type: "string"}, "bucket": &runtime.SchemaSpec{Type: "string"}, "consoleAddress": &runtime.SchemaSpec{Type: "string"}, "endpoint": &runtime.SchemaSpec{Type: "string"}, "region": &runtime.SchemaSpec{Type: "string"}, "secretAccessKey": &runtime.SchemaSpec{Type: "string"}, "storePrefix": &runtime.SchemaSpec{Type: "string"}}}, "tempDir": &runtime.SchemaSpec{Type: "string"}}}, "snapshotterConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"deltaSnapshotMemoryLimit": &runtime.SchemaSpec{Type: "integer"}, "deltaSnapshotPeriod": &runtime.SchemaSpec{Type: "string"}, "fullSnapshotSchedule": &runtime.SchemaSpec{Type: "string"}, "garbageCollectionPeriod": &runtime.SchemaSpec{Type: "string"}, "garbageCollectionPolicy": &runtime.SchemaSpec{Type: "string"}, "maxBackups": &runtime.SchemaSpec{Type: "integer"}}}}}, "maxBackups": &runtime.SchemaSpec{Type: "integer"}, "storeLocation": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}}}, "status": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"phase": &runtime.SchemaSpec{Type: "string"}}}}}}},
 		},
 	},
 	{
@@ -4634,6 +4728,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"etcdConnectionConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"caData": &runtime.SchemaSpec{Type: "string"}, "certData": &runtime.SchemaSpec{Type: "string"}, "connectionTimeout": &runtime.SchemaSpec{Type: "string"}, "endpoints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "insecureSkipVerify": &runtime.SchemaSpec{Type: "boolean"}, "insecureTransport": &runtime.SchemaSpec{Type: "boolean"}, "keyData": &runtime.SchemaSpec{Type: "string"}, "serviceEndpoints": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "snapshotTimeout": &runtime.SchemaSpec{Type: "string"}}}}},
 		},
 	},
 	{
@@ -4648,6 +4743,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"accessKeyId": &runtime.SchemaSpec{Type: "string"}, "bucket": &runtime.SchemaSpec{Type: "string"}, "endpoint": &runtime.SchemaSpec{Type: "string"}, "region": &runtime.SchemaSpec{Type: "string"}, "secretAccessKey": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4671,8 +4767,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Cluster is the current cluster. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace is the current namespace. (query)", Required: false},
 			{Name: "project", Flag: "project", In: "query", GoType: "string", Help: "Project is the project to request. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "public", Flag: "public", In: "query", GoType: "bool", Help: "Public is distinguish public images and private images. (query)", Required: false},
 			{Name: "fuzzyTagName", Flag: "fuzzy-tag-name", In: "query", GoType: "string", Help: "FuzzyTagName is used to fuzzy search by tag name. (query)", Required: false},
 		},
@@ -4693,8 +4789,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Cluster is the current cluster. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace is the current namespace. (query)", Required: false},
 			{Name: "public", Flag: "public", In: "query", GoType: "bool", Help: "Public is distinguish public projects and private projects. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by project name. (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", Pagination: &runtime.PaginationHint{
@@ -4713,8 +4809,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Cluster is the current cluster. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace is the current namespace. (query)", Required: false},
 			{Name: "global", Flag: "global", In: "query", GoType: "bool", Help: "Global is to list all global registries. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "public", Flag: "public", In: "query", GoType: "bool", Help: "Public is distinguish public images and private images. (query)", Required: false},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by registry name. (query)", Required: false},
 		},
@@ -4736,8 +4832,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "string", Help: "Namespace is the current namespace. (query)", Required: false},
 			{Name: "project", Flag: "project", In: "query", GoType: "string", Help: "Project is the project to request, \"/\" is a possible value. (query)", Required: false},
 			{Name: "fuzzyName", Flag: "fuzzy-name", In: "query", GoType: "string", Help: "FuzzyName is used to fuzzy search by multiple parameters including name. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "public", Flag: "public", In: "query", GoType: "bool", Help: "Public is distinguish public images and private images. (query)", Required: false},
 			{Name: "showArtifacts", Flag: "show-artifacts", In: "query", GoType: "bool", Help: "ShowArtifacts is to list artifacts of per image, default false. (query)", Required: false},
 		},
@@ -4759,6 +4855,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4774,6 +4871,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -4865,8 +4963,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/ingresses",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster is the name of the cluster, must be specified, (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is the number of pages at the beginning. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is the number of pages at the beginning. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy defines sort field, please see message kpanda.io.api.types.SortBy. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy defines the type of sort, default type asc, can also specify desc. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the name of the ingress. (query)", Required: false},
@@ -4888,8 +4986,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/networkpolicies",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster is the name of the cluster, must be specified, (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page number. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page number. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy defines sort field, please see message kpanda.io.api.types.SortBy. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy defines the type of sort, default type asc, can also specify desc. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the name of the networkpolicy. (query)", Required: false},
@@ -4926,8 +5024,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster is the name of the cluster, return all the ingress of the cluster (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace specified the namespace of ingress. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is the number of pages at the beginning. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is the number of pages at the beginning. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy defines sort field, please see message kpanda.io.api.types.SortBy. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy defines the type of sort, default type asc, can also specify desc. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the name of the ingress. (query)", Required: false},
@@ -4949,8 +5047,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/metallb/ippools",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster is the name of the cluster, return all the ingress of the cluster (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is the number of pages at the beginning. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is the number of pages at the beginning. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy defines sort field, please see message kpanda.io.api.types.SortBy. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy defines the type of sort, default type asc, can also specify desc. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the name of the ingress. (query)", Required: false},
@@ -4972,8 +5070,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster is the name of the cluster, return all the networkpolicies of the cluster (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace of networkpolicy list. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page number. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page number. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the number of every page displayed. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy defines sort field, please see message kpanda.io.api.types.SortBy. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy defines the type of sort, default type asc, can also specify desc. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is the name of the networkpolicy. (query)", Required: false},
@@ -4999,6 +5097,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "object"}}},
 		},
 	},
 	{
@@ -5015,6 +5114,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5031,6 +5131,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5045,6 +5146,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"servicePorts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "integer"}}, "sharedLoadBalancerIP": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5060,6 +5162,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 		Output: runtime.OutputHints{ListPath: "rules"},
 	},
@@ -5075,6 +5178,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "ownerReferences": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"apiVersion": &runtime.SchemaSpec{Type: "string"}, "blockOwnerDeletion": &runtime.SchemaSpec{Type: "boolean"}, "controller": &runtime.SchemaSpec{Type: "boolean"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}}}}, "roleRef": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"APIGroup": &runtime.SchemaSpec{Type: "string"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}}, "subject": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"APIGroup": &runtime.SchemaSpec{Type: "string"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "namespace": &runtime.SchemaSpec{Type: "string"}}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "subjects", DefaultColumns: []string{"name", "namespace", "kind", "APIGroup"},
 		},
@@ -5092,6 +5196,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 		Output: runtime.OutputHints{ListPath: "rules"},
 	},
@@ -5108,6 +5213,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"annotations": &runtime.SchemaSpec{Type: "object"}, "labels": &runtime.SchemaSpec{Type: "object"}, "name": &runtime.SchemaSpec{Type: "string"}, "ownerReferences": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"apiVersion": &runtime.SchemaSpec{Type: "string"}, "blockOwnerDeletion": &runtime.SchemaSpec{Type: "boolean"}, "controller": &runtime.SchemaSpec{Type: "boolean"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}}}}, "roleRef": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"APIGroup": &runtime.SchemaSpec{Type: "string"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}}, "subject": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"APIGroup": &runtime.SchemaSpec{Type: "string"}, "kind": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "namespace": &runtime.SchemaSpec{Type: "string"}}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "subjects", DefaultColumns: []string{"name", "namespace", "kind", "APIGroup"},
 		},
@@ -5223,8 +5329,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/asl/clusterrolebindings",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "[]string", Help: "Cluster represents which cluster the roleBinding belongs to. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of the user (query)", Required: false},
 			{Name: "roleRef", Flag: "role-ref", In: "query", GoType: "string", Help: "RoleRef is the role of the user, it should be the same as when it is created. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -5247,8 +5353,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterroles",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the role belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of the user (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -5269,8 +5375,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/kpanda.io/v1alpha1/asl/groups",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for fuzzy search. (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id"}, Pagination: &runtime.PaginationHint{
@@ -5288,8 +5394,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "[]string", Help: "Cluster represents which cluster the roleBinding belongs to. (query)", Required: false},
 			{Name: "namespace", Flag: "namespace", In: "query", GoType: "[]string", Help: "Namespace represents which namespace the roleBinding belongs to. (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of the user (query)", Required: false},
 			{Name: "roleRef", Flag: "role-ref", In: "query", GoType: "string", Help: "RoleRef is the role of the user, it should be the same as when it is created. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
@@ -5313,8 +5419,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "Cluster represents which cluster the role belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the role belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name represents the name of the user (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the data list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the data list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -5335,8 +5441,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/kpanda.io/v1alpha1/asl/users",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page is current page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size is the data number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for fuzzy search. (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id"}, Pagination: &runtime.PaginationHint{
@@ -5357,6 +5463,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5373,6 +5480,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5415,6 +5523,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/registry/verify",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"password": &runtime.SchemaSpec{Type: "string"}, "registryHost": &runtime.SchemaSpec{Type: "string"}, "username": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5439,6 +5548,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5454,6 +5564,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5528,8 +5639,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/accessiblestorageclasses",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of PVC to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
 			{Name: "labelSelector", Flag: "label-selector", In: "query", GoType: "string", Help: "LabelSelector is the format after labels.FormatLabels used to filter (query)", Required: false},
@@ -5552,8 +5663,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/volumesnapshots",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of VolumeSnapshot to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -5574,8 +5685,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of PVC to belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -5600,8 +5711,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "path", GoType: "string", Help: "cluster represents the name of VolumeSnapshot to belongs to. (path, required)", Required: true},
 			{Name: "namespace", Flag: "namespace", In: "path", GoType: "string", Help: "Namespace represents which namespace the VolumeSnapshot belongs to. (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Page requested. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Size per page requested. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "Name is used for filter. (query)", Required: false},
 			{Name: "sortBy", Flag: "sort-by", In: "query", GoType: "string", Help: "SortBy determines the list order reference. (query, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at)", Required: false, Default: "SORT_BY_UNSPECIFIED", Enum: []string{"SORT_BY_UNSPECIFIED", "field_name", "state", "workspace", "cluster", "namespace", "created_at"}},
 			{Name: "sortDir", Flag: "sort-dir", In: "query", GoType: "string", Help: "OrderBy determines the list order. (query, one of: desc|asc)", Required: false, Default: "desc", Enum: []string{"desc", "asc"}},
@@ -5626,6 +5737,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5642,6 +5754,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"data": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -5656,6 +5769,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"workspaceAlias": &runtime.SchemaSpec{Type: "string"}, "workspaceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -5671,6 +5785,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"workspaceAlias": &runtime.SchemaSpec{Type: "string"}, "workspaceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -5717,6 +5832,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"workspaceAlias": &runtime.SchemaSpec{Type: "string"}, "workspaceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -5732,6 +5848,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"workspaceAlias": &runtime.SchemaSpec{Type: "string"}, "workspaceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -5749,8 +5866,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "container", Flag: "container", In: "query", GoType: "string", Help: "Name of the pod where the container is located (query)", Required: false},
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time of get pod container log (query)", Required: false},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time of get pod container log (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Number of page. (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Log number shown per page. (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "Number of page. (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Log number shown per page. (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "logSearch", Flag: "log-search", In: "query", GoType: "string", Help: "for fuzzy query (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "data", DefaultColumns: []string{"log", "timeStamp"}, Pagination: &runtime.PaginationHint{
@@ -5770,6 +5887,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"matchLabels": &runtime.SchemaSpec{Type: "object"}, "param": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"time": &runtime.SchemaSpec{Type: "string"}}}, "queryList": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "data", DefaultColumns: []string{"errorMessage", "status"},
 		},
@@ -5786,6 +5904,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"matchLabels": &runtime.SchemaSpec{Type: "object"}, "param": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"end": &runtime.SchemaSpec{Type: "string"}, "start": &runtime.SchemaSpec{Type: "string"}, "step": &runtime.SchemaSpec{Type: "number"}}}, "queryList": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "data", DefaultColumns: []string{"errorMessage", "status"},
 		},
@@ -5802,6 +5921,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"labels": &runtime.SchemaSpec{Type: "object"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "param": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"end": &runtime.SchemaSpec{Type: "string"}, "start": &runtime.SchemaSpec{Type: "string"}, "step": &runtime.SchemaSpec{Type: "number"}}}, "queryList": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "data", DefaultColumns: []string{"errorMessage", "status"},
 		},
@@ -5818,6 +5938,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"labels": &runtime.SchemaSpec{Type: "object"}, "namespace": &runtime.SchemaSpec{Type: "string"}, "param": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"time": &runtime.SchemaSpec{Type: "string"}}}, "queryList": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 		Output: runtime.OutputHints{ListPath: "data", DefaultColumns: []string{"errorMessage", "status"},
 		},

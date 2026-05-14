@@ -8,7 +8,7 @@ import (
 	"github.com/samzong/lathe/pkg/runtime"
 )
 
-const generatedSchemaVersion = 4
+const generatedSchemaVersion = 5
 
 func Mount(root *cobra.Command) error {
 	if err := runtime.AssertSchema(generatedSchemaVersion); err != nil {
@@ -47,8 +47,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/about/opensources",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page: 当前页码，默认值为1 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页数量,默认为 10 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page: 当前页码，默认值为1 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页数量,默认为 10 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "license"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -64,6 +64,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/certify/check",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"certOrder": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -75,6 +76,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/certify",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"certName": &runtime.SchemaSpec{Type: "string"}, "certNo": &runtime.SchemaSpec{Type: "string"}, "certType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -86,6 +88,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/accesstoken",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"expiredAt": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -97,6 +100,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/sshkeys",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"expiredAt": &runtime.SchemaSpec{Type: "string"}, "publicKey": &runtime.SchemaSpec{Type: "string"}, "sshKeyName": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -185,6 +189,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/set-password",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"newPassword": &runtime.SchemaSpec{Type: "string"}, "oldPassword": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -196,6 +201,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/email",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"email": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -207,6 +213,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/language",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"locale": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -218,6 +225,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/password",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"password": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -229,6 +237,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/phone",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"countryCode": &runtime.SchemaSpec{Type: "string"}, "phone": &runtime.SchemaSpec{Type: "string"}, "verificationCode": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -243,6 +252,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"publicKey": &runtime.SchemaSpec{Type: "string"}, "sshKeyName": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -254,6 +264,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/current-user/name",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"firstname": &runtime.SchemaSpec{Type: "string"}, "lastname": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -265,6 +276,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha3/audits/clear",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"days": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -276,6 +288,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha3/audits/kube/clear",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"days": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -433,8 +446,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "gproduct", Flag: "gproduct", In: "query", GoType: "string", Help: "gproduct (query)", Required: false},
 			{Name: "start", Flag: "start", In: "query", GoType: "string", Help: "start (query)", Required: false},
 			{Name: "end", Flag: "end", In: "query", GoType: "string", Help: "end (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"id", "auditName", "client", "clusterName", "createdAt", "gproduct"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -456,8 +469,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "resourceType", Flag: "resource-type", In: "query", GoType: "string", Help: "resourceType (query)", Required: false},
 			{Name: "resourceName", Flag: "resource-name", In: "query", GoType: "string", Help: "resourceName (query)", Required: false},
 			{Name: "verb", Flag: "verb", In: "query", GoType: "string", Help: "verb (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"createdAt", "gproduct", "ip", "operator", "resourceName", "resourceType"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -481,8 +494,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "searchUser", Flag: "search-user", In: "query", GoType: "string", Help: "searchUser (query)", Required: false},
 			{Name: "start", Flag: "start", In: "query", GoType: "string", Help: "start (query)", Required: false},
 			{Name: "end", Flag: "end", In: "query", GoType: "string", Help: "end (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"id", "auditName", "client", "clusterName", "createdAt", "ip"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -498,6 +511,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha3/audits/set-auto-clear",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"days": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -509,6 +523,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha3/audits/set-auto-clear/kube",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"days": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -520,6 +535,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/clients",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"baseUrl": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -569,6 +585,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"baseUrl": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -580,6 +597,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/domain",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"alipayPublicKey": &runtime.SchemaSpec{Type: "string"}, "appId": &runtime.SchemaSpec{Type: "string"}, "appPrivateKey": &runtime.SchemaSpec{Type: "string"}, "isProduction": &runtime.SchemaSpec{Type: "boolean"}, "name": &runtime.SchemaSpec{Type: "string"}, "subject": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -649,6 +667,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/gproduct-licenses",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"yaml": &runtime.SchemaSpec{Type: "string"}}},
 		},
 		Output: runtime.OutputHints{ListPath: "licenses", DefaultColumns: []string{"name", "id", "expiredAt", "level", "module", "status"},
 		},
@@ -669,11 +688,13 @@ var Specs = []runtime.CommandSpec{
 		Group:       "Group",
 		Use:         "create-group",
 		Short:       "Create a user group",
+		Example:     "dcectl ghippo group create-group \\\n  --set name=dev-team \\\n  --set description=\"Development team\"\n",
 		OperationID: "Group_CreateGroup",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/groups",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -721,8 +742,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "id", Flag: "id", In: "path", GoType: "string", Help: "id (path, required)", Required: true},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "createdAt", "description", "email", "updatedAt"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -739,8 +760,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "id", Flag: "id", In: "path", GoType: "string", Help: "id (path, required)", Required: true},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "type", Flag: "type", In: "query", GoType: "string", Help: "role type (query)", Required: false},
 			{Name: "authorized", Flag: "authorized", In: "query", GoType: "bool", Help: "是否授权 (query)", Required: false},
 		},
@@ -759,8 +780,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "id", Flag: "id", In: "path", GoType: "string", Help: "id (path, required)", Required: true},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"type", "id", "roleId", "roleName", "subjectName"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -777,8 +798,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/groups",
 		Params: []runtime.ParamSpec{
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "canAuthorize", "createdAt", "description", "userCount"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -789,6 +810,7 @@ var Specs = []runtime.CommandSpec{
 		Group:       "Group",
 		Use:         "update-group",
 		Short:       "Update a user group",
+		Example:     "dcectl ghippo group update-group --id <id> \\\n  --set name=dev-team-renamed \\\n  --set description=\"Renamed team\"\n",
 		OperationID: "Group_UpdateGroup",
 		Method:      "PUT",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/groups/{id}",
@@ -797,6 +819,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -811,6 +834,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"addRoles": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "removeRoles": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 	},
 	{
@@ -822,6 +846,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/idp",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"alias": &runtime.SchemaSpec{Type: "string"}, "authorizationUrl": &runtime.SchemaSpec{Type: "string"}, "clientAuthentications": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "clientSecret": &runtime.SchemaSpec{Type: "string"}, "displayName": &runtime.SchemaSpec{Type: "string"}, "enableAutoLinkFlow": &runtime.SchemaSpec{Type: "boolean"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "logoutUrl": &runtime.SchemaSpec{Type: "string"}, "providerId": &runtime.SchemaSpec{Type: "string"}, "tokenUrl": &runtime.SchemaSpec{Type: "string"}, "userInfoUrl": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -898,6 +923,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"authorizationUrl": &runtime.SchemaSpec{Type: "string"}, "clientAuthentications": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "clientSecret": &runtime.SchemaSpec{Type: "string"}, "displayName": &runtime.SchemaSpec{Type: "string"}, "enableAutoLinkFlow": &runtime.SchemaSpec{Type: "boolean"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "logoutUrl": &runtime.SchemaSpec{Type: "string"}, "providerId": &runtime.SchemaSpec{Type: "string"}, "tokenUrl": &runtime.SchemaSpec{Type: "string"}, "userInfoUrl": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -909,6 +935,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/keycloak-event",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"authDetails": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clientId": &runtime.SchemaSpec{Type: "string"}, "ipAddress": &runtime.SchemaSpec{Type: "string"}, "realmId": &runtime.SchemaSpec{Type: "string"}, "sessionId": &runtime.SchemaSpec{Type: "string"}, "userId": &runtime.SchemaSpec{Type: "string"}, "username": &runtime.SchemaSpec{Type: "string"}}}, "details": &runtime.SchemaSpec{Type: "object"}, "error": &runtime.SchemaSpec{Type: "string"}, "operationType": &runtime.SchemaSpec{Type: "string"}, "realmId": &runtime.SchemaSpec{Type: "string"}, "representation": &runtime.SchemaSpec{Type: "string"}, "resourcePath": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}, "uid": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -920,6 +947,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha2/ldap",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"bindCredential": &runtime.SchemaSpec{Type: "string"}, "bindDn": &runtime.SchemaSpec{Type: "string"}, "connectionUrl": &runtime.SchemaSpec{Type: "string"}, "editMode": &runtime.SchemaSpec{Type: "string"}, "email": &runtime.SchemaSpec{Type: "string"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "firstName": &runtime.SchemaSpec{Type: "string"}, "fullSyncPeriod": &runtime.SchemaSpec{Type: "string"}, "lastName": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "rdnLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "readTimeout": &runtime.SchemaSpec{Type: "string"}, "startTls": &runtime.SchemaSpec{Type: "string"}, "userLdapFilter": &runtime.SchemaSpec{Type: "string"}, "userObjectClasses": &runtime.SchemaSpec{Type: "string"}, "username": &runtime.SchemaSpec{Type: "string"}, "usernameLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "usersDn": &runtime.SchemaSpec{Type: "string"}, "uuidLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "vendor": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -934,6 +962,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"groupDn": &runtime.SchemaSpec{Type: "string"}, "groupNameLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "groupObjectClasses": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1023,6 +1052,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha2/testLdapAuthentication",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "bindCredential": &runtime.SchemaSpec{Type: "string"}, "bindDn": &runtime.SchemaSpec{Type: "string"}, "componentId": &runtime.SchemaSpec{Type: "string"}, "connectionTimeout": &runtime.SchemaSpec{Type: "string"}, "connectionUrl": &runtime.SchemaSpec{Type: "string"}, "startTls": &runtime.SchemaSpec{Type: "string"}, "useTruststoreSpi": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1034,6 +1064,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha2/testLdapConnection",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "bindCredential": &runtime.SchemaSpec{Type: "string"}, "bindDn": &runtime.SchemaSpec{Type: "string"}, "componentId": &runtime.SchemaSpec{Type: "string"}, "connectionTimeout": &runtime.SchemaSpec{Type: "string"}, "connectionUrl": &runtime.SchemaSpec{Type: "string"}, "startTls": &runtime.SchemaSpec{Type: "string"}, "useTruststoreSpi": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1048,6 +1079,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"bindCredential": &runtime.SchemaSpec{Type: "string"}, "bindDn": &runtime.SchemaSpec{Type: "string"}, "connectionUrl": &runtime.SchemaSpec{Type: "string"}, "editMode": &runtime.SchemaSpec{Type: "string"}, "email": &runtime.SchemaSpec{Type: "string"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "firstName": &runtime.SchemaSpec{Type: "string"}, "fullSyncPeriod": &runtime.SchemaSpec{Type: "string"}, "lastName": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "rdnLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "readTimeout": &runtime.SchemaSpec{Type: "string"}, "startTls": &runtime.SchemaSpec{Type: "string"}, "userLdapFilter": &runtime.SchemaSpec{Type: "string"}, "userObjectClasses": &runtime.SchemaSpec{Type: "string"}, "username": &runtime.SchemaSpec{Type: "string"}, "usernameLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "usersDn": &runtime.SchemaSpec{Type: "string"}, "uuidLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "vendor": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1063,6 +1095,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"groupDn": &runtime.SchemaSpec{Type: "string"}, "groupNameLdapAttribute": &runtime.SchemaSpec{Type: "string"}, "groupObjectClasses": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1074,6 +1107,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/session-limit",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"username": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1085,6 +1119,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/login",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"callbackUrl": &runtime.SchemaSpec{Type: "string"}, "code": &runtime.SchemaSpec{Type: "string"}, "sessionState": &runtime.SchemaSpec{Type: "string"}, "state": &runtime.SchemaSpec{Type: "string"}, "useSso": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1115,6 +1150,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/refresh-token",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"refreshToken": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1182,6 +1218,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/login-page/info",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"background": &runtime.SchemaSpec{Type: "string"}, "copyright": &runtime.SchemaSpec{Type: "string"}, "favicon": &runtime.SchemaSpec{Type: "string"}, "icon": &runtime.SchemaSpec{Type: "string"}, "isVideo": &runtime.SchemaSpec{Type: "boolean"}, "platformName": &runtime.SchemaSpec{Type: "string"}, "tabName": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1193,6 +1230,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/messages/delete",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"ids": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "integer"}}}},
 		},
 	},
 	{
@@ -1233,8 +1271,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "unreadCount", Flag: "unread-count", In: "query", GoType: "bool", Help: "是否只返回统计未读数量 (query)", Required: false},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
 			{Name: "read", Flag: "read", In: "query", GoType: "string", Help: "是否只返回已读或未读，传\"read\"或\"unread\"来区分，不传返回已读和未读的消息 (query, one of: all|read|unread)", Required: false, Default: "all", Enum: []string{"all", "read", "unread"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"type", "id", "createdAt", "message", "read", "subject"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -1250,6 +1288,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/read-messages",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"all": &runtime.SchemaSpec{Type: "boolean"}, "ids": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "integer"}}}},
 		},
 	},
 	{
@@ -1281,6 +1320,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/oidc/token",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clientId": &runtime.SchemaSpec{Type: "string"}, "clientSecret": &runtime.SchemaSpec{Type: "string"}, "code": &runtime.SchemaSpec{Type: "string"}, "grantType": &runtime.SchemaSpec{Type: "string"}, "password": &runtime.SchemaSpec{Type: "string"}, "redirectUri": &runtime.SchemaSpec{Type: "string"}, "refreshToken": &runtime.SchemaSpec{Type: "string"}, "scope": &runtime.SchemaSpec{Type: "string"}, "username": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1317,6 +1357,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/oauth2",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"agentId": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "clientSecret": &runtime.SchemaSpec{Type: "string"}, "displayName": &runtime.SchemaSpec{Type: "string"}, "providerType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1355,6 +1396,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/oauth2",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"agentId": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "clientSecret": &runtime.SchemaSpec{Type: "string"}, "displayName": &runtime.SchemaSpec{Type: "string"}, "providerType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1394,6 +1436,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/publish/messages",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"message": &runtime.SchemaSpec{Type: "string"}, "messageUid": &runtime.SchemaSpec{Type: "string"}, "subject": &runtime.SchemaSpec{Type: "string"}, "type": &runtime.SchemaSpec{Type: "string"}, "userId": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1423,11 +1466,13 @@ var Specs = []runtime.CommandSpec{
 		Group:       "Role",
 		Use:         "create-role",
 		Short:       "Create a custom role",
+		Example:     "# scope: platform | folder | workspace\necho '{\n  \"name\": \"my-role\",\n  \"description\": \"Custom role\",\n  \"scope\": \"platform\",\n  \"perms\": [\n    {\"gproduct\": \"ghippo\", \"resourceType\": \"User\", \"action\": \"get\"}\n  ]\n}' | dcectl ghippo role create-role --file -\n",
 		OperationID: "Role_CreateRole",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/roles",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "perms": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "gproduct": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}}}}, "scope": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1481,8 +1526,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folderrolenames",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "authScope", "description"}, Pagination: &runtime.PaginationHint{
@@ -1499,8 +1544,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/platformroles/{name}/members",
 		Params: []runtime.ParamSpec{
 			{Name: "name", Flag: "name", In: "path", GoType: "string", Help: "name (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "type", "id"}, Pagination: &runtime.PaginationHint{
@@ -1517,8 +1562,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folderroles/{name}/members-folders",
 		Params: []runtime.ParamSpec{
 			{Name: "name", Flag: "name", In: "path", GoType: "string", Help: "name (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"folderAlias", "folderId", "memberId", "memberName", "memberType"}, Pagination: &runtime.PaginationHint{
@@ -1535,8 +1580,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaceroles/{name}/members-workspaces",
 		Params: []runtime.ParamSpec{
 			{Name: "name", Flag: "name", In: "path", GoType: "string", Help: "name (path, required)", Required: true},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"memberId", "memberName", "memberType", "workspaceAlias", "workspaceId"}, Pagination: &runtime.PaginationHint{
@@ -1554,8 +1599,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/roles",
 		Params: []runtime.ParamSpec{
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页条数 (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "当前页 (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页条数 (query, int32)", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "当前页 (query, int32)", Required: false, Default: "1", Format: "int32"},
 			{Name: "roleType", Flag: "role-type", In: "query", GoType: "string", Help: "roleType (query, one of: query_all_role_type|query_system|query_custom)", Required: false, Default: "query_all_role_type", Enum: []string{"query_all_role_type", "query_system", "query_custom"}},
 			{Name: "scope", Flag: "scope", In: "query", GoType: "string", Help: "scope (query, one of: query_all_auth_scope|query_platform|query_folder|query_workspace)", Required: false, Default: "query_all_auth_scope", Enum: []string{"query_all_auth_scope", "query_platform", "query_folder", "query_workspace"}},
 		},
@@ -1572,8 +1617,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspacerolenames",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "authScope", "description"}, Pagination: &runtime.PaginationHint{
@@ -1585,6 +1630,7 @@ var Specs = []runtime.CommandSpec{
 		Group:       "Role",
 		Use:         "update-role",
 		Short:       "Update a custom role",
+		Example:     "echo '{\n  \"description\": \"Updated description\",\n  \"perms\": [\n    {\"gproduct\": \"ghippo\", \"resourceType\": \"User\", \"action\": \"get\"}\n  ]\n}' | dcectl ghippo role update-role --name <name> --file -\n",
 		OperationID: "Role_UpdateRole",
 		Method:      "PUT",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/roles/{name}",
@@ -1593,6 +1639,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "perms": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "gproduct": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}}}}}},
 		},
 	},
 	{
@@ -1670,6 +1717,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/accountlockout",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}, "failureResetSeconds": &runtime.SchemaSpec{Type: "integer"}, "maxFailuresWaitSeconds": &runtime.SchemaSpec{Type: "integer"}, "maxLoginFailures": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -1681,6 +1729,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/logout",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -1692,6 +1741,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/mfa",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
@@ -1703,6 +1753,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/password",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"items": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"type": &runtime.SchemaSpec{Type: "string"}, "value": &runtime.SchemaSpec{Type: "string"}}}}}},
 		},
 	},
 	{
@@ -1714,6 +1765,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/sessiontimeout",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"timeoutSeconds": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -1725,6 +1777,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/system",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}, "number": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -1736,6 +1789,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/time",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}, "end": &runtime.SchemaSpec{Type: "string"}, "start": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1747,6 +1801,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/user",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"enabled": &runtime.SchemaSpec{Type: "boolean"}, "number": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -1758,6 +1813,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/sms/template/batch-by-domain",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"channel": &runtime.SchemaSpec{Type: "string"}, "domain": &runtime.SchemaSpec{Type: "string"}, "templates": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"channelTemplate": &runtime.SchemaSpec{Type: "string"}, "template": &runtime.SchemaSpec{Type: "string"}}}}}},
 		},
 	},
 	{
@@ -1769,6 +1825,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/sms/template",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"channel": &runtime.SchemaSpec{Type: "string"}, "channelTemplate": &runtime.SchemaSpec{Type: "string"}, "domain": &runtime.SchemaSpec{Type: "string"}, "template": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1796,6 +1853,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/sms/verification",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"countryCode": &runtime.SchemaSpec{Type: "string"}, "phone": &runtime.SchemaSpec{Type: "string"}, "scene": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1815,6 +1873,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/smtp-setting",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"from": &runtime.SchemaSpec{Type: "string"}, "host": &runtime.SchemaSpec{Type: "string"}, "password": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "ssl": &runtime.SchemaSpec{Type: "boolean"}, "starttls": &runtime.SchemaSpec{Type: "boolean"}, "user": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1826,6 +1885,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/smtp-setting/conn-test",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"from": &runtime.SchemaSpec{Type: "string"}, "host": &runtime.SchemaSpec{Type: "string"}, "password": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "ssl": &runtime.SchemaSpec{Type: "boolean"}, "starttls": &runtime.SchemaSpec{Type: "boolean"}, "to": &runtime.SchemaSpec{Type: "string"}, "user": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1905,6 +1965,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/themes/footer-theme",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"css": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1916,6 +1977,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/themes/login_page",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"css": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1927,6 +1989,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/themes/theme",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"css": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1954,6 +2017,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/top-nav",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"favicon": &runtime.SchemaSpec{Type: "string"}, "icon": &runtime.SchemaSpec{Type: "string"}, "tabName": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -1982,18 +2046,20 @@ var Specs = []runtime.CommandSpec{
 		Group:       "Users",
 		Use:         "create-user",
 		Short:       "Create a new platform user",
-		Example:     "dcectl ghippo users create-user \\\n  --set name=alice \\\n  --set email=alice@example.com \\\n  --set password=changeme\n",
+		Example:     "dcectl ghippo users create-user \\\n  --set name=alice \\\n  --set password=changeme \\\n  --set description=\"Alice from dev team\" \\\n  --set temporary=false\n",
 		OperationID: "Users_CreateUser",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "password": &runtime.SchemaSpec{Type: "string"}, "temporary": &runtime.SchemaSpec{Type: "boolean"}}},
 		},
 	},
 	{
 		Group:       "Users",
 		Use:         "create-user-access-token",
 		Short:       "Create an access token for a user",
+		Example:     "dcectl ghippo users create-user-access-token --id <id> \\\n  --set name=my-token \\\n  --set expiredAt=2026-12-31T00:00:00Z\n",
 		OperationID: "Users_CreateUserAccessToken",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users/{id}/accesstoken",
@@ -2002,6 +2068,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"expiredAt": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2013,6 +2080,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users/without-password",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"name": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2084,8 +2152,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "id", Flag: "id", In: "path", GoType: "string", Help: "id (path, required)", Required: true},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2102,8 +2170,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "id", Flag: "id", In: "path", GoType: "string", Help: "id (path, required)", Required: true},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "type", Flag: "type", In: "query", GoType: "string", Help: "role type (query)", Required: false},
 			{Name: "authorized", Flag: "authorized", In: "query", GoType: "bool", Help: "是否授权 (query)", Required: false},
 		},
@@ -2122,8 +2190,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "id", Flag: "id", In: "path", GoType: "string", Help: "id (path, required)", Required: true},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"type", "id", "roleName", "subjectName"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2141,8 +2209,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users",
 		Params: []runtime.ParamSpec{
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页条数 (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "当前页, 大于等于 0，小于等于 1000 (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "Number of results per page", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "当前页, 大于等于 0，小于等于 1000 (query, int32)", Required: false, Default: "1", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "canAuthorize", "createdAt", "description", "email"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2164,6 +2232,7 @@ var Specs = []runtime.CommandSpec{
 		Group:       "Users",
 		Use:         "set-user-password",
 		Short:       "Set or reset a user's password",
+		Example:     "dcectl ghippo users set-user-password --id <id> \\\n  --set password=NewP@ssw0rd\n",
 		OperationID: "Users_SetUserPassword",
 		Method:      "PUT",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users/{id}/password",
@@ -2172,12 +2241,14 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"password": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
 		Group:       "Users",
 		Use:         "update-user",
 		Short:       "Update user profile",
+		Example:     "dcectl ghippo users update-user --id <id> \\\n  --set email=newemail@example.com \\\n  --set firstname=Alice \\\n  --set lastname=Smith \\\n  --set description=\"updated\" \\\n  --set enabled=true\n",
 		OperationID: "Users_UpdateUser",
 		Method:      "PUT",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users/{id}",
@@ -2186,6 +2257,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"description": &runtime.SchemaSpec{Type: "string"}, "email": &runtime.SchemaSpec{Type: "string"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "firstname": &runtime.SchemaSpec{Type: "string"}, "lastname": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2197,12 +2269,14 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users/certify",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"certName": &runtime.SchemaSpec{Type: "string"}, "certNo": &runtime.SchemaSpec{Type: "string"}, "subject": &runtime.SchemaSpec{Type: "string"}, "userId": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
 		Group:       "Users",
 		Use:         "update-user-roles",
 		Short:       "Assign or update roles for a user",
+		Example:     "# Add roles\necho '{\"addRoles\":[\"Admin\"],\"removeRoles\":[]}' | \\\n  dcectl ghippo users update-user-roles --id <id> --file -\n# Remove roles\necho '{\"addRoles\":[],\"removeRoles\":[\"Editor\"]}' | \\\n  dcectl ghippo users update-user-roles --id <id> --file -\n",
 		OperationID: "Users_UpdateUserRoles",
 		Method:      "PUT",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/users/{id}/roles",
@@ -2211,6 +2285,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"addRoles": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "removeRoles": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 	},
 	{
@@ -2222,6 +2297,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/webhook",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "headers": &runtime.SchemaSpec{Type: "string"}, "method": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "requestParameter": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2233,6 +2309,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/webhook-endpoint",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"domain": &runtime.SchemaSpec{Type: "string"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "gproducts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "resources": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"actions": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "methods": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"headers": &runtime.SchemaSpec{Type: "string"}, "method": &runtime.SchemaSpec{Type: "string"}}}}}}}, "resourceType": &runtime.SchemaSpec{Type: "string"}}}}}}}, "name": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2301,8 +2378,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "eventName", Flag: "event-name", In: "query", GoType: "string", Help: "eventName (query)", Required: false},
 			{Name: "gproduct", Flag: "gproduct", In: "query", GoType: "string", Help: "gproduct (query)", Required: false},
 			{Name: "objectName", Flag: "object-name", In: "query", GoType: "string", Help: "objectName (query)", Required: false},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"body", "eventName", "gproduct", "headers", "method", "objectName"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2321,8 +2398,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "url", Flag: "url", In: "query", GoType: "string", Help: "url (query)", Required: false},
 			{Name: "name", Flag: "name", In: "query", GoType: "string", Help: "name (query)", Required: false},
 			{Name: "enabled", Flag: "enabled", In: "query", GoType: "bool", Help: "enabled (query)", Required: false},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "createdAt", "domain", "enabled", "endpoint"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2340,8 +2417,8 @@ var Specs = []runtime.CommandSpec{
 			{Name: "clientId", Flag: "client-id", In: "query", GoType: "string", Help: "clientId (query)", Required: false},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
 			{Name: "status", Flag: "status", In: "query", GoType: "string", Help: "status (query, one of: all|successful|failed)", Required: false, Default: "all", Enum: []string{"all", "successful", "failed"}},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"id", "action", "clientId", "errMessage", "eventData", "eventTime"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2357,8 +2434,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/webhook",
 		Params: []runtime.ParamSpec{
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "search (query)", Required: false},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
 			{Name: "clientId", Flag: "client-id", In: "query", GoType: "string", Help: "clientId (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "action", "clientId", "createdAt", "headers"}, Pagination: &runtime.PaginationHint{
@@ -2378,6 +2455,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "clientId": &runtime.SchemaSpec{Type: "string"}, "headers": &runtime.SchemaSpec{Type: "string"}, "method": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "requestParameter": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2392,6 +2470,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"domain": &runtime.SchemaSpec{Type: "string"}, "enabled": &runtime.SchemaSpec{Type: "boolean"}, "gproducts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "resources": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"actions": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"action": &runtime.SchemaSpec{Type: "string"}, "methods": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"headers": &runtime.SchemaSpec{Type: "string"}, "method": &runtime.SchemaSpec{Type: "string"}}}}}}}, "resourceType": &runtime.SchemaSpec{Type: "string"}}}}}}}, "name": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2403,12 +2482,14 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/webhook-endpoint/connectivity-test",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"headers": &runtime.SchemaSpec{Type: "string"}, "url": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
 		Group:       "Workspace",
 		Use:         "authorize",
-		Short:       "Workspace_Authorize",
+		Short:       "Grant a role to a user or group within a folder",
+		Example:     "dcectl ghippo workspace authorize --folder-id <folderId> \\\n  --set memberId=<userId> \\\n  --set memberType=user \\\n  --set memberName=alice \\\n  --set-str 'roleNames[0]=Workspace Admin'\n",
 		OperationID: "Workspace_Authorize",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folders/{folderId}/authorize",
@@ -2417,6 +2498,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"memberId": &runtime.SchemaSpec{Type: "string"}, "memberName": &runtime.SchemaSpec{Type: "string"}, "memberType": &runtime.SchemaSpec{Type: "string"}, "roleNames": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
 		},
 	},
 	{
@@ -2431,6 +2513,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "resourceName": &runtime.SchemaSpec{Type: "string"}, "resourceScope": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2445,6 +2528,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "quotaHard": &runtime.SchemaSpec{Type: "object"}, "resourceName": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2459,29 +2543,33 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "resourceName": &runtime.SchemaSpec{Type: "string"}, "resourceScope": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
 		Group:       "Workspace",
 		Use:         "create-folder",
 		Short:       "Create a folder",
+		Example:     "# alias is the display name; parentFolderId=0 places it under root\ndcectl ghippo workspace create-folder \\\n  --set alias=my-folder \\\n  --set parentFolderId=0\n",
 		OperationID: "Workspace_CreateFolder",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folders",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"alias": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "parentFolderId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
 		Group:       "Workspace",
 		Use:         "create-workspace",
 		Short:       "Create a workspace",
-		Example:     "dcectl ghippo workspace create-workspace --set name=my-workspace\n",
+		Example:     "# alias is the display name; parentFolderId=0 places it under root\ndcectl ghippo workspace create-workspace \\\n  --set alias=my-workspace \\\n  --set parentFolderId=0\n",
 		OperationID: "Workspace_CreateWorkspace",
 		Method:      "POST",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"alias": &runtime.SchemaSpec{Type: "string"}, "parentFolderId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -2496,6 +2584,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"memberId": &runtime.SchemaSpec{Type: "string"}, "memberName": &runtime.SchemaSpec{Type: "string"}, "memberType": &runtime.SchemaSpec{Type: "string"}, "roleName": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2530,8 +2619,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "folderId", Flag: "folder-id", In: "path", GoType: "string", Help: "folderId (path, required, int32)", Required: true, Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "搜索偏移量 (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "分页大小 (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "authorized", "canAuthorize", "createdAt", "description"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2560,8 +2649,8 @@ var Specs = []runtime.CommandSpec{
 		Params: []runtime.ParamSpec{
 			{Name: "folderId", Flag: "folder-id", In: "path", GoType: "string", Help: "folderId (path, required, int32)", Required: true, Format: "int32"},
 			{Name: "search", Flag: "search", In: "query", GoType: "string", Help: "搜索关键字 (query)", Required: false},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页条数 (query, int32)", Required: false, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "当前页 (query, int32)", Required: false, Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "每页条数 (query, int32)", Required: false, Default: "20", Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "当前页 (query, int32)", Required: false, Default: "1", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "authorized", "canAuthorize", "description", "email"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2614,8 +2703,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/available-exclusiveresources",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "resourceName", Flag: "resource-name", In: "query", GoType: "string", Help: "resourceName (query)", Required: false},
 			{Name: "resourceType", Flag: "resource-type", In: "query", GoType: "[]string", Help: "resourceType (query)", Required: false},
 			{Name: "resourceScope", Flag: "resource-scope", In: "query", GoType: "string", Help: "resourceScope (query)", Required: false},
@@ -2634,8 +2723,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/available-sharedresources",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "resourceName", Flag: "resource-name", In: "query", GoType: "string", Help: "resourceName (query)", Required: false},
 			{Name: "resourceType", Flag: "resource-type", In: "query", GoType: "[]string", Help: "resourceType (query)", Required: false},
 		},
@@ -2662,8 +2751,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/exclusiveresources",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "resourceName", Flag: "resource-name", In: "query", GoType: "string", Help: "resourceName (query)", Required: false},
 			{Name: "resourceType", Flag: "resource-type", In: "query", GoType: "string", Help: "resourceType (query)", Required: false},
 		},
@@ -2689,8 +2778,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folders",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "alias"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2706,8 +2795,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folders/{folderId}/members-roles",
 		Params: []runtime.ParamSpec{
 			{Name: "folderId", Flag: "folder-id", In: "path", GoType: "string", Help: "folderId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "memberName", Flag: "member-name", In: "query", GoType: "string", Help: "memberName (query)", Required: false},
 			{Name: "memberType", Flag: "member-type", In: "query", GoType: "string", Help: "memberType (query)", Required: false},
 			{Name: "roleName", Flag: "role-name", In: "query", GoType: "string", Help: "roleName (query)", Required: false},
@@ -2726,8 +2815,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/members-roles",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "memberName", Flag: "member-name", In: "query", GoType: "string", Help: "memberName (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"memberId", "memberName", "memberType", "roleName", "workspaceId"}, Pagination: &runtime.PaginationHint{
@@ -2762,8 +2851,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/sharedresources",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "resourceName", Flag: "resource-name", In: "query", GoType: "string", Help: "resourceName (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"clusterStatus", "gproduct", "module", "resourceName", "resourceScope", "resourceType"}, Pagination: &runtime.PaginationHint{
@@ -2795,8 +2884,8 @@ var Specs = []runtime.CommandSpec{
 		Method:      "GET",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces",
 		Params: []runtime.ParamSpec{
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"name", "id", "alias"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
@@ -2815,6 +2904,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"destFolderId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -2826,8 +2916,8 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/move-folders",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required, int32)", Required: true, Format: "int32"},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
+			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Default: "1", Format: "int32"},
+			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Default: "20", Format: "int32"},
 			{Name: "folder", Flag: "folder", In: "query", GoType: "string", Help: "folder (query)", Required: false},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"folderAlias", "folderId", "parentAlias", "parentId"}, Pagination: &runtime.PaginationHint{
@@ -2847,6 +2937,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"memberId": &runtime.SchemaSpec{Type: "string"}, "memberName": &runtime.SchemaSpec{Type: "string"}, "memberType": &runtime.SchemaSpec{Type: "string"}, "newRoleName": &runtime.SchemaSpec{Type: "string"}, "oldRoleName": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2858,6 +2949,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/workspace-sharedresource-quota-hard",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"quotaHard": &runtime.SchemaSpec{Type: "object"}, "workspaceResourceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 	{
@@ -2872,12 +2964,14 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "resourceName": &runtime.SchemaSpec{Type: "string"}, "resourceScope": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
 		Group:       "Workspace",
 		Use:         "update-folder",
 		Short:       "Update a folder",
+		Example:     "dcectl ghippo workspace update-folder --folder-id <id> \\\n  --set alias=new-folder-name\n",
 		OperationID: "Workspace_UpdateFolder",
 		Method:      "PUT",
 		PathTpl:     "/apis/ghippo.io/v1alpha1/folders/{folderId}",
@@ -2886,6 +2980,7 @@ var Specs = []runtime.CommandSpec{
 		},
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"alias": &runtime.SchemaSpec{Type: "string"}}},
 		},
 	},
 	{
@@ -2897,6 +2992,7 @@ var Specs = []runtime.CommandSpec{
 		PathTpl:     "/apis/ghippo.io/v1alpha1/update-quota-check",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gproduct": &runtime.SchemaSpec{Type: "string"}, "quotaHard": &runtime.SchemaSpec{Type: "object"}, "resourceName": &runtime.SchemaSpec{Type: "string"}, "resourceScope": &runtime.SchemaSpec{Type: "string"}, "resourceType": &runtime.SchemaSpec{Type: "string"}, "workspaceId": &runtime.SchemaSpec{Type: "integer"}}},
 		},
 	},
 }

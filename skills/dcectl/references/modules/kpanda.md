@@ -204,10 +204,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified operation belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the event list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the event list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): name is used for query.
   - `--release-name` (query): Filter helm_operation by release_name,
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -221,10 +221,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified operation belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the event list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the event list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): name is used for query.
   - `--helm-chart-name` (query): the helm releases's chart name
   - `--helm-chart-repo` (query): the helm releases's chart repo name
@@ -250,9 +250,9 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the chart belongs to.
   - `--name` (query): Helm chart name.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
-  - `--category` (query, default `CATEGORY_UNSPECIFIED`): Category is used for query.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
+  - `--category` (query, default `CATEGORY_UNSPECIFIED`, one of: CATEGORY_UNSPECIFIED|CATEGORY_OTHERS|CATEGORY_STORAGE|CATEGORY_NETWORKING|CATEGORY_MONITORING|CATEGORY_DATABASE|CATEGORY_DATASERVICE|CATEGORY_ECOAPP|CATEGORY_BIGDATA|CATEGORY_SECURITY|CATEGORY_IOTEDGE|CATEGORY_INFRA): Category is used for query.
   - `--repo` (query): The repo name which the charts belongs to.
   - `--required` (query): Required indicates whether to display the charts, which are required to install the cluster.
 - Output: list path `data`; columns `metadata.name`, `created`, `removed`; pagination `offset`
@@ -267,10 +267,10 @@
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (query): Name is the user-specified identifier.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the repository list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the repository list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the repository list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the repository list order.
   - `--release-name` (query): Filter helm_operation by release_name,
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `status.version`, `metadata.creationTimestamp`; pagination `offset`
@@ -287,11 +287,11 @@
   - `--helmrelease` (path, required): Name of the helmrelease.
   - `--name` (query): Name is used to fuzzy search resources which belongs to this helmrelease by resource name.
   - `--kind` (query): Kind is used to filter resources which belongs to this helmrelease by resource kind.
-  - `--phase` (query, default `RESOURCE_PHASE_UNSPECIFIED`): Phase is used to filter resources which belongs to this helmrelease by resource phase.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the resource list order reference.
-  - `--sort-dir` (query, default `desc`): SortDir determines the list order.
+  - `--phase` (query, default `RESOURCE_PHASE_UNSPECIFIED`, one of: RESOURCE_PHASE_UNSPECIFIED|InProgress|Failed|Current|Terminating|Unknown): Phase is used to filter resources which belongs to this helmrelease by resource phase.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the resource list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): SortDir determines the list order.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `name`, `namespace`, `phase`, `kind`, `apiVersion`; pagination `offset`
 
@@ -317,10 +317,10 @@
   - `--cluster` (path, required): cluster represents which cluster the releases belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (query): Name is the user-specified identifier.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the release list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the release list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the release list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the release list order.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `spec.version`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -333,10 +333,10 @@
 - Flags:
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
   - `--name` (query): Name is the user-specified identifier.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the repository list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the repository list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the repository list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the repository list order.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
   - `--built-in` (query): builtin indicates whether to display the repos required to install the cluster.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
@@ -452,7 +452,7 @@
   - `--version` (path, required): Version represents the resource version of CustomResource.
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
-  - `--deletion-propagation` (query, default `DELETION_PROPAGATION_UNSPECIFIED`): - DELETION_PROPAGATION_ORPHAN: Orphans the dependents.
+  - `--deletion-propagation` (query, default `DELETION_PROPAGATION_UNSPECIFIED`, one of: DELETION_PROPAGATION_UNSPECIFIED|DELETION_PROPAGATION_ORPHAN|DELETION_PROPAGATION_BACKGROUND|DELETION_PROPAGATION_FOREGROUND): - DELETION_PROPAGATION_ORPHAN: Orphans the dependents.
 
 ### `dcectl kpanda apiextensions delete-custom-resource`
 
@@ -467,7 +467,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the CustomResource belongs to.
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
-  - `--deletion-propagation` (query, default `DELETION_PROPAGATION_UNSPECIFIED`): - DELETION_PROPAGATION_ORPHAN: Orphans the dependents.
+  - `--deletion-propagation` (query, default `DELETION_PROPAGATION_UNSPECIFIED`, one of: DELETION_PROPAGATION_UNSPECIFIED|DELETION_PROPAGATION_ORPHAN|DELETION_PROPAGATION_BACKGROUND|DELETION_PROPAGATION_FOREGROUND): - DELETION_PROPAGATION_ORPHAN: Orphans the dependents.
 
 ### `dcectl kpanda apiextensions delete-custom-resource-definition`
 
@@ -566,11 +566,11 @@
   - `--group` (path, required): Group represents the resource group of CustomResources.
   - `--version` (path, required): Version represents the resource version of CustomResources.
   - `--resource` (path, required): Resource represents the resource name of CustomResources, which is plural.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): name is used for query.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
   - `--show-detail` (query): ShowDetail is the presentation details, including metadata, spec, and status
 - Output: list path `items`; columns `name`, `namespace`, `kind`, `creationTimestamp`, `apiVersion`, `data`; pagination `offset`
@@ -593,12 +593,12 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster cluster to be queried
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name search the custom resource definitions fo name
   - `--status` (query): Status search the custom resource definitions fo status
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--group` (query): Group is to filter customResourceDefinitions by group.
@@ -617,11 +617,11 @@
   - `--version` (path, required): Version represents the resource version of CustomResources.
   - `--namespace` (path, required): Namespace represents which namespace the CustomResources belongs to.
   - `--resource` (path, required): Resource represents the resource name of CustomResources, which is plural.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): name is used for query.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--show-detail` (query): ShowDetail is the presentation details, including metadata, spec, and status
@@ -717,7 +717,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the Workload belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the Workload belongs to.
-  - `--kind` (path, required): WorkloadKind the workload of kind
+  - `--kind` (path, required, one of: deployments|statefulsets|daemonsets|jobs|cronjobs|pods|replicasets): WorkloadKind the workload of kind
 
 ### `dcectl kpanda apps delete-daemon-set`
 
@@ -827,7 +827,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the Workload belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the Workload belongs to.
-  - `--kind` (path, required): WorkloadKind the workload of kind
+  - `--kind` (path, required, one of: deployments|statefulsets|daemonsets|jobs|cronjobs|pods|replicasets): WorkloadKind the workload of kind
   - `--name` (path, required): Name represents the name of Workload
   - `--stable` (query): If stable is true, the v1 version under the corresponding package will be returned.
 
@@ -840,12 +840,12 @@
 - Flags:
   - `--cluster` (query): Cluster represents which cluster the workloads belongs to.
   - `--namespace` (query): Cluster represents which namespace the workloads belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -862,12 +862,12 @@
 - Flags:
   - `--cluster` (query): Cluster represents which cluster the workloads belongs to.
   - `--namespace` (query): Cluster represents which namespace the workloads belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -884,12 +884,12 @@
 - Flags:
   - `--cluster` (query): Cluster represents which cluster the workloads belongs to.
   - `--namespace` (query): Cluster represents which namespace the workloads belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -905,12 +905,12 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of Workload to belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -925,12 +925,12 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of Workload to belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -945,10 +945,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified replicaset belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): PageSize is the data number per page.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): PageSize is the data number per page.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name is used for query.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
@@ -964,12 +964,12 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of Workload to belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -997,13 +997,13 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified controllerrevision belongs to.
   - `--namespace` (path, required): Namespace the specified controllerrevision belongs to.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): Kind stands for what type of revisions are needed.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|StatefulSet|DaemonSet): Kind stands for what type of revisions are needed.
   - `--kind-name` (query): The name of involvedObject.
   - `--name` (query): Name stands for controllerrevision name, used for fuzzy search.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): SortDir determines the data list order.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): SortDir determines the data list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
@@ -1017,12 +1017,12 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the deployment belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -1038,12 +1038,12 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the deployment belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -1060,13 +1060,13 @@
 - Flags:
   - `--cluster` (path, required): cluster represents the name of replicaset belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the replicaset belongs to.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): Kind stands for what type of replicasets are needed.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment): Kind stands for what type of replicasets are needed.
   - `--kind-name` (query): The name of involvedObject.
   - `--name` (query): Name stands for replicaset name, used for fuzzy search.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): SortDir determines the data list order.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): PageSize is size of every page.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): SortDir determines the data list order.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): PageSize is size of every page.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -1094,12 +1094,12 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the deployment belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of workloads to search
-  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`): Phase represents the phase of workloads to search
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--phase` (query, default `WORKLOAD_STATE_UNSPECIFIED`, one of: WORKLOAD_STATE_UNSPECIFIED|Running|Deleting|Not_Ready|Stopped|Waiting): Phase represents the phase of workloads to search
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -1291,7 +1291,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the Workload belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the Workload belongs to.
-  - `--kind` (path, required): WorkloadKind the workload of kind
+  - `--kind` (path, required, one of: deployments|statefulsets|daemonsets|jobs|cronjobs|pods|replicasets): WorkloadKind the workload of kind
   - `--name` (path, required): Name represents the name of Workload
 
 ## Autoscaling
@@ -1433,9 +1433,9 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the hpa belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced hpa.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of hpa targetRef.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|ReplicaSet): The kind of hpa targetRef.
   - `--name` (query): The workload name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -1447,7 +1447,7 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the custom metrics belongs to.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of hpa targetRef.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Pod|Service): The kind of hpa targetRef.
 - Output: list path `items`
 
 ### `dcectl kpanda autoscaling list-horizontal-pod-autoscalers`
@@ -1459,9 +1459,9 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the hpa belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced hpa.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of hpa targetRef.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|ReplicaSet): The kind of hpa targetRef.
   - `--name` (query): The workload name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -1474,7 +1474,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the hpa belongs to.
   - `--namespace` (path, required): namespace
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of metrics.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Pod|Service): The kind of metrics.
   - `--kind-name` (query): kindName
   - `--name` (query): The exact name of metric.
 - Output: list path `items`; columns `metricName`, `timestamp`, `value`
@@ -1488,9 +1488,9 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the vpa belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced vpa.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of vpa targetRef.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet|ReplicaSet|Job|CronJob|ReplicationController): The kind of vpa targetRef.
   - `--kind-name` (query): The name of the targetRef.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -1592,12 +1592,12 @@
 - Flags:
   - `--clusters` (query): Cluster the specified job belongs to.
   - `--namespace` (query): Namespace the specified service belongs to.
-  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`): Job_state represents the current state of a job.
-  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`): cronjob_state represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed): Job_state represents the current state of a job.
+  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob): cronjob_state represents the current state of a cron job.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name of the job.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -1614,12 +1614,12 @@
 - Flags:
   - `--clusters` (query): Cluster the specified job belongs to.
   - `--namespace` (query): Namespace the specified service belongs to.
-  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`): Job_state represents the current state of a job.
-  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`): cronjob_state represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed): Job_state represents the current state of a job.
+  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob): cronjob_state represents the current state of a cron job.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name of the job.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -1636,12 +1636,12 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified job belongs to.
   - `--namespace` (path, required): Namespace the specified service belongs to.
-  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`): Job_state represents the current state of a job.
-  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`): cronjob_state represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed): Job_state represents the current state of a job.
+  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob): cronjob_state represents the current state of a cron job.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name of the job.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -1658,12 +1658,12 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified job belongs to.
   - `--namespace` (path, required): Namespace the specified service belongs to.
-  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`): Job_state represents the current state of a job.
-  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`): cronjob_state represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed): Job_state represents the current state of a job.
+  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob): cronjob_state represents the current state of a cron job.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name of the job.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -1679,12 +1679,12 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified job belongs to.
-  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`): Job_state represents the current state of a job.
-  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`): cronjob_state represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed): Job_state represents the current state of a job.
+  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob): cronjob_state represents the current state of a cron job.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name of the job.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -1700,12 +1700,12 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified job belongs to.
-  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`): Job_state represents the current state of a job.
-  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`): cronjob_state represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--job-state` (query, default `JOB_STATE_UNSPECIFIED`, one of: JOB_STATE_UNSPECIFIED|Waiting|Running|Completed|Deleting|Failed): Job_state represents the current state of a job.
+  - `--cronjob-state` (query, default `CRONJOB_STATE_UNSPECIFIED`, one of: CRONJOB_STATE_UNSPECIFIED|Waiting_CronJob|Activated_CronJob|Stopped_CronJob|Deleting_CronJob): cronjob_state represents the current state of a cron job.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): Name of the job.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -1724,10 +1724,10 @@
   - `--namespace` (path, required): Namespace represents which namespace the cronjob belongs to.
   - `--cronjob` (path, required): Cronjob name.
   - `--phase` (query): Represents the current state of a cron job.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the job list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the job list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the job list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the job list order.
   - `--name` (query): Cronjob name.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `executionTimestamp`; pagination `offset`
@@ -1848,11 +1848,11 @@
 - Body: none
 - Flags:
   - `--name` (path, required): Name is the user-specified identifier.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--status` (query): Status represents the current state of cluster.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--exclude-metrics` (query): exclude_metrics
 - Output: pagination `offset`
 - Example: `dcectl kpanda cluster get-cluster --name prod-cluster`
@@ -1908,16 +1908,16 @@
 - Body: none
 - Flags:
   - `--name` (query): Name is the user-specified identifier.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--role` (query, default `CLUSTER_ROLE_UNSPECIFIED`): role
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--role` (query, default `CLUSTER_ROLE_UNSPECIFIED`, one of: CLUSTER_ROLE_UNSPECIFIED|CLUSTER_ROLE_MANAGER|CLUSTER_ROLE_GLOBAL_SERVICE|CLUSTER_ROLE_WORKER|CLUSTER_ROLE_THIRD_PARTY): role
   - `--kubernetes-version` (query): KUBERNETESVERSION cluster k8s version use to support search sub cluster at
-  - `--phase` (query, default `CLUSTER_PHASE_UNSPECIFIED`): Phase is used for filter.
+  - `--phase` (query, default `CLUSTER_PHASE_UNSPECIFIED`, one of: CLUSTER_PHASE_UNSPECIFIED|Unknown|Creating|Running|Updating|Deleting|Failed|DeleteFailed): Phase is used for filter.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter clusters.
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter the clusters.
   - `--managed-by` (query): ManagedBy represents who manages the cluster
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the cluster list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the cluster list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the cluster list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the cluster list order.
   - `--show-virtual-cluster` (query): ShowVirtualCluster is used to control whether returned data contains
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
   - `--exclude-metrics` (query): exclude_metrics
@@ -1961,7 +1961,7 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): The cluster name of the clustersetting.
-  - `--name` (path, required): The name of the plugin which needs to disable.
+  - `--name` (path, required, one of: PLUGIN_NAME_UNSPECIFIED|HPA|Insight|GPU|METALLB|Spiderpool|CustomMetrics|CronHPA|VPA|Hwameistor|Flannel|KubeOvn|OLM|EgressGateway|Snapshot|DRA): The name of the plugin which needs to disable.
 
 ### `dcectl kpanda clustersetting enable-plugin`
 
@@ -1971,7 +1971,7 @@
 - Body: required
 - Flags:
   - `--cluster` (path, required): The cluster name of the clustersetting.
-  - `--name` (path, required): The name of the plugin which needs to enable.
+  - `--name` (path, required, one of: PLUGIN_NAME_UNSPECIFIED|HPA|Insight|GPU|METALLB|Spiderpool|CustomMetrics|CronHPA|VPA|Hwameistor|Flannel|KubeOvn|OLM|EgressGateway|Snapshot|DRA): The name of the plugin which needs to enable.
 
 ### `dcectl kpanda clustersetting get-cluster-setting`
 
@@ -2112,13 +2112,13 @@
 - Flags:
   - `--cluster` (path, required): The name of the cluster.
   - `--name` (query): The fuzzy-name of the clusterclmOps.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): SortDir determines the order of the data.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): SortDir determines the order of the data.
   - `--target-cluster` (query): targetCluster
-  - `--action` (query, default `ACTION_UNSPECIFIED`): action
-  - `--phase` (query, default `STATUS_UNSPECIFIED`): phase
+  - `--action` (query, default `ACTION_UNSPECIFIED`, one of: ACTION_UNSPECIFIED|CREATE_CLUSTER|UPGRADE_CLUSTER|RESET_CLUSTER|ADD_NODE|REMOVE_NODE): action
+  - `--phase` (query, default `STATUS_UNSPECIFIED`, one of: STATUS_UNSPECIFIED|Running|Succeeded|Failed|Blocked): phase
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -2662,12 +2662,12 @@
 - Flags:
   - `--cluster` (query): Cluster represents the pods belongs to, it is a array
   - `--namespace` (query): Namespace is the metadata.namespace of the referenced pod.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
-  - `--phase` (query, default `PHASE_UNSPECIFIED`): Phases is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--phase` (query, default `PHASE_UNSPECIFIED`, one of: PHASE_UNSPECIFIED|Unknown|Pending|Running|Succeeded|Failed): Phases is used for filter.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -2682,10 +2682,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified configmap belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the event list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the event list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): name is used for query.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -2711,10 +2711,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the events belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--type` (query): Type is used for query, showing events of specified type.
   - `--kind` (query): Kind is used for query, showing events of specified involvedObject kind,
   - `--name` (query): Name is used for query, showing events of specified involvedObject name,
@@ -2738,10 +2738,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified LimitRange belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the LimitRange list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the LimitRange list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the LimitRange list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the LimitRange list order.
   - `--name` (query): Name is used for fuzzy search.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter.
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter.
@@ -2756,7 +2756,7 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the namespace summary list belong to.
-  - `--phase` (query, default `NAMESPACE_PHASE_UNSPECIFIED`): Phases is used for filter.
+  - `--phase` (query, default `NAMESPACE_PHASE_UNSPECIFIED`, one of: NAMESPACE_PHASE_UNSPECIFIED|Active|Terminating): Phases is used for filter.
 - Output: list path `data`; columns `name`, `phase`, `cluster`
 
 ### `dcectl kpanda core list-cluster-namespaces`
@@ -2767,17 +2767,17 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the namespace list belong to.
-  - `--workspace-id` (query): workspace_id the specified namespace belongs to.
+  - `--workspace-id` (query, int32): workspace_id the specified namespace belongs to.
   - `--workspace-alias` (query): workspace_alias the specified namespace belongs to.
   - `--name` (query): Name is to filter namespaces by namespace name
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the job list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the job list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the job list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the job list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
-  - `--phase` (query, default `NAMESPACE_PHASE_UNSPECIFIED`): Phases is used for filter.
+  - `--phase` (query, default `NAMESPACE_PHASE_UNSPECIFIED`, one of: NAMESPACE_PHASE_UNSPECIFIED|Active|Terminating): Phases is used for filter.
   - `--exclude-system` (query): ExcludeSystem determines to exclude system namespaces, defaults to False.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -2799,15 +2799,15 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of PVC to belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
   - `--phase` (query): Phase is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
-  - `--access-mode` (query, default `PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED`): AccessMode is used searching PVC by accessMode.
+  - `--access-mode` (query, default `PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED`, one of: PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED|ReadWriteOnce|ReadOnlyMany|ReadWriteMany|ReadWriteOncePod): AccessMode is used searching PVC by accessMode.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -2820,16 +2820,16 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the pod belongs to.
   - `--namespace` (query): Namespace is the metadata.namespace of the referenced pod.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
-  - `--phase` (query, default `PHASE_UNSPECIFIED`): Phases is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--phase` (query, default `PHASE_UNSPECIFIED`, one of: PHASE_UNSPECIFIED|Unknown|Pending|Running|Succeeded|Failed): Phases is used for filter.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
-  - `--status` (query, default `FILTER_POD_STATUS_UNSPECIFIED`): status is filter with pod status ,the status is composite state
+  - `--status` (query, default `FILTER_POD_STATUS_UNSPECIFIED`, one of: FILTER_POD_STATUS_UNSPECIFIED|FILTER_POD_STATUS_RUNNING|FILTER_POD_STATUS_ERROR|FILTER_POD_STATUS_COMPLETED|FILTER_POD_STATUS_WAITING): status is filter with pod status ,the status is composite state
   - `--exclude-metrics` (query): exclude_metrics
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
   - `--pod-ip` (query): pod_ip is used for filter.
@@ -2843,11 +2843,11 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the secret belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): The name use to search specific secret
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--type` (query): Type is used to filter secrets by type.
@@ -2863,10 +2863,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster the specified service belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the service list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the service list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the service list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the service list order.
   - `--name` (query): Name is used for query.
   - `--type` (query): Type is a array used for frontend filter.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
@@ -2894,10 +2894,10 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the configmap belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--name` (query): name is used for query.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -2915,10 +2915,10 @@
   - `--cluster` (path, required): cluster represents the name of pod belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the pod belongs to.
   - `--name` (path, required): Name represents the name of pod to search
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
 - Output: list path `items`; columns `name`, `phase`, `image`, `ready`, `restartCount`, `started`; pagination `offset`
 
 ### `dcectl kpanda core list-events`
@@ -2930,13 +2930,13 @@
 - Flags:
   - `--cluster` (path, required): cluster represents the name of deployment belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): Kind represents what type of event is needed.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet|Pod|Service|Ingress|Job|CronJob|HorizontalPodAutoscaler|ReplicaSet|CronHPA|PersistentVolumeClaim|GroupVersionResource): Kind represents what type of event is needed.
   - `--kind-name` (query): The name of involvedObject.
   - `--name` (query): Name stands for event name, used for fuzzy search.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the event list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the event list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the event list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the event list order.
   - `--type` (query): Type is used for query, showing events of specified type.
   - `--group` (query): resource group,used when the kind type is GroupVersionResource.
   - `--version` (query): resource version,used when the kind type is GroupVersionResource.
@@ -2955,10 +2955,10 @@
   - `--cluster` (path, required): Cluster the LimitRanges belongs to.
   - `--namespace` (path, required): Namespace the LimitRanges belongs to.
   - `--name` (query): Name stands for LimitRange name, used for fuzzy search.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the LimitRange list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the LimitRange list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the LimitRange list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the LimitRange list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter.
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
@@ -2972,13 +2972,13 @@
 - Body: none
 - Flags:
   - `--cluster` (query): Clusters is to filter namespaces by cluster names
-  - `--workspace-id` (query): workspace_id the specified namespace belongs to.
+  - `--workspace-id` (query, int32): workspace_id the specified namespace belongs to.
   - `--workspace-alias` (query): workspace_alias the specified namespace belongs to.
   - `--name` (query): Name is to filter namespaces by namespace name
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the job list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the job list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the job list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the job list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -3008,16 +3008,16 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the node belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--phase` (query): Phase represents the current phase of node.
   - `--node-ip` (query): nodeIp represents node's ip address
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the job list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the job list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the job list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the job list order.
   - `--name` (query): Name is to filter nodes by node name
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
-  - `--role` (query, default `NODE_ROLE_UNSPECIFIED`): Role is used for filter by node role.
+  - `--role` (query, default `NODE_ROLE_UNSPECIFIED`, one of: NODE_ROLE_UNSPECIFIED|CONTROL_PLANE|WORKER): Role is used for filter by node role.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
   - `--exclude-metrics` (query): exclude_metrics
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
@@ -3031,15 +3031,15 @@
 - Flags:
   - `--cluster` (path, required): cluster represents the name of PVC to belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the PVC belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for fuzzy search by name.
   - `--phase` (query): Phases is used for fuzzy search by phase.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
-  - `--access-mode` (query, default `PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED`): - PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED: This is only a meaningless placeholder, to avoid zero not return.
+  - `--access-mode` (query, default `PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED`, one of: PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED|ReadWriteOnce|ReadOnlyMany|ReadWriteMany|ReadWriteOncePod): - PERSISTENT_VOLUME_ACCESS_MODE_UNSPECIFIED: This is only a meaningless placeholder, to avoid zero not return.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
@@ -3052,10 +3052,10 @@
 - Flags:
   - `--cluster` (path, required): Cluster the PersistentVolumes belongs to.
   - `--name` (query): Name stands for PersistentVolume name, used for fuzzy search.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the PersistentVolume list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the PersistentVolume list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the PersistentVolume list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the PersistentVolume list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter.
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
@@ -3070,18 +3070,18 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the pod belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced pod.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of pod.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet|Service|Job|CronJob|ReplicaSet|NetworkPolicy): The kind of pod.
   - `--kind-name` (query): Name of kind.
   - `--name` (query): Name stands for pod name, used for fuzzy search.
-  - `--phase` (query, default `PHASE_UNSPECIFIED`): Phases is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--phase` (query, default `PHASE_UNSPECIFIED`, one of: PHASE_UNSPECIFIED|Unknown|Pending|Running|Succeeded|Failed): Phases is used for filter.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
-  - `--status` (query, default `FILTER_POD_STATUS_UNSPECIFIED`): status is filter with pod status ,the status is composite state
+  - `--status` (query, default `FILTER_POD_STATUS_UNSPECIFIED`, one of: FILTER_POD_STATUS_UNSPECIFIED|FILTER_POD_STATUS_RUNNING|FILTER_POD_STATUS_ERROR|FILTER_POD_STATUS_COMPLETED|FILTER_POD_STATUS_WAITING): status is filter with pod status ,the status is composite state
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
   - `--pod-ip` (query): pod_ip is used for filter.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
@@ -3096,13 +3096,13 @@
   - `--cluster` (path, required): Cluster represents which cluster the node belongs to.
   - `--node` (path, required): Node represents which node the pod belongs to.
   - `--name` (query): Name is to filter pods by pod name
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the job list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the job list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the job list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the job list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
-  - `--status` (query, default `FILTER_POD_STATUS_UNSPECIFIED`): status is filter with pod status ,the status is composite state
+  - `--status` (query, default `FILTER_POD_STATUS_UNSPECIFIED`, one of: FILTER_POD_STATUS_UNSPECIFIED|FILTER_POD_STATUS_RUNNING|FILTER_POD_STATUS_ERROR|FILTER_POD_STATUS_COMPLETED|FILTER_POD_STATUS_WAITING): status is filter with pod status ,the status is composite state
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
   - `--pod-ip` (query): pod_ip is used for filter.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
@@ -3117,10 +3117,10 @@
   - `--cluster` (path, required): Cluster the ResourceQuotas belongs to.
   - `--namespace` (path, required): Namespace the ResourceQuotas belongs to.
   - `--name` (query): Name stands for ResourceQuota name, used for name fuzzy search.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the ResourceQuota list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the ResourceQuota list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the ResourceQuota list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the ResourceQuota list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter.
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
@@ -3135,11 +3135,11 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the secret belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced secret.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): The name use to search specific secret
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--type` (query): Type is used to filter secrets by type.
@@ -3156,11 +3156,11 @@
 - Flags:
   - `--cluster` (path, required): cluster represents the name of sa to belongs to.
   - `--namesapce` (query): Namespace is the current namespace.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -3175,13 +3175,13 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified service belongs to.
   - `--namespace` (path, required): Namespace the specified service belongs to.
-  - `--kind` (query, default `KIND_UNSPECIFIED`): The kind of service.
+  - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Deployment|StatefulSet|DaemonSet): The kind of service.
   - `--kind-name` (query): Name of kind.
   - `--name` (query): Name stands for service name, used for fuzzy search.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the service list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the service list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the service list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the service list order.
   - `--type` (query): Type is a array used for frontend filter.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -3444,9 +3444,9 @@
   - `--cluster` (query): cluster
   - `--node` (query): node
   - `--vendor` (query): vendor
-  - `--gpu-index` (query): gpuIndex
-  - `--from` (query): from
-  - `--to` (query): to
+  - `--gpu-index` (query, int32): gpuIndex
+  - `--from` (query, int64): from
+  - `--to` (query, int64): to
 
 ### `dcectl kpanda devices list-gpu-devices`
 
@@ -3543,10 +3543,10 @@
 - Flags:
   - `--cluster` (query): cluster represents which cluster the repository belongs to.
   - `--name` (query): Name is the user-specified identifier.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the repository list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the repository list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the repository list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the repository list order.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
 ### `dcectl kpanda etcdbackuprestore list-etcd-snapshots`
@@ -3630,8 +3630,8 @@
   - `--cluster` (query): Cluster is the current cluster.
   - `--namespace` (query): Namespace is the current namespace.
   - `--project` (query): Project is the project to request.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page.
   - `--public` (query): Public is distinguish public images and private images.
   - `--fuzzy-tag-name` (query): FuzzyTagName is used to fuzzy search by tag name.
 - Output: list path `items`; columns `digest`, `imageSize`, `pushTime`; pagination `offset`
@@ -3647,8 +3647,8 @@
   - `--cluster` (query): Cluster is the current cluster.
   - `--namespace` (query): Namespace is the current namespace.
   - `--public` (query): Public is distinguish public projects and private projects.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by project name.
 - Output: list path `items`; pagination `offset`
 
@@ -3662,8 +3662,8 @@
   - `--cluster` (query): Cluster is the current cluster.
   - `--namespace` (query): Namespace is the current namespace.
   - `--global` (query): Global is to list all global registries.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page.
   - `--public` (query): Public is distinguish public images and private images.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by registry name.
 - Output: list path `items`; columns `name`, `alias`, `host`; pagination `offset`
@@ -3680,8 +3680,8 @@
   - `--namespace` (query): Namespace is the current namespace.
   - `--project` (query): Project is the project to request, "/" is a possible value.
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page.
   - `--public` (query): Public is distinguish public images and private images.
   - `--show-artifacts` (query): ShowArtifacts is to list artifacts of per image, default false.
 - Output: list path `items`; columns `name`; pagination `offset`
@@ -3784,10 +3784,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster is the name of the cluster, must be specified,
-  - `--page` (query): Page is the number of pages at the beginning.
-  - `--page-size` (query): Size is the number of every page displayed.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
-  - `--sort-dir` (query, default `desc`): OrderBy defines the type of sort, default type asc, can also specify desc.
+  - `--page` (query, default `1`, int32): Page is the number of pages at the beginning.
+  - `--page-size` (query, default `20`, int32): Size is the number of every page displayed.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy defines the type of sort, default type asc, can also specify desc.
   - `--name` (query): Name is the name of the ingress.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -3802,10 +3802,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster is the name of the cluster, must be specified,
-  - `--page` (query): Page is current page number.
-  - `--page-size` (query): Size is the number of every page displayed.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
-  - `--sort-dir` (query, default `desc`): OrderBy defines the type of sort, default type asc, can also specify desc.
+  - `--page` (query, default `1`, int32): Page is current page number.
+  - `--page-size` (query, default `20`, int32): Size is the number of every page displayed.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy defines the type of sort, default type asc, can also specify desc.
   - `--name` (query): Name is the name of the networkpolicy.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter.
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter.
@@ -3831,10 +3831,10 @@
 - Flags:
   - `--cluster` (path, required): Cluster is the name of the cluster, return all the ingress of the cluster
   - `--namespace` (path, required): Namespace specified the namespace of ingress.
-  - `--page` (query): Page is the number of pages at the beginning.
-  - `--page-size` (query): Size is the number of every page displayed.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
-  - `--sort-dir` (query, default `desc`): OrderBy defines the type of sort, default type asc, can also specify desc.
+  - `--page` (query, default `1`, int32): Page is the number of pages at the beginning.
+  - `--page-size` (query, default `20`, int32): Size is the number of every page displayed.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy defines the type of sort, default type asc, can also specify desc.
   - `--name` (query): Name is the name of the ingress.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -3849,10 +3849,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster is the name of the cluster, return all the ingress of the cluster
-  - `--page` (query): Page is the number of pages at the beginning.
-  - `--page-size` (query): Size is the number of every page displayed.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
-  - `--sort-dir` (query, default `desc`): OrderBy defines the type of sort, default type asc, can also specify desc.
+  - `--page` (query, default `1`, int32): Page is the number of pages at the beginning.
+  - `--page-size` (query, default `20`, int32): Size is the number of every page displayed.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy defines the type of sort, default type asc, can also specify desc.
   - `--name` (query): Name is the name of the ingress.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -3867,10 +3867,10 @@
 - Flags:
   - `--cluster` (path, required): Cluster is the name of the cluster, return all the networkpolicies of the cluster
   - `--namespace` (path, required): Namespace of networkpolicy list.
-  - `--page` (query): Page is current page number.
-  - `--page-size` (query): Size is the number of every page displayed.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
-  - `--sort-dir` (query, default `desc`): OrderBy defines the type of sort, default type asc, can also specify desc.
+  - `--page` (query, default `1`, int32): Page is current page number.
+  - `--page-size` (query, default `20`, int32): Size is the number of every page displayed.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy defines sort field, please see message kpanda.io.api.types.SortBy.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy defines the type of sort, default type asc, can also specify desc.
   - `--name` (query): Name is the name of the networkpolicy.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
@@ -4057,12 +4057,12 @@
 - Body: none
 - Flags:
   - `--cluster` (query): Cluster represents which cluster the roleBinding belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of the user
   - `--role-ref` (query): RoleRef is the role of the user, it should be the same as when it is created.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -4076,11 +4076,11 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the role belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of the user
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -4093,8 +4093,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name is used for fuzzy search.
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
@@ -4107,12 +4107,12 @@
 - Flags:
   - `--cluster` (query): Cluster represents which cluster the roleBinding belongs to.
   - `--namespace` (query): Namespace represents which namespace the roleBinding belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of the user
   - `--role-ref` (query): RoleRef is the role of the user, it should be the same as when it is created.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -4127,11 +4127,11 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the role belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the role belongs to.
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name represents the name of the user
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the data list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the data list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the data list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
@@ -4144,8 +4144,8 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--page` (query): Page is current page.
-  - `--page-size` (query): Size is the data number shown per page.
+  - `--page` (query, default `1`, int32): Page is current page.
+  - `--page-size` (query, default `20`, int32): Size is the data number shown per page.
   - `--name` (query): Name is used for fuzzy search.
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
@@ -4300,10 +4300,10 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of PVC to belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--provisioner` (query): Provisioner is used for fuzzy search by provisioner.
@@ -4319,11 +4319,11 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of VolumeSnapshot to belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
@@ -4336,11 +4336,11 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster represents the name of PVC to belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
   - `--provisioner` (query): Provisioner is used for fuzzy search by provisioner.
@@ -4357,11 +4357,11 @@
 - Flags:
   - `--cluster` (path, required): cluster represents the name of VolumeSnapshot to belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the VolumeSnapshot belongs to.
-  - `--page` (query): Page requested.
-  - `--page-size` (query): Size per page requested.
+  - `--page` (query, default `1`, int32): Page requested.
+  - `--page-size` (query, default `20`, int32): Size per page requested.
   - `--name` (query): Name is used for filter.
-  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`): SortBy determines the list order reference.
-  - `--sort-dir` (query, default `desc`): OrderBy determines the list order.
+  - `--sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|field_name|state|workspace|cluster|namespace|created_at): SortBy determines the list order reference.
+  - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--label-selector` (query): LabelSelector is the format after labels.FormatLabels used to filter
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
@@ -4415,7 +4415,7 @@
 - Auth: required
 - Body: none
 - Flags:
-  - `--workspace-id` (path, required): workspaceId
+  - `--workspace-id` (path, required, int32): workspaceId
   - `--workspace-alias` (query): workspaceAlias
   - `--cluster` (query): cluster
 
@@ -4472,8 +4472,8 @@
   - `--container` (query): Name of the pod where the container is located
   - `--start-time` (query): Start time of get pod container log
   - `--end-time` (query): End time of get pod container log
-  - `--page` (query): Number of page.
-  - `--page-size` (query): Log number shown per page.
+  - `--page` (query, default `1`, int32): Number of page.
+  - `--page-size` (query, default `20`, int32): Log number shown per page.
   - `--log-search` (query): for fuzzy query
 - Output: list path `data`; columns `log`, `timeStamp`; pagination `offset`
 

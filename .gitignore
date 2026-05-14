@@ -1,5 +1,5 @@
 .cache/
+.idea/
 bin/
 go.work
 go.work.sum
-

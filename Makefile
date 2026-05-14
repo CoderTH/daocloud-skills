@@ -1,5 +1,5 @@
-SPECSYNC := go run github.com/samzong/lathe/cmd/specsync
-CODEGEN  := go run github.com/samzong/lathe/cmd/codegen
+SPECSYNC := go tool specsync
+CODEGEN  := go tool codegen
 
 .PHONY: bootstrap specsync codegen build clean
 
