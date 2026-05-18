@@ -12,6 +12,8 @@ tool (
 	github.com/samzong/lathe/cmd/specsync
 )
 
+replace github.com/samzong/lathe => ../lathe
+
 require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.9 // indirect

@@ -1,5 +1,6 @@
 sources:
   ghippo:
+    display_name: global-management
     repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
     # pinned to main HEAD as of 2026-05-11; bump when upgrading ghippo version
     pinned_tag: 4bc92dd4c0c1637b4257f69e26eb8dd6cdd269f3
@@ -9,6 +10,7 @@ sources:
         - docs/openapi/ghippo/v0.45.1.json
 
   kpanda:
+    display_name: container-management
     repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
     # pinned to main HEAD as of 2026-05-11; bump when upgrading kpanda version
     pinned_tag: 4bc92dd4c0c1637b4257f69e26eb8dd6cdd269f3

@@ -1,6 +1,6 @@
 SPECSYNC   := go tool specsync
 CODEGEN    := go tool codegen
-IMAGE_REPO ?= daocloud/dcectl
+IMAGE_REPO ?= daocloud/dc
 IMAGE_TAG  ?= latest
 
 .PHONY: bootstrap specsync codegen build image image-push clean
@@ -27,7 +27,7 @@ sync-one:
 		-skill-root skills
 
 build: internal/generated
-	go build -o bin/dcectl ./cmd/dcectl
+	go build -o bin/dc ./cmd/dc
 
 internal/generated: .cache/specs-sync/ghippo/sync-state.yaml
 	$(CODEGEN) \
@@ -39,30 +39,30 @@ internal/generated: .cache/specs-sync/ghippo/sync-state.yaml
 .cache/specs-sync/ghippo/sync-state.yaml:
 	$(SPECSYNC) -sources specs/sources.yaml
 
-# dev: install dcectl to PATH and symlink skill into opencode for live debugging
+# dev: install dc to PATH and symlink skill into opencode for live debugging
 dev: build
 	@mkdir -p ~/.agents/skills
-	@if [ ! -f skills/dcectl/_meta.json ]; then \
-		echo '{"slug":"dcectl","version":"dev"}' > skills/dcectl/_meta.json; \
+	@if [ ! -f skills/dc/_meta.json ]; then \
+		echo '{"slug":"dc","version":"dev"}' > skills/dc/_meta.json; \
 	fi
-	@if [ -L ~/.agents/skills/dcectl ]; then \
+	@if [ -L ~/.agents/skills/dc ]; then \
 		echo "skill symlink already exists"; \
-	elif [ -d ~/.agents/skills/dcectl ]; then \
-		echo "warning: ~/.agents/skills/dcectl is a real directory, remove it first"; \
+	elif [ -d ~/.agents/skills/dc ]; then \
+		echo "warning: ~/.agents/skills/dc is a real directory, remove it first"; \
 		exit 1; \
 	else \
-		ln -s "$(CURDIR)/skills/dcectl" ~/.agents/skills/dcectl; \
-		echo "skill symlinked: ~/.agents/skills/dcectl -> $(CURDIR)/skills/dcectl"; \
+		ln -s "$(CURDIR)/skills/dc" ~/.agents/skills/dc; \
+		echo "skill symlinked: ~/.agents/skills/dc -> $(CURDIR)/skills/dc"; \
 	fi
-	@if command -v dcectl >/dev/null 2>&1 && [ "$$(which dcectl)" != "$(CURDIR)/bin/dcectl" ]; then \
-		echo "note: dcectl in PATH is $$(which dcectl), not $(CURDIR)/bin/dcectl"; \
+	@if command -v dc >/dev/null 2>&1 && [ "$$(which dc)" != "$(CURDIR)/bin/dc" ]; then \
+		echo "note: dc in PATH is $$(which dc), not $(CURDIR)/bin/dc"; \
 	fi
-	cp bin/dcectl /usr/local/bin/dcectl
+	cp bin/dc /usr/local/bin/dc
 	@echo "done — restart opencode to pick up skill changes"
 
 dev-clean:
-	rm -f ~/.agents/skills/dcectl
-	rm -f /usr/local/bin/dcectl
+	rm -f ~/.agents/skills/dc
+	rm -f /usr/local/bin/dc
 
 image:
 	docker buildx build \

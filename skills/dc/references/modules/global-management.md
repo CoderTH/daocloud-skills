@@ -1,4 +1,4 @@
-# Module `ghippo`
+# Module `global-management`
 
 ## Source
 
@@ -10,7 +10,7 @@
 
 ## About
 
-### `dcectl ghippo about list-developers`
+### `dc global-management about list-developers`
 
 - Summary: About_ListDevelopers
 - HTTP: `GET /apis/ghippo.io/v1alpha1/about/developers`
@@ -19,7 +19,7 @@
 - Flags: none
 - Output: list path `items`; columns `name`, `message`
 
-### `dcectl ghippo about list-g-product-versions`
+### `dc global-management about list-g-product-versions`
 
 - Summary: About_ListGProductVersions
 - HTTP: `GET /apis/ghippo.io/v1alpha1/about/versions`
@@ -28,7 +28,7 @@
 - Flags: none
 - Output: list path `items`; columns `name`, `version`
 
-### `dcectl ghippo about list-open-sources`
+### `dc global-management about list-open-sources`
 
 - Summary: About_ListOpenSources
 - HTTP: `GET /apis/ghippo.io/v1alpha1/about/opensources`
@@ -41,7 +41,7 @@
 
 ## Account
 
-### `dcectl ghippo account certify-check`
+### `dc global-management account certify-check`
 
 - Summary: Account_CertifyCheck
 - HTTP: `POST /apis/ghippo.io/v1alpha1/current-user/certify/check`
@@ -49,7 +49,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account certify-init`
+### `dc global-management account certify-init`
 
 - Summary: Account_CertifyInit
 - HTTP: `POST /apis/ghippo.io/v1alpha1/current-user/certify`
@@ -57,7 +57,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account create-access-token`
+### `dc global-management account create-access-token`
 
 - Summary: Account_CreateAccessToken
 - HTTP: `POST /apis/ghippo.io/v1alpha1/current-user/accesstoken`
@@ -65,7 +65,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account create-ssh-key`
+### `dc global-management account create-ssh-key`
 
 - Summary: Account_CreateSSHKey
 - HTTP: `POST /apis/ghippo.io/v1alpha1/current-user/sshkeys`
@@ -73,7 +73,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account delete-access-token`
+### `dc global-management account delete-access-token`
 
 - Summary: Account_DeleteAccessToken
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/current-user/accesstokens/{id}`
@@ -82,7 +82,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo account delete-ssh-key`
+### `dc global-management account delete-ssh-key`
 
 - Summary: Account_DeleteSSHKey
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/current-user/sshkeys/{sshkeyId}`
@@ -92,7 +92,7 @@
   - `--sshkey-id` (path, required, int32): sshkeyId
   - `--id` (query): id
 
-### `dcectl ghippo account get-certify-info`
+### `dc global-management account get-certify-info`
 
 - Summary: Account_GetCertifyInfo
 - HTTP: `GET /apis/ghippo.io/v1alpha1/current-user/certify`
@@ -100,7 +100,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo account get-global-permissions`
+### `dc global-management account get-global-permissions`
 
 - Summary: Account_GetGlobalPermissions
 - HTTP: `GET /apis/ghippo.io/v1alpha1/current-user/global-permissions`
@@ -109,7 +109,7 @@
 - Flags: none
 - Output: list path `permissions`
 
-### `dcectl ghippo account get-user`
+### `dc global-management account get-user`
 
 - Summary: Get user details by ID
 - HTTP: `GET /apis/ghippo.io/v1alpha1/current-user`
@@ -117,7 +117,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo account list-access-tokens`
+### `dc global-management account list-access-tokens`
 
 - Summary: Account_ListAccessTokens
 - HTTP: `GET /apis/ghippo.io/v1alpha1/current-user/accesstokens`
@@ -126,7 +126,7 @@
 - Flags: none
 - Output: list path `items`; columns `name`, `id`, `createdAt`, `expiredAt`, `updatedAt`
 
-### `dcectl ghippo account list-ssh-keys`
+### `dc global-management account list-ssh-keys`
 
 - Summary: Account_ListSSHKeys
 - HTTP: `GET /apis/ghippo.io/v1alpha1/current-user/sshkeys`
@@ -135,7 +135,7 @@
 - Flags: none
 - Output: list path `items`; columns `id`, `createdAt`, `expiredAt`, `publicKey`, `sshKeyName`, `updatedAt`
 
-### `dcectl ghippo account password-description`
+### `dc global-management account password-description`
 
 - Summary: Account_PasswordDescription
 - HTTP: `GET /apis/ghippo.io/v1alpha1/current-user/password-description`
@@ -143,7 +143,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo account set-current-user-password`
+### `dc global-management account set-current-user-password`
 
 - Summary: Account_SetCurrentUserPassword
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/set-password`
@@ -151,7 +151,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account update-email`
+### `dc global-management account update-email`
 
 - Summary: Account_UpdateEmail
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/email`
@@ -159,7 +159,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account update-language`
+### `dc global-management account update-language`
 
 - Summary: Account_UpdateLanguage
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/language`
@@ -167,7 +167,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account update-password`
+### `dc global-management account update-password`
 
 - Summary: Account_UpdatePassword
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/password`
@@ -175,7 +175,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account update-phone`
+### `dc global-management account update-phone`
 
 - Summary: Account_UpdatePhone
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/phone`
@@ -183,7 +183,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo account update-ssh-key`
+### `dc global-management account update-ssh-key`
 
 - Summary: Account_UpdateSSHKey
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/sshkeys/{sshkeyId}`
@@ -192,7 +192,7 @@
 - Flags:
   - `--sshkey-id` (path, required, int32): sshkeyId
 
-### `dcectl ghippo account update-user-first-and-last-name`
+### `dc global-management account update-user-first-and-last-name`
 
 - Summary: Account_UpdateUserFirstAndLastName
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/current-user/name`
@@ -202,7 +202,7 @@
 
 ## Audit
 
-### `dcectl ghippo audit clear-audits-now`
+### `dc global-management audit clear-audits-now`
 
 - Summary: Audit_ClearAuditsNow
 - HTTP: `POST /apis/ghippo.io/v1alpha3/audits/clear`
@@ -210,7 +210,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo audit clear-kube-audits-now`
+### `dc global-management audit clear-kube-audits-now`
 
 - Summary: Audit_ClearKubeAuditsNow
 - HTTP: `POST /apis/ghippo.io/v1alpha3/audits/kube/clear`
@@ -218,7 +218,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo audit export-audits`
+### `dc global-management audit export-audits`
 
 - Summary: Audit_ExportAudits
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits/export`
@@ -238,7 +238,7 @@
   - `--export-type` (query, default `Csv`, one of: Csv|Excel): exportType
 - Output: list path `extensions`; columns `@type`
 
-### `dcectl ghippo audit export-kube-audits`
+### `dc global-management audit export-kube-audits`
 
 - Summary: Audit_ExportKubeAudits
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits/kube/export`
@@ -257,7 +257,7 @@
   - `--export-type` (query, default `Csv`, one of: Csv|Excel): exportType
 - Output: list path `extensions`; columns `@type`
 
-### `dcectl ghippo audit external-audit`
+### `dc global-management audit external-audit`
 
 - Summary: 来自外部传递进来的审计日志，用于不经过apiserver的请求，例如直接请求keycloak的请求，由前端埋点调用
 - HTTP: `GET /apis/ghippo.io/v1alpha1/audits/external`
@@ -268,7 +268,7 @@
   - `--resource-name` (query): resourceName
   - `--code` (query, int32): code
 
-### `dcectl ghippo audit get-audit-detail`
+### `dc global-management audit get-audit-detail`
 
 - Summary: Audit_GetAuditDetail
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits/{id}`
@@ -277,7 +277,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo audit get-audit-resource-report`
+### `dc global-management audit get-audit-resource-report`
 
 - Summary: Audit_GetAuditResourceReport
 - HTTP: `GET /apis/ghippo.io/v1alpha1/audits/reports/resources`
@@ -288,7 +288,7 @@
   - `--end` (query): end
 - Output: list path `items`; columns `Count`, `EventName`, `ResourceType`
 
-### `dcectl ghippo audit get-audit-user-report`
+### `dc global-management audit get-audit-user-report`
 
 - Summary: Audit_GetAuditUserReport
 - HTTP: `GET /apis/ghippo.io/v1alpha1/audits/reports/users`
@@ -299,7 +299,7 @@
   - `--end` (query): end
 - Output: list path `items`; columns `FailedCount`, `SuccessCount`, `TotalCount`, `UserName`
 
-### `dcectl ghippo audit get-auto-clear-audit-time`
+### `dc global-management audit get-auto-clear-audit-time`
 
 - Summary: Audit_GetAutoClearAuditTime
 - HTTP: `GET /apis/ghippo.io/v1alpha1/audits/clear`
@@ -307,7 +307,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo audit get-export-uri`
+### `dc global-management audit get-export-uri`
 
 - Summary: Audit_GetExportURI
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits/export/uri`
@@ -316,7 +316,7 @@
 - Flags:
   - `--module` (query, default `audit`, one of: audit|kube_audit): module
 
-### `dcectl ghippo audit get-kube-audit-detail`
+### `dc global-management audit get-kube-audit-detail`
 
 - Summary: Audit_GetKubeAuditDetail
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits/kube/{id}`
@@ -325,7 +325,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo audit get-limit-range-time`
+### `dc global-management audit get-limit-range-time`
 
 - Summary: Audit_GetLimitRangeTime
 - HTTP: `GET /apis/ghippo.io/v1alpha1/audits/limit-range`
@@ -333,7 +333,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo audit list-audits`
+### `dc global-management audit list-audits`
 
 - Summary: List audit log entries
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits`
@@ -353,9 +353,9 @@
   - `--page` (query, default `1`, int32): 搜索偏移量
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `id`, `auditName`, `client`, `clusterName`, `createdAt`, `gproduct`; pagination `offset`
-- Example: `dcectl ghippo audit list-audits --page-size 100 -o json`
+- Example: `dc global-management audit list-audits --page-size 100 -o json`
 
-### `dcectl ghippo audit list-csp-audits`
+### `dc global-management audit list-csp-audits`
 
 - Summary: Audit_ListCSPAudits
 - HTTP: `GET /apis/ghippo.io/v1alpha1/csp-audits`
@@ -373,7 +373,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `createdAt`, `gproduct`, `ip`, `operator`, `resourceName`, `resourceType`; pagination `offset`
 
-### `dcectl ghippo audit list-kube-audits`
+### `dc global-management audit list-kube-audits`
 
 - Summary: Audit_ListKubeAudits
 - HTTP: `GET /apis/ghippo.io/v1alpha3/audits/kube`
@@ -393,7 +393,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `id`, `auditName`, `client`, `clusterName`, `createdAt`, `ip`; pagination `offset`
 
-### `dcectl ghippo audit set-auto-clear-audit-setting`
+### `dc global-management audit set-auto-clear-audit-setting`
 
 - Summary: Audit_SetAutoClearAuditSetting
 - HTTP: `PUT /apis/ghippo.io/v1alpha3/audits/set-auto-clear`
@@ -401,7 +401,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo audit set-auto-clear-kube-audit-setting`
+### `dc global-management audit set-auto-clear-kube-audit-setting`
 
 - Summary: Audit_SetAutoClearKubeAuditSetting
 - HTTP: `PUT /apis/ghippo.io/v1alpha3/audits/set-auto-clear/kube`
@@ -411,7 +411,7 @@
 
 ## Client
 
-### `dcectl ghippo client create-client`
+### `dc global-management client create-client`
 
 - Summary: Client_CreateClient
 - HTTP: `POST /apis/ghippo.io/v1alpha1/clients`
@@ -419,7 +419,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo client delete-client`
+### `dc global-management client delete-client`
 
 - Summary: Client_DeleteClient
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/clients/{id}`
@@ -428,7 +428,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo client get-client`
+### `dc global-management client get-client`
 
 - Summary: Client_GetClient
 - HTTP: `GET /apis/ghippo.io/v1alpha1/clients/{id}`
@@ -437,7 +437,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo client list-clients`
+### `dc global-management client list-clients`
 
 - Summary: Client_ListClients
 - HTTP: `GET /apis/ghippo.io/v1alpha1/clients`
@@ -447,7 +447,7 @@
   - `--client-id` (query): clientId
 - Output: list path `items`; columns `name`, `id`, `baseUrl`, `clientId`, `secret`
 
-### `dcectl ghippo client update-client`
+### `dc global-management client update-client`
 
 - Summary: Client_UpdateClient
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/clients/{id}`
@@ -458,7 +458,7 @@
 
 ## Domain
 
-### `dcectl ghippo domain create-domain`
+### `dc global-management domain create-domain`
 
 - Summary: Domain_CreateDomain
 - HTTP: `POST /apis/ghippo.io/v1alpha1/domain`
@@ -468,7 +468,7 @@
 
 ## FeatureGate
 
-### `dcectl ghippo featuregate list-feature-gates`
+### `dc global-management featuregate list-feature-gates`
 
 - Summary: FeatureGate_ListFeatureGates
 - HTTP: `GET /apis/ghippo.io/v1alpha1/feature-gate`
@@ -479,7 +479,7 @@
 
 ## GProductLicenses
 
-### `dcectl ghippo gproductlicenses delete-g-product-licenses`
+### `dc global-management gproductlicenses delete-g-product-licenses`
 
 - Summary: GProductLicenses_DeleteGProductLicenses
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/gproduct-licenses/{id}`
@@ -488,7 +488,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo gproductlicenses get-g-product-licenses`
+### `dc global-management gproductlicenses get-g-product-licenses`
 
 - Summary: GProductLicenses_GetGProductLicenses
 - HTTP: `GET /apis/ghippo.io/v1alpha1/gproduct-licenses/{id}`
@@ -497,7 +497,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo gproductlicenses get-g-product-licenses-esn`
+### `dc global-management gproductlicenses get-g-product-licenses-esn`
 
 - Summary: GProductLicenses_GetGProductLicensesESN
 - HTTP: `GET /apis/ghippo.io/v1alpha1/gproduct-licenses/esn`
@@ -505,7 +505,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo gproductlicenses get-g-product-licenses-expired`
+### `dc global-management gproductlicenses get-g-product-licenses-expired`
 
 - Summary: GProductLicenses_GetGProductLicensesExpired
 - HTTP: `GET /apis/ghippo.io/v1alpha1/gproduct-licenses/expired`
@@ -514,7 +514,7 @@
 - Flags: none
 - Output: list path `expireSoonLicenses`; columns `name`, `id`, `expiredAt`, `level`, `module`, `status`
 
-### `dcectl ghippo gproductlicenses get-g-product-licenses-yaml`
+### `dc global-management gproductlicenses get-g-product-licenses-yaml`
 
 - Summary: GProductLicenses_GetGProductLicensesYaml
 - HTTP: `GET /apis/ghippo.io/v1alpha1/gproduct-licenses/yaml`
@@ -522,7 +522,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo gproductlicenses update-g-product-licenses`
+### `dc global-management gproductlicenses update-g-product-licenses`
 
 - Summary: GProductLicenses_UpdateGProductLicenses
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/gproduct-licenses`
@@ -533,7 +533,7 @@
 
 ## Group
 
-### `dcectl ghippo group add-user-to-group`
+### `dc global-management group add-user-to-group`
 
 - Summary: Group_AddUserToGroup
 - HTTP: `POST /apis/ghippo.io/v1alpha1/groups/{id}/members/{userId}`
@@ -543,16 +543,16 @@
   - `--id` (path, required): id
   - `--user-id` (path, required): userId
 
-### `dcectl ghippo group create-group`
+### `dc global-management group create-group`
 
 - Summary: Create a user group
 - HTTP: `POST /apis/ghippo.io/v1alpha1/groups`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `dcectl ghippo group create-group \ --set name=dev-team \ --set description="Development team"`
+- Example: `dc global-management group create-group \ --set name=dev-team \ --set description="Development team"`
 
-### `dcectl ghippo group delete-group`
+### `dc global-management group delete-group`
 
 - Summary: Delete a user group
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/groups/{id}`
@@ -561,7 +561,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo group delete-user-from-group`
+### `dc global-management group delete-user-from-group`
 
 - Summary: Group_DeleteUserFromGroup
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/groups/{id}/members/{userId}`
@@ -571,7 +571,7 @@
   - `--id` (path, required): id
   - `--user-id` (path, required): userId
 
-### `dcectl ghippo group get-group`
+### `dc global-management group get-group`
 
 - Summary: Get group details
 - HTTP: `GET /apis/ghippo.io/v1alpha1/groups/{id}`
@@ -580,7 +580,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo group group-members`
+### `dc global-management group group-members`
 
 - Summary: Group_GroupMembers
 - HTTP: `GET /apis/ghippo.io/v1alpha1/groups/{id}/members`
@@ -593,7 +593,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`, `createdAt`, `description`, `email`, `updatedAt`; pagination `offset`
 
-### `dcectl ghippo group list-group-roles`
+### `dc global-management group list-group-roles`
 
 - Summary: Group_ListGroupRoles
 - HTTP: `GET /apis/ghippo.io/v1alpha1/groups/{id}/roles`
@@ -608,7 +608,7 @@
   - `--authorized` (query): 是否授权
 - Output: list path `items`; columns `name`, `type`, `authorized`, `createdAt`, `description`, `updatedAt`; pagination `offset`
 
-### `dcectl ghippo group list-group-subjects`
+### `dc global-management group list-group-subjects`
 
 - Summary: Group_ListGroupSubjects
 - HTTP: `GET /apis/ghippo.io/v1alpha1/groups/{id}/subjects`
@@ -621,7 +621,7 @@
   - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `type`, `id`, `roleId`, `roleName`, `subjectName`; pagination `offset`
 
-### `dcectl ghippo group list-groups`
+### `dc global-management group list-groups`
 
 - Summary: List user groups
 - HTTP: `GET /apis/ghippo.io/v1alpha1/groups`
@@ -633,7 +633,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`, `canAuthorize`, `createdAt`, `description`, `userCount`; pagination `offset`
 
-### `dcectl ghippo group update-group`
+### `dc global-management group update-group`
 
 - Summary: Update a user group
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/groups/{id}`
@@ -641,9 +641,9 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
-- Example: `dcectl ghippo group update-group --id <id> \ --set name=dev-team-renamed \ --set description="Renamed team"`
+- Example: `dc global-management group update-group --id <id> \ --set name=dev-team-renamed \ --set description="Renamed team"`
 
-### `dcectl ghippo group update-group-roles`
+### `dc global-management group update-group-roles`
 
 - Summary: Group_UpdateGroupRoles
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/groups/{id}/roles`
@@ -654,7 +654,7 @@
 
 ## IDP
 
-### `dcectl ghippo idp create-idp`
+### `dc global-management idp create-idp`
 
 - Summary: IDP_CreateIDP
 - HTTP: `POST /apis/ghippo.io/v1alpha1/idp`
@@ -662,7 +662,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo idp delete-idp`
+### `dc global-management idp delete-idp`
 
 - Summary: IDP_DeleteIDP
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/idp/{alias}`
@@ -671,7 +671,7 @@
 - Flags:
   - `--alias` (path, required): alias
 
-### `dcectl ghippo idp get-idp`
+### `dc global-management idp get-idp`
 
 - Summary: IDP_GetIDP
 - HTTP: `GET /apis/ghippo.io/v1alpha1/idp/{alias}`
@@ -680,7 +680,7 @@
 - Flags:
   - `--alias` (path, required): alias
 
-### `dcectl ghippo idp get-redirect-url`
+### `dc global-management idp get-redirect-url`
 
 - Summary: IDP_GetRedirectUrl
 - HTTP: `GET /apis/ghippo.io/v1alpha1/idp/{alias}/redirect-url`
@@ -689,7 +689,7 @@
 - Flags:
   - `--alias` (path, required): alias
 
-### `dcectl ghippo idp get-well-known-url`
+### `dc global-management idp get-well-known-url`
 
 - Summary: IDP_GetWellKnownUrl
 - HTTP: `GET /apis/ghippo.io/v1alpha1/idp/wellknown-url`
@@ -697,7 +697,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo idp import-open-id-configuration`
+### `dc global-management idp import-open-id-configuration`
 
 - Summary: IDP_ImportOpenIdConfiguration
 - HTTP: `GET /apis/ghippo.io/v1alpha1/idp/import-openid-configuration`
@@ -706,7 +706,7 @@
 - Flags:
   - `--url` (query): url
 
-### `dcectl ghippo idp list-id-ps`
+### `dc global-management idp list-id-ps`
 
 - Summary: IDP_ListIDPs
 - HTTP: `GET /apis/ghippo.io/v1alpha1/idp`
@@ -715,7 +715,7 @@
 - Flags: none
 - Output: list path `items`; columns `alias`, `authorizationUrl`, `clientAuthentications`, `clientId`, `clientSecret`, `displayName`
 
-### `dcectl ghippo idp update-idp`
+### `dc global-management idp update-idp`
 
 - Summary: IDP_UpdateIDP
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/idp/{alias}`
@@ -726,7 +726,7 @@
 
 ## KeycloakEvent
 
-### `dcectl ghippo keycloakevent keycloak-event`
+### `dc global-management keycloakevent keycloak-event`
 
 - Summary: KeycloakEvent_KeycloakEvent
 - HTTP: `POST /apis/ghippo.io/v1alpha1/keycloak-event`
@@ -736,7 +736,7 @@
 
 ## Ldap
 
-### `dcectl ghippo ldap create-ldap`
+### `dc global-management ldap create-ldap`
 
 - Summary: Ldap_CreateLdap
 - HTTP: `POST /apis/ghippo.io/v1alpha2/ldap`
@@ -744,7 +744,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo ldap create-ldap-group`
+### `dc global-management ldap create-ldap-group`
 
 - Summary: Ldap_CreateLdapGroup
 - HTTP: `POST /apis/ghippo.io/v1alpha2/ldaps/{id}/group`
@@ -753,7 +753,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap delete-ldap`
+### `dc global-management ldap delete-ldap`
 
 - Summary: Ldap_DeleteLdap
 - HTTP: `DELETE /apis/ghippo.io/v1alpha2/ldaps/{id}`
@@ -762,7 +762,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap delete-ldap-group`
+### `dc global-management ldap delete-ldap-group`
 
 - Summary: Ldap_DeleteLdapGroup
 - HTTP: `DELETE /apis/ghippo.io/v1alpha2/ldaps/{ldapId}/group/{id}`
@@ -772,7 +772,7 @@
   - `--ldap-id` (path, required): ldapId
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap get-ldap`
+### `dc global-management ldap get-ldap`
 
 - Summary: Ldap_GetLdap
 - HTTP: `GET /apis/ghippo.io/v1alpha2/ldaps/{id}`
@@ -781,7 +781,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap get-ldap-group`
+### `dc global-management ldap get-ldap-group`
 
 - Summary: Ldap_GetLdapGroup
 - HTTP: `GET /apis/ghippo.io/v1alpha2/ldaps/{id}/group`
@@ -790,7 +790,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap list-ldaps`
+### `dc global-management ldap list-ldaps`
 
 - Summary: Ldap_ListLdaps
 - HTTP: `GET /apis/ghippo.io/v1alpha2/ldaps`
@@ -799,7 +799,7 @@
 - Flags: none
 - Output: list path `items`; columns `name`, `id`, `enabled`, `vendor`
 
-### `dcectl ghippo ldap sync-ldap-groups`
+### `dc global-management ldap sync-ldap-groups`
 
 - Summary: Ldap_SyncLdapGroups
 - HTTP: `GET /apis/ghippo.io/v1alpha2/ldaps/{ldapId}/group/{id}/sync`
@@ -809,7 +809,7 @@
   - `--ldap-id` (path, required): ldapId
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap sync-users`
+### `dc global-management ldap sync-users`
 
 - Summary: Ldap_SyncUsers
 - HTTP: `GET /apis/ghippo.io/v1alpha2/ldaps/{id}/sync`
@@ -818,7 +818,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap test-ldap-authentication`
+### `dc global-management ldap test-ldap-authentication`
 
 - Summary: Ldap_TestLdapAuthentication
 - HTTP: `POST /apis/ghippo.io/v1alpha2/testLdapAuthentication`
@@ -826,7 +826,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo ldap test-ldap-connection`
+### `dc global-management ldap test-ldap-connection`
 
 - Summary: Ldap_TestLdapConnection
 - HTTP: `POST /apis/ghippo.io/v1alpha2/testLdapConnection`
@@ -834,7 +834,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo ldap update-ldap`
+### `dc global-management ldap update-ldap`
 
 - Summary: Ldap_UpdateLdap
 - HTTP: `PUT /apis/ghippo.io/v1alpha2/ldaps/{id}`
@@ -843,7 +843,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo ldap update-ldap-group`
+### `dc global-management ldap update-ldap-group`
 
 - Summary: Ldap_UpdateLdapGroup
 - HTTP: `PUT /apis/ghippo.io/v1alpha2/ldaps/{ldapId}/group/{id}`
@@ -855,7 +855,7 @@
 
 ## Login
 
-### `dcectl ghippo login check-session-limit`
+### `dc global-management login check-session-limit`
 
 - Summary: Login_CheckSessionLimit
 - HTTP: `POST /apis/ghippo.io/v1alpha1/session-limit`
@@ -863,7 +863,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo login oidc-login`
+### `dc global-management login oidc-login`
 
 - Summary: Login_OIDCLogin
 - HTTP: `POST /apis/ghippo.io/v1alpha1/login`
@@ -871,7 +871,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo login oidc-logout`
+### `dc global-management login oidc-logout`
 
 - Summary: Login_OIDCLogout
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/logout`
@@ -879,7 +879,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo login redirect-login`
+### `dc global-management login redirect-login`
 
 - Summary: Login_RedirectLogin
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login`
@@ -888,7 +888,7 @@
 - Flags:
   - `--callback-url` (query): callbackUrl
 
-### `dcectl ghippo login refresh-token`
+### `dc global-management login refresh-token`
 
 - Summary: Login_RefreshToken
 - HTTP: `POST /apis/ghippo.io/v1alpha1/refresh-token`
@@ -898,7 +898,7 @@
 
 ## LoginPage
 
-### `dcectl ghippo loginpage get-info`
+### `dc global-management loginpage get-info`
 
 - Summary: LoginPage_GetInfo
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login-page/info`
@@ -906,7 +906,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage get-login-page-logo-redirect-url`
+### `dc global-management loginpage get-login-page-logo-redirect-url`
 
 - Summary: LoginPage_GetLoginPageLogoRedirectURL
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login-page/logo-redirect-url`
@@ -914,7 +914,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage get-privacy-policy`
+### `dc global-management loginpage get-privacy-policy`
 
 - Summary: LoginPage_GetPrivacyPolicy
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login-page/privacy`
@@ -922,7 +922,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage get-support-qr-code`
+### `dc global-management loginpage get-support-qr-code`
 
 - Summary: LoginPage_GetSupportQRCode
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login-page/support_qrcode`
@@ -930,7 +930,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage get-terms-of-services`
+### `dc global-management loginpage get-terms-of-services`
 
 - Summary: LoginPage_GetTermsOfServices
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login-page/terms`
@@ -938,7 +938,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage get-version`
+### `dc global-management loginpage get-version`
 
 - Summary: LoginPage_GetVersion
 - HTTP: `GET /apis/ghippo.io/v1alpha1/login-page/version`
@@ -946,7 +946,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage reset-info`
+### `dc global-management loginpage reset-info`
 
 - Summary: LoginPage_ResetInfo
 - HTTP: `POST /apis/ghippo.io/v1alpha1/login-page/reset`
@@ -954,7 +954,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo loginpage update-info`
+### `dc global-management loginpage update-info`
 
 - Summary: LoginPage_UpdateInfo
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/login-page/info`
@@ -964,7 +964,7 @@
 
 ## Message
 
-### `dcectl ghippo message delete-messages`
+### `dc global-management message delete-messages`
 
 - Summary: Message_DeleteMessages
 - HTTP: `POST /apis/ghippo.io/v1alpha1/messages/delete`
@@ -972,7 +972,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo message get-message`
+### `dc global-management message get-message`
 
 - Summary: Message_GetMessage
 - HTTP: `GET /apis/ghippo.io/v1alpha1/messages/{id}`
@@ -981,7 +981,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo message get-messages-count`
+### `dc global-management message get-messages-count`
 
 - Summary: Message_GetMessagesCount
 - HTTP: `GET /apis/ghippo.io/v1alpha1/messages/count`
@@ -989,7 +989,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo message get-system-message`
+### `dc global-management message get-system-message`
 
 - Summary: Message_GetSystemMessage
 - HTTP: `GET /apis/ghippo.io/v1alpha1/messages/system/system-message`
@@ -997,7 +997,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo message list-messages`
+### `dc global-management message list-messages`
 
 - Summary: List platform messages/notifications
 - HTTP: `GET /apis/ghippo.io/v1alpha1/messages`
@@ -1011,7 +1011,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `type`, `id`, `createdAt`, `message`, `read`, `subject`; pagination `offset`
 
-### `dcectl ghippo message set-read-messages`
+### `dc global-management message set-read-messages`
 
 - Summary: Message_SetReadMessages
 - HTTP: `POST /apis/ghippo.io/v1alpha1/read-messages`
@@ -1019,7 +1019,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo message toggle-unread-message`
+### `dc global-management message toggle-unread-message`
 
 - Summary: Message_ToggleUnreadMessage
 - HTTP: `GET /apis/ghippo.io/v1alpha1/messages/toggle-unread`
@@ -1031,7 +1031,7 @@
 
 ## OIDC
 
-### `dcectl ghippo oidc oidc-logout`
+### `dc global-management oidc oidc-logout`
 
 - Summary: OIDC_OIDCLogout
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/oidc/logout`
@@ -1039,7 +1039,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo oidc oidc-token`
+### `dc global-management oidc oidc-token`
 
 - Summary: OIDC_OIDCToken
 - HTTP: `POST /apis/ghippo.io/v1alpha1/oidc/token`
@@ -1047,7 +1047,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo oidc oidc-user-info`
+### `dc global-management oidc oidc-user-info`
 
 - Summary: OIDC_OIDCUserInfo
 - HTTP: `GET /apis/ghippo.io/v1alpha1/oidc/userinfo`
@@ -1055,7 +1055,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo oidc redirect-frontend-logout`
+### `dc global-management oidc redirect-frontend-logout`
 
 - Summary: OIDC_RedirectFrontendLogout
 - HTTP: `GET /apis/ghippo.io/v1alpha1/oidc/logout`
@@ -1063,7 +1063,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo oidc well-known`
+### `dc global-management oidc well-known`
 
 - Summary: OIDC_WellKnown
 - HTTP: `GET /apis/ghippo.io/v1alpha1/.well-known/openid-configuration`
@@ -1074,7 +1074,7 @@
 
 ## Oauth2
 
-### `dcectl ghippo oauth2 create-oauth2`
+### `dc global-management oauth2 create-oauth2`
 
 - Summary: Oauth2_CreateOauth2
 - HTTP: `POST /apis/ghippo.io/v1alpha1/oauth2`
@@ -1082,7 +1082,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo oauth2 delete-oauth2`
+### `dc global-management oauth2 delete-oauth2`
 
 - Summary: Oauth2_DeleteOauth2
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/oauth2`
@@ -1091,7 +1091,7 @@
 - Flags:
   - `--provider-type` (query, default `wechatwork`, one of: wechatwork): providerType
 
-### `dcectl ghippo oauth2 get-oauth2`
+### `dc global-management oauth2 get-oauth2`
 
 - Summary: Oauth2_GetOauth2
 - HTTP: `GET /apis/ghippo.io/v1alpha1/oauth2`
@@ -1099,7 +1099,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo oauth2 get-oauth2redirect-domain`
+### `dc global-management oauth2 get-oauth2redirect-domain`
 
 - Summary: Oauth2_GetOauth2RedirectDomain
 - HTTP: `GET /apis/ghippo.io/v1alpha1/oauth2/redirect-domain`
@@ -1107,7 +1107,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo oauth2 update-oauth2`
+### `dc global-management oauth2 update-oauth2`
 
 - Summary: Oauth2_UpdateOauth2
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/oauth2`
@@ -1117,7 +1117,7 @@
 
 ## Openapi
 
-### `dcectl ghippo openapi auth-token`
+### `dc global-management openapi auth-token`
 
 - Summary: Openapi_AuthToken
 - HTTP: `GET /apis/ghippo.io/v1alpha1/auth-token`
@@ -1125,7 +1125,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo openapi certs`
+### `dc global-management openapi certs`
 
 - Summary: Openapi_Certs
 - HTTP: `GET /apis/ghippo.io/v1alpha1/certs`
@@ -1136,7 +1136,7 @@
 
 ## ProductNavigator
 
-### `dcectl ghippo productnavigator info`
+### `dc global-management productnavigator info`
 
 - Summary: ProductNavigator_Info
 - HTTP: `GET /apis/ghippo.io/v1alpha1/product-nav/info`
@@ -1147,7 +1147,7 @@
 
 ## Publish
 
-### `dcectl ghippo publish publish-message`
+### `dc global-management publish publish-message`
 
 - Summary: Publish_PublishMessage
 - HTTP: `POST /apis/ghippo.io/v1alpha1/publish/messages`
@@ -1157,7 +1157,7 @@
 
 ## Register
 
-### `dcectl ghippo register redirect-register`
+### `dc global-management register redirect-register`
 
 - Summary: Register_RedirectRegister
 - HTTP: `GET /apis/ghippo.io/v1alpha1/register`
@@ -1169,7 +1169,7 @@
 
 ## Role
 
-### `dcectl ghippo role check-role-name`
+### `dc global-management role check-role-name`
 
 - Summary: Role_CheckRoleName
 - HTTP: `GET /apis/ghippo.io/v1alpha1/roles/check-role-name/{name}`
@@ -1178,16 +1178,16 @@
 - Flags:
   - `--name` (path, required): name
 
-### `dcectl ghippo role create-role`
+### `dc global-management role create-role`
 
 - Summary: Create a custom role
 - HTTP: `POST /apis/ghippo.io/v1alpha1/roles`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `# scope: platform | folder | workspace echo '{ "name": "my-role", "description": "Custom role", "scope": "platform", "perms": [ {"gproduct": "ghippo", "resourceType": "User", "action": "get"} ] }' | dcectl ghippo role create-role --file -`
+- Example: `# scope: platform | folder | workspace echo '{ "name": "my-role", "description": "Custom role", "scope": "platform", "perms": [ {"gproduct": "ghippo", "resourceType": "User", "action": "get"} ] }' | dc global-management role create-role --file -`
 
-### `dcectl ghippo role delete-role`
+### `dc global-management role delete-role`
 
 - Summary: Delete a custom role
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/roles/{name}`
@@ -1196,7 +1196,7 @@
 - Flags:
   - `--name` (path, required): name
 
-### `dcectl ghippo role get-role`
+### `dc global-management role get-role`
 
 - Summary: Get role details
 - HTTP: `GET /apis/ghippo.io/v1alpha1/roles/{name}`
@@ -1206,7 +1206,7 @@
   - `--name` (path, required): name
 - Output: list path `gproductPerms`
 
-### `dcectl ghippo role get-role-member-count`
+### `dc global-management role get-role-member-count`
 
 - Summary: Role_GetRoleMemberCount
 - HTTP: `GET /apis/ghippo.io/v1alpha1/roles/role-member-count/{name}`
@@ -1215,7 +1215,7 @@
 - Flags:
   - `--name` (path, required): name
 
-### `dcectl ghippo role list-all-permissions`
+### `dc global-management role list-all-permissions`
 
 - Summary: List all available permissions
 - HTTP: `GET /apis/ghippo.io/v1alpha1/permissions`
@@ -1224,7 +1224,7 @@
 - Flags: none
 - Output: list path `gproductPerms`
 
-### `dcectl ghippo role list-folder-role-names`
+### `dc global-management role list-folder-role-names`
 
 - Summary: Role_ListFolderRoleNames
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folderrolenames`
@@ -1236,7 +1236,7 @@
   - `--search` (query): search
 - Output: list path `items`; columns `name`, `authScope`, `description`; pagination `offset`
 
-### `dcectl ghippo role list-members-by-platform-role`
+### `dc global-management role list-members-by-platform-role`
 
 - Summary: Role_ListMembersByPlatformRole
 - HTTP: `GET /apis/ghippo.io/v1alpha1/platformroles/{name}/members`
@@ -1249,7 +1249,7 @@
   - `--search` (query): search
 - Output: list path `items`; columns `name`, `type`, `id`; pagination `offset`
 
-### `dcectl ghippo role list-members-folders-by-folder-role`
+### `dc global-management role list-members-folders-by-folder-role`
 
 - Summary: Role_ListMembersFoldersByFolderRole
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folderroles/{name}/members-folders`
@@ -1262,7 +1262,7 @@
   - `--search` (query): search
 - Output: list path `items`; columns `folderAlias`, `folderId`, `memberId`, `memberName`, `memberType`; pagination `offset`
 
-### `dcectl ghippo role list-members-workspaces-by-workspace-role`
+### `dc global-management role list-members-workspaces-by-workspace-role`
 
 - Summary: Role_ListMembersWorkspacesByWorkspaceRole
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaceroles/{name}/members-workspaces`
@@ -1275,7 +1275,7 @@
   - `--search` (query): search
 - Output: list path `items`; columns `memberId`, `memberName`, `memberType`, `workspaceAlias`, `workspaceId`; pagination `offset`
 
-### `dcectl ghippo role list-roles`
+### `dc global-management role list-roles`
 
 - Summary: List platform roles
 - HTTP: `GET /apis/ghippo.io/v1alpha1/roles`
@@ -1289,7 +1289,7 @@
   - `--scope` (query, default `query_all_auth_scope`, one of: query_all_auth_scope|query_platform|query_folder|query_workspace): scope
 - Output: list path `items`; columns `name`, `type`, `createdAt`, `description`, `scope`, `updatedAt`; pagination `offset`
 
-### `dcectl ghippo role list-workspace-role-names`
+### `dc global-management role list-workspace-role-names`
 
 - Summary: Role_ListWorkspaceRoleNames
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspacerolenames`
@@ -1301,7 +1301,7 @@
   - `--search` (query): search
 - Output: list path `items`; columns `name`, `authScope`, `description`; pagination `offset`
 
-### `dcectl ghippo role update-role`
+### `dc global-management role update-role`
 
 - Summary: Update a custom role
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/roles/{name}`
@@ -1309,11 +1309,11 @@
 - Body: required
 - Flags:
   - `--name` (path, required): name
-- Example: `echo '{ "description": "Updated description", "perms": [ {"gproduct": "ghippo", "resourceType": "User", "action": "get"} ] }' | dcectl ghippo role update-role --name <name> --file -`
+- Example: `echo '{ "description": "Updated description", "perms": [ {"gproduct": "ghippo", "resourceType": "User", "action": "get"} ] }' | dc global-management role update-role --name <name> --file -`
 
 ## SecurityPolicy
 
-### `dcectl ghippo securitypolicy get-account-lockout-policy`
+### `dc global-management securitypolicy get-account-lockout-policy`
 
 - Summary: SecurityPolicy_GetAccountLockoutPolicy
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/accountlockout`
@@ -1321,7 +1321,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy get-logout-policy`
+### `dc global-management securitypolicy get-logout-policy`
 
 - Summary: SecurityPolicy_GetLogoutPolicy
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/logout`
@@ -1329,7 +1329,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy get-mfa`
+### `dc global-management securitypolicy get-mfa`
 
 - Summary: SecurityPolicy_GetMFA
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/mfa`
@@ -1337,7 +1337,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy get-password-policy`
+### `dc global-management securitypolicy get-password-policy`
 
 - Summary: SecurityPolicy_GetPasswordPolicy
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/password`
@@ -1346,7 +1346,7 @@
 - Flags: none
 - Output: list path `items`; columns `type`, `value`
 
-### `dcectl ghippo securitypolicy get-session-timeout`
+### `dc global-management securitypolicy get-session-timeout`
 
 - Summary: SecurityPolicy_GetSessionTimeout
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/sessiontimeout`
@@ -1354,7 +1354,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy get-system-session-limit`
+### `dc global-management securitypolicy get-system-session-limit`
 
 - Summary: SecurityPolicy_GetSystemSessionLimit
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/system`
@@ -1362,7 +1362,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy get-time-session-limit`
+### `dc global-management securitypolicy get-time-session-limit`
 
 - Summary: SecurityPolicy_GetTimeSessionLimit
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/time`
@@ -1370,7 +1370,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy get-user-session-limit`
+### `dc global-management securitypolicy get-user-session-limit`
 
 - Summary: SecurityPolicy_GetUserSessionLimit
 - HTTP: `GET /apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/user`
@@ -1378,7 +1378,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-account-lockout-policy`
+### `dc global-management securitypolicy set-account-lockout-policy`
 
 - Summary: SecurityPolicy_SetAccountLockoutPolicy
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/accountlockout`
@@ -1386,7 +1386,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-logout-policy`
+### `dc global-management securitypolicy set-logout-policy`
 
 - Summary: SecurityPolicy_SetLogoutPolicy
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/logout`
@@ -1394,7 +1394,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-mfa`
+### `dc global-management securitypolicy set-mfa`
 
 - Summary: SecurityPolicy_SetMFA
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/mfa`
@@ -1402,7 +1402,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-password-policy`
+### `dc global-management securitypolicy set-password-policy`
 
 - Summary: SecurityPolicy_SetPasswordPolicy
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/password`
@@ -1410,7 +1410,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-session-timeout`
+### `dc global-management securitypolicy set-session-timeout`
 
 - Summary: SecurityPolicy_SetSessionTimeout
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/sessiontimeout`
@@ -1418,7 +1418,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-system-session-limit`
+### `dc global-management securitypolicy set-system-session-limit`
 
 - Summary: SecurityPolicy_SetSystemSessionLimit
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/system`
@@ -1426,7 +1426,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-time-session-limit`
+### `dc global-management securitypolicy set-time-session-limit`
 
 - Summary: SecurityPolicy_SetTimeSessionLimit
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/time`
@@ -1434,7 +1434,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo securitypolicy set-user-session-limit`
+### `dc global-management securitypolicy set-user-session-limit`
 
 - Summary: SecurityPolicy_SetUserSessionLimit
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/securitypolicy/sessionlimit/user`
@@ -1444,7 +1444,7 @@
 
 ## Sms
 
-### `dcectl ghippo sms batch-create-sms-templates-by-domain`
+### `dc global-management sms batch-create-sms-templates-by-domain`
 
 - Summary: Sms_BatchCreateSmsTemplatesByDomain
 - HTTP: `POST /apis/ghippo.io/v1alpha1/sms/template/batch-by-domain`
@@ -1452,7 +1452,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo sms create-sms-template`
+### `dc global-management sms create-sms-template`
 
 - Summary: Sms_CreateSmsTemplate
 - HTTP: `POST /apis/ghippo.io/v1alpha1/sms/template`
@@ -1460,7 +1460,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo sms list-sms-template`
+### `dc global-management sms list-sms-template`
 
 - Summary: Sms_ListSmsTemplate
 - HTTP: `GET /apis/ghippo.io/v1alpha1/sms/template`
@@ -1473,7 +1473,7 @@
   - `--channel-template` (query): channelTemplate
 - Output: list path `items`; columns `id`, `channel`, `channelTemplate`, `domain`, `enable`, `template`
 
-### `dcectl ghippo sms send-verification-code`
+### `dc global-management sms send-verification-code`
 
 - Summary: Sms_SendVerificationCode
 - HTTP: `POST /apis/ghippo.io/v1alpha1/sms/verification`
@@ -1483,7 +1483,7 @@
 
 ## SmtpSetting
 
-### `dcectl ghippo smtpsetting get-smtp-server`
+### `dc global-management smtpsetting get-smtp-server`
 
 - Summary: SmtpSetting_GetSmtpServer
 - HTTP: `GET /apis/ghippo.io/v1alpha1/smtp-setting`
@@ -1491,7 +1491,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo smtpsetting set-smtp-server`
+### `dc global-management smtpsetting set-smtp-server`
 
 - Summary: SmtpSetting_SetSmtpServer
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/smtp-setting`
@@ -1499,7 +1499,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo smtpsetting smtp-server-conn-test`
+### `dc global-management smtpsetting smtp-server-conn-test`
 
 - Summary: SmtpSetting_SmtpServerConnTest
 - HTTP: `POST /apis/ghippo.io/v1alpha1/smtp-setting/conn-test`
@@ -1509,7 +1509,7 @@
 
 ## Theme
 
-### `dcectl ghippo theme get-footer-theme-config`
+### `dc global-management theme get-footer-theme-config`
 
 - Summary: Theme_GetFooterThemeConfig
 - HTTP: `GET /apis/ghippo.io/v1alpha1/themes/footer-theme`
@@ -1517,7 +1517,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo theme get-login-theme-config`
+### `dc global-management theme get-login-theme-config`
 
 - Summary: Theme_GetLoginThemeConfig
 - HTTP: `GET /apis/ghippo.io/v1alpha1/themes/login_page`
@@ -1525,7 +1525,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo theme get-login-theme-css`
+### `dc global-management theme get-login-theme-css`
 
 - Summary: Theme_GetLoginThemeCSS
 - HTTP: `GET /apis/ghippo.io/v1alpha1/themes/login_page.css`
@@ -1534,7 +1534,7 @@
 - Flags: none
 - Output: list path `extensions`; columns `@type`
 
-### `dcectl ghippo theme get-theme-config`
+### `dc global-management theme get-theme-config`
 
 - Summary: Theme_GetThemeConfig
 - HTTP: `GET /apis/ghippo.io/v1alpha1/themes/theme`
@@ -1542,7 +1542,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo theme get-theme-css`
+### `dc global-management theme get-theme-css`
 
 - Summary: Theme_GetThemeCSS
 - HTTP: `GET /apis/ghippo.io/v1alpha1/themes/theme.css`
@@ -1551,7 +1551,7 @@
 - Flags: none
 - Output: list path `extensions`; columns `@type`
 
-### `dcectl ghippo theme reset-footer-theme-config`
+### `dc global-management theme reset-footer-theme-config`
 
 - Summary: Theme_ResetFooterThemeConfig
 - HTTP: `POST /apis/ghippo.io/v1alpha1/themes/footer/reset`
@@ -1559,7 +1559,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo theme reset-login-theme-config`
+### `dc global-management theme reset-login-theme-config`
 
 - Summary: Theme_ResetLoginThemeConfig
 - HTTP: `POST /apis/ghippo.io/v1alpha1/themes/login_page/reset`
@@ -1567,7 +1567,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo theme reset-theme-config`
+### `dc global-management theme reset-theme-config`
 
 - Summary: Theme_ResetThemeConfig
 - HTTP: `POST /apis/ghippo.io/v1alpha1/themes/theme/reset`
@@ -1575,7 +1575,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo theme set-footer-theme-config`
+### `dc global-management theme set-footer-theme-config`
 
 - Summary: Theme_SetFooterThemeConfig
 - HTTP: `POST /apis/ghippo.io/v1alpha1/themes/footer-theme`
@@ -1583,7 +1583,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo theme set-login-theme-config`
+### `dc global-management theme set-login-theme-config`
 
 - Summary: Theme_SetLoginThemeConfig
 - HTTP: `POST /apis/ghippo.io/v1alpha1/themes/login_page`
@@ -1591,7 +1591,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo theme set-theme-config`
+### `dc global-management theme set-theme-config`
 
 - Summary: Theme_SetThemeConfig
 - HTTP: `POST /apis/ghippo.io/v1alpha1/themes/theme`
@@ -1601,7 +1601,7 @@
 
 ## TopNavigator
 
-### `dcectl ghippo topnavigator info`
+### `dc global-management topnavigator info`
 
 - Summary: TopNavigator_Info
 - HTTP: `GET /apis/ghippo.io/v1alpha1/top-nav/info`
@@ -1609,7 +1609,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo topnavigator reset-top-nav`
+### `dc global-management topnavigator reset-top-nav`
 
 - Summary: TopNavigator_ResetTopNav
 - HTTP: `POST /apis/ghippo.io/v1alpha1/top-nav/reset`
@@ -1617,7 +1617,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo topnavigator set-top-nav`
+### `dc global-management topnavigator set-top-nav`
 
 - Summary: TopNavigator_SetTopNav
 - HTTP: `POST /apis/ghippo.io/v1alpha1/top-nav`
@@ -1627,7 +1627,7 @@
 
 ## Users
 
-### `dcectl ghippo users check-user`
+### `dc global-management users check-user`
 
 - Summary: Users_CheckUser
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/check/{username}`
@@ -1636,7 +1636,7 @@
 - Flags:
   - `--username` (path, required): username
 
-### `dcectl ghippo users check-user-email`
+### `dc global-management users check-user-email`
 
 - Summary: Users_CheckUserEmail
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/check-user-email/{username}`
@@ -1645,16 +1645,16 @@
 - Flags:
   - `--username` (path, required): username
 
-### `dcectl ghippo users create-user`
+### `dc global-management users create-user`
 
 - Summary: Create a new platform user
 - HTTP: `POST /apis/ghippo.io/v1alpha1/users`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `dcectl ghippo users create-user \ --set name=alice \ --set password=changeme \ --set description="Alice from dev team" \ --set temporary=false`
+- Example: `dc global-management users create-user \ --set name=alice \ --set password=changeme \ --set description="Alice from dev team" \ --set temporary=false`
 
-### `dcectl ghippo users create-user-access-token`
+### `dc global-management users create-user-access-token`
 
 - Summary: Create an access token for a user
 - HTTP: `POST /apis/ghippo.io/v1alpha1/users/{id}/accesstoken`
@@ -1662,9 +1662,9 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
-- Example: `dcectl ghippo users create-user-access-token --id <id> \ --set name=my-token \ --set expiredAt=2026-12-31T00:00:00Z`
+- Example: `dc global-management users create-user-access-token --id <id> \ --set name=my-token \ --set expiredAt=2026-12-31T00:00:00Z`
 
-### `dcectl ghippo users create-user-without-password`
+### `dc global-management users create-user-without-password`
 
 - Summary: Users_CreateUserWithoutPassword
 - HTTP: `POST /apis/ghippo.io/v1alpha1/users/without-password`
@@ -1672,7 +1672,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo users delete-user`
+### `dc global-management users delete-user`
 
 - Summary: Delete a user by ID
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/users/{id}`
@@ -1681,7 +1681,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo users delete-user-access-token`
+### `dc global-management users delete-user-access-token`
 
 - Summary: Delete an access token
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/users/{id}/accesstokens/{aid}`
@@ -1691,7 +1691,7 @@
   - `--id` (path, required): id
   - `--aid` (path, required): aid
 
-### `dcectl ghippo users get-user`
+### `dc global-management users get-user`
 
 - Summary: Get user details by ID
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/{id}`
@@ -1700,7 +1700,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo users get-user-by-name`
+### `dc global-management users get-user-by-name`
 
 - Summary: Users_GetUserByName
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/username/{username}`
@@ -1709,7 +1709,7 @@
 - Flags:
   - `--username` (path, required): username
 
-### `dcectl ghippo users list-user-access-tokens`
+### `dc global-management users list-user-access-tokens`
 
 - Summary: List access tokens for a user
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/{id}/accesstokens`
@@ -1719,7 +1719,7 @@
   - `--id` (path, required): id
 - Output: list path `items`; columns `name`, `id`, `createdAt`, `expiredAt`, `updatedAt`
 
-### `dcectl ghippo users list-user-groups`
+### `dc global-management users list-user-groups`
 
 - Summary: List groups a user belongs to
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/{id}/groups`
@@ -1732,7 +1732,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
-### `dcectl ghippo users list-user-roles`
+### `dc global-management users list-user-roles`
 
 - Summary: List roles assigned to a user
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/{id}/roles`
@@ -1747,7 +1747,7 @@
   - `--authorized` (query): 是否授权
 - Output: list path `items`; columns `name`, `type`, `authorized`, `createdAt`, `description`, `updatedAt`; pagination `offset`
 
-### `dcectl ghippo users list-user-subjects`
+### `dc global-management users list-user-subjects`
 
 - Summary: Users_ListUserSubjects
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users/{id}/subjects`
@@ -1760,7 +1760,7 @@
   - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `type`, `id`, `roleName`, `subjectName`; pagination `offset`
 
-### `dcectl ghippo users list-users`
+### `dc global-management users list-users`
 
 - Summary: List platform users
 - HTTP: `GET /apis/ghippo.io/v1alpha1/users`
@@ -1771,9 +1771,9 @@
   - `--page-size` (query, default `20`, int32): Number of results per page
   - `--page` (query, default `1`, int32): 当前页, 大于等于 0，小于等于 1000
 - Output: list path `items`; columns `name`, `id`, `canAuthorize`, `createdAt`, `description`, `email`; pagination `offset`
-- Example: `dcectl ghippo users list-users dcectl ghippo users list-users --page-size 50 -o json`
+- Example: `dc global-management users list-users dc global-management users list-users --page-size 50 -o json`
 
-### `dcectl ghippo users reset-user-mfa`
+### `dc global-management users reset-user-mfa`
 
 - Summary: Users_ResetUserMFA
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/users/{id}/mfa`
@@ -1782,7 +1782,7 @@
 - Flags:
   - `--id` (path, required): id
 
-### `dcectl ghippo users set-user-password`
+### `dc global-management users set-user-password`
 
 - Summary: Set or reset a user's password
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/users/{id}/password`
@@ -1790,9 +1790,9 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
-- Example: `dcectl ghippo users set-user-password --id <id> \ --set password=NewP@ssw0rd`
+- Example: `dc global-management users set-user-password --id <id> \ --set password=NewP@ssw0rd`
 
-### `dcectl ghippo users update-user`
+### `dc global-management users update-user`
 
 - Summary: Update user profile
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/users/{id}`
@@ -1800,9 +1800,9 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
-- Example: `dcectl ghippo users update-user --id <id> \ --set email=newemail@example.com \ --set firstname=Alice \ --set lastname=Smith \ --set description="updated" \ --set enabled=true`
+- Example: `dc global-management users update-user --id <id> \ --set email=newemail@example.com \ --set firstname=Alice \ --set lastname=Smith \ --set description="updated" \ --set enabled=true`
 
-### `dcectl ghippo users update-user-certify`
+### `dc global-management users update-user-certify`
 
 - Summary: Users_UpdateUserCertify
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/users/certify`
@@ -1810,7 +1810,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo users update-user-roles`
+### `dc global-management users update-user-roles`
 
 - Summary: Assign or update roles for a user
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/users/{id}/roles`
@@ -1818,11 +1818,11 @@
 - Body: required
 - Flags:
   - `--id` (path, required): id
-- Example: `# Add roles echo '{"addRoles":["Admin"],"removeRoles":[]}' | \ dcectl ghippo users update-user-roles --id <id> --file - # Remove roles echo '{"addRoles":[],"removeRoles":["Editor"]}' | \ dcectl ghippo users update-user-roles --id <id> --file -`
+- Example: `# Add roles echo '{"addRoles":["Admin"],"removeRoles":[]}' | \ dc global-management users update-user-roles --id <id> --file - # Remove roles echo '{"addRoles":[],"removeRoles":["Editor"]}' | \ dc global-management users update-user-roles --id <id> --file -`
 
 ## Webhook
 
-### `dcectl ghippo webhook create-webhook`
+### `dc global-management webhook create-webhook`
 
 - Summary: 接入管理
 - HTTP: `POST /apis/ghippo.io/v1alpha1/webhook`
@@ -1830,7 +1830,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo webhook create-webhook-endpoint`
+### `dc global-management webhook create-webhook-endpoint`
 
 - Summary: Webhook_CreateWebhookEndpoint
 - HTTP: `POST /apis/ghippo.io/v1alpha1/webhook-endpoint`
@@ -1838,7 +1838,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo webhook delete-webhook`
+### `dc global-management webhook delete-webhook`
 
 - Summary: Webhook_DeleteWebhook
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/webhook/{id}`
@@ -1847,7 +1847,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo webhook delete-webhook-endpoint`
+### `dc global-management webhook delete-webhook-endpoint`
 
 - Summary: Webhook_DeleteWebhookEndpoint
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/webhook-endpoint/{id}`
@@ -1856,7 +1856,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo webhook get-webhook`
+### `dc global-management webhook get-webhook`
 
 - Summary: Webhook_GetWebhook
 - HTTP: `GET /apis/ghippo.io/v1alpha1/webhook/{id}`
@@ -1865,7 +1865,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo webhook get-webhook-record`
+### `dc global-management webhook get-webhook-record`
 
 - Summary: Webhook_GetWebhookRecord
 - HTTP: `GET /apis/ghippo.io/v1alpha1/webhook-record/{id}`
@@ -1874,7 +1874,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo webhook list-gproduct-webhook-events`
+### `dc global-management webhook list-gproduct-webhook-events`
 
 - Summary: Webhook_ListGproductWebhookEvents
 - HTTP: `GET /apis/ghippo.io/v1alpha1/gproduct-webhook-events`
@@ -1883,7 +1883,7 @@
 - Flags: none
 - Output: list path `gEvents`; columns `name`, `localizedName`
 
-### `dcectl ghippo webhook list-webhook-endpoint-events`
+### `dc global-management webhook list-webhook-endpoint-events`
 
 - Summary: Webhook_ListWebhookEndpointEvents
 - HTTP: `GET /apis/ghippo.io/v1alpha1/webhook-endpoint/{id}/events`
@@ -1898,7 +1898,7 @@
   - `--page` (query, default `1`, int32): page
 - Output: list path `items`; columns `body`, `eventName`, `gproduct`, `headers`, `method`, `objectName`; pagination `offset`
 
-### `dcectl ghippo webhook list-webhook-endpoints`
+### `dc global-management webhook list-webhook-endpoints`
 
 - Summary: Webhook_ListWebhookEndpoints
 - HTTP: `GET /apis/ghippo.io/v1alpha1/webhook-endpoints`
@@ -1913,7 +1913,7 @@
   - `--page` (query, default `1`, int32): page
 - Output: list path `items`; columns `name`, `id`, `createdAt`, `domain`, `enabled`, `endpoint`; pagination `offset`
 
-### `dcectl ghippo webhook list-webhook-records-by-client-id`
+### `dc global-management webhook list-webhook-records-by-client-id`
 
 - Summary: Webhook_ListWebhookRecordsByClientId
 - HTTP: `GET /apis/ghippo.io/v1alpha1/webhook-record`
@@ -1927,7 +1927,7 @@
   - `--page` (query, default `1`, int32): page
 - Output: list path `items`; columns `id`, `action`, `clientId`, `errMessage`, `eventData`, `eventTime`; pagination `offset`
 
-### `dcectl ghippo webhook list-webhooks-by-client-id`
+### `dc global-management webhook list-webhooks-by-client-id`
 
 - Summary: Webhook_ListWebhooksByClientId
 - HTTP: `GET /apis/ghippo.io/v1alpha1/webhook`
@@ -1940,7 +1940,7 @@
   - `--client-id` (query): clientId
 - Output: list path `items`; columns `name`, `id`, `action`, `clientId`, `createdAt`, `headers`; pagination `offset`
 
-### `dcectl ghippo webhook update-webhook`
+### `dc global-management webhook update-webhook`
 
 - Summary: Webhook_UpdateWebhook
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/webhook/{id}`
@@ -1949,7 +1949,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo webhook update-webhook-endpoint`
+### `dc global-management webhook update-webhook-endpoint`
 
 - Summary: Webhook_UpdateWebhookEndpoint
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/webhook-endpoint/{id}`
@@ -1958,7 +1958,7 @@
 - Flags:
   - `--id` (path, required, int32): id
 
-### `dcectl ghippo webhook webhook-endpoint-connectivity-test`
+### `dc global-management webhook webhook-endpoint-connectivity-test`
 
 - Summary: Webhook_WebhookEndpointConnectivityTest
 - HTTP: `POST /apis/ghippo.io/v1alpha1/webhook-endpoint/connectivity-test`
@@ -1968,7 +1968,7 @@
 
 ## Workspace
 
-### `dcectl ghippo workspace authorize`
+### `dc global-management workspace authorize`
 
 - Summary: Grant a role to a user or group within a folder
 - HTTP: `POST /apis/ghippo.io/v1alpha1/folders/{folderId}/authorize`
@@ -1976,9 +1976,9 @@
 - Body: required
 - Flags:
   - `--folder-id` (path, required, int32): folderId
-- Example: `dcectl ghippo workspace authorize --folder-id <folderId> \ --set memberId=<userId> \ --set memberType=user \ --set memberName=alice \ --set-str 'roleNames[0]=Workspace Admin'`
+- Example: `dc global-management workspace authorize --folder-id <folderId> \ --set memberId=<userId> \ --set memberType=user \ --set memberName=alice \ --set-str 'roleNames[0]=Workspace Admin'`
 
-### `dcectl ghippo workspace bind-exclusive-resource-to-workspace`
+### `dc global-management workspace bind-exclusive-resource-to-workspace`
 
 - Summary: Workspace_BindExclusiveResourceToWorkspace
 - HTTP: `POST /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/bind-exclusiveresource`
@@ -1987,7 +1987,7 @@
 - Flags:
   - `--workspace-id` (path, required, int32): workspaceId
 
-### `dcectl ghippo workspace bind-shared-resource-and-set-quota-hard-to-workspace`
+### `dc global-management workspace bind-shared-resource-and-set-quota-hard-to-workspace`
 
 - Summary: Workspace_BindSharedResourceAndSetQuotaHardToWorkspace
 - HTTP: `POST /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/bind-sharedresource-setquota`
@@ -1996,7 +1996,7 @@
 - Flags:
   - `--workspace-id` (path, required, int32): cluster 资源 resource_scope 为空
 
-### `dcectl ghippo workspace bind-shared-resource-to-workspace`
+### `dc global-management workspace bind-shared-resource-to-workspace`
 
 - Summary: Workspace_BindSharedResourceToWorkspace
 - HTTP: `POST /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/bind-sharedresource`
@@ -2005,25 +2005,25 @@
 - Flags:
   - `--workspace-id` (path, required, int32): workspaceId
 
-### `dcectl ghippo workspace create-folder`
+### `dc global-management workspace create-folder`
 
 - Summary: Create a folder
 - HTTP: `POST /apis/ghippo.io/v1alpha1/folders`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `# alias is the display name; parentFolderId=0 places it under root dcectl ghippo workspace create-folder \ --set alias=my-folder \ --set parentFolderId=0`
+- Example: `# alias is the display name; parentFolderId=0 places it under root dc global-management workspace create-folder \ --set alias=my-folder \ --set parentFolderId=0`
 
-### `dcectl ghippo workspace create-workspace`
+### `dc global-management workspace create-workspace`
 
 - Summary: Create a workspace
 - HTTP: `POST /apis/ghippo.io/v1alpha1/workspaces`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `# alias is the display name; parentFolderId=0 places it under root dcectl ghippo workspace create-workspace \ --set alias=my-workspace \ --set parentFolderId=0`
+- Example: `# alias is the display name; parentFolderId=0 places it under root dc global-management workspace create-workspace \ --set alias=my-workspace \ --set parentFolderId=0`
 
-### `dcectl ghippo workspace deauthorize`
+### `dc global-management workspace deauthorize`
 
 - Summary: Workspace_Deauthorize
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/folders/{folderId}/deauthorize`
@@ -2032,7 +2032,7 @@
 - Flags:
   - `--folder-id` (path, required, int32): folderId
 
-### `dcectl ghippo workspace delete-folder`
+### `dc global-management workspace delete-folder`
 
 - Summary: Delete a folder
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/folders/{folderId}`
@@ -2041,7 +2041,7 @@
 - Flags:
   - `--folder-id` (path, required, int32): folderId
 
-### `dcectl ghippo workspace delete-workspace`
+### `dc global-management workspace delete-workspace`
 
 - Summary: Delete a workspace
 - HTTP: `DELETE /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}`
@@ -2050,7 +2050,7 @@
 - Flags:
   - `--workspace-id` (path, required, int32): workspaceId
 
-### `dcectl ghippo workspace folder-list-groups`
+### `dc global-management workspace folder-list-groups`
 
 - Summary: Workspace_FolderListGroups
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders/{folderId}/groups`
@@ -2063,7 +2063,7 @@
   - `--page-size` (query, default `20`, int32): 分页大小
 - Output: list path `items`; columns `name`, `id`, `authorized`, `canAuthorize`, `createdAt`, `description`; pagination `offset`
 
-### `dcectl ghippo workspace folder-list-permissions`
+### `dc global-management workspace folder-list-permissions`
 
 - Summary: Workspace_FolderListPermissions
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders/{folderId}/permissions`
@@ -2073,7 +2073,7 @@
   - `--folder-id` (path, required, int32): folderId
 - Output: list path `permissions`
 
-### `dcectl ghippo workspace folder-list-users`
+### `dc global-management workspace folder-list-users`
 
 - Summary: Workspace_FolderListUsers
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders/{folderId}/users`
@@ -2086,7 +2086,7 @@
   - `--page` (query, default `1`, int32): 当前页
 - Output: list path `items`; columns `name`, `id`, `authorized`, `canAuthorize`, `description`, `email`; pagination `offset`
 
-### `dcectl ghippo workspace get-folder`
+### `dc global-management workspace get-folder`
 
 - Summary: Get folder details
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders/{folderId}`
@@ -2095,7 +2095,7 @@
 - Flags:
   - `--folder-id` (path, required, int32): folderId
 
-### `dcectl ghippo workspace get-workspace`
+### `dc global-management workspace get-workspace`
 
 - Summary: Get workspace details
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}`
@@ -2104,7 +2104,7 @@
 - Flags:
   - `--workspace-id` (path, required, int32): workspaceId
 
-### `dcectl ghippo workspace get-workspace-shared-resource-quota`
+### `dc global-management workspace get-workspace-shared-resource-quota`
 
 - Summary: Workspace_GetWorkspaceSharedResourceQuota
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspace-sharedresource-quota`
@@ -2116,7 +2116,7 @@
   - `--resource-type` (query): resourceType
   - `--not-formatted` (query): notFormatted
 
-### `dcectl ghippo workspace list-available-exclusive-resources-by-workspace`
+### `dc global-management workspace list-available-exclusive-resources-by-workspace`
 
 - Summary: Workspace_ListAvailableExclusiveResourcesByWorkspace
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/available-exclusiveresources`
@@ -2131,7 +2131,7 @@
   - `--resource-scope` (query): resourceScope
 - Output: list path `items`; columns `bound`, `clusterStatus`, `gproduct`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
 
-### `dcectl ghippo workspace list-available-shared-resources-by-workspace`
+### `dc global-management workspace list-available-shared-resources-by-workspace`
 
 - Summary: Workspace_ListAvailableSharedResourcesByWorkspace
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/available-sharedresources`
@@ -2145,7 +2145,7 @@
   - `--resource-type` (query): resourceType
 - Output: list path `items`; columns `bound`, `clusterStatus`, `gproduct`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
 
-### `dcectl ghippo workspace list-exclusive-resource-types`
+### `dc global-management workspace list-exclusive-resource-types`
 
 - Summary: Workspace_ListExclusiveResourceTypes
 - HTTP: `GET /apis/ghippo.io/v1alpha1/exclusiveresource-types`
@@ -2154,7 +2154,7 @@
 - Flags: none
 - Output: list path `items`
 
-### `dcectl ghippo workspace list-exclusive-resources-by-workspace`
+### `dc global-management workspace list-exclusive-resources-by-workspace`
 
 - Summary: Workspace_ListExclusiveResourcesByWorkspace
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/exclusiveresources`
@@ -2168,7 +2168,7 @@
   - `--resource-type` (query): resourceType
 - Output: list path `items`; columns `clusterStatus`, `gproduct`, `module`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
 
-### `dcectl ghippo workspace list-folder-tree`
+### `dc global-management workspace list-folder-tree`
 
 - Summary: Workspace_ListFolderTree
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders-tree`
@@ -2176,7 +2176,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl ghippo workspace list-folders`
+### `dc global-management workspace list-folders`
 
 - Summary: List folders (namespaces within workspaces)
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders`
@@ -2187,7 +2187,7 @@
   - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `name`, `id`, `alias`; pagination `offset`
 
-### `dcectl ghippo workspace list-members-roles-by-folder`
+### `dc global-management workspace list-members-roles-by-folder`
 
 - Summary: Workspace_ListMembersRolesByFolder
 - HTTP: `GET /apis/ghippo.io/v1alpha1/folders/{folderId}/members-roles`
@@ -2202,7 +2202,7 @@
   - `--role-name` (query): roleName
 - Output: list path `items`; columns `folderId`, `memberId`, `memberName`, `memberType`, `roleName`; pagination `offset`
 
-### `dcectl ghippo workspace list-members-roles-by-workspace`
+### `dc global-management workspace list-members-roles-by-workspace`
 
 - Summary: Workspace_ListMembersRolesByWorkspace
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/members-roles`
@@ -2215,7 +2215,7 @@
   - `--member-name` (query): memberName
 - Output: list path `items`; columns `memberId`, `memberName`, `memberType`, `roleName`, `workspaceId`; pagination `offset`
 
-### `dcectl ghippo workspace list-resource-quota-types`
+### `dc global-management workspace list-resource-quota-types`
 
 - Summary: Workspace_ListResourceQuotaTypes
 - HTTP: `GET /apis/ghippo.io/v1alpha1/resourcequota-types`
@@ -2224,7 +2224,7 @@
 - Flags: none
 - Output: list path `items`
 
-### `dcectl ghippo workspace list-shared-resource-types`
+### `dc global-management workspace list-shared-resource-types`
 
 - Summary: Workspace_ListSharedResourceTypes
 - HTTP: `GET /apis/ghippo.io/v1alpha1/sharedresource-types`
@@ -2233,7 +2233,7 @@
 - Flags: none
 - Output: list path `items`
 
-### `dcectl ghippo workspace list-shared-resources-by-workspace`
+### `dc global-management workspace list-shared-resources-by-workspace`
 
 - Summary: Workspace_ListSharedResourcesByWorkspace
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/sharedresources`
@@ -2246,7 +2246,7 @@
   - `--resource-name` (query): resourceName
 - Output: list path `items`; columns `clusterStatus`, `gproduct`, `module`, `resourceName`, `resourceScope`, `resourceType`; pagination `offset`
 
-### `dcectl ghippo workspace list-workspace-share-resource-quota-types`
+### `dc global-management workspace list-workspace-share-resource-quota-types`
 
 - Summary: Workspace_ListWorkspaceShareResourceQuotaTypes
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/sharedresource/{resourceName}/quota-types`
@@ -2257,7 +2257,7 @@
   - `--resource-name` (path, required): resourceName
 - Output: list path `gpus`; columns `type`, `alias`, `isDynamic`
 
-### `dcectl ghippo workspace list-workspaces`
+### `dc global-management workspace list-workspaces`
 
 - Summary: List workspaces
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces`
@@ -2267,9 +2267,9 @@
   - `--page` (query, default `1`, int32): page
   - `--page-size` (query, default `20`, int32): pageSize
 - Output: list path `items`; columns `name`, `id`, `alias`; pagination `offset`
-- Example: `dcectl ghippo workspace list-workspaces dcectl ghippo workspace list-workspaces -o json`
+- Example: `dc global-management workspace list-workspaces dc global-management workspace list-workspaces -o json`
 
-### `dcectl ghippo workspace move-workspace`
+### `dc global-management workspace move-workspace`
 
 - Summary: Workspace_MoveWorkspace
 - HTTP: `POST /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/move`
@@ -2278,7 +2278,7 @@
 - Flags:
   - `--workspace-id` (path, required, int32): workspaceId
 
-### `dcectl ghippo workspace move-workspace-folder-list`
+### `dc global-management workspace move-workspace-folder-list`
 
 - Summary: Workspace_MoveWorkspaceFolderList
 - HTTP: `GET /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/move-folders`
@@ -2291,7 +2291,7 @@
   - `--folder` (query): folder
 - Output: list path `items`; columns `folderAlias`, `folderId`, `parentAlias`, `parentId`; pagination `offset`
 
-### `dcectl ghippo workspace reauthorize`
+### `dc global-management workspace reauthorize`
 
 - Summary: Workspace_Reauthorize
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/folders/{folderId}/reauthorize`
@@ -2300,7 +2300,7 @@
 - Flags:
   - `--folder-id` (path, required, int32): folderId
 
-### `dcectl ghippo workspace set-quota-hard-for-workspace-shared-resource`
+### `dc global-management workspace set-quota-hard-for-workspace-shared-resource`
 
 - Summary: Workspace_SetQuotaHardForWorkspaceSharedResource
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/workspace-sharedresource-quota-hard`
@@ -2308,7 +2308,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl ghippo workspace unbind-resource-from-workspace`
+### `dc global-management workspace unbind-resource-from-workspace`
 
 - Summary: Workspace_UnbindResourceFromWorkspace
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/workspaces/{workspaceId}/unbind-resource`
@@ -2317,7 +2317,7 @@
 - Flags:
   - `--workspace-id` (path, required, int32): workspaceId
 
-### `dcectl ghippo workspace update-folder`
+### `dc global-management workspace update-folder`
 
 - Summary: Update a folder
 - HTTP: `PUT /apis/ghippo.io/v1alpha1/folders/{folderId}`
@@ -2325,9 +2325,9 @@
 - Body: required
 - Flags:
   - `--folder-id` (path, required, int32): folderId
-- Example: `dcectl ghippo workspace update-folder --folder-id <id> \ --set alias=new-folder-name`
+- Example: `dc global-management workspace update-folder --folder-id <id> \ --set alias=new-folder-name`
 
-### `dcectl ghippo workspace update-quota-check`
+### `dc global-management workspace update-quota-check`
 
 - Summary: Workspace_UpdateQuotaCheck
 - HTTP: `POST /apis/ghippo.io/v1alpha1/update-quota-check`

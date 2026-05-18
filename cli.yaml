@@ -1,5 +1,5 @@
 cli:
-  name: dcectl
+  name: dc
   short: "Command-line tool for DaoCloud Enterprise (DCE)"
 
 auth:

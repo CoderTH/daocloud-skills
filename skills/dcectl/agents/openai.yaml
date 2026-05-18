@@ -1,4 +1,0 @@
-interface:
-  display_name: "dcectl CLI"
-  short_description: "Use the dcectl generated CLI"
-  default_prompt: "Use $dcectl to find and run the right dcectl command."

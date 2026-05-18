@@ -17,8 +17,8 @@ commands:
     short: "List all managed clusters"
     aliases: [ls, ls-clusters]
     example: |
-      dcectl kpanda cluster list-clusters
-      dcectl kpanda cluster list-clusters -o json | jq '.items[].name'
+      dc container-management cluster list-clusters
+      dc container-management cluster list-clusters -o json | jq '.items[].name'
     params:
       page: { default: "1" }
       pageSize: { default: "20" }
@@ -26,13 +26,13 @@ commands:
   create-cluster:
     short: "Register or create a cluster"
     example: |
-      dcectl kpanda cluster create-cluster --file cluster.json
+      dc container-management cluster create-cluster --file cluster.json
 
   get-cluster:
     short: "Get cluster details"
     aliases: [describe, describe-cluster]
     example: |
-      dcectl kpanda cluster get-cluster --name prod-cluster
+      dc container-management cluster get-cluster --name prod-cluster
     params:
       page: { default: "1" }
       pageSize: { default: "20" }
@@ -47,7 +47,7 @@ commands:
     short: "Download kubeconfig for a cluster"
     aliases: [kubeconfig]
     example: |
-      dcectl kpanda cluster get-cluster-kube-config --cluster prod-cluster -o raw > kubeconfig.yaml
+      dc container-management cluster get-cluster-kube-config --cluster prod-cluster -o raw > kubeconfig.yaml
 
   validate-kube-config:
     short: "Validate a kubeconfig before registration"
@@ -61,7 +61,7 @@ commands:
     short: "List namespaces in a cluster"
     aliases: [ls-ns]
     example: |
-      dcectl kpanda core list-namespaces --cluster prod-cluster
+      dc container-management core list-namespaces --cluster prod-cluster
     params:
       page: { default: "1" }
       pageSize: { default: "20" }
@@ -77,7 +77,7 @@ commands:
     short: "List Deployments in a namespace"
     aliases: [ls-deploy]
     example: |
-      dcectl kpanda apps list-deployments \
+      dc container-management apps list-deployments \
         --cluster prod-cluster \
         --namespace default
     params:

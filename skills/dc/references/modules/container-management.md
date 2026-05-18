@@ -1,4 +1,4 @@
-# Module `kpanda`
+# Module `container-management`
 
 ## Source
 
@@ -10,7 +10,7 @@
 
 ## Addon
 
-### `dcectl kpanda addon create-helm-release`
+### `dc container-management addon create-helm-release`
 
 - Summary: CreateHelmRelease creates a Release.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases`
@@ -20,7 +20,7 @@
   - `--cluster` (path, required): cluster represents which cluster the chart belongs to.
   - `--namespace` (path, required): Namespace represents which namespace the helm release belongs to.
 
-### `dcectl kpanda addon create-helm-repo`
+### `dc container-management addon create-helm-repo`
 
 - Summary: CreateHelmRepo create a repo in cluster.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos`
@@ -29,7 +29,7 @@
 - Flags:
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
 
-### `dcectl kpanda addon delete-helm-operation`
+### `dc container-management addon delete-helm-operation`
 
 - Summary: DeleteHelmOperation delete a operation in cluster.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmoperations/{name}`
@@ -40,7 +40,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the daemonSet belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon delete-helm-release`
+### `dc container-management addon delete-helm-release`
 
 - Summary: DeleteHelmRelease delete a release.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{name}`
@@ -51,7 +51,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the helmrelease belongs to.
   - `--name` (path, required): Name represents the name of helmrelease.
 
-### `dcectl kpanda addon delete-helm-repo`
+### `dc container-management addon delete-helm-repo`
 
 - Summary: DeleteHelmRepo delete a repo in cluster.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{name}`
@@ -61,7 +61,7 @@
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon get-helm-chart`
+### `dc container-management addon get-helm-chart`
 
 - Summary: GetHelmChartVersion get a chart version info from repository.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}`
@@ -73,7 +73,7 @@
   - `--name` (path, required): The name represents for the resource name.
   - `--version` (query): The version represents for the resource version.
 
-### `dcectl kpanda addon get-helm-chart-display`
+### `dc container-management addon get-helm-chart-display`
 
 - Summary: GetHelmChartDisplay get a chart display info from repository.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/display`
@@ -85,7 +85,7 @@
   - `--name` (path, required): The name represents for the resource name.
   - `--version` (query): The version represents for the resource version.
 
-### `dcectl kpanda addon get-helm-chart-files`
+### `dc container-management addon get-helm-chart-files`
 
 - Summary: GetHelmChartFiles get a chart files from repository.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/files`
@@ -97,7 +97,7 @@
   - `--name` (path, required): The name represents for the resource name.
   - `--version` (query): The version represents for the resource version.
 
-### `dcectl kpanda addon get-helm-chart-manifest`
+### `dc container-management addon get-helm-chart-manifest`
 
 - Summary: GetHelmChartManifest get a chart manifests info from repository.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/manifests`
@@ -108,7 +108,7 @@
   - `--repo` (path, required): The repo represents for the charts belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon get-helm-chart-resources`
+### `dc container-management addon get-helm-chart-resources`
 
 - Summary: GetHelmChartResources get the resources contained in charts.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/resources`
@@ -121,7 +121,7 @@
   - `--version` (query): The version represents for the resource version.
 - Output: list path `resources`; columns `name`, `kind`, `image`
 
-### `dcectl kpanda addon get-helm-install-config`
+### `dc container-management addon get-helm-install-config`
 
 - Summary: GetHelmInstallConfig create a Release.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}:config`
@@ -132,7 +132,7 @@
   - `--repo` (path, required): The repo represents for the charts belongs to.
   - `--name` (path, required): Name represents the name of helmrelease
 
-### `dcectl kpanda addon get-helm-operation`
+### `dc container-management addon get-helm-operation`
 
 - Summary: GetHelmOperation get a operation in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmoperations/{name}`
@@ -143,7 +143,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the daemonSet belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon get-helm-operation-json`
+### `dc container-management addon get-helm-operation-json`
 
 - Summary: GetHelmOperationJSON get a operation json in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmoperations/{name}/json`
@@ -154,7 +154,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the daemonSet belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon get-helm-release`
+### `dc container-management addon get-helm-release`
 
 - Summary: GetHelmRelease gets a release in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{name}`
@@ -165,7 +165,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the helmrelease belongs to.
   - `--name` (path, required): Name of the helmrelease.
 
-### `dcectl kpanda addon get-helm-release-json`
+### `dc container-management addon get-helm-release-json`
 
 - Summary: GetHelmReleaseJSON gets a release in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{name}/json`
@@ -176,7 +176,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the helmrelease belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon get-helm-repo`
+### `dc container-management addon get-helm-repo`
 
 - Summary: GetHelmRepo get a repo in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{name}`
@@ -186,7 +186,7 @@
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon get-helm-repo-json`
+### `dc container-management addon get-helm-repo-json`
 
 - Summary: GetHelmRepoJSON get a repo json in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{name}/json`
@@ -196,7 +196,7 @@
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon list-cluster-helm-operations`
+### `dc container-management addon list-cluster-helm-operations`
 
 - Summary: ListClusterHelmOperations list operation in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmoperations`
@@ -213,7 +213,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `status.version`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda addon list-cluster-helm-releases`
+### `dc container-management addon list-cluster-helm-releases`
 
 - Summary: ListClusterHelmReleases list apps in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmreleases`
@@ -231,7 +231,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `spec.version`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda addon list-cluster-installed-helm-chart`
+### `dc container-management addon list-cluster-installed-helm-chart`
 
 - Summary: ListClusterInstalledHelmChart list the charts which installed belong to repo
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmcharts/installed`
@@ -241,7 +241,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the chart belongs to.
   - `--repo-name` (query): repo_name represents which helm repo's name use to list installed helm chart
 
-### `dcectl kpanda addon list-helm-charts`
+### `dc container-management addon list-helm-charts`
 
 - Summary: ListCharts list chart from repositories.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmcharts`
@@ -257,7 +257,7 @@
   - `--required` (query): Required indicates whether to display the charts, which are required to install the cluster.
 - Output: list path `data`; columns `metadata.name`, `created`, `removed`; pagination `offset`
 
-### `dcectl kpanda addon list-helm-operations`
+### `dc container-management addon list-helm-operations`
 
 - Summary: ListHelmOperations list operation in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmoperations`
@@ -275,7 +275,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `status.version`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda addon list-helm-release-resources`
+### `dc container-management addon list-helm-release-resources`
 
 - Summary: ListHelmReleaseResources lists resources related to the specified helm release.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{helmrelease}/resources`
@@ -295,7 +295,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `name`, `namespace`, `phase`, `kind`, `apiVersion`; pagination `offset`
 
-### `dcectl kpanda addon list-helm-release-revisions`
+### `dc container-management addon list-helm-release-revisions`
 
 - Summary: ListHelmReleaseRevisions lists revisions of the specified helm release.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{helmrelease}/revisions`
@@ -307,7 +307,7 @@
   - `--helmrelease` (path, required): Name of the helmrelease.
 - Output: list path `items`; columns `appVersion`, `chart`, `manifest`, `status`, `updated`, `version`
 
-### `dcectl kpanda addon list-helm-releases`
+### `dc container-management addon list-helm-releases`
 
 - Summary: ListHelmReleases lists apps in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases`
@@ -324,7 +324,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `spec.version`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda addon list-helm-repos`
+### `dc container-management addon list-helm-repos`
 
 - Summary: ListHelmRepos list repo in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos`
@@ -341,7 +341,7 @@
   - `--built-in` (query): builtin indicates whether to display the repos required to install the cluster.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda addon refresh-helm-repo`
+### `dc container-management addon refresh-helm-repo`
 
 - Summary: RefreshHelmRepo updates a helm repo's index.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{name}:refresh`
@@ -351,7 +351,7 @@
   - `--cluster` (path, required): cluster represents which cluster the helmrepo belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon rollback-helm-release`
+### `dc container-management addon rollback-helm-release`
 
 - Summary: RollbackHelmRelease rollbacks a release.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{name}:rollback`
@@ -362,7 +362,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the helmrelease belongs to.
   - `--name` (path, required): Name represents the name of helmrelease.
 
-### `dcectl kpanda addon update-helm-release`
+### `dc container-management addon update-helm-release`
 
 - Summary: UpdateHelmRelease updates a release.
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/helmreleases/{name}`
@@ -373,7 +373,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the helmrelease belongs to.
   - `--name` (path, required): Name represents the name of helmrelease.
 
-### `dcectl kpanda addon update-helm-repo`
+### `dc container-management addon update-helm-repo`
 
 - Summary: UpdateHelmRepo update repo
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{name}`
@@ -383,7 +383,7 @@
   - `--cluster` (path, required): cluster represents which cluster the repository belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda addon validate-helm-repo`
+### `dc container-management addon validate-helm-repo`
 
 - Summary: ValidateHelmRepo verifies if a repo is connectable.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/helmrepos/{name}/validate`
@@ -395,7 +395,7 @@
 
 ## Apiextensions
 
-### `dcectl kpanda apiextensions create-cluster-custom-resource`
+### `dc container-management apiextensions create-cluster-custom-resource`
 
 - Summary: CreateClusterCustomResource creates a customResource of cluster scope to
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}`
@@ -407,7 +407,7 @@
   - `--version` (path, required): Version represents the resource version of CustomResource.
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
 
-### `dcectl kpanda apiextensions create-custom-resource`
+### `dc container-management apiextensions create-custom-resource`
 
 - Summary: CreateCustomResource creates a customResource of namespaced scope to the
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}`
@@ -420,7 +420,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the CustomResource belongs to.
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
 
-### `dcectl kpanda apiextensions create-custom-resource-definition`
+### `dc container-management apiextensions create-custom-resource-definition`
 
 - Summary: CreateCustomResourceDefinition creates a customResourceDefinition to the
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions`
@@ -429,7 +429,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified customResourceDefinition belongs to.
 
-### `dcectl kpanda apiextensions create-resource`
+### `dc container-management apiextensions create-resource`
 
 - Summary: CreateResource creates a list of resources of a given yaml
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resources`
@@ -440,7 +440,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the resources belong to.
 - Output: list path `data`
 
-### `dcectl kpanda apiextensions delete-cluster-custom-resource`
+### `dc container-management apiextensions delete-cluster-custom-resource`
 
 - Summary: DeleteClusterCustomResource deletes a customResource of cluster scope from
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}/{name}`
@@ -454,7 +454,7 @@
   - `--name` (path, required): Name represents the name of CustomResource.
   - `--deletion-propagation` (query, default `DELETION_PROPAGATION_UNSPECIFIED`, one of: DELETION_PROPAGATION_UNSPECIFIED|DELETION_PROPAGATION_ORPHAN|DELETION_PROPAGATION_BACKGROUND|DELETION_PROPAGATION_FOREGROUND): - DELETION_PROPAGATION_ORPHAN: Orphans the dependents.
 
-### `dcectl kpanda apiextensions delete-custom-resource`
+### `dc container-management apiextensions delete-custom-resource`
 
 - Summary: DeleteCustomResource deletes a customResource of namespaced scope from the
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}/{name}`
@@ -469,7 +469,7 @@
   - `--name` (path, required): Name represents the name of CustomResource.
   - `--deletion-propagation` (query, default `DELETION_PROPAGATION_UNSPECIFIED`, one of: DELETION_PROPAGATION_UNSPECIFIED|DELETION_PROPAGATION_ORPHAN|DELETION_PROPAGATION_BACKGROUND|DELETION_PROPAGATION_FOREGROUND): - DELETION_PROPAGATION_ORPHAN: Orphans the dependents.
 
-### `dcectl kpanda apiextensions delete-custom-resource-definition`
+### `dc container-management apiextensions delete-custom-resource-definition`
 
 - Summary: DeleteCustomResourceDefinition deletes a customResourceDefinition from the
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions/{name}`
@@ -479,7 +479,7 @@
   - `--cluster` (path, required): Cluster the specified customResourceDefinition belongs to.
   - `--name` (path, required): Name is the metadata.name of the referenced customResourceDefinition.
 
-### `dcectl kpanda apiextensions get-cluster-custom-resource`
+### `dc container-management apiextensions get-cluster-custom-resource`
 
 - Summary: GetClusterCustomResource gets a customResource of cluster scope
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}/{name}`
@@ -493,7 +493,7 @@
   - `--name` (path, required): Name represents the name of CustomResource.
   - `--show-detail` (query): ShowDetail is the presentation details, including metadata, spec, and status
 
-### `dcectl kpanda apiextensions get-cluster-custom-resource-json`
+### `dc container-management apiextensions get-cluster-custom-resource-json`
 
 - Summary: GetClusterCustomResourceJSON gets a customResource json of cluster scope
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}/{name}/json`
@@ -506,7 +506,7 @@
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
 
-### `dcectl kpanda apiextensions get-custom-resource`
+### `dc container-management apiextensions get-custom-resource`
 
 - Summary: GetCustomResource gets a customResource of namespaced scope from
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}/{name}`
@@ -521,7 +521,7 @@
   - `--name` (path, required): Name represents the name of CustomResource.
   - `--show-detail` (query): ShowDetail is the presentation details, including metadata, spec, and status
 
-### `dcectl kpanda apiextensions get-custom-resource-definition`
+### `dc container-management apiextensions get-custom-resource-definition`
 
 - Summary: GetCustomResourceDefinition gets a customResourceDefinition from
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions/{name}`
@@ -531,7 +531,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the CustomResourceDefinition belongs to.
   - `--name` (path, required): Name represents the name of CustomResourceDefinition.
 
-### `dcectl kpanda apiextensions get-custom-resource-definition-json`
+### `dc container-management apiextensions get-custom-resource-definition-json`
 
 - Summary: GetCustomResourceDefinitionJSON gets a customResourceDefinition json from
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions/{name}/json`
@@ -541,7 +541,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the CustomResourceDefinition belongs to.
   - `--name` (path, required): Name represents the name of CustomResourceDefinition.
 
-### `dcectl kpanda apiextensions get-custom-resource-json`
+### `dc container-management apiextensions get-custom-resource-json`
 
 - Summary: GetCustomResourceJSON gets a customResource of namespaced scope json from
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}/{name}/json`
@@ -555,7 +555,7 @@
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
 
-### `dcectl kpanda apiextensions list-cluster-custom-resources`
+### `dc container-management apiextensions list-cluster-custom-resources`
 
 - Summary: ListClusterCustomResources lists customResources of cluster scope
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}`
@@ -575,7 +575,7 @@
   - `--show-detail` (query): ShowDetail is the presentation details, including metadata, spec, and status
 - Output: list path `items`; columns `name`, `namespace`, `kind`, `creationTimestamp`, `apiVersion`, `data`; pagination `offset`
 
-### `dcectl kpanda apiextensions list-custom-resource-definition-groups`
+### `dc container-management apiextensions list-custom-resource-definition-groups`
 
 - Summary: ListCustomResourceDefinitionGroups lists all groups of customResourceDefinitions in the specified cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/crd-groups`
@@ -585,7 +585,7 @@
   - `--cluster` (path, required): Cluster to request
 - Output: list path `items`
 
-### `dcectl kpanda apiextensions list-custom-resource-definitions`
+### `dc container-management apiextensions list-custom-resource-definitions`
 
 - Summary: ListCustomResourceDefinitions lists customResourceDefinitions in the specified cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions`
@@ -605,7 +605,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda apiextensions list-custom-resources`
+### `dc container-management apiextensions list-custom-resources`
 
 - Summary: ListCustomResources lists customResources of namespaced scope from the
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}`
@@ -628,7 +628,7 @@
   - `--owner-reference` (query): OwnerReference indicates that the query is based on the OwnerReference.
 - Output: list path `items`; columns `name`, `namespace`, `kind`, `creationTimestamp`, `apiVersion`, `data`; pagination `offset`
 
-### `dcectl kpanda apiextensions patch-custom-resource`
+### `dc container-management apiextensions patch-custom-resource`
 
 - Summary: PatchCustomResource patches a customResource of cluster scope from
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}/{name}`
@@ -642,7 +642,7 @@
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
 
-### `dcectl kpanda apiextensions update-cluster-custom-resource`
+### `dc container-management apiextensions update-cluster-custom-resource`
 
 - Summary: UpdateClusterCustomResource updates a customResource of cluster scope from
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}/{name}`
@@ -655,7 +655,7 @@
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
 
-### `dcectl kpanda apiextensions update-cluster-custom-resource-status`
+### `dc container-management apiextensions update-cluster-custom-resource-status`
 
 - Summary: UpdateClusterCustomResourceStatus updates the status of a customResource of cluster scope
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/{resource}/{name}/status`
@@ -668,7 +668,7 @@
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
 
-### `dcectl kpanda apiextensions update-custom-resource`
+### `dc container-management apiextensions update-custom-resource`
 
 - Summary: UpdateCustomResource updates a customResource of namespaced scope from the
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}/{name}`
@@ -682,7 +682,7 @@
   - `--resource` (path, required): Resource represents the resource name of CustomResource, which is plural.
   - `--name` (path, required): Name represents the name of CustomResource.
 
-### `dcectl kpanda apiextensions update-custom-resource-definition`
+### `dc container-management apiextensions update-custom-resource-definition`
 
 - Summary: UpdateCustomResourceDefinition updates a customResourceDefinition from the
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/customresourcedefinitions/{name}`
@@ -692,7 +692,7 @@
   - `--cluster` (path, required): Cluster the specified customResourceDefinition belongs to.
   - `--name` (path, required): Name represents for the resource name.
 
-### `dcectl kpanda apiextensions update-custom-resource-status`
+### `dc container-management apiextensions update-custom-resource-status`
 
 - Summary: UpdateCustomResourceStatus updates the status of a customResource
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/gvr/{group}/{version}/namespaces/{namespace}/{resource}/{name}/status`
@@ -708,7 +708,7 @@
 
 ## Apps
 
-### `dcectl kpanda apps create-workload-by-json`
+### `dc container-management apps create-workload-by-json`
 
 - Summary: CreateWorkloadByJSON creates workload by JSON under the namespaces of a
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/{kind}/json`
@@ -719,7 +719,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the Workload belongs to.
   - `--kind` (path, required, one of: deployments|statefulsets|daemonsets|jobs|cronjobs|pods|replicasets): WorkloadKind the workload of kind
 
-### `dcectl kpanda apps delete-daemon-set`
+### `dc container-management apps delete-daemon-set`
 
 - Summary: DeleteDaemonSet deletes a daemonSets under the namespaces of a specific
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/daemonsets/{name}`
@@ -730,7 +730,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the daemonSet belongs to.
   - `--name` (path, required): Name represents the name of daemonSet
 
-### `dcectl kpanda apps delete-deployment`
+### `dc container-management apps delete-deployment`
 
 - Summary: DeleteDeployment deletes a deployment under the namespaces of a specific
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}`
@@ -741,7 +741,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment
 
-### `dcectl kpanda apps delete-replica-set`
+### `dc container-management apps delete-replica-set`
 
 - Summary: DeleteReplicaSet deletes a replicaset in specified namespace of a cluster
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/replicasets/{name}`
@@ -752,7 +752,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ReplicaSet.
   - `--name` (path, required): Name represents for the ReplicaSet name.
 
-### `dcectl kpanda apps delete-stateful-set`
+### `dc container-management apps delete-stateful-set`
 
 - Summary: DeleteStatefulSet deletes a statefulSet under the namespaces of a specific
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}`
@@ -763,7 +763,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment
 
-### `dcectl kpanda apps get-daemon-set`
+### `dc container-management apps get-daemon-set`
 
 - Summary: GetDaemonSet gets a daemonSets under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/daemonsets/{name}`
@@ -774,7 +774,7 @@
   - `--namespace` (path, required): Cluster represents which namespace the workload belongs to.
   - `--name` (path, required): Name represents the name of workload to belongs to.
 
-### `dcectl kpanda apps get-deployment`
+### `dc container-management apps get-deployment`
 
 - Summary: GetDeployment gets a deployment under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}`
@@ -785,7 +785,7 @@
   - `--namespace` (path, required): Cluster represents which namespace the workload belongs to.
   - `--name` (path, required): Name represents the name of workload to belongs to.
 
-### `dcectl kpanda apps get-replica-set`
+### `dc container-management apps get-replica-set`
 
 - Summary: GetReplicaSet gets replicaset detail in specified namespace of a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/replicasets/{name}`
@@ -796,7 +796,7 @@
   - `--namespace` (path, required): Namespace the specified replicaSet belongs to.
   - `--name` (path, required): Name of the specified replicaSet.
 
-### `dcectl kpanda apps get-replica-set-json`
+### `dc container-management apps get-replica-set-json`
 
 - Summary: GetReplicaSetJSON gets replicaset yaml in specified namespace of a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/replicasets/{name}/json`
@@ -807,7 +807,7 @@
   - `--namespace` (path, required): Namespace the specified replicaSet belongs to.
   - `--name` (path, required): Name represents for the replicaSet name.
 
-### `dcectl kpanda apps get-stateful-set`
+### `dc container-management apps get-stateful-set`
 
 - Summary: GetStatefulSet gets a statefulSets under the namespaces of a specific
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}`
@@ -818,7 +818,7 @@
   - `--namespace` (path, required): Cluster represents which namespace the workload belongs to.
   - `--name` (path, required): Name represents the name of workload to belongs to.
 
-### `dcectl kpanda apps get-workload-json`
+### `dc container-management apps get-workload-json`
 
 - Summary: GetWorkloadJSON gets workload by JSON under the namespaces of a specific
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/{kind}/{name}/json`
@@ -831,7 +831,7 @@
   - `--name` (path, required): Name represents the name of Workload
   - `--stable` (query): If stable is true, the v1 version under the corresponding package will be returned.
 
-### `dcectl kpanda apps list-all-daemon-sets`
+### `dc container-management apps list-all-daemon-sets`
 
 - Summary: List DaemonSets across all namespaces in a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/daemonsets`
@@ -853,7 +853,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-all-deployments`
+### `dc container-management apps list-all-deployments`
 
 - Summary: List Deployments across all namespaces in a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/deployments`
@@ -875,7 +875,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-all-stateful-sets`
+### `dc container-management apps list-all-stateful-sets`
 
 - Summary: List StatefulSets across all namespaces in a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/statefulsets`
@@ -897,7 +897,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-cluster-daemon-sets`
+### `dc container-management apps list-cluster-daemon-sets`
 
 - Summary: ListClusterDaemonSets lists DaemonSet in one cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/daemonsets`
@@ -917,7 +917,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-cluster-deployments`
+### `dc container-management apps list-cluster-deployments`
 
 - Summary: ListClusterDeployments lists one cluster all namespace's deployments
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/deployments`
@@ -937,7 +937,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-cluster-replica-sets`
+### `dc container-management apps list-cluster-replica-sets`
 
 - Summary: ListClusterReplicaSets lists replicasets of a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/replicasets`
@@ -956,7 +956,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda apps list-cluster-stateful-sets`
+### `dc container-management apps list-cluster-stateful-sets`
 
 - Summary: ListClusterStatefulSets lists one cluster all namespace's statefulsets
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/statefulsets`
@@ -976,7 +976,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-config-maps-related-workloads`
+### `dc container-management apps list-config-maps-related-workloads`
 
 - Summary: ListConfigMapsRelatedWorkloads list all workloads associated with this cm
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{configmap}/related`
@@ -988,7 +988,7 @@
   - `--configmap` (path, required): configmap
 - Output: list path `daemonsets`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`
 
-### `dcectl kpanda apps list-controller-revisions`
+### `dc container-management apps list-controller-revisions`
 
 - Summary: query like controllerrevisions?kind=STATEFULSET
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/controllerrevisions`
@@ -1008,7 +1008,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-daemon-sets`
+### `dc container-management apps list-daemon-sets`
 
 - Summary: List DaemonSets in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/daemonsets`
@@ -1029,7 +1029,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps list-deployments`
+### `dc container-management apps list-deployments`
 
 - Summary: List Deployments in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments`
@@ -1049,9 +1049,9 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
-- Example: `dcectl kpanda apps list-deployments \ --cluster prod-cluster \ --namespace default`
+- Example: `dc container-management apps list-deployments \ --cluster prod-cluster \ --namespace default`
 
-### `dcectl kpanda apps list-replica-sets`
+### `dc container-management apps list-replica-sets`
 
 - Summary: ListReplicaSets lists replicasets in specified namespace of a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/replicasets`
@@ -1073,7 +1073,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda apps list-secrets-related-workloads`
+### `dc container-management apps list-secrets-related-workloads`
 
 - Summary: ListSecretsRelatedWorkloads list all workloads associated with this secret
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{secret}/related`
@@ -1085,7 +1085,7 @@
   - `--secret` (path, required): secret
 - Output: list path `daemonsets`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`
 
-### `dcectl kpanda apps list-stateful-sets`
+### `dc container-management apps list-stateful-sets`
 
 - Summary: List StatefulSets in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets`
@@ -1106,7 +1106,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `revision`; pagination `offset`
 
-### `dcectl kpanda apps patch-daemon-set`
+### `dc container-management apps patch-daemon-set`
 
 - Summary: PatchDaemonSet gets a daemonset under the namespaces of a specific cluster
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/daemonsets/{name}`
@@ -1117,7 +1117,7 @@
   - `--namespace` (path, required): The namespace which the deployment belongs to.
   - `--name` (path, required): The name of the deployment.
 
-### `dcectl kpanda apps patch-deployment`
+### `dc container-management apps patch-deployment`
 
 - Summary: PatchDeployment patches a deployment under the namespaces of a
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}`
@@ -1128,7 +1128,7 @@
   - `--namespace` (path, required): The namespace which the deployment belongs to.
   - `--name` (path, required): The name of the deployment.
 
-### `dcectl kpanda apps patch-stateful-set`
+### `dc container-management apps patch-stateful-set`
 
 - Summary: PatchStatefulSet update a statefulSet under the namespaces of a specific
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}`
@@ -1139,7 +1139,7 @@
   - `--namespace` (path, required): The namespace which the deployment belongs to.
   - `--name` (path, required): The name of the deployment.
 
-### `dcectl kpanda apps pause-deployment`
+### `dc container-management apps pause-deployment`
 
 - Summary: PauseDeployment pauses a deployment under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}:pause`
@@ -1150,7 +1150,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment
 
-### `dcectl kpanda apps restart-daemon-set`
+### `dc container-management apps restart-daemon-set`
 
 - Summary: RestartDaemonSet restarts a daemonSets under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/daemonsets/{name}:restart`
@@ -1161,7 +1161,7 @@
   - `--namespace` (path, required): Namespace the specified daemonset belongs to.
   - `--name` (path, required): Daemonset name.
 
-### `dcectl kpanda apps restart-deployment`
+### `dc container-management apps restart-deployment`
 
 - Summary: RestartDeployment restarts a deployment under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}:restart`
@@ -1172,7 +1172,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment
 
-### `dcectl kpanda apps restart-stateful-set`
+### `dc container-management apps restart-stateful-set`
 
 - Summary: RestartStatefulSet restarts a statefulSet under the namespaces of a
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}:restart`
@@ -1183,7 +1183,7 @@
   - `--namespace` (path, required): Namespace the specified statefulset belongs to.
   - `--name` (path, required): StatefulSet name.
 
-### `dcectl kpanda apps resume-deployment`
+### `dc container-management apps resume-deployment`
 
 - Summary: ResumeDeployment resumes a deployment under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}:resume`
@@ -1194,7 +1194,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment
 
-### `dcectl kpanda apps rollback-daemon-set`
+### `dc container-management apps rollback-daemon-set`
 
 - Summary: RollbackDaemonSet rollbacks a daemonSets under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/daemonsets/{name}:rollback`
@@ -1205,7 +1205,7 @@
   - `--namespace` (path, required): Namespace the specified daemonset belongs to.
   - `--name` (path, required): Daemonset name.
 
-### `dcectl kpanda apps rollback-deployment`
+### `dc container-management apps rollback-deployment`
 
 - Summary: RollbackDeployment rollbacks a deployment under the namespaces of a
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}:rollback`
@@ -1216,7 +1216,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment
 
-### `dcectl kpanda apps rollback-stateful-set`
+### `dc container-management apps rollback-stateful-set`
 
 - Summary: RollbackStatefulSet rollbacks a statefulSet under the namespaces of a
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}:rollback`
@@ -1227,7 +1227,7 @@
   - `--namespace` (path, required): Namespace the specified statefulset belongs to.
   - `--name` (path, required): StatefulSet name.
 
-### `dcectl kpanda apps start-deployment`
+### `dc container-management apps start-deployment`
 
 - Summary: StartDeployment starts a deployment under the namespace of a specific cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}:start`
@@ -1238,7 +1238,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment.
 
-### `dcectl kpanda apps start-stateful-set`
+### `dc container-management apps start-stateful-set`
 
 - Summary: StartStatefulSet starts a statefulset under the namespace of a specific cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}:start`
@@ -1249,7 +1249,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the statefulset belongs to.
   - `--name` (path, required): Name represents the name of statefulset.
 
-### `dcectl kpanda apps stop-deployment`
+### `dc container-management apps stop-deployment`
 
 - Summary: StopDeployment starts a deployment under the namespace of a specific cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/deployments/{name}:stop`
@@ -1260,7 +1260,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the deployment belongs to.
   - `--name` (path, required): Name represents the name of deployment.
 
-### `dcectl kpanda apps stop-stateful-set`
+### `dc container-management apps stop-stateful-set`
 
 - Summary: StopStatefulSet starts a statefulset under the namespace of a specific cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/statefulsets/{name}:stop`
@@ -1271,7 +1271,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the statefulset belongs to.
   - `--name` (path, required): Name represents the name of statefulset.
 
-### `dcectl kpanda apps update-replica-set`
+### `dc container-management apps update-replica-set`
 
 - Summary: UpdateReplicaSet updates a replicaset in specified namespace of a cluster
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/replicasets/{name}`
@@ -1282,7 +1282,7 @@
   - `--namespace` (path, required): Namespace the specified replicaSet belongs to.
   - `--name` (path, required): Name of the specified replicaSet.
 
-### `dcectl kpanda apps update-workload-by-json`
+### `dc container-management apps update-workload-by-json`
 
 - Summary: UpdateWorkloadByJSON updates workload by JSON under the namespaces of a
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/{kind}/{name}/json`
@@ -1296,7 +1296,7 @@
 
 ## Autoscaling
 
-### `dcectl kpanda autoscaling create-cluster-resource-override`
+### `dc container-management autoscaling create-cluster-resource-override`
 
 - Summary: CreateClusterResourceOverride creates a cro by given json.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterresourceoverride`
@@ -1305,7 +1305,7 @@
 - Flags:
   - `--cluster` (path, required): cluster defines the cluster name.
 
-### `dcectl kpanda autoscaling create-cron-horizontal-pod-autoscaler`
+### `dc container-management autoscaling create-cron-horizontal-pod-autoscaler`
 
 - Summary: CreateCronHorizontalPodAutoscaler creates a cron hpa by given json.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronhorizontalpodautoscalers`
@@ -1315,7 +1315,7 @@
   - `--cluster` (path, required): Cluster the specified hpa belongs to.
   - `--namespace` (path, required): When the current namespace is named, the priority is higher than that in yaml
 
-### `dcectl kpanda autoscaling create-horizontal-pod-autoscaler`
+### `dc container-management autoscaling create-horizontal-pod-autoscaler`
 
 - Summary: CreateHorizontalPodAutoscaler creates a hpa by given json.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/horizontalpodautoscalers`
@@ -1325,7 +1325,7 @@
   - `--cluster` (path, required): Cluster the specified hpa belongs to.
   - `--namespace` (path, required): When the current namespace is named, the priority is higher than that in yaml
 
-### `dcectl kpanda autoscaling create-vertical-pod-autoscaler`
+### `dc container-management autoscaling create-vertical-pod-autoscaler`
 
 - Summary: CreateVerticalPodAutoscaler creates a vpa by given json.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/verticalpodautoscalers`
@@ -1335,7 +1335,7 @@
   - `--cluster` (path, required): Cluster the specified vpa belongs to.
   - `--namespace` (path, required): Namespace of the vpa.
 
-### `dcectl kpanda autoscaling delete-cluster-resource-override`
+### `dc container-management autoscaling delete-cluster-resource-override`
 
 - Summary: DeleteClusterResourceOverride deletes a cro by name.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterresourceoverride/{name}`
@@ -1345,7 +1345,7 @@
   - `--cluster` (path, required): cluster defines the cluster name.
   - `--name` (path, required): name defines the name of ClusterResourceOverride.
 
-### `dcectl kpanda autoscaling delete-cron-horizontal-pod-autoscaler`
+### `dc container-management autoscaling delete-cron-horizontal-pod-autoscaler`
 
 - Summary: DeleteCronHorizontalPodAutoscaler deletes a cron hpa by given name.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronhorizontalpodautoscalers/{name}`
@@ -1356,7 +1356,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced hpa.
   - `--name` (path, required): Name is the metadata.name of the referenced hpa.
 
-### `dcectl kpanda autoscaling delete-horizontal-pod-autoscaler`
+### `dc container-management autoscaling delete-horizontal-pod-autoscaler`
 
 - Summary: DeleteHorizontalPodAutoscaler deletes a hpa by given name.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/horizontalpodautoscalers/{name}`
@@ -1367,7 +1367,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced hpa.
   - `--name` (path, required): Name is the metadata.name of the referenced hpa.
 
-### `dcectl kpanda autoscaling delete-vertical-pod-autoscaler`
+### `dc container-management autoscaling delete-vertical-pod-autoscaler`
 
 - Summary: DeleteVerticalPodAutoscaler deletes a vpa by given name.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/verticalpodautoscalers/{name}`
@@ -1378,7 +1378,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced vpa.
   - `--name` (path, required): Name is the metadata.name of the vpa.
 
-### `dcectl kpanda autoscaling get-cluster-resource-override`
+### `dc container-management autoscaling get-cluster-resource-override`
 
 - Summary: GetClusterResourceOverride gets a cro by name.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterresourceoverride/{name}`
@@ -1388,7 +1388,7 @@
   - `--cluster` (path, required): cluster defines the cluster name.
   - `--name` (path, required): name defines the name of ClusterResourceOverride.
 
-### `dcectl kpanda autoscaling get-cron-horizontal-pod-autoscaler-json`
+### `dc container-management autoscaling get-cron-horizontal-pod-autoscaler-json`
 
 - Summary: GetCronHorizontalPodAutoscalerJSON gets the cron hpa by namespace and name,
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronhorizontalpodautoscalers/{name}/json`
@@ -1400,7 +1400,7 @@
   - `--name` (path, required): HorizontalPodAutoscaler name.
   - `--stable` (query): If stable is true, the v2 version under the corresponding package will be returned.
 
-### `dcectl kpanda autoscaling get-horizontal-pod-autoscaler-json`
+### `dc container-management autoscaling get-horizontal-pod-autoscaler-json`
 
 - Summary: GetHorizontalPodAutoscalerJSON gets the hpa by namespace and name,
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/horizontalpodautoscalers/{name}/json`
@@ -1412,7 +1412,7 @@
   - `--name` (path, required): HorizontalPodAutoscaler name.
   - `--stable` (query): If stable is true, the v2 version under the corresponding package will be returned.
 
-### `dcectl kpanda autoscaling get-vertical-pod-autoscaler-json`
+### `dc container-management autoscaling get-vertical-pod-autoscaler-json`
 
 - Summary: GetVerticalPodAutoscalerJSON gets a vpa by namespace and name, returning a string in JSON format.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/verticalpodautoscalers/{name}/json`
@@ -1424,7 +1424,7 @@
   - `--name` (path, required): Name of the vpa.
   - `--stable` (query): If stable is true, the v2 version under the corresponding package will be returned.
 
-### `dcectl kpanda autoscaling list-cron-horizontal-pod-autoscalers`
+### `dc container-management autoscaling list-cron-horizontal-pod-autoscalers`
 
 - Summary: ListCronHorizontalPodAutoscalers lists cron hpas in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronhorizontalpodautoscalers`
@@ -1439,7 +1439,7 @@
   - `--name` (query): The workload name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda autoscaling list-custom-metric-summary`
+### `dc container-management autoscaling list-custom-metric-summary`
 
 - Summary: ListCustomMetricsSummary return the custom metrics for specified
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/custommetricsummary`
@@ -1450,7 +1450,7 @@
   - `--kind` (query, default `KIND_UNSPECIFIED`, one of: KIND_UNSPECIFIED|Pod|Service): The kind of hpa targetRef.
 - Output: list path `items`
 
-### `dcectl kpanda autoscaling list-horizontal-pod-autoscalers`
+### `dc container-management autoscaling list-horizontal-pod-autoscalers`
 
 - Summary: ListHorizontalPodAutoscalers lists hpas in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/horizontalpodautoscalers`
@@ -1465,7 +1465,7 @@
   - `--name` (query): The workload name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda autoscaling list-metric-values`
+### `dc container-management autoscaling list-metric-values`
 
 - Summary: ListMetricValueList returns a list of metrics values for a given
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/metricvalues`
@@ -1479,7 +1479,7 @@
   - `--name` (query): The exact name of metric.
 - Output: list path `items`; columns `metricName`, `timestamp`, `value`
 
-### `dcectl kpanda autoscaling list-vertical-pod-autoscalers`
+### `dc container-management autoscaling list-vertical-pod-autoscalers`
 
 - Summary: ListVerticalPodAutoscalers lists vpas in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/verticalpodautoscalers`
@@ -1494,7 +1494,7 @@
   - `--kind-name` (query): The name of the targetRef.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda autoscaling update-cluster-resource-override`
+### `dc container-management autoscaling update-cluster-resource-override`
 
 - Summary: UpdateClusterResourceOverride updates a cro by given json.
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterresourceoverride`
@@ -1503,7 +1503,7 @@
 - Flags:
   - `--cluster` (path, required): cluster defines the cluster name.
 
-### `dcectl kpanda autoscaling update-cron-horizontal-pod-autoscaler`
+### `dc container-management autoscaling update-cron-horizontal-pod-autoscaler`
 
 - Summary: UpdateCronHorizontalPodAutoscaler updates the specified cron hpa, the body must
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronhorizontalpodautoscalers/{name}`
@@ -1514,7 +1514,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced hpa.
   - `--name` (path, required): name represents for the resource name
 
-### `dcectl kpanda autoscaling update-horizontal-pod-autoscaler`
+### `dc container-management autoscaling update-horizontal-pod-autoscaler`
 
 - Summary: UpdateHorizontalPodAutoscaler updates the specified hpa, the body must
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/horizontalpodautoscalers/{name}`
@@ -1525,7 +1525,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced hpa.
   - `--name` (path, required): name represents for the resource name
 
-### `dcectl kpanda autoscaling update-vertical-pod-autoscaler`
+### `dc container-management autoscaling update-vertical-pod-autoscaler`
 
 - Summary: UpdateVerticalPodAutoscaler updates the specified vpa, the body must
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/verticalpodautoscalers/{name}`
@@ -1538,7 +1538,7 @@
 
 ## Batch
 
-### `dcectl kpanda batch delete-cron-job`
+### `dc container-management batch delete-cron-job`
 
 - Summary: DeleteCronJob deletes a cronJob under the namespaces of a specific cluster
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronjobs/{name}`
@@ -1549,7 +1549,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the cronjob belongs to.
   - `--name` (path, required): Cronjob name.
 
-### `dcectl kpanda batch delete-job`
+### `dc container-management batch delete-job`
 
 - Summary: DeleteJob deletes a job under the namespaces of a specific cluster
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/jobs/{name}`
@@ -1560,7 +1560,7 @@
   - `--namespace` (path, required): Namespace the specified job belongs to.
   - `--name` (path, required): Name of the job.
 
-### `dcectl kpanda batch get-cron-job`
+### `dc container-management batch get-cron-job`
 
 - Summary: GetCronJob gets a cronJob under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronjobs/{name}`
@@ -1572,7 +1572,7 @@
   - `--name` (path, required): Cronjob name.
 - Output: list path `images`
 
-### `dcectl kpanda batch get-job`
+### `dc container-management batch get-job`
 
 - Summary: GetJob gets a job under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/jobs/{name}`
@@ -1583,7 +1583,7 @@
   - `--namespace` (path, required): Namespace the specified service belongs to.
   - `--name` (path, required): Name of the job.
 
-### `dcectl kpanda batch list-all-cron-jobs`
+### `dc container-management batch list-all-cron-jobs`
 
 - Summary: ListAllCronJobs lists all clusters cronjob
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/cronjobs`
@@ -1605,7 +1605,7 @@
   - `--show-virtual-cluster` (query): ShowVirtualCluster is used to control whether to return data that belongs to a virtual cluster. Default false.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `availed`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch list-all-jobs`
+### `dc container-management batch list-all-jobs`
 
 - Summary: ListAllJobs lists all cluster jobs
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/jobs`
@@ -1627,7 +1627,7 @@
   - `--show-virtual-cluster` (query): ShowVirtualCluster is used to control whether to return data that belongs to a virtual cluster. Default false.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch list-cluster-cron-jobs`
+### `dc container-management batch list-cluster-cron-jobs`
 
 - Summary: ListClusterCronJobs lists cluster cronJobs under the namespaces of a
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronjobs`
@@ -1649,7 +1649,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `availed`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch list-cluster-jobs`
+### `dc container-management batch list-cluster-jobs`
 
 - Summary: ListClusterJobs list cluster jobs under the namespaces of a specific
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/jobs`
@@ -1671,7 +1671,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch list-cron-jobs`
+### `dc container-management batch list-cron-jobs`
 
 - Summary: List CronJobs in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/cronjobs`
@@ -1692,7 +1692,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `availed`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch list-jobs`
+### `dc container-management batch list-jobs`
 
 - Summary: List Jobs in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/jobs`
@@ -1713,7 +1713,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch list-jobs-by-cron-jobs-name`
+### `dc container-management batch list-jobs-by-cron-jobs-name`
 
 - Summary: ListJobsByCronJobsName lists Jobs By CronJobs's Name under the namespaces
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronjobs/{cronjob}/jobs`
@@ -1732,7 +1732,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`, `executionTimestamp`; pagination `offset`
 
-### `dcectl kpanda batch pause-cron-job`
+### `dc container-management batch pause-cron-job`
 
 - Summary: PauseCronJob pauses a cronjob under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronjobs/{name}:pause`
@@ -1743,7 +1743,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the cronjob belongs to.
   - `--name` (path, required): Name represents the name of cronjob
 
-### `dcectl kpanda batch restart-job`
+### `dc container-management batch restart-job`
 
 - Summary: RestartJob restarts a job under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/jobs/{name}:restart`
@@ -1754,7 +1754,7 @@
   - `--namespace` (path, required): Namespace the specified job belongs to.
   - `--name` (path, required): Name of the job.
 
-### `dcectl kpanda batch resume-cron-job`
+### `dc container-management batch resume-cron-job`
 
 - Summary: ResumeCronJob resumes a cronjob under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/cronjobs/{name}:resume`
@@ -1767,7 +1767,7 @@
 
 ## CloudShell
 
-### `dcectl kpanda cloudshell create-cloud-shell`
+### `dc container-management cloudshell create-cloud-shell`
 
 - Summary: CreateCloudShell create a cloudshell in golobal cluster.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cloudshells`
@@ -1775,7 +1775,7 @@
 - Body: required
 - Flags: none
 
-### `dcectl kpanda cloudshell delete-cloud-shell`
+### `dc container-management cloudshell delete-cloud-shell`
 
 - Summary: DeleteCloudShell delete a cloudshell in golobal cluster.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/cloudshells/{name}`
@@ -1784,7 +1784,7 @@
 - Flags:
   - `--name` (path, required): name specified the cloudshell name.
 
-### `dcectl kpanda cloudshell get-cloud-shell`
+### `dc container-management cloudshell get-cloud-shell`
 
 - Summary: GetCloudShell get a cloudshell in golobal cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cloudshells/{name}`
@@ -1795,16 +1795,16 @@
 
 ## Cluster
 
-### `dcectl kpanda cluster create-cluster`
+### `dc container-management cluster create-cluster`
 
 - Summary: Register or create a cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `dcectl kpanda cluster create-cluster --file cluster.json`
+- Example: `dc container-management cluster create-cluster --file cluster.json`
 
-### `dcectl kpanda cluster create-open-api-cluster-cert`
+### `dc container-management cluster create-open-api-cluster-cert`
 
 - Summary: CreateOpenAPIClusterCert creates openAPI cluster cert
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/clustercert`
@@ -1813,7 +1813,7 @@
 - Flags:
   - `--cluster` (path, required): one of cluster or kubeSystemID has value
 
-### `dcectl kpanda cluster create-open-api-cluster-cert-by-kube-system-id`
+### `dc container-management cluster create-open-api-cluster-cert-by-kube-system-id`
 
 - Summary: CreateOpenAPIClusterCertByKubeSystemID creates openAPI cluster cert by
 - HTTP: `POST /apis/kpanda.io/v1alpha1/kubesystemid/{kubeSystemID}/clustercert`
@@ -1822,7 +1822,7 @@
 - Flags:
   - `--kube-system-id` (path, required): kubeSystemID is the cluster system ID.
 
-### `dcectl kpanda cluster delete-cluster`
+### `dc container-management cluster delete-cluster`
 
 - Summary: Remove a cluster from management
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{name}`
@@ -1831,7 +1831,7 @@
 - Flags:
   - `--name` (path, required): Name is the user-specified identifier.
 
-### `dcectl kpanda cluster edit-cluster-labels`
+### `dc container-management cluster edit-cluster-labels`
 
 - Summary: EditClusterLabels edits the specified cluster's labels
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{name}/labels`
@@ -1840,7 +1840,7 @@
 - Flags:
   - `--name` (path, required): Name is the user-specified identifier.
 
-### `dcectl kpanda cluster get-cluster`
+### `dc container-management cluster get-cluster`
 
 - Summary: Get cluster details
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{name}`
@@ -1855,9 +1855,9 @@
   - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the list order.
   - `--exclude-metrics` (query): exclude_metrics
 - Output: pagination `offset`
-- Example: `dcectl kpanda cluster get-cluster --name prod-cluster`
+- Example: `dc container-management cluster get-cluster --name prod-cluster`
 
-### `dcectl kpanda cluster get-cluster-kube-config`
+### `dc container-management cluster get-cluster-kube-config`
 
 - Summary: Download kubeconfig for a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/kubeconfig`
@@ -1865,9 +1865,9 @@
 - Body: none
 - Flags:
   - `--cluster` (path, required): cluster
-- Example: `dcectl kpanda cluster get-cluster-kube-config --cluster prod-cluster -o raw > kubeconfig.yaml`
+- Example: `dc container-management cluster get-cluster-kube-config --cluster prod-cluster -o raw > kubeconfig.yaml`
 
-### `dcectl kpanda cluster list-all-cluster-gpu`
+### `dc container-management cluster list-all-cluster-gpu`
 
 - Summary: ListClusters lists kpanda cr resources
 - HTTP: `GET /apis/kpanda.io/v1alpha1/gpus`
@@ -1876,7 +1876,7 @@
 - Flags: none
 - Output: list path `items`; columns `uuid`, `modelName`, `memory`
 
-### `dcectl kpanda cluster list-cluster-preferred-resources`
+### `dc container-management cluster list-cluster-preferred-resources`
 
 - Summary: Cluster_ListClusterPreferredResources
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/preferredresources`
@@ -1887,7 +1887,7 @@
   - `--namespaced` (query): namespaced indicates whether this resource is cluster or namespace scoped.
 - Output: list path `resources`; columns `groupVersion`
 
-### `dcectl kpanda cluster list-cluster-summary`
+### `dc container-management cluster list-cluster-summary`
 
 - Summary: List cluster summary (lightweight)
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clustersummary`
@@ -1900,7 +1900,7 @@
   - `--show-shim-cluster` (query): ShowShimCluster is used to control whether returned clusters contain shim cluster, default false.
 - Output: list path `clusterSummary`; columns `name`, `phase`, `kubeSystemID`
 
-### `dcectl kpanda cluster list-clusters`
+### `dc container-management cluster list-clusters`
 
 - Summary: List all managed clusters
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters`
@@ -1923,9 +1923,9 @@
   - `--exclude-metrics` (query): exclude_metrics
   - `--show-shim-cluster` (query): ShowShimCluster is used to control whether returned clusters contain shim cluster, default false.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `spec.provider`, `spec.region`, `metadata.creationTimestamp`; pagination `offset`
-- Example: `dcectl kpanda cluster list-clusters dcectl kpanda cluster list-clusters -o json | jq '.items[].name'`
+- Example: `dc container-management cluster list-clusters dc container-management cluster list-clusters -o json | jq '.items[].name'`
 
-### `dcectl kpanda cluster update-clusters`
+### `dc container-management cluster update-clusters`
 
 - Summary: Update cluster configuration
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{name}`
@@ -1934,7 +1934,7 @@
 - Flags:
   - `--name` (path, required): Name is the user-specified identifier.
 
-### `dcectl kpanda cluster validate-cluster`
+### `dc container-management cluster validate-cluster`
 
 - Summary: ValidateCluster checks if residuals which affect integrating exist in a cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{name}/validate`
@@ -1943,7 +1943,7 @@
 - Flags:
   - `--name` (path, required): Name is the user-specified identifier.
 
-### `dcectl kpanda cluster validate-kube-config`
+### `dc container-management cluster validate-kube-config`
 
 - Summary: Validate a kubeconfig before registration
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/validate`
@@ -1953,7 +1953,7 @@
 
 ## ClusterSetting
 
-### `dcectl kpanda clustersetting disable-plugin`
+### `dc container-management clustersetting disable-plugin`
 
 - Summary: Disable a plugin so that it can be shown by the frontend.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/settings/plugins/{name}:disable`
@@ -1963,7 +1963,7 @@
   - `--cluster` (path, required): The cluster name of the clustersetting.
   - `--name` (path, required, one of: PLUGIN_NAME_UNSPECIFIED|HPA|Insight|GPU|METALLB|Spiderpool|CustomMetrics|CronHPA|VPA|Hwameistor|Flannel|KubeOvn|OLM|EgressGateway|Snapshot|DRA): The name of the plugin which needs to disable.
 
-### `dcectl kpanda clustersetting enable-plugin`
+### `dc container-management clustersetting enable-plugin`
 
 - Summary: Enable a plugin so that it can be shown by the frontend.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/settings/plugins/{name}:enable`
@@ -1973,7 +1973,7 @@
   - `--cluster` (path, required): The cluster name of the clustersetting.
   - `--name` (path, required, one of: PLUGIN_NAME_UNSPECIFIED|HPA|Insight|GPU|METALLB|Spiderpool|CustomMetrics|CronHPA|VPA|Hwameistor|Flannel|KubeOvn|OLM|EgressGateway|Snapshot|DRA): The name of the plugin which needs to enable.
 
-### `dcectl kpanda clustersetting get-cluster-setting`
+### `dc container-management clustersetting get-cluster-setting`
 
 - Summary: Gets the setting under a given cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/settings`
@@ -1983,7 +1983,7 @@
   - `--cluster` (path, required): The cluster name of the clustersetting.
 - Output: list path `network`; columns `name`, `enabled`, `externalAddress`, `healthy`, `intelligentDetection`, `setting`
 
-### `dcectl kpanda clustersetting list-gpu-setting`
+### `dc container-management clustersetting list-gpu-setting`
 
 - Summary: ClusterSetting_ListGPUSetting
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/settings/gpu`
@@ -1994,7 +1994,7 @@
   - `--available-enable` (query): if available_enable is true will return available gpu number
 - Output: list path `items`; columns `type`, `alias`, `isDynamic`
 
-### `dcectl kpanda clustersetting list-plugins`
+### `dc container-management clustersetting list-plugins`
 
 - Summary: Lists plugins under a given cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/settings/plugins`
@@ -2004,7 +2004,7 @@
   - `--cluster` (path, required): The cluster name of the clustersetting.
 - Output: list path `data`; columns `name`, `enabled`, `externalAddress`, `healthy`, `intelligentDetection`, `setting`
 
-### `dcectl kpanda clustersetting update-cluster-setting`
+### `dc container-management clustersetting update-cluster-setting`
 
 - Summary: UpdateClusterSetting will update the cluster setting and returns the settings
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/settings`
@@ -2016,7 +2016,7 @@
 
 ## Clusterlcm
 
-### `dcectl kpanda clusterlcm batch-add-node`
+### `dc container-management clusterlcm batch-add-node`
 
 - Summary: Clusterlcm_BatchAddNode
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/nodes`
@@ -2025,7 +2025,7 @@
 - Flags:
   - `--cluster` (path, required): cluster
 
-### `dcectl kpanda clusterlcm check-cluster`
+### `dc container-management clusterlcm check-cluster`
 
 - Summary: Clusterlcm_CheckCluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm/{name}:check`
@@ -2034,16 +2034,16 @@
 - Flags:
   - `--name` (path, required): name
 
-### `dcectl kpanda clusterlcm create-cluster`
+### `dc container-management clusterlcm create-cluster`
 
 - Summary: Register or create a cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm`
 - Auth: required
 - Body: required
 - Flags: none
-- Example: `dcectl kpanda cluster create-cluster --file cluster.json`
+- Example: `dc container-management cluster create-cluster --file cluster.json`
 
-### `dcectl kpanda clusterlcm delete-clusterlcm-ops`
+### `dc container-management clusterlcm delete-clusterlcm-ops`
 
 - Summary: Clusterlcm_DeleteClusterlcmOps
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/ops/{name}`
@@ -2053,7 +2053,7 @@
   - `--cluster` (path, required): The name of the manger cluster.
   - `--name` (path, required): The name of the cluster which needs to be create.
 
-### `dcectl kpanda clusterlcm get-clusterlcm-ops`
+### `dc container-management clusterlcm get-clusterlcm-ops`
 
 - Summary: Clusterlcm_GetClusterlcmOps
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/ops/{name}`
@@ -2063,7 +2063,7 @@
   - `--cluster` (path, required): The name of the cluster.
   - `--name` (path, required): The name of the clusterclmOps.
 
-### `dcectl kpanda clusterlcm get-clusterlcm-ops-json`
+### `dc container-management clusterlcm get-clusterlcm-ops-json`
 
 - Summary: Clusterlcm_GetClusterlcmOpsJSON
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/ops/{name}/json`
@@ -2073,7 +2073,7 @@
   - `--cluster` (path, required): The name of the cluster.
   - `--name` (path, required): The name of the clusterclmOps.
 
-### `dcectl kpanda clusterlcm get-clusterlcm-settings`
+### `dc container-management clusterlcm get-clusterlcm-settings`
 
 - Summary: Clusterlcm_GetClusterlcmSettings
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/settings`
@@ -2083,7 +2083,7 @@
   - `--cluster` (path, required): The name of the cluster which needs to be create.
 - Output: list path `preinstallAddons`; columns `repoUrl`
 
-### `dcectl kpanda clusterlcm get-pre-check-cluster-info`
+### `dc container-management clusterlcm get-pre-check-cluster-info`
 
 - Summary: Clusterlcm_GetPreCheckClusterInfo
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm/{name}/precheck-infos`
@@ -2092,7 +2092,7 @@
 - Flags:
   - `--name` (path, required): The name of the cluster which needs to be create.
 
-### `dcectl kpanda clusterlcm list-cluster-upgrade-histories`
+### `dc container-management clusterlcm list-cluster-upgrade-histories`
 
 - Summary: Clusterlcm_ListClusterUpgradeHistories
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/upgrade-histories`
@@ -2103,7 +2103,7 @@
   - `--target-cluster` (query): targetCluster
 - Output: list path `upgradeHistories`; columns `phase`, `changeTime`, `kubeVersion`
 
-### `dcectl kpanda clusterlcm list-clusterlcm-ops`
+### `dc container-management clusterlcm list-clusterlcm-ops`
 
 - Summary: Clusterlcm_ListClusterlcmOps
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/ops`
@@ -2122,7 +2122,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda clusterlcm list-kube-versions`
+### `dc container-management clusterlcm list-kube-versions`
 
 - Summary: Clusterlcm_ListKubeVersions
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/available-kube-versions`
@@ -2132,7 +2132,7 @@
   - `--cluster` (path, required): cluster
 - Output: list path `kubernetesVersions`
 
-### `dcectl kpanda clusterlcm list-runtime-versions`
+### `dc container-management clusterlcm list-runtime-versions`
 
 - Summary: Clusterlcm_ListRuntimeVersions
 - HTTP: `GET /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/available-runtime-versions`
@@ -2143,7 +2143,7 @@
   - `--kube-version` (query): kubeVersion
 - Output: list path `containerdVersions`
 
-### `dcectl kpanda clusterlcm pre-check-cluster`
+### `dc container-management clusterlcm pre-check-cluster`
 
 - Summary: Clusterlcm_PreCheckCluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm/{name}:precheck`
@@ -2152,7 +2152,7 @@
 - Flags:
   - `--name` (path, required): The name of the cluster which needs to be create.
 
-### `dcectl kpanda clusterlcm remove-node`
+### `dc container-management clusterlcm remove-node`
 
 - Summary: Clusterlcm_RemoveNode
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/cluster-lcm/{cluster}/nodes/{name}`
@@ -2162,7 +2162,7 @@
   - `--cluster` (path, required): cluster
   - `--name` (path, required): name
 
-### `dcectl kpanda clusterlcm reset-cluster`
+### `dc container-management clusterlcm reset-cluster`
 
 - Summary: Clusterlcm_ResetCluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm/{name}:reset`
@@ -2171,7 +2171,7 @@
 - Flags:
   - `--name` (path, required): name
 
-### `dcectl kpanda clusterlcm upgrade-cluster`
+### `dc container-management clusterlcm upgrade-cluster`
 
 - Summary: Clusterlcm_UpgradeCluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/cluster-lcm/{name}:upgrade`
@@ -2182,7 +2182,7 @@
 
 ## Core
 
-### `dcectl kpanda core batch-bind-node-to-namespace`
+### `dc container-management core batch-bind-node-to-namespace`
 
 - Summary: BatchBindNodeToNamespace makes the specified node to exclusive.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes:batchBindNamespace`
@@ -2192,7 +2192,7 @@
   - `--cluster` (path, required): Cluster is the cluster for namespace and node.
 - Output: list path `failedResults`; columns `error`, `nodeName`
 
-### `dcectl kpanda core compute-limit-range`
+### `dc container-management core compute-limit-range`
 
 - Summary: ComputeLimitRange returns the final effective quota detail of multi limit range in specified namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges:compute`
@@ -2202,7 +2202,7 @@
   - `--cluster` (path, required): Cluster the specified LimitRange belongs to.
   - `--namespace` (path, required): Namespace the specified LimitRange belongs to.
 
-### `dcectl kpanda core compute-resource-quota`
+### `dc container-management core compute-resource-quota`
 
 - Summary: ComputeResourceQuota returns the final effective quota detail of multi quotas in specified namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resourcequotas:compute`
@@ -2212,7 +2212,7 @@
   - `--cluster` (path, required): Cluster the specified resourceQuotas belongs to.
   - `--namespace` (path, required): Namespace the specified resourceQuotas belongs to.
 
-### `dcectl kpanda core cordon-node`
+### `dc container-management core cordon-node`
 
 - Summary: CordonNode makes the specified node to unschedulable.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/cordon`
@@ -2222,7 +2222,7 @@
   - `--cluster` (path, required): Cluster the specified node belongs to.
   - `--node` (path, required): Node name.
 
-### `dcectl kpanda core create-config-map`
+### `dc container-management core create-config-map`
 
 - Summary: CreateConfigMap creates a configMap under the namespaces of a specific
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps`
@@ -2232,7 +2232,7 @@
   - `--cluster` (path, required): Cluster the specified configmap belongs to.
   - `--namespace` (path, required): When the current namespace is named, the priority is higher than that in yaml
 
-### `dcectl kpanda core create-limit-range`
+### `dc container-management core create-limit-range`
 
 - Summary: CreateLimitRange creates a limitrange in the specified cluster and namespace.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges`
@@ -2242,7 +2242,7 @@
   - `--cluster` (path, required): Cluster the specified limitRange belongs to.
   - `--namespace` (path, required): Namespace the specified limitRange belongs to.
 
-### `dcectl kpanda core create-namespace`
+### `dc container-management core create-namespace`
 
 - Summary: CreateNamespace creates a namespace from the system by given namespace name
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces`
@@ -2251,7 +2251,7 @@
 - Flags:
   - `--cluster` (path, required): cluster the specified namespace belongs to.
 
-### `dcectl kpanda core create-persistent-volume`
+### `dc container-management core create-persistent-volume`
 
 - Summary: CreatePersistentVolume creates a persistentvolume to the system by given persistentvolume data
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumes`
@@ -2260,7 +2260,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified persistentVolume belongs to.
 
-### `dcectl kpanda core create-persistent-volume-claim`
+### `dc container-management core create-persistent-volume-claim`
 
 - Summary: CreatePersistentVolumeClaim create persistent volume claim
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims`
@@ -2270,7 +2270,7 @@
   - `--cluster` (path, required): cluster represents the cluster of PVC to belongs to.
   - `--namespace` (path, required): namespace represents the namespace of PVC to belongs to.
 
-### `dcectl kpanda core create-resource-quota`
+### `dc container-management core create-resource-quota`
 
 - Summary: CreateResourceQuota creates a resourceQuota to the system by given resourceQuota data
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resourcequotas`
@@ -2280,7 +2280,7 @@
   - `--cluster` (path, required): Cluster the specified resourceQuota belongs to.
   - `--namespace` (path, required): Namespace the specified resourceQuota belongs to.
 
-### `dcectl kpanda core create-secret`
+### `dc container-management core create-secret`
 
 - Summary: CreateSecret creates a secret under the namespaces of a specific cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets`
@@ -2290,7 +2290,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the secret belongs to.
   - `--namespace` (path, required): When the current namespace is named, the priority is higher than that in yaml
 
-### `dcectl kpanda core create-service`
+### `dc container-management core create-service`
 
 - Summary: CreateService creates a service to the system by given service data
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services`
@@ -2300,7 +2300,7 @@
   - `--cluster` (path, required): Cluster the specified service belongs to.
   - `--namespace` (path, required): When the current namespace is named, the priority is higher than that in
 
-### `dcectl kpanda core create-service-account`
+### `dc container-management core create-service-account`
 
 - Summary: CreateServiceAccount creates a sa from the system by given sa name
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/serviceaccounts`
@@ -2310,7 +2310,7 @@
   - `--cluster` (path, required): Cluster represents the cluster of ServiceAccount to belongs to.
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced pod.
 
-### `dcectl kpanda core delete-config-map`
+### `dc container-management core delete-config-map`
 
 - Summary: DeleteConfigMap deletes a configMap under the namespaces of a specific
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}`
@@ -2321,7 +2321,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (path, required): Name is the metadata.name of the referenced ConfigMap.
 
-### `dcectl kpanda core delete-limit-range`
+### `dc container-management core delete-limit-range`
 
 - Summary: DeleteLimitRange deletes the limitrange by name.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges/{name}`
@@ -2332,7 +2332,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced LimitRange.
   - `--name` (path, required): Name represents for the LimitRange name.
 
-### `dcectl kpanda core delete-namespace`
+### `dc container-management core delete-namespace`
 
 - Summary: DeleteNamespace deletes a namespace from the system by given namespace name
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}`
@@ -2342,7 +2342,7 @@
   - `--cluster` (path, required): Cluster the specified namespace belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda core delete-persistent-volume`
+### `dc container-management core delete-persistent-volume`
 
 - Summary: DeletePersistentVolume deletes a persistentvolume from the system by given persistentvolume name
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumes/{name}`
@@ -2352,7 +2352,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the PersistentVolume belongs to.
   - `--name` (path, required): Name represents for the PersistentVolume name.
 
-### `dcectl kpanda core delete-persistent-volume-claim`
+### `dc container-management core delete-persistent-volume-claim`
 
 - Summary: DeletePersistentVolumeClaim delete the specified pvc
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}`
@@ -2363,7 +2363,7 @@
   - `--namespace` (path, required): namespace represents the namespace of PVC to belongs to.
   - `--name` (path, required): name represents the name of PVC to belongs to.
 
-### `dcectl kpanda core delete-pod`
+### `dc container-management core delete-pod`
 
 - Summary: DeletePod deletes a pod under the namespaces of a specific cluster
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/pods/{name}`
@@ -2374,7 +2374,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced pod.
   - `--name` (path, required): Pod name.
 
-### `dcectl kpanda core delete-secret`
+### `dc container-management core delete-secret`
 
 - Summary: DeleteSecret deletes a secret under the namespaces of a specific cluster
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}`
@@ -2385,7 +2385,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced secret.
   - `--name` (path, required): Secret name.
 
-### `dcectl kpanda core delete-service`
+### `dc container-management core delete-service`
 
 - Summary: DeleteService deletes a service from the system by given service name
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services/{name}`
@@ -2396,7 +2396,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced service.
   - `--name` (path, required): Name represents for the service name
 
-### `dcectl kpanda core delete-service-account`
+### `dc container-management core delete-service-account`
 
 - Summary: DeleteServiceAccount deletes a sa from the system by given sa name
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/serviceaccounts/{name}`
@@ -2407,7 +2407,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced pod.
   - `--name` (path, required): Name represents the name of StorageClass
 
-### `dcectl kpanda core disable-namespace-pod-security`
+### `dc container-management core disable-namespace-pod-security`
 
 - Summary: DisableNamespacePodSecurity enables pod security policy of a namespace
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}/podsecurity:disable`
@@ -2417,7 +2417,7 @@
   - `--cluster` (path, required): Cluster of the namespace.
   - `--name` (path, required): Name represents for the resource name.
 
-### `dcectl kpanda core enable-namespace-pod-security`
+### `dc container-management core enable-namespace-pod-security`
 
 - Summary: EnableNamespacePodSecurity enables pod security policy of a namespace
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}/podsecurity:enable`
@@ -2427,7 +2427,7 @@
   - `--cluster` (path, required): Cluster of the namespace.
   - `--name` (path, required): Name represents for the resource name.
 
-### `dcectl kpanda core get-config-map`
+### `dc container-management core get-config-map`
 
 - Summary: GetConfigMap gets a configMap under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}`
@@ -2438,7 +2438,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (path, required): name represents for the resource name
 
-### `dcectl kpanda core get-config-map-json`
+### `dc container-management core get-config-map-json`
 
 - Summary: GetConfigMapJSON gets a configMap json under the namespaces of a specific
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/json`
@@ -2449,7 +2449,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (path, required): name represents for the resource name
 
-### `dcectl kpanda core get-limit-range`
+### `dc container-management core get-limit-range`
 
 - Summary: GetLimitRange gets the limitrange by namespace and name.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges/{name}`
@@ -2460,7 +2460,7 @@
   - `--namespace` (path, required): Namespace the specified limitRange belongs to.
   - `--name` (path, required): Name of the specified limitRange.
 
-### `dcectl kpanda core get-limit-range-json`
+### `dc container-management core get-limit-range-json`
 
 - Summary: GetLimitRangeJSON gets the limitrange by namespace and name, returns a string in JSON format.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges/{name}/json`
@@ -2471,7 +2471,7 @@
   - `--namespace` (path, required): Namespace the specified limitRange belongs to.
   - `--name` (path, required): Name represents for the limitRange name.
 
-### `dcectl kpanda core get-namespace`
+### `dc container-management core get-namespace`
 
 - Summary: GetNamespace gets a namespace from the system by given namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}`
@@ -2481,7 +2481,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the namespace belongs to.
   - `--name` (path, required): Node name.
 
-### `dcectl kpanda core get-namespace-json`
+### `dc container-management core get-namespace-json`
 
 - Summary: GetNamespaceJSON gets a namespace json from the system by given namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}/json`
@@ -2491,7 +2491,7 @@
   - `--cluster` (path, required): Cluster the namespace belongs to.
   - `--name` (path, required): Name represents for the requested namespace name.
 
-### `dcectl kpanda core get-node`
+### `dc container-management core get-node`
 
 - Summary: GetNode gets a node from the system by given node name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{name}`
@@ -2503,7 +2503,7 @@
   - `--show-pods` (query): ShowPods is to control whether returned data contains
   - `--exclude-metrics` (query): exclude_metrics
 
-### `dcectl kpanda core get-node-gpu-stats`
+### `dc container-management core get-node-gpu-stats`
 
 - Summary: GetNodeGPUStats get node gpu stats
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/gpu-stats`
@@ -2513,7 +2513,7 @@
   - `--cluster` (path, required): cluster
   - `--node` (path, required): node
 
-### `dcectl kpanda core get-node-json`
+### `dc container-management core get-node-json`
 
 - Summary: GetNodeJSON gets a node's json from the system by given node name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{name}/json`
@@ -2523,7 +2523,7 @@
   - `--cluster` (path, required): Cluster the specified node belongs to.
   - `--name` (path, required): Name represents for the node name.
 
-### `dcectl kpanda core get-persistent-volume`
+### `dc container-management core get-persistent-volume`
 
 - Summary: GetPersistentVolume gets a persistentvolume from the system by given persistentvolume name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumes/{name}`
@@ -2533,7 +2533,7 @@
   - `--cluster` (path, required): Cluster the specified persistentVolume belongs to.
   - `--name` (path, required): Name of the specified persistentVolume.
 
-### `dcectl kpanda core get-persistent-volume-claim`
+### `dc container-management core get-persistent-volume-claim`
 
 - Summary: GetPersistentVolumeClaim gets a pvc from the system by given pvc-name;
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}`
@@ -2544,7 +2544,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the PVC belongs to.
   - `--name` (path, required): Name represents the name of PVC to search
 
-### `dcectl kpanda core get-persistent-volume-claim-json`
+### `dc container-management core get-persistent-volume-claim-json`
 
 - Summary: GetPersistentVolumeClaimJSON get the specified pvc's JSON
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}/json`
@@ -2555,7 +2555,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the PVC belongs to.
   - `--name` (path, required): Name represents the name of PVC to search
 
-### `dcectl kpanda core get-persistent-volume-json`
+### `dc container-management core get-persistent-volume-json`
 
 - Summary: GetPersistentVolumeJSON gets a persistentvolume json from the system by given persistentvolume name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumes/{name}/json`
@@ -2565,7 +2565,7 @@
   - `--cluster` (path, required): Cluster the specified persistentVolume belongs to.
   - `--name` (path, required): Name represents for the persistentVolume name.
 
-### `dcectl kpanda core get-pod`
+### `dc container-management core get-pod`
 
 - Summary: GetPods will get a pod under the namespaces of a specific cluster by pods
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/pods/{name}`
@@ -2576,7 +2576,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced pod.
   - `--name` (path, required): Pod name.
 
-### `dcectl kpanda core get-resource-quota`
+### `dc container-management core get-resource-quota`
 
 - Summary: GetResourceQuota gets a resourceQuota from the system by given resourceQuota name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resourcequotas/{name}`
@@ -2587,7 +2587,7 @@
   - `--namespace` (path, required): Namespace the specified resourceQuota belongs to.
   - `--name` (path, required): Name of the specified resourceQuota.
 
-### `dcectl kpanda core get-resource-quota-json`
+### `dc container-management core get-resource-quota-json`
 
 - Summary: GetResourceQuotaJSON gets a resourceQuota json from the system by given resourceQuota name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resourcequotas/{name}/json`
@@ -2598,7 +2598,7 @@
   - `--namespace` (path, required): Namespace the specified resourceQuota belongs to.
   - `--name` (path, required): Name represents for the resourceQuota name.
 
-### `dcectl kpanda core get-secret`
+### `dc container-management core get-secret`
 
 - Summary: GetClusterSecret gets a secret under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}`
@@ -2609,7 +2609,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced secret.
   - `--name` (path, required): Secret name.
 
-### `dcectl kpanda core get-secret-json`
+### `dc container-management core get-secret-json`
 
 - Summary: GetSecretJSON gets a secret json under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/json`
@@ -2620,7 +2620,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced secret.
   - `--name` (path, required): Secret name.
 
-### `dcectl kpanda core get-service`
+### `dc container-management core get-service`
 
 - Summary: GetService gets a service from the system by given service name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services/{name}`
@@ -2631,7 +2631,7 @@
   - `--namespace` (path, required): Namespace the specified service belongs to.
   - `--name` (path, required): Name represents for the service name.
 
-### `dcectl kpanda core get-service-account`
+### `dc container-management core get-service-account`
 
 - Summary: GetServiceAccount gets a sa from the system by given sa
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/serviceaccounts/{name}`
@@ -2642,7 +2642,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ServiceAccount.
   - `--name` (path, required): name represents the name of ServiceAccount to belongs to.
 
-### `dcectl kpanda core get-service-json`
+### `dc container-management core get-service-json`
 
 - Summary: GetServiceJSON gets a service json from the system by given service name
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services/{name}/json`
@@ -2653,7 +2653,7 @@
   - `--namespace` (path, required): Namespace the specified service belongs to.
   - `--name` (path, required): Name represents for the service name.
 
-### `dcectl kpanda core list-all-pods`
+### `dc container-management core list-all-pods`
 
 - Summary: ListAllPods will list all pod by given cluster and namespace,
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/pods`
@@ -2674,7 +2674,7 @@
   - `--gpu-type` (query): gpu_type is filter with pods resources, when value is * search all
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-config-maps`
+### `dc container-management core list-cluster-config-maps`
 
 - Summary: ListClusterConfigMaps lists all configmaps in the specified cluster,
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/configmaps`
@@ -2693,7 +2693,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `immutable`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-event-kinds`
+### `dc container-management core list-cluster-event-kinds`
 
 - Summary: ListClusterEventKinds lists all involvedObject's kinds of events in the
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/events/kinds`
@@ -2703,7 +2703,7 @@
   - `--cluster` (path, required): Cluster the events belongs to.
 - Output: list path `data`
 
-### `dcectl kpanda core list-cluster-events`
+### `dc container-management core list-cluster-events`
 
 - Summary: ListClusterEvents lists all events in the specified cluster,
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/events`
@@ -2720,7 +2720,7 @@
   - `--name` (query): Name is used for query, showing events of specified involvedObject name,
 - Output: list path `items`; columns `type`, `firstTimestamp`, `lastTimestamp`, `message`, `reason`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-gpu-summary`
+### `dc container-management core list-cluster-gpu-summary`
 
 - Summary: ListClusterGPUSummary lists gpu summary of all nodes of the specified cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gpusummary`
@@ -2730,7 +2730,7 @@
   - `--cluster` (path, required): cluster defines the cluster name.
 - Output: list path `summary`; columns `node`
 
-### `dcectl kpanda core list-cluster-limit-ranges`
+### `dc container-management core list-cluster-limit-ranges`
 
 - Summary: ListClusterLimitRanges lists all limitranges in the specified cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/limitranges`
@@ -2748,7 +2748,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-namespace-summary`
+### `dc container-management core list-cluster-namespace-summary`
 
 - Summary: ListClusterNamespaceSummary gets a list of namespace simple information
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespacesummary`
@@ -2759,7 +2759,7 @@
   - `--phase` (query, default `NAMESPACE_PHASE_UNSPECIFIED`, one of: NAMESPACE_PHASE_UNSPECIFIED|Active|Terminating): Phases is used for filter.
 - Output: list path `data`; columns `name`, `phase`, `cluster`
 
-### `dcectl kpanda core list-cluster-namespaces`
+### `dc container-management core list-cluster-namespaces`
 
 - Summary: List all namespaces across a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces`
@@ -2781,7 +2781,7 @@
   - `--exclude-system` (query): ExcludeSystem determines to exclude system namespaces, defaults to False.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-node-summary`
+### `dc container-management core list-cluster-node-summary`
 
 - Summary: ListClusterNodeSummary lists the node summary in specified cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodesummary`
@@ -2791,7 +2791,7 @@
   - `--cluster` (path, required): cluster
 - Output: list path `data`; columns `name`, `phase`, `creationTimestamp`, `uid`, `podCIDR`, `unschedulable`
 
-### `dcectl kpanda core list-cluster-persistent-volume-claims`
+### `dc container-management core list-cluster-persistent-volume-claims`
 
 - Summary: ListPersistentVolumeClaims gets the pvcs from the system
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumeclaims`
@@ -2811,7 +2811,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-pods`
+### `dc container-management core list-cluster-pods`
 
 - Summary: ListClusterPods will list all pod by given cluster and regardless of
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/pods`
@@ -2835,7 +2835,7 @@
   - `--pod-ip` (query): pod_ip is used for filter.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-secrets`
+### `dc container-management core list-cluster-secrets`
 
 - Summary: ListClusterSecrets lists a secret in a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/secrets`
@@ -2855,7 +2855,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `type`, `metadata.creationTimestamp`, `immutable`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-services`
+### `dc container-management core list-cluster-services`
 
 - Summary: ListClusterServices lists all services in the specified cluster, regardless
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/services`
@@ -2875,7 +2875,7 @@
   - `--ports` (query): Ports is used to filter by port.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-cluster-sriov-allocated-resources`
+### `dc container-management core list-cluster-sriov-allocated-resources`
 
 - Summary: Core_ListClusterSriovAllocatedResources
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/sriovnodesresources`
@@ -2885,7 +2885,7 @@
   - `--cluster` (path, required): cluster
 - Output: list path `allocatedResources`; columns `resourceName`, `value`
 
-### `dcectl kpanda core list-config-maps`
+### `dc container-management core list-config-maps`
 
 - Summary: ListConfigMaps lists configmaps in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps`
@@ -2905,7 +2905,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `immutable`; pagination `offset`
 
-### `dcectl kpanda core list-containers-by-pod`
+### `dc container-management core list-containers-by-pod`
 
 - Summary: ListContainersByPod lists containers under the namespaces of a specific
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/pods/{name}/containers`
@@ -2921,7 +2921,7 @@
   - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the data list order.
 - Output: list path `items`; columns `name`, `phase`, `image`, `ready`, `restartCount`, `started`; pagination `offset`
 
-### `dcectl kpanda core list-events`
+### `dc container-management core list-events`
 
 - Summary: ListEvents lists events under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/events`
@@ -2945,7 +2945,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `type`, `firstTimestamp`, `lastTimestamp`, `message`, `reason`; pagination `offset`
 
-### `dcectl kpanda core list-limit-ranges`
+### `dc container-management core list-limit-ranges`
 
 - Summary: ListLimitRanges lists all limitranges in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges`
@@ -2964,7 +2964,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-namespaces`
+### `dc container-management core list-namespaces`
 
 - Summary: List namespaces in a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/namespaces`
@@ -2987,9 +2987,9 @@
   - `--show-virtual-cluster` (query): ShowVirtualCluster is used to control whether to return data that belongs to a virtual cluster. Default false.
   - `--include-resource-quota` (query): IncludeQuota used to control whether return namespace resource quota, default false.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
-- Example: `dcectl kpanda core list-namespaces --cluster prod-cluster`
+- Example: `dc container-management core list-namespaces --cluster prod-cluster`
 
-### `dcectl kpanda core list-node-gpu`
+### `dc container-management core list-node-gpu`
 
 - Summary: listNodeGPU gets all the gpu info with cluster node
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/gpus`
@@ -3000,7 +3000,7 @@
   - `--node` (path, required): node
 - Output: list path `items`; columns `name`, `uid`, `gpuMode`
 
-### `dcectl kpanda core list-nodes`
+### `dc container-management core list-nodes`
 
 - Summary: ListNodes lists the node in specified cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes`
@@ -3022,7 +3022,7 @@
   - `--exclude-metrics` (query): exclude_metrics
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-persistent-volume-claims`
+### `dc container-management core list-persistent-volume-claims`
 
 - Summary: List PersistentVolumeClaims in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims`
@@ -3043,7 +3043,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-persistent-volumes`
+### `dc container-management core list-persistent-volumes`
 
 - Summary: List PersistentVolumes in a cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumes`
@@ -3061,7 +3061,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-pods`
+### `dc container-management core list-pods`
 
 - Summary: ListPods will list all pod by given cluster and namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/pods`
@@ -3086,7 +3086,7 @@
   - `--pod-ip` (query): pod_ip is used for filter.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-pods-by-node`
+### `dc container-management core list-pods-by-node`
 
 - Summary: ListPodsByNode lists pods info by given node in a specific
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/pods`
@@ -3107,7 +3107,7 @@
   - `--pod-ip` (query): pod_ip is used for filter.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-resource-quotas`
+### `dc container-management core list-resource-quotas`
 
 - Summary: ListResourceQuotas lists quotas in specified namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resourcequotas`
@@ -3126,7 +3126,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by cluster name or cluster alias name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-secrets`
+### `dc container-management core list-secrets`
 
 - Summary: ListSecrets lists a secret under the namespaces of a specific cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets`
@@ -3147,7 +3147,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `type`, `metadata.creationTimestamp`, `immutable`; pagination `offset`
 
-### `dcectl kpanda core list-service-accounts`
+### `dc container-management core list-service-accounts`
 
 - Summary: ListNamespaces gets all the namespaces across clusters
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/serviceaccounts`
@@ -3166,7 +3166,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core list-services`
+### `dc container-management core list-services`
 
 - Summary: ListServices lists services in the specified cluster and namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services`
@@ -3189,7 +3189,7 @@
   - `--ports` (query): Ports is used to filter by port.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda core patch-config-map`
+### `dc container-management core patch-config-map`
 
 - Summary: PatchConfigMap patchs a configMap under the namespaces of a specific
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/json`
@@ -3200,7 +3200,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (path, required): The name represents for the resource name
 
-### `dcectl kpanda core patch-namespace`
+### `dc container-management core patch-namespace`
 
 - Summary: PatchNamespace patches a namespace from the system by given namespace name
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}`
@@ -3210,7 +3210,7 @@
   - `--cluster` (path, required): Cluster the specified namespace belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda core patch-secret`
+### `dc container-management core patch-secret`
 
 - Summary: PatchSecret patchs a Secret under the namespaces of a specific cluster
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/json`
@@ -3221,7 +3221,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced secret.
   - `--name` (path, required): The name represents for the resource name
 
-### `dcectl kpanda core patch-service`
+### `dc container-management core patch-service`
 
 - Summary: PatchService patches a service from the system by given service name
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services/{name}`
@@ -3232,7 +3232,7 @@
   - `--namespace` (path, required): Namespace the specified service belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda core put-node-labels`
+### `dc container-management core put-node-labels`
 
 - Summary: PutNodeLabels puts the specified node's labels
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/labels`
@@ -3242,7 +3242,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the node belongs to.
   - `--node` (path, required): Node name.
 
-### `dcectl kpanda core put-node-taints`
+### `dc container-management core put-node-taints`
 
 - Summary: PutNodeTaints puts a node's taints in a specific cluster
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/taints`
@@ -3253,7 +3253,7 @@
   - `--node` (path, required): Node name.
 - Output: list path `taints`; columns `effect`, `key`, `value`
 
-### `dcectl kpanda core scale-persistent-volume-claim`
+### `dc container-management core scale-persistent-volume-claim`
 
 - Summary: ScalePersistentVolumeClaim post scale the persistent volume claim capacity
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}:scale`
@@ -3264,7 +3264,7 @@
   - `--namespace` (path, required): namespace represents the namespace of PVC belongs to.
   - `--name` (path, required): name represents the name of PVC belongs to.
 
-### `dcectl kpanda core un-cordon-node`
+### `dc container-management core un-cordon-node`
 
 - Summary: UnCordonNode makes the specified node to schedulable.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/uncordon`
@@ -3274,7 +3274,7 @@
   - `--cluster` (path, required): Cluster the specified node belongs to.
   - `--node` (path, required): Node name.
 
-### `dcectl kpanda core unbind-node-to-namespace`
+### `dc container-management core unbind-node-to-namespace`
 
 - Summary: UnbindNodeToNamespace makes the specified node to shared.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{name}:unbindNamespace`
@@ -3284,7 +3284,7 @@
   - `--cluster` (path, required): Cluster is the cluster for namespace and node.
   - `--name` (path, required): Name is the node name for node which needs to
 
-### `dcectl kpanda core update-config-map`
+### `dc container-management core update-config-map`
 
 - Summary: UpdateConfigMap updates a configMap under the namespaces of a specific
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}`
@@ -3295,7 +3295,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced ConfigMap.
   - `--name` (path, required): name represents for the resource name
 
-### `dcectl kpanda core update-limit-range`
+### `dc container-management core update-limit-range`
 
 - Summary: UpdateLimitRange updates the specified limitrange, the body must be a JSON
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/limitranges/{name}`
@@ -3306,7 +3306,7 @@
   - `--namespace` (path, required): Namespace the specified limitRange belongs to.
   - `--name` (path, required): Name of the specified limitRange.
 
-### `dcectl kpanda core update-namespace`
+### `dc container-management core update-namespace`
 
 - Summary: UpdateNamespace updates a namespace from the system by given namespace name
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}`
@@ -3316,7 +3316,7 @@
   - `--cluster` (path, required): Cluster the specified namespace belongs to.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda core update-node`
+### `dc container-management core update-node`
 
 - Summary: UpdateNode updates a node from the system by given node name
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{name}`
@@ -3326,7 +3326,7 @@
   - `--cluster` (path, required): Cluster the specified node belongs to.
   - `--name` (path, required): The name represents for the node name.
 
-### `dcectl kpanda core update-node-annotations`
+### `dc container-management core update-node-annotations`
 
 - Summary: UpdateNodeAnnotations edits annotations of specified node.
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/annotations`
@@ -3336,7 +3336,7 @@
   - `--cluster` (path, required): Cluster the specified node belongs to.
   - `--node` (path, required): Node name.
 
-### `dcectl kpanda core update-node-gpu-mode`
+### `dc container-management core update-node-gpu-mode`
 
 - Summary: UpdateNodeGPUMode updates single the gpu mode with cluster node
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/nodes/{node}/gpu-mode`
@@ -3346,7 +3346,7 @@
   - `--cluster` (path, required): cluster
   - `--node` (path, required): node
 
-### `dcectl kpanda core update-persistent-volume`
+### `dc container-management core update-persistent-volume`
 
 - Summary: UpdatePersistentVolume updates a persistentvolume from the system by given persistentvolume name
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/persistentvolumes/{name}`
@@ -3356,7 +3356,7 @@
   - `--cluster` (path, required): Cluster the specified persistentVolume belongs to.
   - `--name` (path, required): Name of the specified persistentVolume.
 
-### `dcectl kpanda core update-persistent-volume-claim`
+### `dc container-management core update-persistent-volume-claim`
 
 - Summary: UpdatePersistentVolumeClaim update the persistent volume claim
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}`
@@ -3367,7 +3367,7 @@
   - `--namespace` (path, required): namespace represents the namespace of PVC to belongs to.
   - `--name` (path, required): name represents the name of PVC to belongs to.
 
-### `dcectl kpanda core update-persistent-volume-claim-annotations`
+### `dc container-management core update-persistent-volume-claim-annotations`
 
 - Summary: UpdatePersistentVolumeClaimAnnotations puts the specified pvc's annotations
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}/annotations`
@@ -3378,7 +3378,7 @@
   - `--namespace` (path, required): namespace represents the namespace of PVC to belongs to.
   - `--name` (path, required): name represents the name of PVC to belongs to.
 
-### `dcectl kpanda core update-persistent-volume-claim-labels`
+### `dc container-management core update-persistent-volume-claim-labels`
 
 - Summary: UpdatePersistentVolumeClaimLabels puts the specified pvc's labels
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}/labels`
@@ -3389,7 +3389,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the PVC belongs to.
   - `--name` (path, required): Name represents the name of PVC to search
 
-### `dcectl kpanda core update-resource-quota`
+### `dc container-management core update-resource-quota`
 
 - Summary: UpdateResourceQuota updates a resourceQuota from the system by given resourceQuota name
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/resourcequotas/{name}`
@@ -3400,7 +3400,7 @@
   - `--namespace` (path, required): Namespace the specified resourceQuota belongs to.
   - `--name` (path, required): Name of the specified resourceQuota.
 
-### `dcectl kpanda core update-secret`
+### `dc container-management core update-secret`
 
 - Summary: UpdateSecret updates secret under the namespaces of a specific cluster
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}`
@@ -3411,7 +3411,7 @@
   - `--namespace` (path, required): Namespace is the metadata.namespace of the referenced secret.
   - `--name` (path, required): Secret name.
 
-### `dcectl kpanda core update-service`
+### `dc container-management core update-service`
 
 - Summary: UpdateService updates a service from the system by given service name
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/services/{name}`
@@ -3422,7 +3422,7 @@
   - `--namespace` (path, required): Namespace the specified service belongs to.
   - `--name` (path, required): Name represents for the service name
 
-### `dcectl kpanda core update-service-account`
+### `dc container-management core update-service-account`
 
 - Summary: UpdateServiceAccount updates a sa from the system by given sa name
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/serviceaccounts/{name}`
@@ -3434,7 +3434,7 @@
 
 ## Devices
 
-### `dcectl kpanda devices get-dashboard-url`
+### `dc container-management devices get-dashboard-url`
 
 - Summary: Devices_GetDashboardURL
 - HTTP: `GET /apis/kpanda.io/v1alpha1/grafana-dashboards/gpu-overview`
@@ -3448,7 +3448,7 @@
   - `--from` (query, int64): from
   - `--to` (query, int64): to
 
-### `dcectl kpanda devices list-gpu-devices`
+### `dc container-management devices list-gpu-devices`
 
 - Summary: Devices_ListGPUDevices
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/gpu-devices`
@@ -3465,7 +3465,7 @@
 
 ## EtcdBackupRestore
 
-### `dcectl kpanda etcdbackuprestore create-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore create-etcd-backup-strategy`
 
 - Summary: CreateEtcdBackupStrategy creates a etcd backup strategy.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies`
@@ -3474,7 +3474,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster the specified etcd backup strategy belongs to.
 
-### `dcectl kpanda etcdbackuprestore delete-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore delete-etcd-backup-strategy`
 
 - Summary: DeleteEtcdBackupStrategy delete a etcd backup strategy in cluster.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}`
@@ -3484,7 +3484,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the etcd backup strategy belongs to.
   - `--name` (path, required): Name represents the name of etcd backup strategy
 
-### `dcectl kpanda etcdbackuprestore delete-etcd-snapshot`
+### `dc container-management etcdbackuprestore delete-etcd-snapshot`
 
 - Summary: DeleteEtcdBackup delete a etcd backup.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{strategy}/snapshots/{name}`
@@ -3495,7 +3495,7 @@
   - `--strategy` (path, required): strategy represents the name of etcd backup strategy.
   - `--name` (path, required): Name represents the name of etcd snapshot.
 
-### `dcectl kpanda etcdbackuprestore execute-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore execute-etcd-backup-strategy`
 
 - Summary: ExecuteEtcdBackupStrategy executes a etcd backup strategy under the cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}:execute`
@@ -3505,7 +3505,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the etcd backup strategy belongs to.
   - `--name` (path, required): Name represents the name of etcd backup strategy.
 
-### `dcectl kpanda etcdbackuprestore get-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore get-etcd-backup-strategy`
 
 - Summary: GetEtcdBackupStrategy get a etcd backup strategy in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}`
@@ -3515,7 +3515,7 @@
   - `--cluster` (path, required): Cluster the specified etcd backup strategy belongs to.
   - `--name` (path, required): Name represents for the etcd backup strategy name.
 
-### `dcectl kpanda etcdbackuprestore get-etcd-backup-strategy-json`
+### `dc container-management etcdbackuprestore get-etcd-backup-strategy-json`
 
 - Summary: GetEtcdBackupStrategyJSON get a etcd backup strategy json in cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}/json`
@@ -3525,7 +3525,7 @@
   - `--cluster` (path, required): Cluster the specified etcd backup strategy belongs to.
   - `--name` (path, required): Name represents for the etcd backup strategy name.
 
-### `dcectl kpanda etcdbackuprestore list-etcd-backup-clusters`
+### `dc container-management etcdbackuprestore list-etcd-backup-clusters`
 
 - Summary: ListEtcdBackupClusters list clusters with/without etcd backup strategies.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/etcdbackuprestore/clusters`
@@ -3534,7 +3534,7 @@
 - Flags: none
 - Output: list path `items`; columns `name`, `phase`, `hasBackup`, `kubeSystemID`
 
-### `dcectl kpanda etcdbackuprestore list-etcd-backup-strategies`
+### `dc container-management etcdbackuprestore list-etcd-backup-strategies`
 
 - Summary: ListEtcdBackupStrategies list etcd backup strategies.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/etcdbackuprestore/strategies`
@@ -3549,7 +3549,7 @@
   - `--sort-dir` (query, default `desc`, one of: desc|asc): OrderBy determines the repository list order.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda etcdbackuprestore list-etcd-snapshots`
+### `dc container-management etcdbackuprestore list-etcd-snapshots`
 
 - Summary: ListEtcdSnapshots list etcd backup snapshots .
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{strategy}/snapshots`
@@ -3560,7 +3560,7 @@
   - `--strategy` (path, required): strategy represents the name of etcd backup strategy.
 - Output: list path `items`; columns `name`, `externalUrl`, `key`, `lastModified`, `size`
 
-### `dcectl kpanda etcdbackuprestore pause-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore pause-etcd-backup-strategy`
 
 - Summary: PauseEtcdBackupStrategy pauses a etcd backup strategy under the cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}:pause`
@@ -3570,7 +3570,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the etcd backup strategy belongs to.
   - `--name` (path, required): Name represents the name of etcd backup strategy
 
-### `dcectl kpanda etcdbackuprestore resume-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore resume-etcd-backup-strategy`
 
 - Summary: ResumeEtcdBackupStrategy resumes a etcd backup strategy under the cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}:resume`
@@ -3580,7 +3580,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the etcd backup strategy belongs to.
   - `--name` (path, required): Name represents the name of etcd backup strategy
 
-### `dcectl kpanda etcdbackuprestore update-etcd-backup-strategy`
+### `dc container-management etcdbackuprestore update-etcd-backup-strategy`
 
 - Summary: UpdateEtcdBackupStrategy updates tcd backup strategy under the cluster
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/strategies/{name}`
@@ -3590,7 +3590,7 @@
   - `--cluster` (path, required): Cluster the specified etcd backup strategy belongs to.
   - `--name` (path, required): The name for EtcdBackupStrategy.
 
-### `dcectl kpanda etcdbackuprestore verify-etcd-connection`
+### `dc container-management etcdbackuprestore verify-etcd-connection`
 
 - Summary: VerifyEtcdConnection verifies the etcd connection.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/etcd:verify`
@@ -3599,7 +3599,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents which cluster the etcd snapstore belongs to.
 
-### `dcectl kpanda etcdbackuprestore verify-snap-store-config`
+### `dc container-management etcdbackuprestore verify-snap-store-config`
 
 - Summary: VerifySnapStore verifies the SnapStore config.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/etcdbackuprestore/snapstores:verify`
@@ -3610,7 +3610,7 @@
 
 ## Image
 
-### `dcectl kpanda image detect-kangaroo`
+### `dc container-management image detect-kangaroo`
 
 - Summary: DetectKangaroo returns whether the kangaroo is installed.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registries/kangaroo`
@@ -3618,7 +3618,7 @@
 - Body: none
 - Flags: none
 
-### `dcectl kpanda image list-artifacts`
+### `dc container-management image list-artifacts`
 
 - Summary: ListArtifacts returns a list of tags of specified image
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registries/{registry}/repositories/{repository}/artifacts`
@@ -3636,7 +3636,7 @@
   - `--fuzzy-tag-name` (query): FuzzyTagName is used to fuzzy search by tag name.
 - Output: list path `items`; columns `digest`, `imageSize`, `pushTime`; pagination `offset`
 
-### `dcectl kpanda image list-projects`
+### `dc container-management image list-projects`
 
 - Summary: ListProjects returns a list of projects of specified registry
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registries/{registry}/projects`
@@ -3652,7 +3652,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by project name.
 - Output: list path `items`; pagination `offset`
 
-### `dcectl kpanda image list-registries`
+### `dc container-management image list-registries`
 
 - Summary: ListRegistries returns a list of registries
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registries`
@@ -3668,7 +3668,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by registry name.
 - Output: list path `items`; columns `name`, `alias`, `host`; pagination `offset`
 
-### `dcectl kpanda image list-repositories`
+### `dc container-management image list-repositories`
 
 - Summary: ListRepositories returns a list of image names of specified project
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registries/{registry}/repositories`
@@ -3688,7 +3688,7 @@
 
 ## Networking
 
-### `dcectl kpanda networking create-ingress`
+### `dc container-management networking create-ingress`
 
 - Summary: Create an Ingress
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses`
@@ -3698,7 +3698,7 @@
   - `--cluster` (path, required): Cluster is the name of the cluster, return all the ingress of the cluster
   - `--namespace` (path, required): Namespace specified the namespace of ingress.
 
-### `dcectl kpanda networking create-network-policy`
+### `dc container-management networking create-network-policy`
 
 - Summary: CreateNetworkPolicy creates a networkpolicy in the specified cluster and namespace.
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/networkpolicies`
@@ -3708,7 +3708,7 @@
   - `--cluster` (path, required): Cluster is the name of the cluster to request.
   - `--namespace` (path, required): Namespace specified the namespace of networkpolicy.
 
-### `dcectl kpanda networking delete-ingress`
+### `dc container-management networking delete-ingress`
 
 - Summary: Delete an Ingress
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses/{name}`
@@ -3719,7 +3719,7 @@
   - `--namespace` (path, required): Namespace specified the namespace of ingress.
   - `--name` (path, required): Name is the name of ingress.
 
-### `dcectl kpanda networking delete-network-policy`
+### `dc container-management networking delete-network-policy`
 
 - Summary: DeleteNetworkPolicy deletes the networkpolicy by name.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/networkpolicies/{name}`
@@ -3730,7 +3730,7 @@
   - `--namespace` (path, required): Namespace specified the namespace of networkpolicy.
   - `--name` (path, required): Name is the name of networkpolicy.
 
-### `dcectl kpanda networking get-ingress`
+### `dc container-management networking get-ingress`
 
 - Summary: Get Ingress details
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses/{name}`
@@ -3741,7 +3741,7 @@
   - `--namespace` (path, required): Namespace specified the namespace of ingress.
   - `--name` (path, required): Name is the name of the ingress.
 
-### `dcectl kpanda networking get-ingress-json`
+### `dc container-management networking get-ingress-json`
 
 - Summary: GetIngressJSON gets the ingress by namespace and name, returns a string in JSON
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses/{name}/json`
@@ -3753,7 +3753,7 @@
   - `--name` (path, required): Name is the name of the ingress.
   - `--stable` (query): If stable is true, the v1 version under the corresponding package will be returned.
 
-### `dcectl kpanda networking get-network-policy`
+### `dc container-management networking get-network-policy`
 
 - Summary: GetNetworkPolicy gets the networkpolicy by namespace and name.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/networkpolicies/{name}`
@@ -3764,7 +3764,7 @@
   - `--namespace` (path, required): Namespace specifies the namespace of networkpolicy.
   - `--name` (path, required): Name is the name of the networkpolicy.
 
-### `dcectl kpanda networking get-network-policy-json`
+### `dc container-management networking get-network-policy-json`
 
 - Summary: GetNetworkPolicyJSON gets the networkpolicy by namespace and name, returns a string in JSON
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/networkpolicies/{name}/json`
@@ -3776,7 +3776,7 @@
   - `--name` (path, required): Name is the name of the networkpolicy.
   - `--stable` (query): If stable is true, the v1 version under the corresponding package will be returned.
 
-### `dcectl kpanda networking list-cluster-ingresses`
+### `dc container-management networking list-cluster-ingresses`
 
 - Summary: ListClusterIngresses lists all ingresses in the specified cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/ingresses`
@@ -3794,7 +3794,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda networking list-cluster-network-policies`
+### `dc container-management networking list-cluster-network-policies`
 
 - Summary: ListClusterNetworkPolicies lists all networkpolicies in the specified cluster.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/networkpolicies`
@@ -3811,7 +3811,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda networking list-ingress-class-summary`
+### `dc container-management networking list-ingress-class-summary`
 
 - Summary: ListIngressClassSummary gets a list of ingressClass simple information
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/ingressclasssummary`
@@ -3822,7 +3822,7 @@
   - `--namespace` (query): Namespace is the IngressClass to retrieve for a specific namespace scoped.
 - Output: list path `items`; columns `name`, `kind`, `isDefaultClass`
 
-### `dcectl kpanda networking list-ingresses`
+### `dc container-management networking list-ingresses`
 
 - Summary: List Ingresses in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses`
@@ -3841,7 +3841,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda networking list-metallb-ip-address-pools`
+### `dc container-management networking list-metallb-ip-address-pools`
 
 - Summary: ListMetallbIPPool lists all metallb in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/metallb/ippools`
@@ -3858,7 +3858,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda networking list-network-policies`
+### `dc container-management networking list-network-policies`
 
 - Summary: ListNetworkPolicies lists all networkpolicies in the specified cluster and namespace.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/networkpolicies`
@@ -3876,7 +3876,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda networking patch-ingress`
+### `dc container-management networking patch-ingress`
 
 - Summary: PatchIngress patches the specified ingress, the body must be a JSON string.
 - HTTP: `PATCH /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses/{name}`
@@ -3887,7 +3887,7 @@
   - `--namespace` (path, required): Namespace specified the namespace of ingress.
   - `--name` (path, required): The name represents for the resource name.
 
-### `dcectl kpanda networking update-ingress`
+### `dc container-management networking update-ingress`
 
 - Summary: UpdateIngress updates the specified ingress, the body must be a JSON
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/ingresses/{name}`
@@ -3898,7 +3898,7 @@
   - `--namespace` (path, required): Namespace specified the namespace of ingress.
   - `--name` (path, required): Name is the name of ingress.
 
-### `dcectl kpanda networking update-network-policy`
+### `dc container-management networking update-network-policy`
 
 - Summary: UpdateNetworkPolicy updates the specified networkpolicy, the body must be a JSON
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/networkpolicies/{name}`
@@ -3909,7 +3909,7 @@
   - `--namespace` (path, required): Namespace specified the namespace of networkpolicy.
   - `--name` (path, required): Name is the name of networkpolicy.
 
-### `dcectl kpanda networking validate-metallb-shared-ip-port-conflict`
+### `dc container-management networking validate-metallb-shared-ip-port-conflict`
 
 - Summary: ValidateMetallbSharedIPPortConflict checks whether the service port of
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/metallb/check-serviceports`
@@ -3920,7 +3920,7 @@
 
 ## RBAC
 
-### `dcectl kpanda rbac create-cluster-role`
+### `dc container-management rbac create-cluster-role`
 
 - Summary: CreateClusterRole creates a ClusterRole
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterroles/{name}`
@@ -3931,7 +3931,7 @@
   - `--name` (path, required): the name of role.
 - Output: list path `rules`
 
-### `dcectl kpanda rbac create-cluster-role-binding`
+### `dc container-management rbac create-cluster-role-binding`
 
 - Summary: CreateClusterRoleBinding creates a cluster roleBinding batch
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterrolebindings`
@@ -3941,7 +3941,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the clusterRoleBinding belongs to.
 - Output: list path `subjects`; columns `name`, `namespace`, `kind`, `APIGroup`
 
-### `dcectl kpanda rbac create-role`
+### `dc container-management rbac create-role`
 
 - Summary: CreateRole creates a Role
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/roles`
@@ -3952,7 +3952,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the role belongs to.
 - Output: list path `rules`
 
-### `dcectl kpanda rbac create-role-binding`
+### `dc container-management rbac create-role-binding`
 
 - Summary: CreateRoleBinding creates a RoleBinding
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/rolebindings`
@@ -3963,7 +3963,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the roleBinding belongs to.
 - Output: list path `subjects`; columns `name`, `namespace`, `kind`, `APIGroup`
 
-### `dcectl kpanda rbac delete-cluster-role`
+### `dc container-management rbac delete-cluster-role`
 
 - Summary: DeleteClusterRole deletes a ClusterRole
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterroles/{name}`
@@ -3973,7 +3973,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the clusterrole belongs to.
   - `--name` (path, required): Name represents the name of the clusterrole to delete.
 
-### `dcectl kpanda rbac delete-cluster-role-binding`
+### `dc container-management rbac delete-cluster-role-binding`
 
 - Summary: DeleteClusterRoleBinding deletes a cluster RoleBinding
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterrolebindings/{name}`
@@ -3983,7 +3983,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the roleBinding belongs to.
   - `--name` (path, required): Name represents the name of the clusterrolebinding to delete.
 
-### `dcectl kpanda rbac delete-role`
+### `dc container-management rbac delete-role`
 
 - Summary: DeleteRole deletes the roles created by the frontend.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/roles/{name}`
@@ -3994,7 +3994,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the role belongs to.
   - `--name` (path, required): Name represents the name of the role to delete.
 
-### `dcectl kpanda rbac delete-role-binding`
+### `dc container-management rbac delete-role-binding`
 
 - Summary: ListRoleBindings lists the clusterrolebidings created by the frontend.
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/rolebindings/{name}`
@@ -4005,7 +4005,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the roleBinding belongs to.
   - `--name` (path, required): Name represents the name of the rolebinding to delete.
 
-### `dcectl kpanda rbac get-cluster-role`
+### `dc container-management rbac get-cluster-role`
 
 - Summary: GetClusterRole gets a ClusterRole
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterroles/{name}`
@@ -4016,7 +4016,7 @@
   - `--name` (path, required): Name represents the name of the clusterrole to delete.
 - Output: list path `rules`
 
-### `dcectl kpanda rbac get-role`
+### `dc container-management rbac get-role`
 
 - Summary: GetRole gets a Role
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/roles/{name}`
@@ -4028,7 +4028,7 @@
   - `--name` (path, required): Name represents the name of the role to delete.
 - Output: list path `rules`
 
-### `dcectl kpanda rbac list-admin-cluster-summary`
+### `dc container-management rbac list-admin-cluster-summary`
 
 - Summary: ListAdminClusterSummary List cluster summary by adminCluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/admincluster`
@@ -4039,7 +4039,7 @@
   - `--user-group` (query): userGroup is the cluster user's belong group
 - Output: list path `clusters`
 
-### `dcectl kpanda rbac list-all-user-role-summary`
+### `dc container-management rbac list-all-user-role-summary`
 
 - Summary: ListAllUserRoleSummary lists user role summary
 - HTTP: `GET /apis/kpanda.io/v1alpha1/rolesummary`
@@ -4049,7 +4049,7 @@
   - `--cluster` (query): Cluster represents which cluster the roleBinding belongs to.
   - `--namespace` (query): Namespace represents which namespace the roleBinding belongs to.
 
-### `dcectl kpanda rbac list-cluster-role-bindings`
+### `dc container-management rbac list-cluster-role-bindings`
 
 - Summary: List ClusterRoleBindings
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/clusterrolebindings`
@@ -4068,7 +4068,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda rbac list-cluster-roles`
+### `dc container-management rbac list-cluster-roles`
 
 - Summary: List ClusterRoles
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterroles`
@@ -4086,7 +4086,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda rbac list-groups`
+### `dc container-management rbac list-groups`
 
 - Summary: ListGroups lists the groups in the system.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/groups`
@@ -4098,7 +4098,7 @@
   - `--name` (query): Name is used for fuzzy search.
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
-### `dcectl kpanda rbac list-role-bindings`
+### `dc container-management rbac list-role-bindings`
 
 - Summary: List RoleBindings in a namespace
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/rolebindings`
@@ -4118,7 +4118,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda rbac list-roles`
+### `dc container-management rbac list-roles`
 
 - Summary: ListRoles lists the roles created by frontend.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/roles`
@@ -4137,7 +4137,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda rbac list-users`
+### `dc container-management rbac list-users`
 
 - Summary: ListUsers lists the users in the system.
 - HTTP: `GET /apis/kpanda.io/v1alpha1/asl/users`
@@ -4149,7 +4149,7 @@
   - `--name` (query): Name is used for fuzzy search.
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
-### `dcectl kpanda rbac update-cluster-role`
+### `dc container-management rbac update-cluster-role`
 
 - Summary: UpdateClusterRole updates a ClusterRole
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/clusterroles/{name}`
@@ -4159,7 +4159,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the clusterrole belongs to.
   - `--name` (path, required): Name represents the name of the clusterrole to delete.
 
-### `dcectl kpanda rbac update-role`
+### `dc container-management rbac update-role`
 
 - Summary: UpdateRole updates a Role
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/roles/{name}`
@@ -4172,7 +4172,7 @@
 
 ## Registry
 
-### `dcectl kpanda registry list-image-tags`
+### `dc container-management registry list-image-tags`
 
 - Summary: Registry_ListImageTags
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registry/tags`
@@ -4186,7 +4186,7 @@
   - `--registry-host` (query): The registry host which the repository belongs to.
 - Output: list path `data`
 
-### `dcectl kpanda registry verify-image`
+### `dc container-management registry verify-image`
 
 - Summary: Registry_VerifyImage
 - HTTP: `GET /apis/kpanda.io/v1alpha1/registry/verifyImage`
@@ -4199,7 +4199,7 @@
   - `--image` (query): Image is the name of repository which needs to list tags.
   - `--registry-host` (query): The registry host which the repository belongs to.
 
-### `dcectl kpanda registry verify-registry`
+### `dc container-management registry verify-registry`
 
 - Summary: Registry_VerifyRegistry
 - HTTP: `POST /apis/kpanda.io/v1alpha1/registry/verify`
@@ -4209,7 +4209,7 @@
 
 ## SettingService
 
-### `dcectl kpanda settingservice gpu-setting`
+### `dc container-management settingservice gpu-setting`
 
 - Summary: SettingService_GPUSetting
 - HTTP: `GET /apis/kpanda.io/v1alpha1/settings/gpu`
@@ -4220,7 +4220,7 @@
 
 ## Storage
 
-### `dcectl kpanda storage create-storage-class`
+### `dc container-management storage create-storage-class`
 
 - Summary: CreateStorageClass
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses`
@@ -4229,7 +4229,7 @@
 - Flags:
   - `--cluster` (path, required): Cluster represents the cluster of StorageClass to belongs to.
 
-### `dcectl kpanda storage create-volume-snapshot`
+### `dc container-management storage create-volume-snapshot`
 
 - Summary: CreateVolumeSnapshot create volume snapshot in single cluster
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/volumesnapshots`
@@ -4239,7 +4239,7 @@
   - `--cluster` (path, required): cluster represents the cluster of VolumeSnapshot to belongs to.
   - `--namespace` (path, required): namespace represents the namespace of VolumeSnapshot to belongs to.
 
-### `dcectl kpanda storage delete-storage-class`
+### `dc container-management storage delete-storage-class`
 
 - Summary: DeleteStorageClass
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses/{name}`
@@ -4249,7 +4249,7 @@
   - `--cluster` (path, required): Cluster represents which cluster the StorageClass belongs to.
   - `--name` (path, required): Name represents the name of StorageClass
 
-### `dcectl kpanda storage delete-volume-snapshot`
+### `dc container-management storage delete-volume-snapshot`
 
 - Summary: DeleteVolumeSnapshot delete volume snapshot in single cluster
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/volumesnapshots/{name}`
@@ -4260,7 +4260,7 @@
   - `--namespace` (path, required): namespace represents the namespace of VolumeSnapshot to belongs to.
   - `--name` (path, required): name represents the name of VolumeSnapshot to belongs to.
 
-### `dcectl kpanda storage get-storage-class`
+### `dc container-management storage get-storage-class`
 
 - Summary: GetStorageClass get StorageClass in single cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses/{name}`
@@ -4271,7 +4271,7 @@
   - `--name` (path, required): name represents the name of StorageClass to belongs to.
 - Output: list path `mountOptions`
 
-### `dcectl kpanda storage get-storage-class-json`
+### `dc container-management storage get-storage-class-json`
 
 - Summary: GetStorageClassJSON get StorageClass json in single cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses/{name}/json`
@@ -4281,7 +4281,7 @@
   - `--cluster` (path, required): cluster represents the name of PVC to belongs to.
   - `--name` (path, required): name represents the name of StorageClass to belongs to.
 
-### `dcectl kpanda storage get-volume-snapshot-json`
+### `dc container-management storage get-volume-snapshot-json`
 
 - Summary: GetVolumeSnapshotJSON list StorageClass in single cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/volumesnapshots/{name}/json`
@@ -4292,7 +4292,7 @@
   - `--namespace` (path, required): Namespace represents which namespace the VolumeSnapshots belongs to.
   - `--name` (path, required): Name represents the name of VolumeSnapshots to search
 
-### `dcectl kpanda storage list-accessible-storage-classes`
+### `dc container-management storage list-accessible-storage-classes`
 
 - Summary: ListAccessibleStorageClasses lists all storageclasses in accessible clusters
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/accessiblestorageclasses`
@@ -4311,7 +4311,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `allowVolumeExpansion`, `provisioner`, `reclaimPolicy`; pagination `offset`
 
-### `dcectl kpanda storage list-cluster-volume-snapshots`
+### `dc container-management storage list-cluster-volume-snapshots`
 
 - Summary: ListClusterVolumeSnapshots will list all VolumeSnapshot by given cluster and regardless of
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/volumesnapshots`
@@ -4328,7 +4328,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda storage list-storage-classes`
+### `dc container-management storage list-storage-classes`
 
 - Summary: ListStorageClass list StorageClass in single cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses`
@@ -4348,7 +4348,7 @@
   - `--fuzzy-name` (query): FuzzyName is used to fuzzy search by multiple parameters including name.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `allowVolumeExpansion`, `provisioner`, `reclaimPolicy`; pagination `offset`
 
-### `dcectl kpanda storage list-volume-snapshots`
+### `dc container-management storage list-volume-snapshots`
 
 - Summary: ListVolumeSnapshots list volume snapshot in single cluster
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/volumesnapshots`
@@ -4366,7 +4366,7 @@
   - `--field-selector` (query): FieldSelector is the format after labels.FormatLabels used to filter
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dcectl kpanda storage update-storage-class`
+### `dc container-management storage update-storage-class`
 
 - Summary: UpdateStorageClass update storage class
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/storageclasses/{name}`
@@ -4376,7 +4376,7 @@
   - `--cluster` (path, required): cluster represents the cluster of StorageClass to belongs to.
   - `--name` (path, required): name represents the name of StorageClass to belongs to.
 
-### `dcectl kpanda storage update-volume-snapshot`
+### `dc container-management storage update-volume-snapshot`
 
 - Summary: UpdateVolumeSnapshot update volume snapshot
 - HTTP: `PUT /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/volumesnapshots/{name}`
@@ -4389,7 +4389,7 @@
 
 ## Workspace
 
-### `dcectl kpanda workspace bind-cluster-to-workspace`
+### `dc container-management workspace bind-cluster-to-workspace`
 
 - Summary: Workspace_BindClusterToWorkspace
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}:bind`
@@ -4398,7 +4398,7 @@
 - Flags:
   - `--cluster` (path, required): cluster
 
-### `dcectl kpanda workspace bind-resource-to-workspace`
+### `dc container-management workspace bind-resource-to-workspace`
 
 - Summary: Workspace_BindResourceToWorkspace
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}:bind`
@@ -4408,7 +4408,7 @@
   - `--cluster` (path, required): cluster
   - `--name` (path, required): name
 
-### `dcectl kpanda workspace get-workspace-resource-quota-allocatable`
+### `dc container-management workspace get-workspace-resource-quota-allocatable`
 
 - Summary: Workspace_GetWorkspaceResourceQuotaAllocatable
 - HTTP: `GET /apis/kpanda.io/v1alpha1/workspaces/{workspaceId}/workspacesharedresourcequota`
@@ -4419,7 +4419,7 @@
   - `--workspace-alias` (query): workspaceAlias
   - `--cluster` (query): cluster
 
-### `dcectl kpanda workspace list-global-roles-for-current-user`
+### `dc container-management workspace list-global-roles-for-current-user`
 
 - Summary: Workspace_ListGlobalRolesForCurrentUser
 - HTTP: `GET /apis/kpanda.io/v1alpha1/globalroles`
@@ -4428,7 +4428,7 @@
 - Flags: none
 - Output: list path `roles`
 
-### `dcectl kpanda workspace list-workspaces`
+### `dc container-management workspace list-workspaces`
 
 - Summary: Workspace_ListWorkspaces
 - HTTP: `GET /apis/kpanda.io/v1alpha1/workspaces`
@@ -4437,7 +4437,7 @@
 - Flags: none
 - Output: list path `workspaces`; columns `id`, `alias`
 
-### `dcectl kpanda workspace un-bind-cluster-from-workspace`
+### `dc container-management workspace un-bind-cluster-from-workspace`
 
 - Summary: Workspace_UnBindClusterFromWorkspace
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}:unbind`
@@ -4446,7 +4446,7 @@
 - Flags:
   - `--cluster` (path, required): cluster
 
-### `dcectl kpanda workspace unbind-resource-from-workspace`
+### `dc container-management workspace unbind-resource-from-workspace`
 
 - Summary: Workspace_UnbindResourceFromWorkspace
 - HTTP: `DELETE /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{name}:unbind`
@@ -4458,7 +4458,7 @@
 
 ## insight
 
-### `dcectl kpanda insight get-pod-container-log`
+### `dc container-management insight get-pod-container-log`
 
 - Summary: GetPodContainerLog gets pod contianer log
 - HTTP: `GET /apis/kpanda.io/v1alpha1/clusters/{cluster}/namespaces/{namespace}/pods/{name}/log`
@@ -4477,7 +4477,7 @@
   - `--log-search` (query): for fuzzy query
 - Output: list path `data`; columns `log`, `timeStamp`; pagination `offset`
 
-### `dcectl kpanda insight query-cluster-metrics`
+### `dc container-management insight query-cluster-metrics`
 
 - Summary: insight_QueryClusterMetrics
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/metric`
@@ -4487,7 +4487,7 @@
   - `--cluster` (path, required): The name of the cluster
 - Output: list path `data`; columns `errorMessage`, `status`
 
-### `dcectl kpanda insight query-cluster-metrics-range`
+### `dc container-management insight query-cluster-metrics-range`
 
 - Summary: insight_QueryClusterMetricsRange
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/metricrange`
@@ -4497,7 +4497,7 @@
   - `--cluster` (path, required): the name of the cluster
 - Output: list path `data`; columns `errorMessage`, `status`
 
-### `dcectl kpanda insight query-public-range-usage`
+### `dc container-management insight query-public-range-usage`
 
 - Summary: insight_QueryPublicRangeUsage
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/publicmetricrange`
@@ -4507,7 +4507,7 @@
   - `--cluster` (path, required): Name of the cluster where the workload is located
 - Output: list path `data`; columns `errorMessage`, `status`
 
-### `dcectl kpanda insight query-public-usage`
+### `dc container-management insight query-public-usage`
 
 - Summary: insight_QueryPublicUsage
 - HTTP: `POST /apis/kpanda.io/v1alpha1/clusters/{cluster}/publicmetric`
