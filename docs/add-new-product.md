@@ -1,0 +1,163 @@
+# 如何为新产品添加 CLI 支持
+
+本文档说明 daocloud-skills 的工作原理，以及如何为一个新的 DCE 产品（例如 `mspider`）接入生成式 CLI。
+
+---
+
+## 项目工作原理
+
+整个流程分三层：
+
+```
+OpenAPI Spec (JSON)
+      ↓  specsync  拉取并缓存到 .cache/
+      ↓  codegen   读取 Spec + Overlay 生成 Go 代码和 Skill 文档
+      ↓
+bin/dcectl          ← 可执行 CLI，子命令按产品分组
+skills/dcectl/      ← AI Agent Skill（SKILL.md + references/）
+```
+
+### 关键文件
+
+| 文件 | 作用 |
+|---|---|
+| `specs/sources.yaml` | 声明每个产品的 OpenAPI 来源（repo、commit、文件路径） |
+| `internal/overlay/<product>.yaml` | 对生成结果做增量修改：隐藏内部 API、补充 short/alias/example/默认分页 |
+| `cli.yaml` | CLI 名称和 auth 校验接口 |
+| `internal/generated/modules_gen.go` | **自动生成**，把所有产品模块挂载到 cobra root，不要手改 |
+| `skills/dcectl/references/modules/<product>.md` | **自动生成**，AI Agent 用的命令索引 |
+
+---
+
+## 添加新产品的完整步骤
+
+以 `mspider`（服务网格）为例。
+
+### 第一步：在 `specs/sources.yaml` 添加来源
+
+```yaml
+sources:
+  ghippo:   # 已有
+    ...
+  kpanda:   # 已有
+    ...
+
+  mspider:                                              # 新增
+    repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
+    pinned_tag: <commit-sha>                            # 固定到具体 commit
+    backend: swagger
+    swagger:
+      files:
+        - docs/openapi/mspider/v0.x.x.json             # Spec 文件在 repo 中的路径
+```
+
+`pinned_tag` 填写 `daocloud-api-docs` 仓库的 commit SHA，确保可复现。
+
+### 第二步：同步 Spec 并预览生成结果
+
+```bash
+# 只同步 mspider，不影响其他产品
+make sync-one SOURCE=mspider
+```
+
+执行后：
+- Spec 文件缓存到 `.cache/specs-sync/mspider/`
+- `internal/generated/mspider/` 下生成 Go 命令代码
+- `skills/dcectl/references/modules/mspider.md` 生成命令索引
+- `internal/generated/modules_gen.go` 自动追加 mspider 模块
+
+### 第三步：创建 Overlay 文件
+
+```bash
+touch internal/overlay/mspider.yaml
+```
+
+Overlay 的作用是在不改动生成代码的前提下，控制命令的可见性和质量。
+
+**最小模板：**
+
+```yaml
+commands:
+  # ── 平台内部 API，不对外暴露 ──────────────────────────
+  some-internal-api:   { ignore: true }   # 隐藏该命令
+
+  # ── 服务列表 ──────────────────────────────────────────
+  list-services:
+    short: "List managed services in the mesh"
+    aliases: [ls, ls-svc]
+    example: |
+      dcectl mspider service list-services --mesh default-mesh
+    params:
+      page:
+        default: "1"
+      pageSize:
+        default: "20"
+```
+
+**Overlay 支持的字段：**
+
+| 字段 | 说明 |
+|---|---|
+| `ignore: true` | 隐藏该命令，不生成 CLI 子命令 |
+| `short` | 命令简介（覆盖 Spec 的 summary） |
+| `aliases` | 命令别名列表 |
+| `example` | 使用示例，会出现在 `--help` 和 AI Skill 文档中 |
+| `params.<name>.default` | 参数默认值（常用于分页） |
+| `params.<name>.help` | 参数帮助文字 |
+
+**建议优先处理：**
+1. 用 `ignore: true` 屏蔽所有纯内部 API（FeatureGate、Setting、Stream 等）
+2. 对高频命令补充 `short`、`aliases`、`example`
+3. 所有带分页的命令加上 `page: { default: "1" }` 和 `pageSize: { default: "20" }`
+
+### 第四步：重新生成并验证
+
+```bash
+# 重新跑一次 codegen（sync-one 已经跑过 specsync，直接 codegen 即可）
+make codegen
+
+# 编译验证
+make build
+
+# 检查新产品的子命令是否挂载
+./bin/dcectl mspider --help
+
+# 搜索验证
+./bin/dcectl search "list services" --json
+```
+
+### 第五步：构建并推送镜像
+
+```bash
+make image-push IMAGE_REPO=release-ci.daocloud.io/clawos/dcectl-cli IMAGE_TAG=v0.x.x
+```
+
+---
+
+## 升级已有产品的 Spec 版本
+
+```bash
+# 1. 修改 specs/sources.yaml 中对应产品的 pinned_tag 和 swagger.files 路径
+# 2. 重新同步
+make sync-one SOURCE=<product>
+
+# 3. 检查 overlay 是否需要补充新增命令
+# 4. 编译验证
+make build
+```
+
+---
+
+## 常见问题
+
+**Q: codegen 生成的命令太多，怎么批量屏蔽？**
+
+在 overlay 里用 `ignore: true` 逐条屏蔽，或者先不加 overlay 跑一次 `make build`，通过 `./bin/dcectl <product> --help` 看有哪些命令，再决定屏蔽哪些。
+
+**Q: 新产品的 auth 路径和 ghippo 不同怎么办？**
+
+`cli.yaml` 中的 `auth.validate.path` 是全局的登录校验接口，目前固定为 ghippo 的 `/apis/ghippo.io/v1alpha1/current-user`。如果新产品有独立 auth，需要评估是否修改该接口或在 lathe 框架层扩展。
+
+**Q: `make sync-one` 失败，提示无法访问 GitHub？**
+
+网络问题。可以手动把对应的 OpenAPI JSON 文件放到 `.cache/specs-sync/<product>/` 下，并创建 `.cache/specs-sync/<product>/sync-state.yaml`（内容随意），再直接运行 `make codegen`。

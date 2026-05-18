@@ -7,10 +7,18 @@ A generated CLI and AI skill package for DaoCloud Enterprise (DCE). It wraps the
 - **`dcectl`** — a CLI generated from DCE OpenAPI specs (ghippo, kpanda). Supports API discovery, search, and execution with built-in auth management.
 - **`skills/dcectl`** — an AI agent skill that teaches agents how to use `dcectl` safely.
 
+Currently supported products:
+
+| Product | Description |
+|---|---|
+| `ghippo` | Global Management — users, groups, workspaces, roles, audit |
+| `kpanda` | Container Management — clusters, namespaces, workloads, storage |
+
 ## Prerequisites
 
 - Go 1.25+
 - Git (for spec sync)
+- Docker with [buildx](https://docs.docker.com/buildx/working-with-buildx/) (for container image builds)
 
 ## Quick Start
 
@@ -40,10 +48,10 @@ dcectl commands --json
 dcectl search "list clusters" --json
 
 # Inspect a command before executing
-dcectl commands show kpanda clusters list --json
+dcectl commands show kpanda cluster list-clusters --json
 
 # Execute a command
-dcectl kpanda clusters list -o json
+dcectl kpanda cluster list-clusters -o json
 ```
 
 ## Container Image
@@ -108,19 +116,33 @@ After the init container completes, the shared volume contains:
 ├── cli.yaml                  # CLI name and auth config
 ├── specs/sources.yaml        # OpenAPI source definitions (pinned commits)
 ├── internal/
-│   ├── generated/            # Generated Go command modules
+│   ├── generated/            # Generated Go command modules (do not edit)
 │   └── overlay/              # Per-source field overrides for codegen
 ├── skills/dcectl/            # AI agent skill (SKILL.md + references)
+├── docs/                     # Developer guides
 ├── cmd/dcectl/main.go        # CLI entrypoint
 └── doc.go                    # Embeds cli.yaml for use by main
 ```
 
-## Adding a New API Source
+## Guides
 
-1. Add an entry to `specs/sources.yaml` with the repo URL, pinned commit, and OpenAPI file path.
-2. Add an overlay file to `internal/overlay/<source>.yaml` if field customisation is needed.
-3. Run `make bootstrap` to sync and regenerate.
+- [Adding a new product](docs/add-new-product.md) — step-by-step guide for onboarding a new DCE product (spec source, overlay, codegen, verification)
+
+## How It Works
+
+1. **`specsync`** clones the pinned commit of `daocloud-api-docs` and extracts the OpenAPI JSON files into `.cache/specs-sync/`.
+2. **`codegen`** reads each spec, applies the overlay from `internal/overlay/<source>.yaml`, and emits:
+   - Go cobra subcommands under `internal/generated/<source>/`
+   - A command index at `skills/dcectl/references/modules/<source>.md`
+   - An updated `internal/generated/modules_gen.go` that mounts all modules
+3. **`go build`** compiles everything into a single static binary `bin/dcectl`.
+
+Overlay files are the only place where human-maintained configuration lives — everything else is generated and should not be edited by hand.
 
 ## Updating a Pinned Spec
 
-Update the `pinned_tag` for the relevant source in `specs/sources.yaml`, then run `make sync-one SOURCE=<name>` or `make bootstrap`.
+Update the `pinned_tag` for the relevant source in `specs/sources.yaml`, then run:
+
+```bash
+make sync-one SOURCE=<name>
+```
