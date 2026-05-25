@@ -4,7 +4,7 @@ const { execFileSync } = require("child_process");
 const os = require("os");
 const crypto = require("crypto");
 
-const VERSION = require("../package.json").version.replace(/-.*$/, "");
+const VERSION = require("../package.json").version;
 const REPO = "Frapschen/daocloud-skills";
 const NAME = "dc";
 const ALLOWED_HOSTS = new Set([
@@ -59,8 +59,9 @@ function download(url, destPath) {
 function getExpectedChecksum(name) {
   const checksumsPath = path.join(pkgRoot, "checksums.txt");
   if (!fs.existsSync(checksumsPath)) {
-    console.error("[WARN] checksums.txt not found, skipping checksum verification");
-    return null;
+    throw new Error(
+      "[SECURITY] checksums.txt not found; refusing to install without integrity verification"
+    );
   }
   const content = fs.readFileSync(checksumsPath, "utf8");
   for (const line of content.split("\n")) {
@@ -76,7 +77,6 @@ function getExpectedChecksum(name) {
 }
 
 function verifyChecksum(archivePath, expectedHash) {
-  if (expectedHash === null) return;
   const hash = crypto.createHash("sha256");
   const fd = fs.openSync(archivePath, "r");
   try {
