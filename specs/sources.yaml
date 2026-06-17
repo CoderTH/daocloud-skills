@@ -154,3 +154,12 @@ sources:
     swagger:
       files:
         - docs/openapi/hydra/v0.15.2.json
+
+  skoala:
+    display_name: microservice-engine
+    repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
+    pinned_tag: 9fd0dfafa1400e6d98b14b85c9a27cd1c151f9bd
+    backend: swagger
+    swagger:
+      files:
+        - docs/openapi/skoala/v0.55.0.json

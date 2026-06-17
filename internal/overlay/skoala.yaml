@@ -1,0 +1,54 @@
+commands:
+  list-gateways:
+    short: "List gateways in a workspace"
+    aliases: [ls-gateways]
+    example: |
+      dce microservice-engine skoala-v1alpha3 list-gateways \
+        --workspace-id <workspace-id> \
+        --page 1 --page-size 20
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-all-gateways:
+    short: "List gateways across workspaces"
+    aliases: [ls-all-gateways]
+    example: |
+      dce microservice-engine skoala-v1alpha3 list-all-gateways \
+        --cluster-name <cluster-name> \
+        --namespace-name <namespace-name> \
+        --page 1 --page-size 20
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-service-instance:
+    short: "List service instances in a hosted Nacos namespace"
+    aliases: [ls-service-instances]
+    example: |
+      dce microservice-engine nacos list-service-instance \
+        --workspace-id <workspace-id> \
+        --cluster-name <cluster-name> \
+        --namespace-name <namespace-name> \
+        --nacos-name <nacos-name> \
+        --nacos-namespace <nacos-namespace> \
+        --nacos-service <service-name> \
+        --page 1 --page-size 20
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
+
+  list-hosted-registry-service-instances:
+    short: "List instances for a service in a hosted registry"
+    aliases: [ls-hosted-service-instances]
+    example: |
+      dce microservice-engine skoala list-hosted-registry-service-instances \
+        --workspace-id <workspace-id> \
+        --cluster-name <cluster-name> \
+        --namespace-name <namespace-name> \
+        --nacos-name <nacos-name> \
+        --nacos-service <service-name> \
+        --page 1 --page-size 20
+    params:
+      page: { default: "1" }
+      pageSize: { default: "20" }
