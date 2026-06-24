@@ -25,6 +25,7 @@ Currently supported products:
 | `redis` | Redis — in-memory data-store cluster lifecycle and instance management |
 | `rocketmq` | RocketMQ — messaging cluster lifecycle and instance management |
 | `seaweedfs` | SeaweedFS — distributed-storage cluster lifecycle and instance management |
+| `microservice-engine` | Microservice Engine — gateways, registries, Nacos, Sentinel, and mesh operations |
 
 ## Prerequisites
 

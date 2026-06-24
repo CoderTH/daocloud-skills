@@ -20,6 +20,7 @@ import (
 	redis "github.com/DaoCloud/daocloud-skills/internal/generated/redis"
 	rocketmq "github.com/DaoCloud/daocloud-skills/internal/generated/rocketmq"
 	seaweedfs "github.com/DaoCloud/daocloud-skills/internal/generated/seaweedfs"
+	skoala "github.com/DaoCloud/daocloud-skills/internal/generated/skoala"
 	"github.com/spf13/cobra"
 )
 
@@ -77,6 +78,9 @@ func MountModules(root *cobra.Command) error {
 		return err
 	}
 	if err := seaweedfs.Mount(root); err != nil {
+		return err
+	}
+	if err := skoala.Mount(root); err != nil {
 		return err
 	}
 	return nil
