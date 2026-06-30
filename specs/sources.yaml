@@ -48,13 +48,13 @@ sources:
         - docs/openapi/baize/v0.111.2.json
 
   amamba:
-    display_name: amamba
+    display_name: workbench
     repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
-    pinned_tag: 0bb0ec92f301b9c8a56deafebd4138e333f92cec
+    pinned_tag: 74a87ca82821c5c9ca1b07d1cf8bf037185d1408
     backend: swagger
     swagger:
       files:
-        - docs/openapi/amamba/v0.131.0.json
+        - docs/openapi/amamba/v0.132.0.json
 
   elasticsearch:
     display_name: elasticsearch

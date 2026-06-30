@@ -9,25 +9,25 @@ A generated CLI and AI skill package for DaoCloud Enterprise (DCE). It wraps the
 
 Currently supported products:
 
-| Module | Description |
-|---|---|
-| `global-management` | Global Management — users, groups, workspaces, roles, audit |
+| Module                 | Description |
+|------------------------|---|
+| `global-management`    | Global Management — users, groups, workspaces, roles, audit |
 | `container-management` | Container Management — clusters, namespaces, workloads, storage |
-| `insight` | Insight — observability, metrics, alerting, and related operations |
-| `ai-lab` | AI Lab — notebooks, jobs, datasets, models, inference, queues, and GPU resources |
-| `amamba` | Application Workbench — applications, pipelines, GitOps, and deployment |
-| `elasticsearch` | Elasticsearch — search cluster lifecycle and instance management |
-| `kafka` | Kafka — event-streaming cluster lifecycle and instance management |
-| `minio` | MinIO — object-storage cluster lifecycle and instance management |
-| `mongodb` | MongoDB — document-database cluster lifecycle and instance management |
-| `mysql` | MySQL — relational-database cluster lifecycle and instance management |
-| `postgresql` | PostgreSQL — relational-database cluster lifecycle and instance management |
-| `rabbitmq` | RabbitMQ — message-broker cluster lifecycle and instance management |
-| `redis` | Redis — in-memory data-store cluster lifecycle and instance management |
-| `rocketmq` | RocketMQ — messaging cluster lifecycle and instance management |
-| `seaweedfs` | SeaweedFS — distributed-storage cluster lifecycle and instance management |
-| `virtual-machines` | Virtual Machines — VM lifecycle, disks, snapshots, templates, and migration |
-| `microservice-engine` | Microservice Engine — gateways, registries, Nacos, Sentinel, and mesh operations |
+| `insight`              | Insight — observability, metrics, alerting, and related operations |
+| `ai-lab`               | AI Lab — notebooks, jobs, datasets, models, inference, queues, and GPU resources |
+| `workbench`            | Application Workbench — applications, pipelines, GitOps, and deployment |
+| `elasticsearch`        | Elasticsearch — search cluster lifecycle and instance management |
+| `kafka`                | Kafka — event-streaming cluster lifecycle and instance management |
+| `minio`                | MinIO — object-storage cluster lifecycle and instance management |
+| `mongodb`              | MongoDB — document-database cluster lifecycle and instance management |
+| `mysql`                | MySQL — relational-database cluster lifecycle and instance management |
+| `postgresql`           | PostgreSQL — relational-database cluster lifecycle and instance management |
+| `rabbitmq`             | RabbitMQ — message-broker cluster lifecycle and instance management |
+| `redis`                | Redis — in-memory data-store cluster lifecycle and instance management |
+| `rocketmq`             | RocketMQ — messaging cluster lifecycle and instance management |
+| `seaweedfs`            | SeaweedFS — distributed-storage cluster lifecycle and instance management |
+| `virtual-machines`     | Virtual Machines — VM lifecycle, disks, snapshots, templates, and migration |
+| `microservice-engine`  | Microservice Engine — gateways, registries, Nacos, Sentinel, and mesh operations |
 
 ## Prerequisites
 

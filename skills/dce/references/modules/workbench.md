@@ -1,16 +1,16 @@
-# Module `amamba`
+# Module `workbench`
 
 ## Source
 
 - Backend: `swagger`
 - Repository: https://github.com/DaoCloud/daocloud-api-docs.git
-- Pinned tag: `0bb0ec92f301b9c8a56deafebd4138e333f92cec`
-- Files: `docs/openapi/amamba/v0.131.0.json`
-- Resolved SHA: `0bb0ec92f301b9c8a56deafebd4138e333f92cec`
+- Pinned tag: `74a87ca82821c5c9ca1b07d1cf8bf037185d1408`
+- Files: `docs/openapi/amamba/v0.132.0.json`
+- Resolved SHA: `74a87ca82821c5c9ca1b07d1cf8bf037185d1408`
 
 ## Aggregation
 
-### `dce amamba aggregation create-aggregation-resource`
+### `dce workbench aggregation create-aggregation-resource`
 
 - Summary: Create aggregation resources (override + propagation) for a kairship instance
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/aggregationresource`
@@ -25,7 +25,7 @@
 
 ## ApplicationService
 
-### `dce amamba applicationservice attach-components`
+### `dce workbench applicationservice attach-components`
 
 - Summary: AttachComponents adds exist resource to application
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components:attach`
@@ -35,7 +35,7 @@
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba applicationservice create-application`
+### `dce workbench applicationservice create-application`
 
 - Summary: Create a new application
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications`
@@ -45,7 +45,7 @@
   - `--workspace-id` (path, required): workspaceId
 - Example: `dce amamba applicationservice create-application --workspace-id <ws> --file app.yaml`
 
-### `dce amamba applicationservice create-cloud-shell`
+### `dce workbench applicationservice create-cloud-shell`
 
 - Summary: ApplicationService_CreateCloudShell
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{application}/pods/{podName}/containers/{container}/cloudshell`
@@ -57,7 +57,7 @@
   - `--pod-name` (path, required): pod_name defines the name of the specified pod.
   - `--container` (path, required): container defines which container or init container to create cloud shell.
 
-### `dce amamba applicationservice create-component`
+### `dce workbench applicationservice create-component`
 
 - Summary: Add a component to an existing application
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}`
@@ -69,7 +69,7 @@
   - `--group-kind` (path, required): groupKind
 - Example: `dce amamba applicationservice create-component --workspace-id <ws> --application my-app --file component.yaml`
 
-### `dce amamba applicationservice create-revision`
+### `dce workbench applicationservice create-revision`
 
 - Summary: ApplicationService_CreateRevision
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/applications/{applicationName}/revisions`
@@ -82,7 +82,7 @@
   - `--application-name` (path, required): applicationName
 - Output: list path `data`
 
-### `dce amamba applicationservice delete-application`
+### `dce workbench applicationservice delete-application`
 
 - Summary: Delete an application
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}`
@@ -93,7 +93,7 @@
   - `--name` (path, required): name
 - Example: `dce amamba applicationservice delete-application --workspace-id <ws> --name my-app`
 
-### `dce amamba applicationservice delete-cloud-shell`
+### `dce workbench applicationservice delete-cloud-shell`
 
 - Summary: ApplicationService_DeleteCloudShell
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{application}/pods/{podName}/containers/{container}/cloudshell`
@@ -105,7 +105,7 @@
   - `--pod-name` (path, required): pod_name defines the name of the specified pod.
   - `--container` (path, required): container defines which container or init container to create cloud shell.
 
-### `dce amamba applicationservice delete-component`
+### `dce workbench applicationservice delete-component`
 
 - Summary: Remove a component from an application
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}`
@@ -118,7 +118,7 @@
   - `--component-name` (path, required): componentName
 - Example: `dce amamba applicationservice delete-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice delete-revision`
+### `dce workbench applicationservice delete-revision`
 
 - Summary: ApplicationService_DeleteRevision
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/applications/{applicationName}/revisions/{revisionNumber}`
@@ -131,7 +131,7 @@
   - `--application-name` (path, required): applicationName
   - `--revision-number` (path, required): revisionNumber
 
-### `dce amamba applicationservice detach-components`
+### `dce workbench applicationservice detach-components`
 
 - Summary: DetachComponents removes resource from application, but does not delete it
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components:detach`
@@ -141,7 +141,7 @@
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba applicationservice get-application`
+### `dce workbench applicationservice get-application`
 
 - Summary: Get an application's full details
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}`
@@ -154,7 +154,7 @@
   - `--namespace` (query): namespace
 - Example: `dce amamba applicationservice get-application --workspace-id <ws> --name my-app`
 
-### `dce amamba applicationservice get-application-templates`
+### `dce workbench applicationservice get-application-templates`
 
 - Summary: ApplicationService_GetApplicationTemplates
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/applications/{name}/templates`
@@ -167,7 +167,7 @@
   - `--name` (path, required): name
 - Output: list path `data`
 
-### `dce amamba applicationservice get-application-topology`
+### `dce workbench applicationservice get-application-topology`
 
 - Summary: Get the application topology graph (services, workloads, ingresses)
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/topology`
@@ -181,7 +181,7 @@
 - Output: list path `edges`; columns `source`, `target`
 - Example: `dce amamba applicationservice get-application-topology --workspace-id <ws> --name my-app`
 
-### `dce amamba applicationservice get-application-yaml`
+### `dce workbench applicationservice get-application-yaml`
 
 - Summary: Get the application as raw YAML
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/yaml`
@@ -194,7 +194,7 @@
   - `--namespace` (query): namespace
 - Example: `dce amamba applicationservice get-application-yaml --workspace-id <ws> --name my-app`
 
-### `dce amamba applicationservice get-cloud-shell`
+### `dce workbench applicationservice get-cloud-shell`
 
 - Summary: ApplicationService_GetCloudShell
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{application}/pods/{podName}/containers/{container}/cloudshell`
@@ -209,7 +209,7 @@
   - `--namespace` (query): namespace defines the namespace of the specified pod.
   - `--name` (query): name
 
-### `dce amamba applicationservice get-component`
+### `dce workbench applicationservice get-component`
 
 - Summary: Get a single component by name
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}`
@@ -224,7 +224,7 @@
   - `--namespace` (query): namespace
 - Example: `dce amamba applicationservice get-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice get-pod-container-log`
+### `dce workbench applicationservice get-pod-container-log`
 
 - Summary: Stream logs from a workload container
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/pods/{pod}/containers/{container}/log`
@@ -245,7 +245,7 @@
 - Output: list path `data`; columns `log`, `timeStamp`; pagination `offset`
 - Example: `dce amamba workloads get-pod-container-log --workspace-id <ws> --cluster <c> --namespace <ns> --pod <pod> --container <c>`
 
-### `dce amamba applicationservice get-revision`
+### `dce workbench applicationservice get-revision`
 
 - Summary: ApplicationService_GetRevision
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/applications/{applicationName}/revisions/{revisionNumber}`
@@ -259,7 +259,7 @@
   - `--revision-number` (path, required): revisionNumber
 - Output: list path `data`
 
-### `dce amamba applicationservice list-application-workloads`
+### `dce workbench applicationservice list-application-workloads`
 
 - Summary: List workloads under an application
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/workloads`
@@ -279,7 +279,7 @@
 - Output: list path `items`; columns `data`, `state`; pagination `offset`
 - Example: `dce amamba applicationservice list-application-workloads --workspace-id <ws> --name my-app`
 
-### `dce amamba applicationservice list-applications`
+### `dce workbench applicationservice list-applications`
 
 - Summary: List applications in a workspace
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications`
@@ -303,7 +303,7 @@ dce amamba applicationservice list-applications --workspace-id <ws>
 dce amamba applicationservice list-applications --workspace-id <ws> --name my-app -o json
 ```
 
-### `dce amamba applicationservice list-component-events`
+### `dce workbench applicationservice list-component-events`
 
 - Summary: ApplicationService_ListComponentEvents
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{componentName}/events`
@@ -324,7 +324,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the cluster list order.
 - Output: list path `items`; columns `type`, `firstTimestamp`, `lastTimestamp`, `message`, `reason`; pagination `offset`
 
-### `dce amamba applicationservice list-component-events2`
+### `dce workbench applicationservice list-component-events2`
 
 - Summary: ApplicationService_ListComponentEvents2
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}/events`
@@ -345,7 +345,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the cluster list order.
 - Output: list path `items`; columns `type`, `firstTimestamp`, `lastTimestamp`, `message`, `reason`; pagination `offset`
 
-### `dce amamba applicationservice list-components`
+### `dce workbench applicationservice list-components`
 
 - Summary: List components of an application
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}`
@@ -366,7 +366,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `data`; pagination `offset`
 - Example: `dce amamba applicationservice list-components --workspace-id <ws> --name my-app`
 
-### `dce amamba applicationservice list-revisions`
+### `dce workbench applicationservice list-revisions`
 
 - Summary: ApplicationService_ListRevisions
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/applications/{applicationName}/revisions`
@@ -384,7 +384,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the cluster list order.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `description`, `revisionNumber`; pagination `offset`
 
-### `dce amamba applicationservice list-workload-pod-containers`
+### `dce workbench applicationservice list-workload-pod-containers`
 
 - Summary: List containers in a workload's pods
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}/podcontainers`
@@ -400,7 +400,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`
 - Example: `dce amamba workloads list-workload-pod-containers --workspace-id <ws> --cluster <c> --namespace <ns> --workload <name>`
 
-### `dce amamba applicationservice pause-component`
+### `dce workbench applicationservice pause-component`
 
 - Summary: Pause a running component
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}:pause`
@@ -413,7 +413,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--component-name` (path, required): componentName
 - Example: `dce amamba applicationservice pause-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice restart-component`
+### `dce workbench applicationservice restart-component`
 
 - Summary: Restart a component (rolling restart of pods)
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}:restart`
@@ -426,7 +426,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--component-name` (path, required): componentName
 - Example: `dce amamba applicationservice restart-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice resume-component`
+### `dce workbench applicationservice resume-component`
 
 - Summary: Resume a paused component
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}:resume`
@@ -439,7 +439,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--component-name` (path, required): componentName
 - Example: `dce amamba applicationservice resume-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice rollback-revision`
+### `dce workbench applicationservice rollback-revision`
 
 - Summary: ApplicationService_RollbackRevision
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/applications/{applicationName}/revisions/{revisionNumber}:rollback`
@@ -453,7 +453,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--revision-number` (path, required): revisionNumber
 - Output: list path `created`
 
-### `dce amamba applicationservice start-component`
+### `dce workbench applicationservice start-component`
 
 - Summary: Resume a paused component
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}:start`
@@ -466,7 +466,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--component-name` (path, required): componentName
 - Example: `dce amamba applicationservice start-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice stop-component`
+### `dce workbench applicationservice stop-component`
 
 - Summary: Pause a component (scale to 0)
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}:stop`
@@ -479,7 +479,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--component-name` (path, required): componentName
 - Example: `dce amamba applicationservice stop-component --workspace-id <ws> --application my-app --name web`
 
-### `dce amamba applicationservice update-application`
+### `dce workbench applicationservice update-application`
 
 - Summary: Update an existing application
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}`
@@ -490,7 +490,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba applicationservice update-application --workspace-id <ws> --name my-app --file app.yaml`
 
-### `dce amamba applicationservice update-application-info`
+### `dce workbench applicationservice update-application-info`
 
 - Summary: ApplicationService_UpdateApplicationInfo
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/info`
@@ -500,7 +500,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba applicationservice update-application-yaml`
+### `dce workbench applicationservice update-application-yaml`
 
 - Summary: Update the application from raw YAML
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/yaml`
@@ -511,7 +511,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba applicationservice update-application-yaml --workspace-id <ws> --name my-app --file app.yaml`
 
-### `dce amamba applicationservice update-component`
+### `dce workbench applicationservice update-component`
 
 - Summary: Update a component's spec
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/applications/{name}/components/{groupKind}/{componentName}`
@@ -526,7 +526,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Apps
 
-### `dce amamba apps delete-deployment`
+### `dce workbench apps delete-deployment`
 
 - Summary: Delete a kairship deployment
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/deployments/{name}`
@@ -542,7 +542,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.name` (query): Name represents the name of deployment
 - Example: `dce amamba apps delete-deployment --workspace-id <ws> --instance <i> --namespace <ns> --name <name>`
 
-### `dce amamba apps get-deployment-json`
+### `dce workbench apps get-deployment-json`
 
 - Summary: Apps_GetDeploymentJSON
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/deployments/{name}/json`
@@ -557,7 +557,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.namespace` (query): Namespace is the metadata.namespace of the referenced Deployment.
   - `--payload.name` (query): name represents for the resource name
 
-### `dce amamba apps list-deployments`
+### `dce workbench apps list-deployments`
 
 - Summary: ListDeployments lists deployments
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/deployments`
@@ -579,7 +579,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Cluster
 
-### `dce amamba cluster list-clusters-labels`
+### `dce workbench cluster list-clusters-labels`
 
 - Summary: Cluster_ListClustersLabels
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/clusters-labels`
@@ -591,7 +591,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.instance` (query): karmada instance
 - Output: list path `clusterLabels`; columns `cluster`
 
-### `dce amamba cluster list-joined-clusters`
+### `dce workbench cluster list-joined-clusters`
 
 - Summary: ListJoinedCluster Get the list of clusters that have been added to karmada
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/clusters`
@@ -621,7 +621,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Core
 
-### `dce amamba core create-control-plane-namespace`
+### `dce workbench core create-control-plane-namespace`
 
 - Summary: Core_CreateControlPlaneNamespace
 - HTTP: `POST /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/control-plane/namespaces`
@@ -630,7 +630,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba core create-namespace`
+### `dce workbench core create-namespace`
 
 - Summary: Create a namespace in the specified workspace and cluster.
 - HTTP: `POST /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces`
@@ -640,7 +640,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): Which workspace does it belong to
   - `--cluster` (path, required): Which cluster does it belong to
 
-### `dce amamba core create-namespace-quota`
+### `dce workbench core create-namespace-quota`
 
 - Summary: Core_CreateNamespaceQuota
 - HTTP: `POST /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/quota`
@@ -651,7 +651,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): Which cluster does it belong to
   - `--namespace` (path, required): the name of the namespace.
 
-### `dce amamba core delete-namespace`
+### `dce workbench core delete-namespace`
 
 - Summary: Delete a namespace in the specified workspace and cluster.
 - HTTP: `DELETE /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}`
@@ -662,7 +662,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): Which cluster does it belong to
   - `--namespace` (path, required): the name of the namespace.
 
-### `dce amamba core get-control-plane-namespace`
+### `dce workbench core get-control-plane-namespace`
 
 - Summary: Core_GetControlPlaneNamespace
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/control-plane/namespaces`
@@ -671,7 +671,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba core get-namespace-quota`
+### `dce workbench core get-namespace-quota`
 
 - Summary: Core_GetNamespaceQuota
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/quota`
@@ -682,7 +682,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): Which cluster does it belong to
   - `--namespace` (path, required): the name of the namespace.
 
-### `dce amamba core get-secret`
+### `dce workbench core get-secret`
 
 - Summary: Get a single kairship secret by name
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/secrets/{name}`
@@ -698,7 +698,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.name` (query): Secret name.
 - Example: `dce amamba core get-secret --workspace-id <ws> --instance <i> --namespace <ns> --name <name>`
 
-### `dce amamba core get-workspace-quota`
+### `dce workbench core get-workspace-quota`
 
 - Summary: Core_GetWorkspaceQuota
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/quota`
@@ -708,7 +708,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): Which workspace does it belong to
   - `--cluster` (path, required): Which cluster does it belong to
 
-### `dce amamba core list-bound-clusters`
+### `dce workbench core list-bound-clusters`
 
 - Summary: List clusters that have been bound to the workspace.
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters`
@@ -722,7 +722,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--page-size` (query, int32): Optional, if page_size is -1 then return all the clusters
 - Output: list path `items`; columns `name`, `aliasName`, `createdAt`, `kubeSystemId`, `status`; pagination `offset`
 
-### `dce amamba core list-bound-namespaces`
+### `dce workbench core list-bound-namespaces`
 
 - Summary: List a cluster's namespaces that have been bound to the workspace.
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/namespaces`
@@ -738,7 +738,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (query): fuzzy search for namespace.
 - Output: list path `items`; columns `name`, `creationTimestamp`, `cluster`, `workspaceId`; pagination `offset`
 
-### `dce amamba core list-cluster-gpu-summary`
+### `dce workbench core list-cluster-gpu-summary`
 
 - Summary: Core_ListClusterGPUSummary
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/gpusummary`
@@ -749,7 +749,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): cluster
 - Output: list path `gpuSummary`; columns `node`
 
-### `dce amamba core list-cluster-names`
+### `dce workbench core list-cluster-names`
 
 - Summary: List all cluster names, no workspace scoped.
 - HTTP: `GET /apis/amamba.io/v1alpha1/management/clusternames`
@@ -758,7 +758,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags: none
 - Output: list path `items`
 
-### `dce amamba core list-cluster-namespace-names`
+### `dce workbench core list-cluster-namespace-names`
 
 - Summary: List all namespace names in a specified cluster, no workspace scoped.
 - HTTP: `GET /apis/amamba.io/v1alpha1/management/clusters/{cluster}/namespacenames`
@@ -768,7 +768,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): Which cluster does it belong to
 - Output: list path `items`
 
-### `dce amamba core list-config-maps`
+### `dce workbench core list-config-maps`
 
 - Summary: List configmaps in a kairship multi-cluster namespace
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/configmaps`
@@ -790,7 +790,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`, `immutable`
 - Example: `dce amamba core list-config-maps --workspace-id <ws> --instance <i> --namespace <ns>`
 
-### `dce amamba core list-deploy-targets`
+### `dce workbench core list-deploy-targets`
 
 - Summary: List available deploy targets (clusters) in a workspace
 - HTTP: `GET /apis/amamba.io/v1alpha1/management/workspaces/{workspaceId}/deploytargets`
@@ -803,7 +803,23 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `aliasName`, `cluster`, `status`
 - Example: `dce amamba mutilcloudapplication list-deploy-targets --workspace-id <ws>`
 
-### `dce amamba core list-kairship-instance`
+### `dce workbench core list-gpu-devices`
+
+- Summary: Core_ListGPUDevices
+- HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/gpudevices`
+- Auth: required
+- Body: none
+- Flags:
+  - `--workspace-id` (path, required): workspaceId
+  - `--cluster` (path, required): cluster
+  - `--search-node-name` (query): SearchNodeName filters devices by node name (substring match).
+  - `--search-gpu-model` (query): SearchGPUModel filters devices by GPU model.
+  - `--search-vendor` (query): SearchVendor filters devices by vendor.
+  - `--search-device-uuid` (query): SearchDeviceUUID filters devices by device UUID.
+  - `--search-gpu-id` (query): SearchGPUID filters devices by GPU ID.
+- Output: list path `items`; columns `modelName`, `cluster`, `coreUtilization`, `deviceUuid`, `frameBufferMemoryUtilization`, `nodeName`
+
+### `dce workbench core list-kairship-instance`
 
 - Summary: List kairship multi-cluster instances
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/kairship_instances`
@@ -814,7 +830,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`
 - Example: `dce amamba gitops list-kairship-instance --workspace-id <ws>`
 
-### `dce amamba core list-kairship-instance-bound-namespaces`
+### `dce workbench core list-kairship-instance-bound-namespaces`
 
 - Summary: List namespaces bound to a kairship instance
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/kairship_instances/namespaces`
@@ -831,7 +847,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `namespace`, `createAt`, `instance`; pagination `offset`
 - Example: `dce amamba gitops list-kairship-instance-bound-namespaces --workspace-id <ws> --instance <i>`
 
-### `dce amamba core list-namespace-summary`
+### `dce workbench core list-namespace-summary`
 
 - Summary: Core_ListNamespaceSummary
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/namespacesummary`
@@ -843,7 +859,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.instance` (query): Instance the namespace summary list belong to.
 - Output: list path `data`; columns `name`, `instance`
 
-### `dce amamba core list-platform-role-permissions-for-current-user`
+### `dce workbench core list-platform-role-permissions-for-current-user`
 
 - Summary: Core_ListPlatformRolePermissionsForCurrentUser
 - HTTP: `GET /apis/amamba.io/v1alpha1/management/permissions`
@@ -852,7 +868,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags: none
 - Output: list path `permissions`
 
-### `dce amamba core list-role-permissions-by-workspace-for-current-user`
+### `dce workbench core list-role-permissions-by-workspace-for-current-user`
 
 - Summary: Obtain the Perms of the current user Ctx needs to include JwtToken (GProduct sensitive)
 - HTTP: `GET /apis/amamba.io/v1alpha1/management/workspaces/{workspaceId}/permissions`
@@ -862,7 +878,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
 - Output: list path `permissions`
 
-### `dce amamba core list-secrets`
+### `dce workbench core list-secrets`
 
 - Summary: List secrets in a kairship multi-cluster namespace
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/secrets`
@@ -884,7 +900,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `type`, `metadata.creationTimestamp`, `immutable`
 - Example: `dce amamba core list-secrets --workspace-id <ws> --instance <i> --namespace <ns>`
 
-### `dce amamba core list-visible-workspaces`
+### `dce workbench core list-visible-workspaces`
 
 - Summary: List the workspaces that have been bound to the account.
 - HTTP: `GET /apis/amamba.io/v1alpha1/management/workspaces`
@@ -896,7 +912,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--page-size` (query, int32): PageSize per page requested.
 - Output: list path `items`; columns `alias`, `workspaceId`; pagination `offset`
 
-### `dce amamba core update-namespace`
+### `dce workbench core update-namespace`
 
 - Summary: UpdateNamespace a namespace in the specified workspace and cluster.
 - HTTP: `PUT /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}`
@@ -907,7 +923,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): Which cluster does it belong to
   - `--namespace` (path, required): the name of the namespace.
 
-### `dce amamba core update-namespace-quota`
+### `dce workbench core update-namespace-quota`
 
 - Summary: Core_UpdateNamespaceQuota
 - HTTP: `PUT /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/quota`
@@ -920,7 +936,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Credentials
 
-### `dce amamba credentials create-credential`
+### `dce workbench credentials create-credential`
 
 - Summary: Create a credential (interactive prompts for the secret)
 - HTTP: `POST /apis/credential.amamba.io/v1alpha1/workspaces/{workspaceId}/credentials`
@@ -930,7 +946,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): The workspace id of the credential.
 - Example: `dce amamba credentials create-credential --workspace-id <ws> --name github-pat --type git --interactive`
 
-### `dce amamba credentials delete-credential`
+### `dce workbench credentials delete-credential`
 
 - Summary: Delete a credential
 - HTTP: `DELETE /apis/credential.amamba.io/v1alpha1/workspaces/{workspaceId}/credentials/{credentialName}`
@@ -941,7 +957,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--credential-name` (path, required): credentialName
 - Example: `dce amamba credentials delete-credential --workspace-id <ws> --name github-pat`
 
-### `dce amamba credentials get-credential`
+### `dce workbench credentials get-credential`
 
 - Summary: Get a credential by name (secret value is not returned)
 - HTTP: `GET /apis/credential.amamba.io/v1alpha1/workspaces/{workspaceId}/credentials/{credentialName}`
@@ -952,7 +968,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--credential-name` (path, required): credentialName
 - Example: `dce amamba credentials get-credential --workspace-id <ws> --name github-pat`
 
-### `dce amamba credentials list-credential`
+### `dce workbench credentials list-credential`
 
 - Summary: List credentials (Git, registry, Jenkins, etc.) in a workspace
 - HTTP: `GET /apis/credential.amamba.io/v1alpha1/workspaces/{workspaceId}/credentials`
@@ -969,7 +985,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; pagination `offset`
 - Example: `dce amamba credentials list-credential --workspace-id <ws>`
 
-### `dce amamba credentials update-credential`
+### `dce workbench credentials update-credential`
 
 - Summary: Update a credential's metadata or rotate its secret
 - HTTP: `PUT /apis/credential.amamba.io/v1alpha1/workspaces/{workspaceId}/credentials/{credentialName}`
@@ -982,7 +998,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## GatewayServer
 
-### `dce amamba gatewayserver get-gateway`
+### `dce workbench gatewayserver get-gateway`
 
 - Summary: GatewayServer_GetGateway
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/gateways`
@@ -993,7 +1009,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): cluster
   - `--namespace` (path, required): namespace
 
-### `dce amamba gatewayserver list-gateway-api`
+### `dce workbench gatewayserver list-gateway-api`
 
 - Summary: GatewayServer_ListGatewayAPI
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/gateways/{gateway}/apis`
@@ -1011,7 +1027,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## GitLab
 
-### `dce amamba gitlab create-gitlab-branch`
+### `dce workbench gitlab create-gitlab-branch`
 
 - Summary: GitLab_CreateGitlabBranch
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitlab/{toolchainId}/projects/{projectId}/branches`
@@ -1022,7 +1038,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--project-id` (path, required, int32): projectId
 
-### `dce amamba gitlab create-gitlab-tag`
+### `dce workbench gitlab create-gitlab-tag`
 
 - Summary: GitLab_CreateGitlabTag
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitlab/{toolchainId}/projects/{projectId}/tags`
@@ -1033,7 +1049,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--project-id` (path, required, int32): projectId
 
-### `dce amamba gitlab get-gitlab-project-details`
+### `dce workbench gitlab get-gitlab-project-details`
 
 - Summary: GitLab_GetGitlabProjectDetails
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitlab/{toolchainId}/projects/{projectId}/details`
@@ -1044,7 +1060,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--project-id` (path, required, int32): projectId
 
-### `dce amamba gitlab list-gitlab-all-branches-and-tags`
+### `dce workbench gitlab list-gitlab-all-branches-and-tags`
 
 - Summary: List all branches and tags of a GitLab project in one call
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitlab/{toolchainId}/projects/{projectId}/refs`
@@ -1057,7 +1073,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `branches`; columns `name`, `default`, `diffUrl`, `mergeUrl`, `protected`, `webUrl`
 - Example: `dce amamba gitlab list-gitlab-all-branches-and-tags --workspace-id <ws> --toolchain-id <id> --project-id <pid>`
 
-### `dce amamba gitlab list-gitlab-project-branches`
+### `dce workbench gitlab list-gitlab-project-branches`
 
 - Summary: List branches of a GitLab project bound via a toolchain
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitlab/{toolchainId}/projects/{projectId}/branches`
@@ -1073,7 +1089,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`, `default`, `diffUrl`, `mergeUrl`, `protected`, `webUrl`; pagination `offset`
 - Example: `dce amamba gitlab list-gitlab-project-branches --workspace-id <ws> --toolchain-id <id> --project-id <pid>`
 
-### `dce amamba gitlab list-gitlab-project-tags`
+### `dce workbench gitlab list-gitlab-project-tags`
 
 - Summary: List tags of a GitLab project bound via a toolchain
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitlab/{toolchainId}/projects/{projectId}/tags`
@@ -1091,7 +1107,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## GitOps
 
-### `dce amamba gitops create-application`
+### `dce workbench gitops create-application`
 
 - Summary: Create a new application
 - HTTP: `POST /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications`
@@ -1101,7 +1117,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
 - Example: `dce amamba applicationservice create-application --workspace-id <ws> --file app.yaml`
 
-### `dce amamba gitops create-repository`
+### `dce workbench gitops create-repository`
 
 - Summary: GitOps_CreateRepository
 - HTTP: `POST /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/repositories`
@@ -1110,7 +1126,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba gitops delete-application`
+### `dce workbench gitops delete-application`
 
 - Summary: Delete an application
 - HTTP: `DELETE /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}`
@@ -1121,7 +1137,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba applicationservice delete-application --workspace-id <ws> --name my-app`
 
-### `dce amamba gitops delete-repository`
+### `dce workbench gitops delete-repository`
 
 - Summary: GitOps_DeleteRepository
 - HTTP: `DELETE /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/repositories/{name}`
@@ -1131,7 +1147,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba gitops get-application`
+### `dce workbench gitops get-application`
 
 - Summary: Get an application's full details
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}`
@@ -1144,7 +1160,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--namespace` (query): namespace
 - Example: `dce amamba applicationservice get-application --workspace-id <ws> --name my-app`
 
-### `dce amamba gitops get-application-dashboard-url`
+### `dce workbench gitops get-application-dashboard-url`
 
 - Summary: GitOps_GetApplicationDashboardURL
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}/dashboard`
@@ -1156,7 +1172,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--view-type` (query, default `VIEW_TYPE_UNSPECIFIED`, one of: VIEW_TYPE_UNSPECIFIED|VIEW_TYPE_TREE|VIEW_TYPE_PODS|VIEW_TYPE_NETWORK|VIEW_TYPE_LIST): viewType
   - `--namespace` (query): namespace
 
-### `dce amamba gitops get-application-json`
+### `dce workbench gitops get-application-json`
 
 - Summary: GitOps_GetApplicationJSON
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}/json`
@@ -1167,7 +1183,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
   - `--namespace` (query): namespace
 
-### `dce amamba gitops get-application-revisions`
+### `dce workbench gitops get-application-revisions`
 
 - Summary: GitOps_GetApplicationRevisions
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}/revisions`
@@ -1180,7 +1196,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--namespace` (query): namespace
 - Output: list path `tags`
 
-### `dce amamba gitops get-application-status`
+### `dce workbench gitops get-application-status`
 
 - Summary: Get the runtime status of an application
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/status`
@@ -1190,7 +1206,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
 - Example: `dce amamba applicationservice get-application-status --workspace-id <ws> --name my-app -o json`
 
-### `dce amamba gitops get-git-ops-namespace`
+### `dce workbench gitops get-git-ops-namespace`
 
 - Summary: GitOps_GetGitOpsNamespace
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/namespace`
@@ -1199,7 +1215,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba gitops get-helm-charts`
+### `dce workbench gitops get-helm-charts`
 
 - Summary: Get a Helm chart by name
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/helmcharts`
@@ -1211,7 +1227,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`
 - Example: `dce amamba helm get-helm-charts --workspace-id <ws> --name my-chart`
 
-### `dce amamba gitops get-managed-resources`
+### `dce workbench gitops get-managed-resources`
 
 - Summary: GitOps_GetManagedResources
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}/managed_resources`
@@ -1228,7 +1244,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--kind` (query): kind
 - Output: list path `items`; columns `name`, `namespace`, `kind`, `group`, `hook`, `liveState`
 
-### `dce amamba gitops list-application-events`
+### `dce workbench gitops list-application-events`
 
 - Summary: List events for an application
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}/events`
@@ -1243,7 +1259,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `type`, `firstTimestamp`, `lastTimestamp`, `message`, `reason`; pagination `offset`
 - Example: `dce amamba applicationservice list-application-events --workspace-id <ws> --name my-app --page 1 --page-size 50`
 
-### `dce amamba gitops list-applications`
+### `dce workbench gitops list-applications`
 
 - Summary: List applications in a workspace
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications`
@@ -1266,7 +1282,7 @@ dce amamba applicationservice list-applications --workspace-id <ws>
 dce amamba applicationservice list-applications --workspace-id <ws> --name my-app -o json
 ```
 
-### `dce amamba gitops list-git-ops-kairship-deploy-target`
+### `dce workbench gitops list-git-ops-kairship-deploy-target`
 
 - Summary: GitOps_ListGitOpsKairshipDeployTarget
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/kairship_deploytargets`
@@ -1276,7 +1292,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
 - Output: list path `items`; columns `instance`
 
-### `dce amamba gitops list-git-references`
+### `dce workbench gitops list-git-references`
 
 - Summary: GitOps_ListGitReferences
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/gitreferences`
@@ -1288,7 +1304,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--repo-name` (query): repoName
 - Output: list path `branchs`
 
-### `dce amamba gitops list-repositories`
+### `dce workbench gitops list-repositories`
 
 - Summary: GitOps_ListRepositories
 - HTTP: `GET /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/repositories`
@@ -1303,7 +1319,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--fuzzy-name` (query): fuzzyName
 - Output: list path `items`; columns `name`, `type`, `repo`, `workspaceId`; pagination `offset`
 
-### `dce amamba gitops sync-application`
+### `dce workbench gitops sync-application`
 
 - Summary: Trigger a GitOps sync for an application
 - HTTP: `POST /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}:sync`
@@ -1314,7 +1330,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba gitops sync-application --workspace-id <ws> --name my-app`
 
-### `dce amamba gitops terminate-application-sync`
+### `dce workbench gitops terminate-application-sync`
 
 - Summary: Terminate an in-flight GitOps sync
 - HTTP: `DELETE /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}:sync`
@@ -1325,7 +1341,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba gitops terminate-application-sync --workspace-id <ws> --name my-app`
 
-### `dce amamba gitops update-application`
+### `dce workbench gitops update-application`
 
 - Summary: Update an existing application
 - HTTP: `PUT /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}`
@@ -1336,7 +1352,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba applicationservice update-application --workspace-id <ws> --name my-app --file app.yaml`
 
-### `dce amamba gitops update-application-json`
+### `dce workbench gitops update-application-json`
 
 - Summary: GitOps_UpdateApplicationJSON
 - HTTP: `PUT /apis/gitops.amamba.io/v1alpha1/workspaces/{workspaceId}/applications/{name}/json`
@@ -1348,7 +1364,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## GlobalBuildParameter
 
-### `dce amamba globalbuildparameter create-global-build-parameter`
+### `dce workbench globalbuildparameter create-global-build-parameter`
 
 - Summary: Create a new global build parameter
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/global-build-parameters`
@@ -1358,7 +1374,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `choiceListText`
 - Example: `dce amamba globalbuildparameter create-global-build-parameter --name REGISTRY --value docker.io`
 
-### `dce amamba globalbuildparameter delete-global-build-parameter`
+### `dce workbench globalbuildparameter delete-global-build-parameter`
 
 - Summary: Delete a global build parameter
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/global-build-parameters/{name}`
@@ -1368,7 +1384,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba globalbuildparameter delete-global-build-parameter --name REGISTRY`
 
-### `dce amamba globalbuildparameter list-global-build-parameter`
+### `dce workbench globalbuildparameter list-global-build-parameter`
 
 - Summary: List global build parameters shared across pipelines
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/global-build-parameters`
@@ -1383,7 +1399,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`; pagination `offset`
 - Example: `dce amamba globalbuildparameter list-global-build-parameter`
 
-### `dce amamba globalbuildparameter update-global-build-parameter`
+### `dce workbench globalbuildparameter update-global-build-parameter`
 
 - Summary: Update a global build parameter
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/global-build-parameters/{oldName}`
@@ -1396,7 +1412,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Helm
 
-### `dce amamba helm get-helm-chart-files`
+### `dce workbench helm get-helm-chart-files`
 
 - Summary: Helm_GetHelmChartFiles
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/versions/{version}/files`
@@ -1409,7 +1425,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
   - `--version` (path, required): version
 
-### `dce amamba helm get-helm-chart-resources`
+### `dce workbench helm get-helm-chart-resources`
 
 - Summary: Helm_GetHelmChartResources
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/versions/{version}/resources`
@@ -1423,7 +1439,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--version` (path, required): version
 - Output: list path `resources`; columns `name`, `kind`, `image`
 
-### `dce amamba helm get-helm-chart-values`
+### `dce workbench helm get-helm-chart-values`
 
 - Summary: Helm_GetHelmChartValues
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/versions/{version}`
@@ -1436,7 +1452,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name represents for the resource name.
   - `--version` (path, required): The version represents for the resource version.
 
-### `dce amamba helm get-helm-charts`
+### `dce workbench helm get-helm-charts`
 
 - Summary: Get a Helm chart by name
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}`
@@ -1449,7 +1465,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba helm get-helm-charts --workspace-id <ws> --name my-chart`
 
-### `dce amamba helm get-helm-install-config`
+### `dce workbench helm get-helm-install-config`
 
 - Summary: Get the install config of a deployed Helm release
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/config`
@@ -1463,7 +1479,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--version` (query): Version is an int which represents the version of the chart.
 - Example: `dce amamba helm get-helm-install-config --workspace-id <ws> --release my-release`
 
-### `dce amamba helm get-helm-release`
+### `dce workbench helm get-helm-release`
 
 - Summary: Get a Helm release by name
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/helmreleases/{name}`
@@ -1476,7 +1492,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): Name is the user-specified identifier.
 - Example: `dce amamba helm get-helm-release --workspace-id <ws> --name my-release`
 
-### `dce amamba helm list-cluster-helm-release`
+### `dce workbench helm list-cluster-helm-release`
 
 - Summary: Helm_ListClusterHelmRelease
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmreleases`
@@ -1492,7 +1508,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the cluster list order.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `spec.version`, `metadata.creationTimestamp`; pagination `offset`
 
-### `dce amamba helm list-helm-charts`
+### `dce workbench helm list-helm-charts`
 
 - Summary: List Helm charts available in a workspace
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmcharts`
@@ -1509,7 +1525,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `metadata.name`, `removed`; pagination `offset`
 - Example: `dce amamba helm list-helm-charts --workspace-id <ws>`
 
-### `dce amamba helm list-helm-release`
+### `dce workbench helm list-helm-release`
 
 - Summary: List Helm releases deployed in the workspace
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/helmreleases`
@@ -1527,7 +1543,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `spec.version`, `metadata.creationTimestamp`; pagination `offset`
 - Example: `dce amamba helm list-helm-release --workspace-id <ws>`
 
-### `dce amamba helm list-helm-repo`
+### `dce workbench helm list-helm-repo`
 
 - Summary: List configured Helm chart repositories
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos`
@@ -1539,7 +1555,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `status.phase`, `metadata.creationTimestamp`
 - Example: `dce amamba helm list-helm-repo --workspace-id <ws>`
 
-### `dce amamba helm rendering-helm-chart-manifests`
+### `dce workbench helm rendering-helm-chart-manifests`
 
 - Summary: Render a Helm chart's manifests locally (dry-run)
 - HTTP: `POST /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/helmrepos/{repo}/helmcharts/{name}/versions/{version}/manifests`
@@ -1555,7 +1571,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Image
 
-### `dce amamba image get-image-info`
+### `dce workbench image get-image-info`
 
 - Summary: Get details about a specific image (tag, digest, size, etc.)
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/imageinfo/{image}`
@@ -1566,7 +1582,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--image` (path, required): image
 - Example: `dce amamba image get-image-info --workspace-id <ws> --image nginx:1.25`
 
-### `dce amamba image list-artifacts`
+### `dce workbench image list-artifacts`
 
 - Summary: ListArtifacts returns a list of tags of specified image
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/registries/{registry}/projects/{project}/repositories/{repository}/artifacts`
@@ -1582,7 +1598,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--fuzzy-name` (query): fuzzyName
 - Output: list path `items`; columns `digest`, `imageSize`, `pushTime`; pagination `offset`
 
-### `dce amamba image list-registries`
+### `dce workbench image list-registries`
 
 - Summary: ListRegistries returns a list of registries
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/registries`
@@ -1596,7 +1612,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--fuzzy-name` (query): fuzzyName
 - Output: list path `items`; columns `name`, `type`, `alias`, `host`; pagination `offset`
 
-### `dce amamba image list-repositories`
+### `dce workbench image list-repositories`
 
 - Summary: ListRepositories returns a list of image names of specified project
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/registries/{registry}/projects/{project}/repositories`
@@ -1614,7 +1630,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## JFrogService
 
-### `dce amamba jfrogservice list-files`
+### `dce workbench jfrogservice list-files`
 
 - Summary: JFrogService_ListFiles
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/jfrog/{toolchainId}/storage/files`
@@ -1628,7 +1644,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Jira
 
-### `dce amamba jira list-jira-project-issues`
+### `dce workbench jira list-jira-project-issues`
 
 - Summary: List issues of a Jira project bound via a toolchain
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/jira/{jiraId}/projects/{projectId}/issues`
@@ -1651,7 +1667,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `id`, `assignee`, `creator`, `expand`, `key`, `reporter`; pagination `offset`
 - Example: `dce amamba jira list-jira-project-issues --workspace-id <ws> --jira-id <id> --project-id <pid>`
 
-### `dce amamba jira list-jira-projects-search-keywords`
+### `dce workbench jira list-jira-projects-search-keywords`
 
 - Summary: List Jira search keywords (assignees, labels) for a project
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/jira/{jiraId}/projects/{projectId}/keywords`
@@ -1664,7 +1680,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `assignees`; columns `key`, `value`
 - Example: `dce amamba jira list-jira-projects-search-keywords --workspace-id <ws> --jira-id <id> --project-id <pid>`
 
-### `dce amamba jira list-workspace-bind-jira-project-list`
+### `dce workbench jira list-workspace-bind-jira-project-list`
 
 - Summary: Jira_ListWorkspaceBindJiraProjectList
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/jira/all_projects`
@@ -1676,7 +1692,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Management
 
-### `dce amamba management list-jenkins-node-labels`
+### `dce workbench management list-jenkins-node-labels`
 
 - Summary: ListJenkinsNodeLabels is same as ListPodTemplates but only return the field label.
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/management/node_labels`
@@ -1686,7 +1702,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (query): workspaceId
 - Output: list path `items`; columns `label`
 
-### `dce amamba management list-pod-templates`
+### `dce workbench management list-pod-templates`
 
 - Summary: List Jenkins agent pod templates (compute resources available to pipelines)
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/management/agents`
@@ -1696,7 +1712,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `agents`; columns `name`, `namespace`, `label`
 - Example: `dce amamba management list-pod-templates`
 
-### `dce amamba management restart`
+### `dce workbench management restart`
 
 - Summary: Restart restarts the jenkins server deployment.
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/management/restart`
@@ -1706,7 +1722,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## MutilCloudApplication
 
-### `dce amamba mutilcloudapplication list-mutil-cloud-deploy-target`
+### `dce workbench mutilcloudapplication list-mutil-cloud-deploy-target`
 
 - Summary: List multi-cloud deploy targets
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/mutil-cloud-deploytargets`
@@ -1719,7 +1735,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## OAMService
 
-### `dce amamba oamservice add-oam-component`
+### `dce workbench oamservice add-oam-component`
 
 - Summary: OAMService_AddOAMComponent
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/components`
@@ -1729,7 +1745,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): application name
 
-### `dce amamba oamservice batch-update-oam-traits`
+### `dce workbench oamservice batch-update-oam-traits`
 
 - Summary: batch update traits.
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/components/{componentName}/traits`
@@ -1740,7 +1756,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): application name
   - `--component-name` (path, required): componentName
 
-### `dce amamba oamservice create-oam-application`
+### `dce workbench oamservice create-oam-application`
 
 - Summary: OAMService_CreateOAMApplication
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam`
@@ -1749,7 +1765,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba oamservice delete-oam-application`
+### `dce workbench oamservice delete-oam-application`
 
 - Summary: OAMService_DeleteOAMApplication
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}`
@@ -1759,7 +1775,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba oamservice delete-oam-component`
+### `dce workbench oamservice delete-oam-component`
 
 - Summary: OAMService_DeleteOAMComponent
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/components/{componentName}`
@@ -1770,7 +1786,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): application name
   - `--component-name` (path, required): componentName
 
-### `dce amamba oamservice delete-oam-trait`
+### `dce workbench oamservice delete-oam-trait`
 
 - Summary: OAMService_DeleteOAMTrait
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/components/{componentName}/traits/{traitType}`
@@ -1782,7 +1798,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--component-name` (path, required): componentName
   - `--trait-type` (path, required): traitType
 
-### `dce amamba oamservice get-component-properties`
+### `dce workbench oamservice get-component-properties`
 
 - Summary: get component properties schema json.
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/management/components_definition/{name}`
@@ -1791,7 +1807,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--name` (path, required): name
 
-### `dce amamba oamservice get-oam-application`
+### `dce workbench oamservice get-oam-application`
 
 - Summary: OAMService_GetOAMApplication
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}`
@@ -1801,7 +1817,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba oamservice get-oam-application-json`
+### `dce workbench oamservice get-oam-application-json`
 
 - Summary: OAMService_GetOAMApplicationJSON
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/json`
@@ -1811,7 +1827,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba oamservice get-trait-properties`
+### `dce workbench oamservice get-trait-properties`
 
 - Summary: get trait properties json schema.
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/management/traits_definition/{traitType}`
@@ -1820,7 +1836,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--trait-type` (path, required): traitType
 
-### `dce amamba oamservice list-application-revisions`
+### `dce workbench oamservice list-application-revisions`
 
 - Summary: List revisions of an application (for rollback)
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/revisions`
@@ -1836,7 +1852,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `createdAt`, `revisionHash`; pagination `offset`
 - Example: `dce amamba applicationservice list-application-revisions --workspace-id <ws> --name my-app`
 
-### `dce amamba oamservice list-component-definitions`
+### `dce workbench oamservice list-component-definitions`
 
 - Summary: list system buildin components.
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/management/components_definition`
@@ -1847,7 +1863,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--page-size` (query, int32): PageSize per page requested.
 - Output: list path `items`; columns `name`, `properties`, `uiSchema`; pagination `offset`
 
-### `dce amamba oamservice list-oam-applications`
+### `dce workbench oamservice list-oam-applications`
 
 - Summary: OAMService_ListOAMApplications
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam`
@@ -1863,7 +1879,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the cluster list order.
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`; pagination `offset`
 
-### `dce amamba oamservice list-trait-definitions`
+### `dce workbench oamservice list-trait-definitions`
 
 - Summary: list system buildin traits.
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/management/traits_definition`
@@ -1875,7 +1891,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--page-size` (query, int32): PageSize per page requested.
 - Output: list path `items`; columns `name`, `properties`, `uiSchema`; pagination `offset`
 
-### `dce amamba oamservice rollback-application-revision`
+### `dce workbench oamservice rollback-application-revision`
 
 - Summary: Roll back an application to a previous revision
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/revisions/{revisionHash}:rollback`
@@ -1887,7 +1903,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--revision-hash` (path, required): revisionHash
 - Example: `dce amamba applicationservice rollback-application-revision --workspace-id <ws> --name my-app --revision-id <rev>`
 
-### `dce amamba oamservice update-oam-application`
+### `dce workbench oamservice update-oam-application`
 
 - Summary: update app alias and description.
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}`
@@ -1897,7 +1913,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba oamservice update-oam-application-json`
+### `dce workbench oamservice update-oam-application-json`
 
 - Summary: OAMService_UpdateOAMApplicationJSON
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/json`
@@ -1907,7 +1923,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba oamservice update-oam-component`
+### `dce workbench oamservice update-oam-component`
 
 - Summary: OAMService_UpdateOAMComponent
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/oam/{name}/components/{componentName}`
@@ -1920,7 +1936,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## OLMService
 
-### `dce amamba olmservice create-cluster-resource`
+### `dce workbench olmservice create-cluster-resource`
 
 - Summary: OLMService_CreateClusterResource
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/operators/{operator}/resources`
@@ -1931,7 +1947,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--cluster` (path, required): cluster
   - `--operator` (path, required): operator
 
-### `dce amamba olmservice create-resource`
+### `dce workbench olmservice create-resource`
 
 - Summary: OLMService_CreateResource
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/resources`
@@ -1943,7 +1959,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--namespace` (path, required): namespace
   - `--operator` (path, required): operator
 
-### `dce amamba olmservice delete-cluster-resource`
+### `dce workbench olmservice delete-cluster-resource`
 
 - Summary: OLMService_DeleteClusterResource
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/operators/{operator}/resources/{name}`
@@ -1955,7 +1971,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--operator` (path, required): operator
   - `--name` (path, required): name
 
-### `dce amamba olmservice delete-resource`
+### `dce workbench olmservice delete-resource`
 
 - Summary: OLMService_DeleteResource
 - HTTP: `DELETE /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/resources/{name}`
@@ -1968,7 +1984,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--operator` (path, required): operator
   - `--name` (path, required): name
 
-### `dce amamba olmservice get-resource-json`
+### `dce workbench olmservice get-resource-json`
 
 - Summary: OLMService_GetResourceJSON
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/resources/{name}`
@@ -1987,7 +2003,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.resource` (query): Resource represents the resource name of CustomResource, which is plural.
   - `--payload.name` (query): Name represents the name of CustomResource.
 
-### `dce amamba olmservice list-collection-resources`
+### `dce workbench olmservice list-collection-resources`
 
 - Summary: OLMService_ListCollectionResources
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/collectionresources`
@@ -2010,7 +2026,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|FIELD_NAME|CREATED_AT|CLUSTER|NAMESPACE): - SORT_BY_UNSPECIFIED: Unspecified is default, no sorting.
 - Output: list path `items`
 
-### `dce amamba olmservice list-events`
+### `dce workbench olmservice list-events`
 
 - Summary: OLMService_ListEvents
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/events`
@@ -2036,7 +2052,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.resource` (query): resource name,used when the kind type is GroupVersionResource.
 - Output: list path `items`; columns `type`, `lastTimestamp`, `message`, `reason`
 
-### `dce amamba olmservice list-resources`
+### `dce workbench olmservice list-resources`
 
 - Summary: OLMService_ListResources
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/resources`
@@ -2065,7 +2081,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--payload.sort-by` (query, default `SORT_BY_UNSPECIFIED`, one of: SORT_BY_UNSPECIFIED|FIELD_NAME|CREATED_AT|CLUSTER|NAMESPACE): - SORT_BY_UNSPECIFIED: Unspecified is default, no sorting.
 - Output: list path `items`; columns `name`, `namespace`, `kind`, `creationTimestamp`, `apiVersion`, `data`
 
-### `dce amamba olmservice update-cluster-resource`
+### `dce workbench olmservice update-cluster-resource`
 
 - Summary: OLMService_UpdateClusterResource
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/operators/{operator}/resources/{name}`
@@ -2077,7 +2093,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--operator` (path, required): operator
   - `--name` (path, required): name
 
-### `dce amamba olmservice update-resource`
+### `dce workbench olmservice update-resource`
 
 - Summary: OLMService_UpdateResource
 - HTTP: `PUT /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/operators/{operator}/resources/{name}`
@@ -2092,7 +2108,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 
 ## Pipelines
 
-### `dce amamba pipelines cancel-pipeline-run`
+### `dce workbench pipelines cancel-pipeline-run`
 
 - Summary: Cancel an in-progress pipeline run
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}:cancel`
@@ -2105,7 +2121,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `value`
 - Example: `dce amamba pipelines cancel-pipeline-run --workspace-id <ws> --pipeline my-pipeline --run 42`
 
-### `dce amamba pipelines create-global-template`
+### `dce workbench pipelines create-global-template`
 
 - Summary: Pipelines_CreateGlobalTemplate
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/templates`
@@ -2114,7 +2130,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags: none
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `displayName`
 
-### `dce amamba pipelines create-group`
+### `dce workbench pipelines create-group`
 
 - Summary: Pipelines_CreateGroup
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/groups`
@@ -2123,7 +2139,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba pipelines create-pipeline`
+### `dce workbench pipelines create-pipeline`
 
 - Summary: Create a new pipeline (Jenkins-based)
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines`
@@ -2134,7 +2150,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba pipelines create-pipeline --workspace-id <ws> --name my-pipeline --file pipeline.yaml`
 
-### `dce amamba pipelines create-pipeline-volume`
+### `dce workbench pipelines create-pipeline-volume`
 
 - Summary: Create a persistent volume for pipeline workspaces
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/volumes`
@@ -2145,7 +2161,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name of the pipeline.
 - Example: `dce amamba pipelines create-pipeline-volume --workspace-id <ws> --name cache --size 10Gi`
 
-### `dce amamba pipelines create-run-access-token`
+### `dce workbench pipelines create-run-access-token`
 
 - Summary: Pipelines_CreateRunAccessToken
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/access_token`
@@ -2156,7 +2172,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name of the pipeline.
   - `--run-id` (path, required, int64): runId
 
-### `dce amamba pipelines create-template`
+### `dce workbench pipelines create-template`
 
 - Summary: Create a new application template
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/templates`
@@ -2167,7 +2183,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `displayName`
 - Example: `dce amamba management create-template --workspace-id <ws> --name my-template --file template.yaml`
 
-### `dce amamba pipelines delete-global-template`
+### `dce workbench pipelines delete-global-template`
 
 - Summary: Pipelines_DeleteGlobalTemplate
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/templates/{name}`
@@ -2176,7 +2192,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Flags:
   - `--name` (path, required): name
 
-### `dce amamba pipelines delete-group`
+### `dce workbench pipelines delete-group`
 
 - Summary: Pipelines_DeleteGroup
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/groups/{id}`
@@ -2186,7 +2202,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--id` (path, required, int32): id
 
-### `dce amamba pipelines delete-pipeline`
+### `dce workbench pipelines delete-pipeline`
 
 - Summary: Delete a pipeline
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}`
@@ -2197,7 +2213,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name of the pipeline.
 - Example: `dce amamba pipelines delete-pipeline --workspace-id <ws> --name my-pipeline`
 
-### `dce amamba pipelines delete-pipeline-volume`
+### `dce workbench pipelines delete-pipeline-volume`
 
 - Summary: Pipelines_DeletePipelineVolume
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/volumes/{claimName}`
@@ -2208,7 +2224,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name of the pipeline.
   - `--claim-name` (path, required): DEPRECATED: Name of the PVC. If it was empty, the system will find the generated one.
 
-### `dce amamba pipelines delete-template`
+### `dce workbench pipelines delete-template`
 
 - Summary: Delete a template
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/templates/{name}`
@@ -2219,7 +2235,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba management delete-template --workspace-id <ws> --name my-template`
 
-### `dce amamba pipelines disable-template`
+### `dce workbench pipelines disable-template`
 
 - Summary: Disable a template
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/templates/{name}:disable`
@@ -2229,7 +2245,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba management disable-template --workspace-id <ws> --name my-template`
 
-### `dce amamba pipelines enable-template`
+### `dce workbench pipelines enable-template`
 
 - Summary: Enable a template for use in the workspace
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/templates/{name}:enable`
@@ -2239,7 +2255,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
 - Example: `dce amamba management enable-template --workspace-id <ws> --name my-template`
 
-### `dce amamba pipelines get-branches`
+### `dce workbench pipelines get-branches`
 
 - Summary: Pipelines_GetBranches
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/branches`
@@ -2250,7 +2266,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name of the pipeline.
 - Output: list path `branches`; columns `branchName`, `commit`, `disabled`, `lastMessage`, `state`, `updatedAt`
 
-### `dce amamba pipelines get-build-parameter`
+### `dce workbench pipelines get-build-parameter`
 
 - Summary: Get a build parameter by name
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/parameters`
@@ -2262,7 +2278,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba globalbuildparameter get-build-parameter --name REGISTRY`
 
-### `dce amamba pipelines get-code-analyze-result`
+### `dce workbench pipelines get-code-analyze-result`
 
 - Summary: Pipelines_GetCodeAnalyzeResult
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/code_analyze_result`
@@ -2272,7 +2288,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba pipelines get-git-parameter-value`
+### `dce workbench pipelines get-git-parameter-value`
 
 - Summary: Pipelines_GetGITParameterValue
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/git-parameter/{parameterName}`
@@ -2284,7 +2300,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--parameter-name` (path, required): parameterName
 - Output: list path `items`; columns `name`, `value`
 
-### `dce amamba pipelines get-global-template`
+### `dce workbench pipelines get-global-template`
 
 - Summary: Pipelines_GetGlobalTemplate
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/templates/{name}`
@@ -2295,7 +2311,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--raw` (query): raw specifies whether return the original spec instead of parsed json only
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `displayName`
 
-### `dce amamba pipelines get-jenkins-json`
+### `dce workbench pipelines get-jenkins-json`
 
 - Summary: Pipelines_GetJenkinsJSON
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/jenkinsjson`
@@ -2305,7 +2321,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): The scope where the pipeline will be created.
   - `--name` (path, required): The name of the pipeline.
 
-### `dce amamba pipelines get-junit-report`
+### `dce workbench pipelines get-junit-report`
 
 - Summary: Pipelines_GetJunitReport
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/junit_report`
@@ -2320,7 +2336,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--page-size` (query, int32): pageSize
 - Output: list path `items`; columns `name`, `duration`; pagination `offset`
 
-### `dce amamba pipelines get-junit-report-summary`
+### `dce workbench pipelines get-junit-report-summary`
 
 - Summary: Pipelines_GetJunitReportSummary
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/junit_summary`
@@ -2331,7 +2347,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): name
   - `--run-id` (path, required, int64): runId
 
-### `dce amamba pipelines get-pipeline`
+### `dce workbench pipelines get-pipeline`
 
 - Summary: Get a pipeline's configuration
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}`
@@ -2343,7 +2359,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba pipelines get-pipeline --workspace-id <ws> --name my-pipeline`
 
-### `dce amamba pipelines get-pipeline-artifacts`
+### `dce workbench pipelines get-pipeline-artifacts`
 
 - Summary: List artifacts produced by a pipeline run
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/artifacts`
@@ -2356,7 +2372,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `artifacts`; columns `name`, `id`, `class`, `downloadable`, `path`, `size`
 - Example: `dce amamba pipelines get-pipeline-artifacts --workspace-id <ws> --pipeline my-pipeline --run 42`
 
-### `dce amamba pipelines get-pipeline-artifacts-download-token`
+### `dce workbench pipelines get-pipeline-artifacts-download-token`
 
 - Summary: Pipelines_GetPipelineArtifactsDownloadToken
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{pipeline}/token`
@@ -2366,7 +2382,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--pipeline` (path, required): pipeline
 
-### `dce amamba pipelines get-pipeline-run`
+### `dce workbench pipelines get-pipeline-run`
 
 - Summary: Get a single pipeline run's metadata
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}`
@@ -2379,7 +2395,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `value`
 - Example: `dce amamba pipelines get-pipeline-run --workspace-id <ws> --pipeline my-pipeline --run 42`
 
-### `dce amamba pipelines get-pipeline-run-log`
+### `dce workbench pipelines get-pipeline-run-log`
 
 - Summary: Get a pipeline run's full log
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/log`
@@ -2392,7 +2408,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--start` (query): start
 - Example: `dce amamba pipelines get-pipeline-run-log --workspace-id <ws> --pipeline my-pipeline --run 42`
 
-### `dce amamba pipelines get-pipeline-run-nodes`
+### `dce workbench pipelines get-pipeline-run-nodes`
 
 - Summary: Pipelines_GetPipelineRunNodes
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/nodes`
@@ -2404,7 +2420,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--run-id` (path, required, int64): The id of pipeline run
 - Output: list path `nodes`; columns `type`, `id`, `displayName`, `durationInMillis`, `firstParent`, `restartable`
 
-### `dce amamba pipelines get-pipeline-run-parameters`
+### `dce workbench pipelines get-pipeline-run-parameters`
 
 - Summary: Get the parameters used by a pipeline run
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/parameters`
@@ -2417,7 +2433,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`, `type`, `defaultValue`, `description`, `value`
 - Example: `dce amamba pipelines get-pipeline-run-parameters --workspace-id <ws> --pipeline my-pipeline --run 42`
 
-### `dce amamba pipelines get-pipeline-run-step-log`
+### `dce workbench pipelines get-pipeline-run-step-log`
 
 - Summary: Get a single step's log from a pipeline run
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/nodes/{nodeId}/steps/{stepId}/log`
@@ -2432,7 +2448,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--start` (query): The start location of log
 - Example: `dce amamba pipelines get-pipeline-run-step-log --workspace-id <ws> --pipeline my-pipeline --run 42 --step build`
 
-### `dce amamba pipelines get-pipeline-run-steps`
+### `dce workbench pipelines get-pipeline-run-steps`
 
 - Summary: Pipelines_GetPipelineRunSteps
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/nodes/{nodeId}/steps`
@@ -2445,7 +2461,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--node-id` (path, required, int64): The node of pipeline run
 - Output: list path `steps`; columns `type`, `id`, `displayDescription`, `displayName`, `durationInMillis`, `result`
 
-### `dce amamba pipelines get-pipeline-volume`
+### `dce workbench pipelines get-pipeline-volume`
 
 - Summary: Pipelines_GetPipelineVolume
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/volumes/{claimName}`
@@ -2456,7 +2472,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--name` (path, required): The name of the pipeline.
   - `--claim-name` (path, required): DEPRECATED: Name of the PVC. If it was empty, the system will find the generated one.
 
-### `dce amamba pipelines get-scanlog-of-multi-branch-pipeline`
+### `dce workbench pipelines get-scanlog-of-multi-branch-pipeline`
 
 - Summary: Pipelines_GetScanlogOfMultiBranchPipeline
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/scanlog`
@@ -2466,7 +2482,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): The scope where the pipeline created.
   - `--name` (path, required): The name of the pipeline.
 
-### `dce amamba pipelines get-template`
+### `dce workbench pipelines get-template`
 
 - Summary: Get a template's definition
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/templates/{name}`
@@ -2479,7 +2495,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `displayName`
 - Example: `dce amamba management get-template --workspace-id <ws> --name my-template`
 
-### `dce amamba pipelines jenkinsfile-to-json`
+### `dce workbench pipelines jenkinsfile-to-json`
 
 - Summary: Pipelines_JenkinsfileToJSON
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}:toJson`
@@ -2489,7 +2505,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba pipelines json-to-jenkinsfile`
+### `dce workbench pipelines json-to-jenkinsfile`
 
 - Summary: Pipelines_JSONToJenkinsfile
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}:toJenkinsfile`
@@ -2499,7 +2515,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba pipelines list-approval-permission-users`
+### `dce workbench pipelines list-approval-permission-users`
 
 - Summary: Pipelines_ListApprovalPermissionUsers
 - HTTP: `GET /apis/amamba.io/v1alpha1/workspaces/{workspaceId}/approvalusers`
@@ -2509,7 +2525,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): workspaceId
 - Output: list path `items`; columns `name`, `type`
 
-### `dce amamba pipelines list-git-references`
+### `dce workbench pipelines list-git-references`
 
 - Summary: Pipelines_ListGitReferences
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/gitreferences`
@@ -2523,7 +2539,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--repo.resource-id` (query, int32): repo.resourceId
 - Output: list path `branchs`
 
-### `dce amamba pipelines list-global-templates`
+### `dce workbench pipelines list-global-templates`
 
 - Summary: List globally-shared application templates
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/templates`
@@ -2541,7 +2557,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`, `type`, `createdAt`, `description`, `enabled`, `global`; pagination `offset`
 - Example: `dce amamba management list-global-templates`
 
-### `dce amamba pipelines list-groups`
+### `dce workbench pipelines list-groups`
 
 - Summary: Pipelines_ListGroups
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/groups`
@@ -2552,7 +2568,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--fuzzy-name` (query): fuzzyName
 - Output: list path `items`; columns `name`, `id`, `workspaceId`
 
-### `dce amamba pipelines list-pipeline-runs`
+### `dce workbench pipelines list-pipeline-runs`
 
 - Summary: List historical pipeline runs
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs`
@@ -2575,7 +2591,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`, `createdAt`, `description`, `duration`, `runId`, `startAt`; pagination `offset`
 - Example: `dce amamba pipelines list-pipeline-runs --workspace-id <ws> --pipeline my-pipeline`
 
-### `dce amamba pipelines list-pipeline-volumes`
+### `dce workbench pipelines list-pipeline-volumes`
 
 - Summary: List pipeline workspace volumes (PVCs)
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/volumes`
@@ -2587,7 +2603,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
 - Output: list path `items`; columns `name`, `status.phase`, `allowVolumeExpansion`, `claimName`, `workspaceId`
 - Example: `dce amamba pipelines list-pipeline-volumes --workspace-id <ws>`
 
-### `dce amamba pipelines list-pipelines`
+### `dce workbench pipelines list-pipelines`
 
 - Summary: List Jenkins pipelines in a workspace
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines`
@@ -2597,7 +2613,7 @@ dce amamba applicationservice list-applications --workspace-id <ws> --name my-ap
   - `--workspace-id` (path, required): The scope where the pipeline created.
   - `--page` (query, default `1`, int32): Page requested.
   - `--page-size` (query, default `20`, int32): PageSize per page requested.
-  - `--sort-by` (query, default `PIPELINE_SORT_BY_UNSPECIFIED`, one of: PIPELINE_SORT_BY_UNSPECIFIED|PIPELINE_FIELD_NAME|PIPELINE_CREATED_AT|PIPELINE_LAST_RUN_TIME): SortBy determines the pipeline list order reference.
+  - `--sort-by` (query, default `PIPELINE_SORT_BY_UNSPECIFIED`, one of: PIPELINE_SORT_BY_UNSPECIFIED|PIPELINE_FIELD_NAME|PIPELINE_CREATED_AT|PIPELINE_LAST_RUN_TIME|PIPELINE_LAST_RUN_STATE|PIPELINE_WEATHER|PIPELINE_GROUP): SortBy determines the pipeline list order reference.
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the cluster list order.
   - `--search-name` (query): search is used to obfuscate the names in the query pipeline.
   - `--search-build-type` (query, default `PIPELINE_TYPE_UNSPECIFIED`, one of: PIPELINE_TYPE_UNSPECIFIED|PIPELINE_TYPE_CUSTOM|PIPELINE_TYPE_SCM|PIPELINE_TYPE_TEMPLATE|PIPELINE_TYPE_MULTI_BRANCH): Search the build type in the query pipeline.
@@ -2613,7 +2629,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws>
 dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 ```
 
-### `dce amamba pipelines list-templates`
+### `dce workbench pipelines list-templates`
 
 - Summary: List application templates available in a workspace
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/templates`
@@ -2632,7 +2648,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; columns `name`, `type`, `createdAt`, `description`, `enabled`, `global`; pagination `offset`
 - Example: `dce amamba management list-templates --workspace-id <ws>`
 
-### `dce amamba pipelines patch-pipeline-parameters`
+### `dce workbench pipelines patch-pipeline-parameters`
 
 - Summary: Update parameters of a pipeline run mid-flight
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/parameters`
@@ -2644,7 +2660,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba pipelines patch-pipeline-parameters --workspace-id <ws> --pipeline my-pipeline --run 42 --file params.json`
 
-### `dce amamba pipelines replay-pipeline-run`
+### `dce workbench pipelines replay-pipeline-run`
 
 - Summary: Replay a pipeline run from scratch
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}:replay`
@@ -2657,7 +2673,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `value`
 - Example: `dce amamba pipelines replay-pipeline-run --workspace-id <ws> --pipeline my-pipeline --run 42`
 
-### `dce amamba pipelines replicate-pipeline`
+### `dce workbench pipelines replicate-pipeline`
 
 - Summary: Copy a pipeline (optionally into another workspace)
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines:replicate`
@@ -2668,7 +2684,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba pipelines replicate-pipeline --workspace-id <ws> --name src --new-name dst`
 
-### `dce amamba pipelines restart-pipeline-run-node`
+### `dce workbench pipelines restart-pipeline-run-node`
 
 - Summary: Restart a single node (stage) in a pipeline run
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/nodes/{nodeId}:restart`
@@ -2681,7 +2697,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--node-id` (path, required, int64): The node of pipeline run, the node type must be STAGE
 - Example: `dce amamba pipelines restart-pipeline-run-node --workspace-id <ws> --pipeline my-pipeline --run 42 --node stage-1`
 
-### `dce amamba pipelines scan-multi-branch-pipeline`
+### `dce workbench pipelines scan-multi-branch-pipeline`
 
 - Summary: Pipelines_ScanMultiBranchPipeline
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/scan`
@@ -2691,7 +2707,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): The scope where the pipeline created.
   - `--name` (path, required): The name of the pipeline.
 
-### `dce amamba pipelines submit-input-to-abort`
+### `dce workbench pipelines submit-input-to-abort`
 
 - Summary: Pipelines_SubmitInputToAbort
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/nodes/{nodeId}/steps/{stepId}:abort`
@@ -2704,7 +2720,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--node-id` (path, required, int64): The node of pipeline run
   - `--step-id` (path, required, int64): The step of pipeline run
 
-### `dce amamba pipelines submit-input-to-proceed`
+### `dce workbench pipelines submit-input-to-proceed`
 
 - Summary: Pipelines_SubmitInputToProceed
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/runs/{runId}/nodes/{nodeId}/steps/{stepId}:process`
@@ -2717,7 +2733,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--node-id` (path, required, int64): The node of pipeline run
   - `--step-id` (path, required, int64): The step of pipeline run
 
-### `dce amamba pipelines sync-pipeline`
+### `dce workbench pipelines sync-pipeline`
 
 - Summary: Force a pipeline sync from the underlying Jenkins
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}:sync`
@@ -2728,7 +2744,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): The name of the pipeline.
 - Example: `dce amamba pipelines sync-pipeline --workspace-id <ws> --name my-pipeline`
 
-### `dce amamba pipelines toggle-pipeline`
+### `dce workbench pipelines toggle-pipeline`
 
 - Summary: Enable or disable a pipeline
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}:toggle`
@@ -2739,7 +2755,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): The name of the pipeline.
 - Example: `dce amamba pipelines toggle-pipeline --workspace-id <ws> --name my-pipeline --enabled true`
 
-### `dce amamba pipelines update-global-template`
+### `dce workbench pipelines update-global-template`
 
 - Summary: Pipelines_UpdateGlobalTemplate
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/templates/{name}`
@@ -2749,7 +2765,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): name
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `displayName`
 
-### `dce amamba pipelines update-jenkins-json`
+### `dce workbench pipelines update-jenkins-json`
 
 - Summary: Pipelines_UpdateJenkinsJSON
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/jenkinsjson`
@@ -2759,7 +2775,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): The scope where the pipeline will be created.
   - `--name` (path, required): The name of the pipeline.
 
-### `dce amamba pipelines update-pipeline`
+### `dce workbench pipelines update-pipeline`
 
 - Summary: Update a pipeline's configuration
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}`
@@ -2771,7 +2787,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba pipelines update-pipeline --workspace-id <ws> --name my-pipeline --file pipeline.yaml`
 
-### `dce amamba pipelines update-pipeline-jenkinsfile`
+### `dce workbench pipelines update-pipeline-jenkinsfile`
 
 - Summary: Pipelines_UpdatePipelineJenkinsfile
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/jenkinsfile`
@@ -2782,7 +2798,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): The name of the pipeline.
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 
-### `dce amamba pipelines update-pipeline-name`
+### `dce workbench pipelines update-pipeline-name`
 
 - Summary: Rename a pipeline
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/name`
@@ -2794,7 +2810,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `parameters`; columns `name`, `type`, `defaultValue`, `description`, `redact`
 - Example: `dce amamba pipelines update-pipeline-name --workspace-id <ws> --name old-name --new-name new-name`
 
-### `dce amamba pipelines update-pipeline-volume`
+### `dce workbench pipelines update-pipeline-volume`
 
 - Summary: Pipelines_UpdatePipelineVolume
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/pipelines/{name}/volumes/{claimName}`
@@ -2805,7 +2821,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): The name of the pipeline.
   - `--claim-name` (path, required): DEPRECATED: Name of PVC, If it was empty, the system will find the generated one.
 
-### `dce amamba pipelines update-template`
+### `dce workbench pipelines update-template`
 
 - Summary: Update a template
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/templates/{name}`
@@ -2819,7 +2835,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## PluginService
 
-### `dce amamba pluginservice create-pipeline-plugin`
+### `dce workbench pluginservice create-pipeline-plugin`
 
 - Summary: PluginService_CreatePipelinePlugin
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/plugins`
@@ -2827,7 +2843,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Body: required
 - Flags: none
 
-### `dce amamba pluginservice delete-pipeline-plugin`
+### `dce workbench pluginservice delete-pipeline-plugin`
 
 - Summary: PluginService_DeletePipelinePlugin
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/plugins/{name}/versions/{version}`
@@ -2837,7 +2853,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): name
   - `--version` (path, required): version
 
-### `dce amamba pluginservice disable-pipeline-plugin`
+### `dce workbench pluginservice disable-pipeline-plugin`
 
 - Summary: PluginService_DisablePipelinePlugin
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/plugins/{name}/versions/{version}/disable`
@@ -2847,7 +2863,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): name
   - `--version` (path, required): version
 
-### `dce amamba pluginservice enable-pipeline-plugin`
+### `dce workbench pluginservice enable-pipeline-plugin`
 
 - Summary: PluginService_EnablePipelinePlugin
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/plugins/{name}/versions/{version}/enable`
@@ -2857,7 +2873,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): name
   - `--version` (path, required): version
 
-### `dce amamba pluginservice get-pipeline-plugin`
+### `dce workbench pluginservice get-pipeline-plugin`
 
 - Summary: PluginService_GetPipelinePlugin
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/plugins/{name}/versions/{version}`
@@ -2867,7 +2883,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): name
   - `--version` (path, required): version
 
-### `dce amamba pluginservice get-workspace-pipeline-plugin`
+### `dce workbench pluginservice get-workspace-pipeline-plugin`
 
 - Summary: PluginService_GetWorkspacePipelinePlugin
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/plugins/{name}/versions/{version}`
@@ -2878,7 +2894,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): name
   - `--version` (path, required): version
 
-### `dce amamba pluginservice list-pipeline-plugin`
+### `dce workbench pluginservice list-pipeline-plugin`
 
 - Summary: PluginService_ListPipelinePlugin
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/plugins`
@@ -2898,7 +2914,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--status` (query, default `PluginStatus_UNSPECIFIED`, one of: PluginStatus_UNSPECIFIED|PluginStatus_Enable|PluginStatus_Disable): status
 - Output: list path `items`; columns `metadata.name`, `kind`, `apiVersion`, `raw`; pagination `offset`
 
-### `dce amamba pluginservice list-workspace-pipeline-plugin`
+### `dce workbench pluginservice list-workspace-pipeline-plugin`
 
 - Summary: PluginService_ListWorkspacePipelinePlugin
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/plugins`
@@ -2919,7 +2935,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--status` (query, default `PluginStatus_UNSPECIFIED`, one of: PluginStatus_UNSPECIFIED|PluginStatus_Enable|PluginStatus_Disable): status
 - Output: list path `items`; columns `metadata.name`, `kind`, `apiVersion`, `raw`; pagination `offset`
 
-### `dce amamba pluginservice update-pipeline-plugin`
+### `dce workbench pluginservice update-pipeline-plugin`
 
 - Summary: PluginService_UpdatePipelinePlugin
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/plugins/{name}/versions/{version}`
@@ -2931,7 +2947,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## Policy
 
-### `dce amamba policy get-override-policy`
+### `dce workbench policy get-override-policy`
 
 - Summary: Get a single override policy
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/overridepolicies/{name}`
@@ -2947,7 +2963,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--payload.name` (query): name represents for the resource name
 - Example: `dce amamba gitops get-override-policy --workspace-id <ws> --instance <i> --namespace <ns> --name <name>`
 
-### `dce amamba policy get-propagation-policy`
+### `dce workbench policy get-propagation-policy`
 
 - Summary: Get a single propagation policy
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/propagationpolicies/{name}`
@@ -2963,7 +2979,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--payload.name` (query): name represents for the resource name
 - Example: `dce amamba gitops get-propagation-policy --workspace-id <ws> --instance <i> --namespace <ns> --name <name>`
 
-### `dce amamba policy list-override-policies`
+### `dce workbench policy list-override-policies`
 
 - Summary: List GitOps override policies for a kairship instance
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/overridepolicies`
@@ -2986,7 +3002,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`
 - Example: `dce amamba gitops list-override-policies --workspace-id <ws> --instance <i> --namespace <ns>`
 
-### `dce amamba policy list-propagation-policies`
+### `dce workbench policy list-propagation-policies`
 
 - Summary: List GitOps propagation policies for a kairship instance
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/kairship/{instance}/kairship_namespaces/{namespace}/propagationpolicies`
@@ -3011,7 +3027,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## Release
 
-### `dce amamba release list-release-stats`
+### `dce workbench release list-release-stats`
 
 - Summary: Release_ListReleaseStats
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/releasestats`
@@ -3035,7 +3051,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## Rollouts
 
-### `dce amamba rollouts abort-rollout`
+### `dce workbench rollouts abort-rollout`
 
 - Summary: Abort an in-progress rollout
 - HTTP: `POST /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}:abort`
@@ -3046,7 +3062,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): Name for resource Rollout, must be unique within a combination of cluster and namespace.
 - Example: `dce amamba rollouts abort-rollout --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts create-rollout`
+### `dce workbench rollouts create-rollout`
 
 - Summary: Create a new rollout (canary / blue-green)
 - HTTP: `POST /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts`
@@ -3056,7 +3072,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): Workspace is a virtual space to scope clusters and namespaces which current user can access.
 - Example: `dce amamba rollouts create-rollout --workspace-id <ws> --name my-rollout --file rollout.yaml`
 
-### `dce amamba rollouts delete-rollout`
+### `dce workbench rollouts delete-rollout`
 
 - Summary: Delete a rollout
 - HTTP: `DELETE /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}`
@@ -3067,7 +3083,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): Name for resource Rollout, must be unique within a combination of cluster and namespace.
 - Example: `dce amamba rollouts delete-rollout --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts get-rollout`
+### `dce workbench rollouts get-rollout`
 
 - Summary: Get a rollout's spec and current wave
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}`
@@ -3080,7 +3096,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--namespace` (query): Name of namespace in which the resource Rollout lives.
 - Example: `dce amamba rollouts get-rollout --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts get-rollout-info`
+### `dce workbench rollouts get-rollout-info`
 
 - Summary: Get rollout runtime info (waves, canary status)
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rolloutinfo/{name}`
@@ -3094,7 +3110,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `analysisRuns`; columns `name`, `error`, `failed`, `inconclusive`, `revision`, `status`
 - Example: `dce amamba rollouts get-rollout-info --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts get-rollout-json`
+### `dce workbench rollouts get-rollout-json`
 
 - Summary: Rollouts_GetRolloutJSON
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}/json`
@@ -3106,7 +3122,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--cluster` (query): cluster
   - `--namespace` (query): namespace
 
-### `dce amamba rollouts get-workload-json`
+### `dce workbench rollouts get-workload-json`
 
 - Summary: Rollouts_GetWorkloadJSON
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/workloads/{workloadName}/json`
@@ -3119,7 +3135,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--namespace` (query): The namespace where the secret lives in.
   - `--workload-type` (query, default `WORKLOAD_TYPE_UNSPECIFIED`, one of: WORKLOAD_TYPE_UNSPECIFIED|WORKLOAD_TYPE_DEPLOYMENT|WORKLOAD_TYPE_STATEFUL_SET|WORKLOAD_TYPE_DAEMON_SET|WORKLOAD_TYPE_JOB|WORKLOAD_TYPE_CRONJOB): workloadType
 
-### `dce amamba rollouts list-ingress-names`
+### `dce workbench rollouts list-ingress-names`
 
 - Summary: List ingress names available for a rollout in a cluster/namespace
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/ingressnames`
@@ -3137,7 +3153,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; pagination `offset`
 - Example: `dce amamba rollouts list-ingress-names --workspace-id <ws> --cluster <c> --namespace <ns>`
 
-### `dce amamba rollouts list-rollout-containers`
+### `dce workbench rollouts list-rollout-containers`
 
 - Summary: List containers involved in a rollout
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}/containters`
@@ -3151,7 +3167,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; columns `name`, `image`
 - Example: `dce amamba rollouts list-rollout-containers --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts list-rollouts`
+### `dce workbench rollouts list-rollouts`
 
 - Summary: List progressive-delivery rollouts
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts`
@@ -3170,7 +3186,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; columns `name`, `status.phase`, `createdAt`, `replicas`, `workspaceId`; pagination `offset`
 - Example: `dce amamba rollouts list-rollouts --workspace-id <ws>`
 
-### `dce amamba rollouts list-services`
+### `dce workbench rollouts list-services`
 
 - Summary: Rollouts_ListServices
 - HTTP: `GET /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/services`
@@ -3189,7 +3205,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--label-selector` (query): labelSelector
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`; pagination `offset`
 
-### `dce amamba rollouts promote-rollout`
+### `dce workbench rollouts promote-rollout`
 
 - Summary: Promote the next wave of a rollout
 - HTTP: `POST /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}:promote`
@@ -3200,7 +3216,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): Name for resource Rollout, must be unique within a combination of cluster and namespace.
 - Example: `dce amamba rollouts promote-rollout --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts undo-rollout`
+### `dce workbench rollouts undo-rollout`
 
 - Summary: Roll back a rollout to its previous revision
 - HTTP: `POST /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}/revisions/{revision}:undo`
@@ -3212,7 +3228,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--revision` (path, required, int64): The revision to rollback to. Default to 0 (last revision).
 - Example: `dce amamba rollouts undo-rollout --workspace-id <ws> --name my-rollout`
 
-### `dce amamba rollouts update-rollout`
+### `dce workbench rollouts update-rollout`
 
 - Summary: Update a rollout's spec
 - HTTP: `PUT /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}`
@@ -3223,7 +3239,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--name` (path, required): Name for resource Rollout, must be unique within a combination of cluster and namespace.
 - Example: `dce amamba rollouts update-rollout --workspace-id <ws> --name my-rollout --file rollout.yaml`
 
-### `dce amamba rollouts update-rollout-json`
+### `dce workbench rollouts update-rollout-json`
 
 - Summary: Rollouts_UpdateRolloutJSON
 - HTTP: `PUT /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}/json`
@@ -3233,7 +3249,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): workspaceId
   - `--name` (path, required): name
 
-### `dce amamba rollouts upgrade-rollout`
+### `dce workbench rollouts upgrade-rollout`
 
 - Summary: Trigger a new rollout upgrade with a new image
 - HTTP: `POST /apis/rollout.amamba.io/v1alpha1/workspaces/{workspaceId}/rollouts/{name}:upgrade`
@@ -3246,7 +3262,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## Sonarqube
 
-### `dce amamba sonarqube list-binded-sonarqube`
+### `dce workbench sonarqube list-binded-sonarqube`
 
 - Summary: Sonarqube_ListBindedSonarqube
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/sonarqube/all_projects`
@@ -3258,7 +3274,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## SummaryService
 
-### `dce amamba summaryservice check-port-occupancy`
+### `dce workbench summaryservice check-port-occupancy`
 
 - Summary: SummaryService_CheckPortOccupancy
 - HTTP: `POST /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/summary/services:check-port`
@@ -3268,7 +3284,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): workspaceId
   - `--cluster` (path, required): cluster
 
-### `dce amamba summaryservice get-namespaced-resource`
+### `dce workbench summaryservice get-namespaced-resource`
 
 - Summary: GetNamespacedResource gets the resource with specified `GroupKind` in target cluster/namespace
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/resources/{groupKind}/{name}`
@@ -3281,7 +3297,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--group-kind` (path, required): GroupKind specifies the resource group and kind
   - `--name` (path, required): name
 
-### `dce amamba summaryservice list-cluster-api-groups`
+### `dce workbench summaryservice list-cluster-api-groups`
 
 - Summary: SummaryService_ListClusterAPIGroups
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/apis`
@@ -3292,7 +3308,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--cluster` (path, required): cluster
 - Output: list path `items`; columns `name`
 
-### `dce amamba summaryservice list-ingress-class-summary`
+### `dce workbench summaryservice list-ingress-class-summary`
 
 - Summary: ListIngressClasses lists instances of `ingressclass` in target cluster
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/summary/ingressclasses`
@@ -3305,7 +3321,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--scope` (query, default `SCOPE_CLUSTER`, one of: SCOPE_CLUSTER|SCOPE_NAMESPACE): scope
 - Output: list path `items`; columns `name`, `kind`, `isDefaultClass`
 
-### `dce amamba summaryservice list-metallb-ip-pools`
+### `dce workbench summaryservice list-metallb-ip-pools`
 
 - Summary: ListMetallbIPPools lists instances of `ipaddresspools.metallb.io` in metallb-system
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/summary/metallbippools`
@@ -3316,7 +3332,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--cluster` (path, required): cluster
 - Output: list path `items`; columns `metadata.name`, `metadata.namespace`, `metadata.creationTimestamp`
 
-### `dce amamba summaryservice list-nacos-registries`
+### `dce workbench summaryservice list-nacos-registries`
 
 - Summary: SummaryService_ListNacosRegistries
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/nacos`
@@ -3329,7 +3345,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--page-size` (query, int32): PageSize per page requested.
 - Output: list path `items`; columns `name`, `namespace`, `certificationEnabled`, `cluster`, `workspaceId`; pagination `offset`
 
-### `dce amamba summaryservice list-nacos-registry-namespaces`
+### `dce workbench summaryservice list-nacos-registry-namespaces`
 
 - Summary: SummaryService_ListNacosRegistryNamespaces
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/nacos/{nacosName}/namespaces`
@@ -3344,7 +3360,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--page-size` (query, int32): PageSize per page requested.
 - Output: list path `items`; columns `name`, `id`; pagination `offset`
 
-### `dce amamba summaryservice list-namespace-summary`
+### `dce workbench summaryservice list-namespace-summary`
 
 - Summary: ListNamespaceSummary lists basic namespace information in target cluster,
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/summary/namespaces`
@@ -3356,7 +3372,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--phase` (query): phase
 - Output: list path `data`; columns `name`, `phase`, `cluster`
 
-### `dce amamba summaryservice list-namespaced-resources`
+### `dce workbench summaryservice list-namespaced-resources`
 
 - Summary: ListNamespacedResources lists resources with specified `GroupKind` in target cluster/namespace
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/namespaces/{namespace}/resources/{groupKind}`
@@ -3376,7 +3392,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the resources list order.
 - Output: list path `items`; columns `data`; pagination `offset`
 
-### `dce amamba summaryservice list-node-summary`
+### `dce workbench summaryservice list-node-summary`
 
 - Summary: ListNodeSummary lists basic node information in target cluster
 - HTTP: `GET /apis/application.amamba.io/v1alpha2/workspaces/{workspaceId}/clusters/{cluster}/summary/nodes`
@@ -3389,7 +3405,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## Toolchain
 
-### `dce amamba toolchain admin-bind-toolchain-resources`
+### `dce workbench toolchain admin-bind-toolchain-resources`
 
 - Summary: Toolchain_AdminBindToolchainResources
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}/resources/{resourceId}:bind`
@@ -3399,7 +3415,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--resource-id` (path, required, int32): resourceId
 
-### `dce amamba toolchain admin-create-toolchain-instance`
+### `dce workbench toolchain admin-create-toolchain-instance`
 
 - Summary: Toolchain_AdminCreateToolchainInstance
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/toolchains`
@@ -3407,7 +3423,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Body: required
 - Flags: none
 
-### `dce amamba toolchain admin-delete-instance`
+### `dce workbench toolchain admin-delete-instance`
 
 - Summary: Toolchain_AdminDeleteInstance
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}`
@@ -3416,7 +3432,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Flags:
   - `--toolchain-id` (path, required, int32): toolchainId
 
-### `dce amamba toolchain admin-delete-toolchain-resource`
+### `dce workbench toolchain admin-delete-toolchain-resource`
 
 - Summary: Toolchain_AdminDeleteToolchainResource
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}/resources/{resourceId}`
@@ -3426,7 +3442,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--resource-id` (path, required, int32): resourceId
 
-### `dce amamba toolchain admin-get-instance`
+### `dce workbench toolchain admin-get-instance`
 
 - Summary: Toolchain_AdminGetInstance
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}`
@@ -3437,7 +3453,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (query): If it is an administrator operation, it does not need to be filled in.
   - `--type` (query, default `INSTANCE_TYPE_UNSPECIFIED`, one of: INSTANCE_TYPE_UNSPECIFIED|INSTANCE_TYPE_JIRA|INSTANCE_TYPE_GITLAB|INSTANCE_TYPE_JENKINS|INSTANCE_TYPE_SONARQUBE|INSTANCE_TYPE_TESTLINK|INSTANCE_TYPE_NEXUS|INSTANCE_TYPE_JFROG): type
 
-### `dce amamba toolchain admin-list-instances`
+### `dce workbench toolchain admin-list-instances`
 
 - Summary: Toolchain_AdminListInstances
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/toolchains`
@@ -3453,7 +3469,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--types` (query): types that need to be queried,if empty all types,
 - Output: list path `items`; columns `name`, `type`, `id`, `address`, `config`, `connectStatus`; pagination `offset`
 
-### `dce amamba toolchain admin-list-toolchain-resources`
+### `dce workbench toolchain admin-list-toolchain-resources`
 
 - Summary: Toolchain_AdminListToolchainResources
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}/resources`
@@ -3470,7 +3486,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--sort-dir` (query, default `DESC`, one of: DESC|ASC): OrderBy determines the data list order.
 - Output: list path `items`; columns `name`, `type`, `id`, `resourceStatus`, `toolchainId`, `workspaceId`; pagination `offset`
 
-### `dce amamba toolchain admin-sync-toolchain-resources`
+### `dce workbench toolchain admin-sync-toolchain-resources`
 
 - Summary: Toolchain_AdminSyncToolchainResources
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}:sync`
@@ -3479,7 +3495,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Flags:
   - `--toolchain-id` (path, required, int32): toolchainId
 
-### `dce amamba toolchain admin-unbind-toolchain-resources`
+### `dce workbench toolchain admin-unbind-toolchain-resources`
 
 - Summary: Toolchain_AdminUnbindToolchainResources
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}/resources/{resourceId}:unbind`
@@ -3489,7 +3505,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--resource-id` (path, required, int32): resourceId
 
-### `dce amamba toolchain admin-update-toolchain-instance`
+### `dce workbench toolchain admin-update-toolchain-instance`
 
 - Summary: only support update toolchain instance credential
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}`
@@ -3498,7 +3514,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Flags:
   - `--toolchain-id` (path, required, int32): toolchainId
 
-### `dce amamba toolchain bind-toolchain-resources`
+### `dce workbench toolchain bind-toolchain-resources`
 
 - Summary: Bind a toolchain resource (Jenkins / SonarQube / JFrog) to a workspace
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}/resources/{resourceId}:bind`
@@ -3510,7 +3526,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--resource-id` (path, required, int32): resourceId
 - Example: `dce amamba toolchain bind-toolchain-resources --workspace-id <ws> --resource <id>`
 
-### `dce amamba toolchain create-toolchain-instance`
+### `dce workbench toolchain create-toolchain-instance`
 
 - Summary: Toolchain_CreateToolchainInstance
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains`
@@ -3519,7 +3535,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Flags:
   - `--workspace-id` (path, required): workspaceId
 
-### `dce amamba toolchain delete-instance`
+### `dce workbench toolchain delete-instance`
 
 - Summary: Toolchain_DeleteInstance
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}`
@@ -3529,7 +3545,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): If it is an administrator operation, it does not need to be filled in.
   - `--toolchain-id` (path, required, int32): toolchainId
 
-### `dce amamba toolchain delete-toolchain-resource`
+### `dce workbench toolchain delete-toolchain-resource`
 
 - Summary: Toolchain_DeleteToolchainResource
 - HTTP: `DELETE /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}/resources/{resourceId}`
@@ -3540,7 +3556,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--resource-id` (path, required, int32): resourceId
 
-### `dce amamba toolchain get-instance`
+### `dce workbench toolchain get-instance`
 
 - Summary: Toolchain_GetInstance
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}`
@@ -3551,7 +3567,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--toolchain-id` (path, required, int32): toolchainId
   - `--type` (query, default `INSTANCE_TYPE_UNSPECIFIED`, one of: INSTANCE_TYPE_UNSPECIFIED|INSTANCE_TYPE_JIRA|INSTANCE_TYPE_GITLAB|INSTANCE_TYPE_JENKINS|INSTANCE_TYPE_SONARQUBE|INSTANCE_TYPE_TESTLINK|INSTANCE_TYPE_NEXUS|INSTANCE_TYPE_JFROG): type
 
-### `dce amamba toolchain list-instances`
+### `dce workbench toolchain list-instances`
 
 - Summary: Toolchain_ListInstances
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains`
@@ -3567,7 +3583,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--types` (query): types that need to be queried,if empty all types,
 - Output: list path `items`; columns `name`, `type`, `id`, `address`, `config`, `connectStatus`; pagination `offset`
 
-### `dce amamba toolchain list-sonarqube-bind-workspace`
+### `dce workbench toolchain list-sonarqube-bind-workspace`
 
 - Summary: Toolchain_ListSonarqubeBindWorkspace
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/toolchains/{toolchainId}/sonarqube_bind_workspace`
@@ -3580,7 +3596,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--page-size` (query, int32): PageSize per page requested.
 - Output: list path `items`; columns `address`, `createdAt`, `nameInJenkins`, `resourceStatus`, `toolchainId`, `toolchainName`; pagination `offset`
 
-### `dce amamba toolchain list-toolchain-resources`
+### `dce workbench toolchain list-toolchain-resources`
 
 - Summary: List toolchain resources bound to a workspace (Jenkins, SonarQube, etc.)
 - HTTP: `GET /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}/resources`
@@ -3598,7 +3614,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; columns `name`, `type`, `id`, `resourceStatus`, `toolchainId`, `workspaceId`; pagination `offset`
 - Example: `dce amamba toolchain list-toolchain-resources --workspace-id <ws>`
 
-### `dce amamba toolchain sync-toolchain-resources`
+### `dce workbench toolchain sync-toolchain-resources`
 
 - Summary: Force re-sync of toolchain resources in a workspace
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}:sync`
@@ -3609,7 +3625,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--toolchain-id` (path, required, int32): toolchainId
 - Example: `dce amamba toolchain sync-toolchain-resources --workspace-id <ws>`
 
-### `dce amamba toolchain unbind-toolchain-resources`
+### `dce workbench toolchain unbind-toolchain-resources`
 
 - Summary: Unbind a toolchain resource from a workspace
 - HTTP: `POST /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}/resources/{resourceId}:unbind`
@@ -3621,7 +3637,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--resource-id` (path, required, int32): resourceId
 - Example: `dce amamba toolchain unbind-toolchain-resources --workspace-id <ws> --resource <id>`
 
-### `dce amamba toolchain update-toolchain-instance`
+### `dce workbench toolchain update-toolchain-instance`
 
 - Summary: only support update toolchain instance credential
 - HTTP: `PUT /apis/pipeline.amamba.io/v1alpha1/workspaces/{workspaceId}/toolchains/{toolchainId}`
@@ -3633,7 +3649,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 
 ## Workloads
 
-### `dce amamba workloads create-app-by-helm`
+### `dce workbench workloads create-app-by-helm`
 
 - Summary: CreateAppByHelm create workload given an image name
 - HTTP: `POST /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/helmreleases`
@@ -3642,7 +3658,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Flags:
   - `--workspace-id` (path, required): target workspace id
 
-### `dce amamba workloads create-app-by-image`
+### `dce workbench workloads create-app-by-image`
 
 - Summary: CreateAppByImage create workload given an image name
 - HTTP: `POST /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/create_workload_by_image`
@@ -3652,7 +3668,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): Workspace ID
 - Output: list path `previews`
 
-### `dce amamba workloads create-app-from-git`
+### `dce workbench workloads create-app-from-git`
 
 - Summary: Workloads_CreateAppFromGit
 - HTTP: `POST /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/create_workload_by_git`
@@ -3662,7 +3678,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): Workspace ID
 - Output: list path `previews`
 
-### `dce amamba workloads create-app-from-jar`
+### `dce workbench workloads create-app-from-jar`
 
 - Summary: Workloads_CreateAppFromJar
 - HTTP: `POST /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/create_workload_by_jar`
@@ -3672,7 +3688,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
   - `--workspace-id` (path, required): Workspace ID
 - Output: list path `previews`
 
-### `dce amamba workloads list-workloads`
+### `dce workbench workloads list-workloads`
 
 - Summary: List workloads across namespaces (deprecated; prefer list-application-workloads)
 - HTTP: `GET /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/workloads`
@@ -3692,7 +3708,7 @@ dce amamba pipelines list-pipelines --workspace-id <ws> --name build- -o json
 - Output: list path `items`; columns `name`, `appGroup`, `createBy`, `createdAt`, `status`, `workloadType`; pagination `offset`
 - Example: `dce amamba workloads list-workloads --workspace-id <ws> --cluster <c> --namespace <ns>`
 
-### `dce amamba workloads update-workload-replicas`
+### `dce workbench workloads update-workload-replicas`
 
 - Summary: Scale a workload to N replicas
 - HTTP: `PUT /apis/application.amamba.io/v1alpha1/workspaces/{workspaceId}/workloads/{workloadName}/replicas`
