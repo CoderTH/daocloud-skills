@@ -13,10 +13,13 @@ Run `dce commands --json` to inspect the generated command catalog. Use `--inclu
 Key fields:
 
 - `path`: command path to pass to `commands show` or execute after the CLI name.
+- `shortcuts`: root-level commands that execute the same operation with preset flag values.
 - `http`: HTTP method and path template.
-- `flags`: CLI flags, parameter location, type, required state, defaults, enum values, format, and help.
+- `http.default_hostname`: optional source-level host selected after explicit `--hostname` and `$DCE_HOST`; when present it is used before the single-host fallback from `hosts.yml`.
+- `flags`: CLI flags, parameter location, type, required state, defaults, enum values, format, input modes, and help.
 - `body`: request body requirement and media type.
 - `auth`: whether auth is required and which scopes are declared.
+- `examples`: runnable examples with optional body shape, output hints, and follow-up commands.
 - `output`: list path, default columns, response media type, pagination, and streaming hints.
 - `notes`, `prerequisites`, and `known_errors`: overlay-provided operation context that is not inferred from the API spec.
 
@@ -27,6 +30,16 @@ Run `dce commands show <path...> --json` before executing an unfamiliar command.
 ## Schema
 
 Run `dce commands schema --json` to read the catalog schema version before parsing catalog JSON with durable tooling.
+
+## Sensitive Flags
+
+When a flag entry has `input_modes`, prefer safe modes over putting secrets directly in shell arguments.
+
+- `flag`: pass the direct `--<flag>` value; keep this for compatibility or non-secret values.
+- `env`: pass `--<flag>-env NAME` to read the value from an environment variable.
+- `file`: pass `--<flag>-file path` to read the value from a file.
+- `stdin`: pass `--<flag>-stdin` to read the value from stdin.
+- Use only one input mode for the same flag.
 
 ## Request Bodies
 
@@ -41,4 +54,4 @@ Use `-o json` for machine-readable command output. Other supported formats are `
 
 ## Auth
 
-If command detail returns `auth.required=true`, run `dce auth status --hostname <host>` before execution. If no matching host is logged in, stop and ask the user to authenticate.
+If command detail returns `auth.required=true`, run `dce auth status --hostname <host>` before execution. Use `http.default_hostname` when present unless the user provides `--hostname` or `$DCE_HOST`; if no matching host is logged in, stop and ask the user to authenticate.

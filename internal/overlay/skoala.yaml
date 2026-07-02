@@ -1,4 +1,54 @@
 commands:
+  # Ignore v1alpha1 GatewayService operations (keep v1alpha2)
+  list-service:
+    match:
+      path: "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services"
+    ignore: true
+  create-service:
+    match:
+      path: "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services"
+    ignore: true
+  get-service:
+    match:
+      path: "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services/{sesameId}"
+    ignore: true
+  update-service:
+    match:
+      path: "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services/{sesameId}"
+    ignore: true
+  update-service-policy:
+    match:
+      path: "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services/{sesameId}/policies"
+    ignore: true
+
+  # Ignore v1alpha1 Nacos_List (keep v1alpha3)
+  list:
+    match:
+      path: "/apis/hive.skoala.io/v1alpha1/workspaces/{workspaceId}/nacoses"
+    ignore: true
+
+  # Ignore v1alpha1 Skoala operations (keep v1alpha2/v1alpha3)
+  list-cluster-namespace:
+    match:
+      path: "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces"
+    ignore: true
+  list-cluster-namespace-service:
+    match:
+      path: "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/services"
+    ignore: true
+  list-mesh-namespace-services:
+    match:
+      path: "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/meshes/{meshId}/services"
+    ignore: true
+  list-workspace-role-permissions:
+    match:
+      path: "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/permissions"
+    ignore: true
+  list-registry-services:
+    match:
+      path: "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/registry/{registryId}/services/gateway"
+    ignore: true
+
   list-gateways:
     short: "List gateways in a workspace"
     aliases: [ls-gateways]
