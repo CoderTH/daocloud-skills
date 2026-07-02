@@ -8,7 +8,7 @@ import (
 	"github.com/lathe-cli/lathe/pkg/runtime"
 )
 
-const generatedSchemaVersion = 6
+const generatedSchemaVersion = 8
 
 func Mount(root *cobra.Command) error {
 	if err := runtime.AssertSchema(generatedSchemaVersion); err != nil {
@@ -1392,24 +1392,6 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "GatewayService",
 		Use:         "create-service",
-		Short:       "创建网关服务",
-		OperationID: "GatewayService_CreateService",
-		Method:      "POST",
-		PathTpl:     "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "path", GoType: "string", Help: "namespaceName (path, required)", Required: true},
-			{Name: "gatewayName", Flag: "gateway-name", In: "path", GoType: "string", Help: "gatewayName (path, required)", Required: true},
-		},
-		RequestBody: &runtime.RequestBody{
-			Required: true,
-			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"advancedServiceConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"circuitBreakerPolicy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"maxConnections": &runtime.SchemaSpec{Type: "integer"}, "maxPendingRequests": &runtime.SchemaSpec{Type: "integer"}, "maxRequests": &runtime.SchemaSpec{Type: "integer"}, "maxRetries": &runtime.SchemaSpec{Type: "integer"}}}, "healthcheckPolicy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"port": &runtime.SchemaSpec{Type: "integer"}}}, "tlsPolicy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"port": &runtime.SchemaSpec{Type: "integer"}, "secretName": &runtime.SchemaSpec{Type: "string"}, "secretNamespaceName": &runtime.SchemaSpec{Type: "string"}, "subjectAltName": &runtime.SchemaSpec{Type: "string"}}}}}, "externalServiceConf": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"externalService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "hostedRegistryService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"eurekaService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "kubernetesService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "nacosService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "groupName": &runtime.SchemaSpec{Type: "string"}, "namespaceId": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registrationName": &runtime.SchemaSpec{Type: "string"}, "zookeeperService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}}}, "kubernetesService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registryService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"eurekaService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "kubernetesService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "nacosService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "groupName": &runtime.SchemaSpec{Type: "string"}, "namespaceId": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registrationId": &runtime.SchemaSpec{Type: "string"}, "registrationName": &runtime.SchemaSpec{Type: "string"}, "zookeeperService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}}}}}}},
-		},
-	},
-	{
-		Group:       "GatewayService",
-		Use:         "create-service",
 		Short:       "创建网关接入服务",
 		OperationID: "GatewayService_CreateService",
 		Method:      "POST",
@@ -1459,51 +1441,11 @@ var Specs = []runtime.CommandSpec{
 	},
 	{
 		Group:       "GatewayService",
-		Use:         "get-service",
-		Short:       "网关服务详情",
-		OperationID: "GatewayService_GetService",
-		Method:      "GET",
-		PathTpl:     "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services/{sesameId}",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "path", GoType: "string", Help: "namespaceName (path, required)", Required: true},
-			{Name: "gatewayName", Flag: "gateway-name", In: "path", GoType: "string", Help: "gatewayName (path, required)", Required: true},
-			{Name: "sesameId", Flag: "sesame-id", In: "path", GoType: "string", Help: "服务id 格式为 sesame_service_name.sesame_namespace_name (path, required)", Required: true},
-		},
-		Output: runtime.OutputHints{ListPath: "api", DefaultColumns: []string{"apiCreateType", "apiGroup", "apiName", "enabled", "fqdn", "matchType"},
-		},
-	},
-	{
-		Group:       "GatewayService",
 		Use:         "list-service",
 		Short:       "网关服务列表",
 		OperationID: "GatewayService_ListService",
 		Method:      "GET",
 		PathTpl:     "/apis/sesame.skoala.io/v1alpha2/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "path", GoType: "string", Help: "网关所在的命名空间 (path, required)", Required: true},
-			{Name: "gatewayName", Flag: "gateway-name", In: "path", GoType: "string", Help: "gatewayName (path, required)", Required: true},
-			{Name: "serviceNamespaceName", Flag: "service-namespace-name", In: "query", GoType: "string", Help: "服务所在的命名空间 (query)", Required: false},
-			{Name: "serviceName", Flag: "service-name", In: "query", GoType: "string", Help: "服务名称 -> 模糊搜索 (query)", Required: false},
-			{Name: "serviceType", Flag: "service-type", In: "query", GoType: "string", Help: "服务类型 (query, one of: EXTERNAL_SERVICE|MANAGE_SERVICE|PLUGIN_SERVICE|LANE_SERVICE)", Required: false, Default: "EXTERNAL_SERVICE", Enum: []string{"EXTERNAL_SERVICE", "MANAGE_SERVICE", "PLUGIN_SERVICE", "LANE_SERVICE"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-		},
-		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"apiCount", "createdAt", "serviceName", "serviceType", "sesameId"}, Pagination: &runtime.PaginationHint{
-			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
-		},
-		},
-	},
-	{
-		Group:       "GatewayService",
-		Use:         "list-service",
-		Short:       "网关服务列表",
-		OperationID: "GatewayService_ListService",
-		Method:      "GET",
-		PathTpl:     "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
 			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
@@ -1539,25 +1481,6 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "GatewayService",
 		Use:         "update-service",
-		Short:       "更新网关服务",
-		OperationID: "GatewayService_UpdateService",
-		Method:      "PUT",
-		PathTpl:     "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services/{sesameId}",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "path", GoType: "string", Help: "namespaceName (path, required)", Required: true},
-			{Name: "gatewayName", Flag: "gateway-name", In: "path", GoType: "string", Help: "gatewayName (path, required)", Required: true},
-			{Name: "sesameId", Flag: "sesame-id", In: "path", GoType: "string", Help: "服务id 格式为 sesame_service_name.sesame_namespace_name (path, required)", Required: true},
-		},
-		RequestBody: &runtime.RequestBody{
-			Required: true,
-			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"externalServiceConf": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"externalService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "hostedRegistryService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"eurekaService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "kubernetesService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "nacosService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "groupName": &runtime.SchemaSpec{Type: "string"}, "namespaceId": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registrationName": &runtime.SchemaSpec{Type: "string"}, "zookeeperService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}}}, "kubernetesService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registryService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"eurekaService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "kubernetesService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "nacosService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "groupName": &runtime.SchemaSpec{Type: "string"}, "namespaceId": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registrationId": &runtime.SchemaSpec{Type: "string"}, "registrationName": &runtime.SchemaSpec{Type: "string"}, "zookeeperService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}}}}}, "updateApi": &runtime.SchemaSpec{Type: "boolean"}}},
-		},
-	},
-	{
-		Group:       "GatewayService",
-		Use:         "update-service",
 		Short:       "更新网关接入服务",
 		OperationID: "GatewayService_UpdateService",
 		Method:      "PUT",
@@ -1572,25 +1495,6 @@ var Specs = []runtime.CommandSpec{
 		RequestBody: &runtime.RequestBody{
 			Required: true,
 			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"basicAccessServiceConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"address": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hostname": &runtime.SchemaSpec{Type: "string"}, "hostnames": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "port": &runtime.SchemaSpec{Type: "integer"}, "protocol": &runtime.SchemaSpec{Type: "string"}}}, "clusterService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "externalService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"serviceName": &runtime.SchemaSpec{Type: "string"}}}, "hostedRegistryService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "eurekaService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "nacosService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"groupName": &runtime.SchemaSpec{Type: "string"}, "namespaceId": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registrationName": &runtime.SchemaSpec{Type: "string"}, "zookeeperService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"serviceName": &runtime.SchemaSpec{Type: "string"}}}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registryService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterId": &runtime.SchemaSpec{Type: "string"}, "clusterName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "consulService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"serviceName": &runtime.SchemaSpec{Type: "string"}}}, "eurekaService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"serviceName": &runtime.SchemaSpec{Type: "string"}}}, "meshService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"meshId": &runtime.SchemaSpec{Type: "string"}, "meshName": &runtime.SchemaSpec{Type: "string"}, "namespaceName": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "nacosService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"groupName": &runtime.SchemaSpec{Type: "string"}, "namespaceId": &runtime.SchemaSpec{Type: "string"}, "serviceName": &runtime.SchemaSpec{Type: "string"}}}, "registrationId": &runtime.SchemaSpec{Type: "string"}, "registrationName": &runtime.SchemaSpec{Type: "string"}, "zookeeperService": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"serviceName": &runtime.SchemaSpec{Type: "string"}}}}}}}, "updateApi": &runtime.SchemaSpec{Type: "boolean"}}},
-		},
-	},
-	{
-		Group:       "GatewayService",
-		Use:         "update-service-policy",
-		Short:       "更新网关服务策略",
-		OperationID: "GatewayService_UpdateServicePolicy",
-		Method:      "PUT",
-		PathTpl:     "/apis/sesame.skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces/{namespaceName}/gateways/{gatewayName}/services/{sesameId}/policies",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "path", GoType: "string", Help: "namespaceName (path, required)", Required: true},
-			{Name: "gatewayName", Flag: "gateway-name", In: "path", GoType: "string", Help: "gatewayName (path, required)", Required: true},
-			{Name: "sesameId", Flag: "sesame-id", In: "path", GoType: "string", Help: "sesameId (path, required)", Required: true},
-		},
-		RequestBody: &runtime.RequestBody{
-			Required: true,
-			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"advancedServiceConfig": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"circuitBreakerPolicy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"maxConnections": &runtime.SchemaSpec{Type: "integer"}, "maxPendingRequests": &runtime.SchemaSpec{Type: "integer"}, "maxRequests": &runtime.SchemaSpec{Type: "integer"}, "maxRetries": &runtime.SchemaSpec{Type: "integer"}}}, "healthcheckPolicy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"port": &runtime.SchemaSpec{Type: "integer"}}}, "tlsPolicy": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"port": &runtime.SchemaSpec{Type: "integer"}, "secretName": &runtime.SchemaSpec{Type: "string"}, "secretNamespaceName": &runtime.SchemaSpec{Type: "string"}, "subjectAltName": &runtime.SchemaSpec{Type: "string"}}}}}}},
 		},
 	},
 	{
@@ -3448,26 +3352,6 @@ var Specs = []runtime.CommandSpec{
 		Short:       "托管 Nacos 列表",
 		OperationID: "Nacos_List",
 		Method:      "GET",
-		PathTpl:     "/apis/hive.skoala.io/v1alpha1/workspaces/{workspaceId}/nacoses",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "query", GoType: "string", Help: "clusterName (query)", Required: false},
-			{Name: "namespaceName", Flag: "namespace-name", In: "query", GoType: "string", Help: "namespaceName (query)", Required: false},
-			{Name: "nacosName", Flag: "nacos-name", In: "query", GoType: "string", Help: "nacosName (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-		},
-		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"type", "certificationEnabled", "clusterName", "clusterPhase", "consoleAddress", "createAt"}, Pagination: &runtime.PaginationHint{
-			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
-		},
-		},
-	},
-	{
-		Group:       "Nacos",
-		Use:         "list",
-		Short:       "托管 Nacos 列表",
-		OperationID: "Nacos_List",
-		Method:      "GET",
 		PathTpl:     "/apis/hive.skoala.io/v1alpha3/nacoses",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "query", GoType: "string", Help: "workspaceId (query)", Required: false},
@@ -5127,46 +5011,6 @@ var Specs = []runtime.CommandSpec{
 	},
 	{
 		Group:       "Skoala",
-		Use:         "list-cluster-namespace",
-		Short:       "Namespace 列表",
-		OperationID: "Skoala_ListClusterNamespace",
-		Method:      "GET",
-		PathTpl:     "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/namespaces",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "gatewayStatus", Flag: "gateway-status", In: "query", GoType: "string", Help: "gatewayStatus (query, one of: NoFilter|Available|Unavailable)", Required: false, Default: "NoFilter", Enum: []string{"NoFilter", "Available", "Unavailable"}},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-		},
-		Output: runtime.OutputHints{ListPath: "namespaceNames", Pagination: &runtime.PaginationHint{
-			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
-		},
-		},
-	},
-	{
-		Group:       "Skoala",
-		Use:         "list-cluster-namespace-service",
-		Short:       "Service 列表",
-		OperationID: "Skoala_ListClusterNamespaceService",
-		Method:      "GET",
-		PathTpl:     "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/clusters/{clusterName}/services",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "clusterName", Flag: "cluster-name", In: "path", GoType: "string", Help: "clusterName (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "query", GoType: "[]string", Help: "namespaceName (query)", Required: false},
-			{Name: "serviceType", Flag: "service-type", In: "query", GoType: "string", Help: "- ALL: 全部服务 (query, one of: ALL|SESAME|K8S)", Required: false, Default: "ALL", Enum: []string{"ALL", "SESAME", "K8S"}},
-			{Name: "serviceName", Flag: "service-name", In: "query", GoType: "string", Help: "serviceName (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-		},
-		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"createdAt", "namespaceName", "serviceName", "sesameId", "sesameNamespaceName", "sesameServiceName"}, Pagination: &runtime.PaginationHint{
-			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
-		},
-		},
-	},
-	{
-		Group:       "Skoala",
 		Use:         "list-cluster-namespace-service",
 		Short:       "Service 列表",
 		OperationID: "Skoala_ListClusterNamespaceService",
@@ -5260,26 +5104,6 @@ var Specs = []runtime.CommandSpec{
 			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
 		},
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"namespaceName", "serviceName", "serviceType", "sesameId"}, Pagination: &runtime.PaginationHint{
-			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
-		},
-		},
-	},
-	{
-		Group:       "Skoala",
-		Use:         "list-mesh-namespace-services",
-		Short:       "网格 Service 列表",
-		OperationID: "Skoala_ListMeshNamespaceServices",
-		Method:      "GET",
-		PathTpl:     "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/meshes/{meshId}/services",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "meshId", Flag: "mesh-id", In: "path", GoType: "string", Help: "meshId (path, required)", Required: true},
-			{Name: "namespaceName", Flag: "namespace-name", In: "query", GoType: "[]string", Help: "namespaceName (query)", Required: false},
-			{Name: "serviceName", Flag: "service-name", In: "query", GoType: "string", Help: "serviceName (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-		},
-		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"namespaceName", "serviceName", "sesameId"}, Pagination: &runtime.PaginationHint{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
 		},
 		},
@@ -5398,30 +5222,6 @@ var Specs = []runtime.CommandSpec{
 		Short:       "注册中心中服务列表",
 		OperationID: "Skoala_ListRegistryServices",
 		Method:      "GET",
-		PathTpl:     "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/registry/{registryId}/services/gateway",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-			{Name: "registryId", Flag: "registry-id", In: "path", GoType: "string", Help: "registryId (path, required)", Required: true},
-			{Name: "kubernetesClusterName", Flag: "kubernetes-cluster-name", In: "query", GoType: "string", Help: "kubernetesClusterName (query)", Required: false},
-			{Name: "kubernetesNamespaceName", Flag: "kubernetes-namespace-name", In: "query", GoType: "string", Help: "kubernetesNamespaceName (query)", Required: false},
-			{Name: "registryName", Flag: "registry-name", In: "query", GoType: "string", Help: "registryName (query)", Required: false},
-			{Name: "nacosNamespaceName", Flag: "nacos-namespace-name", In: "query", GoType: "string", Help: "nacosNamespaceName (query)", Required: false},
-			{Name: "isHosted", Flag: "is-hosted", In: "query", GoType: "bool", Help: "isHosted (query)", Required: false},
-			{Name: "serviceName", Flag: "service-name", In: "query", GoType: "string", Help: "serviceName (query)", Required: false},
-			{Name: "page", Flag: "page", In: "query", GoType: "int64", Help: "page (query, int32)", Required: false, Format: "int32"},
-			{Name: "pageSize", Flag: "page-size", In: "query", GoType: "int64", Help: "pageSize (query, int32)", Required: false, Format: "int32"},
-		},
-		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"isHosted", "kubernetesClusterName", "kubernetesNamespaceName", "meshDeployType", "meshId", "meshName"}, Pagination: &runtime.PaginationHint{
-			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
-		},
-		},
-	},
-	{
-		Group:       "Skoala",
-		Use:         "list-registry-services",
-		Short:       "注册中心中服务列表",
-		OperationID: "Skoala_ListRegistryServices",
-		Method:      "GET",
 		PathTpl:     "/apis/skoala.io/v1alpha2/workspaces/{workspaceId}/clusters/{clusterName}/registry/{registryId}/services/gateway",
 		Params: []runtime.ParamSpec{
 			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
@@ -5458,18 +5258,6 @@ var Specs = []runtime.CommandSpec{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
 		},
 		},
-	},
-	{
-		Group:       "Skoala",
-		Use:         "list-workspace-role-permissions",
-		Short:       "权限点列表",
-		OperationID: "Skoala_ListWorkspaceRolePermissions",
-		Method:      "GET",
-		PathTpl:     "/apis/skoala.io/v1alpha1/workspaces/{workspaceId}/permissions",
-		Params: []runtime.ParamSpec{
-			{Name: "workspaceId", Flag: "workspace-id", In: "path", GoType: "string", Help: "workspaceId (path, required)", Required: true},
-		},
-		Output: runtime.OutputHints{ListPath: "permissions"},
 	},
 	{
 		Group:       "Skoala-v1alpha3",

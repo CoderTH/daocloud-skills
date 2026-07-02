@@ -24,6 +24,10 @@ Use this skill when a user asks you to operate `dce`, inspect its API commands, 
 - `dce commands schema --json`: catalog schema version for parser compatibility.
 - `dce search "<intent>" --json`: ranked candidate commands.
 
+## Maintenance Commands
+
+- `dce --version` or `dce -v`: print CLI build version.
+
 ## References
 
 - Read `references/catalog.md` for the command discovery protocol and catalog field meanings.
@@ -55,6 +59,7 @@ Use this skill when a user asks you to operate `dce`, inspect its API commands, 
 - Do not execute directly from search results; confirm with `commands show` first.
 - Prefer `-o json` for machine-readable command output unless the user asks for human-readable output.
 - Use `--file`, `--set`, or `--set-str` for JSON request bodies according to `commands show` body requirements.
+- For sensitive flags, prefer safe modes from `flags[].input_modes`: `--<flag>-env`, `--<flag>-file`, or `--<flag>-stdin`.
 
 ## Module availability
 
