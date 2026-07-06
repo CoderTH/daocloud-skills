@@ -158,11 +158,11 @@ sources:
   hydra:
     display_name: llm-studio
     repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
-    pinned_tag: 658460973f77ce60f15c45f9afefbb5d70ee9e21
+    pinned_tag: c05fd6920a216f94b31c8cb42db93e57cebef1f6
     backend: swagger
     swagger:
       files:
-        - docs/openapi/hydra/v0.16.0.json
+        - docs/openapi/hydra/v0.16.1.json
 
   virtnest:
     display_name: virtual-machines

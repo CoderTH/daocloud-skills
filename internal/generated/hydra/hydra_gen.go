@@ -186,7 +186,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "APIKeyManagement",
 		Use:         "list-api-key",
-		Short:       "'当前 API 模式：CSP",
+		Short:       "当前 API 模式：CSP",
 		OperationID: "APIKeyManagement_ListAPIKey",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/apikeys",
@@ -443,7 +443,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "AdminFilesStorageService",
 		Use:         "list-pre-pulls",
-		Short:       "'当前 API 模式：Any",
+		Short:       "当前 API 模式：Any",
 		OperationID: "AdminFilesStorageService_ListPrePulls",
 		Method:      "GET",
 		PathTpl:     "/apis/admin.hydra.io/v1alpha1/filesstorages/{storageName}/prepulls",
@@ -600,7 +600,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "AdminModelManagement",
 		Use:         "list-models",
-		Short:       "'当前 API 模式：Any",
+		Short:       "当前 API 模式：Any",
 		OperationID: "AdminModelManagement_ListModels",
 		Method:      "GET",
 		PathTpl:     "/apis/admin.hydra.io/v1alpha1/models",
@@ -738,7 +738,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "AdminModelTemplateManagement",
 		Use:         "list-model-templates",
-		Short:       "'当前 API 模式：Any",
+		Short:       "当前 API 模式：Any",
 		OperationID: "AdminModelTemplateManagement_ListModelTemplates",
 		Method:      "GET",
 		PathTpl:     "/apis/admin.hydra.io/v1alpha1/models/{modelId}/model-templates",
@@ -893,7 +893,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "AdminProviderManagement",
 		Use:         "list-providers",
-		Short:       "'当前 API 模式：Any",
+		Short:       "当前 API 模式：Any",
 		OperationID: "AdminProviderManagement_ListProviders",
 		Method:      "GET",
 		PathTpl:     "/apis/admin.hydra.io/v1alpha1/providers",
@@ -1017,6 +1017,32 @@ var Specs = []runtime.CommandSpec{
 	},
 	{
 		Group:       "CoreService",
+		Use:         "list-model-gpu-info",
+		Short:       "ListModelGPUInfo returns the mapping between model access names and their deployed GPU types.",
+		OperationID: "CoreService_ListModelGPUInfo",
+		Method:      "GET",
+		PathTpl:     "/apis/admin.hydra.io/v1alpha1/model-gpu-info",
+		Params: []runtime.ParamSpec{
+			{Name: "accessModelName", Flag: "access-model-name", In: "query", GoType: "string", Help: "accessModelName (query)", Required: false},
+		},
+		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"namespace", "accessModelName", "cluster", "lwsName"},
+		},
+	},
+	{
+		Group:       "CoreService",
+		Use:         "list-node-gpu-info",
+		Short:       "ListNodeGPUInfo returns GPU hardware info (product, memory) for all nodes across clusters.",
+		OperationID: "CoreService_ListNodeGPUInfo",
+		Method:      "GET",
+		PathTpl:     "/apis/admin.hydra.io/v1alpha1/node-gpu-info",
+		Params: []runtime.ParamSpec{
+			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster (query)", Required: false},
+		},
+		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"clusterName", "gpuCount", "gpuMemory", "gpuProduct", "nodeName"},
+		},
+	},
+	{
+		Group:       "CoreService",
 		Use:         "list-platform-role-permissions-for-current-user",
 		Short:       "当前 API 模式：Any",
 		OperationID: "CoreService_ListPlatformRolePermissionsForCurrentUser",
@@ -1030,13 +1056,12 @@ var Specs = []runtime.CommandSpec{
 		Short:       "当前 API 模式：WS",
 		OperationID: "CostMockConfigManagement_CreateCostMockConfig",
 		Method:      "POST",
-		PathTpl:     "/apis/hydra.io/v1alpha1/analysis-center/cost-mock-config",
+		PathTpl:     "/apis/admin.hydra.io/v1alpha1/cost-mock-config",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
-			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gpuCosts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cluster": &runtime.SchemaSpec{Type: "string"}, "hourlyPrice": &runtime.SchemaSpec{Type: "number"}, "productName": &runtime.SchemaSpec{Type: "string"}, "sn": &runtime.SchemaSpec{Type: "string"}}}}, "maasTimeBoundPackageCosts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hourlyCachedInputPrice": &runtime.SchemaSpec{Type: "number"}, "hourlyInputPrice": &runtime.SchemaSpec{Type: "number"}, "hourlyOutputPrice": &runtime.SchemaSpec{Type: "number"}, "upstreamModelName": &runtime.SchemaSpec{Type: "string"}}}}, "maasUsageCosts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cachedInputPrice": &runtime.SchemaSpec{Type: "number"}, "inputPrice": &runtime.SchemaSpec{Type: "number"}, "outputPrice": &runtime.SchemaSpec{Type: "number"}, "upstreamModelName": &runtime.SchemaSpec{Type: "string"}}}}}}}},
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"excludedGpuCostKeys": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "gpus": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterName": &runtime.SchemaSpec{Type: "string"}, "count": &runtime.SchemaSpec{Type: "integer"}, "memory": &runtime.SchemaSpec{Type: "string"}, "nodeName": &runtime.SchemaSpec{Type: "string"}, "price": &runtime.SchemaSpec{Type: "number"}, "product": &runtime.SchemaSpec{Type: "string"}}}}, "upstreamTokenPrices": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cachedPrice": &runtime.SchemaSpec{Type: "number"}, "inPrice": &runtime.SchemaSpec{Type: "number"}, "inputAudioPrice": &runtime.SchemaSpec{Type: "number"}, "inputImagePrice": &runtime.SchemaSpec{Type: "number"}, "maasModelName": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "outPrice": &runtime.SchemaSpec{Type: "number"}, "outputAudioPrice": &runtime.SchemaSpec{Type: "number"}, "outputImagePrice": &runtime.SchemaSpec{Type: "number"}}}}, "upstreamTotalTokenPrices": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cachedTokenHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "expirationTime": &runtime.SchemaSpec{Type: "string"}, "inputAudioHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "inputImageHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "inputTokenHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "maasModelName": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "outputAudioHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "outputImageHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "outputTokenHourlyPrice": &runtime.SchemaSpec{Type: "number"}}}}}}}},
 		},
-		Output: runtime.OutputHints{ListPath: "gpuCosts", DefaultColumns: []string{"cluster", "hourlyPrice", "productName", "sn"},
-		},
+		Output: runtime.OutputHints{ListPath: "excludedGpuCostKeys"},
 	},
 	{
 		Group:       "CostMockConfigManagement",
@@ -1044,9 +1069,8 @@ var Specs = []runtime.CommandSpec{
 		Short:       "当前 API 模式：WS",
 		OperationID: "CostMockConfigManagement_DeleteCostMockConfig",
 		Method:      "DELETE",
-		PathTpl:     "/apis/hydra.io/v1alpha1/analysis-center/cost-mock-config",
-		Output: runtime.OutputHints{ListPath: "gpuCosts", DefaultColumns: []string{"cluster", "hourlyPrice", "productName", "sn"},
-		},
+		PathTpl:     "/apis/admin.hydra.io/v1alpha1/cost-mock-config",
+		Output:      runtime.OutputHints{ListPath: "excludedGpuCostKeys"},
 	},
 	{
 		Group:       "CostMockConfigManagement",
@@ -1054,9 +1078,8 @@ var Specs = []runtime.CommandSpec{
 		Short:       "当前 API 模式：WS",
 		OperationID: "CostMockConfigManagement_GetCostMockConfig",
 		Method:      "GET",
-		PathTpl:     "/apis/hydra.io/v1alpha1/analysis-center/cost-mock-config",
-		Output: runtime.OutputHints{ListPath: "gpuCosts", DefaultColumns: []string{"cluster", "hourlyPrice", "productName", "sn"},
-		},
+		PathTpl:     "/apis/admin.hydra.io/v1alpha1/cost-mock-config",
+		Output:      runtime.OutputHints{ListPath: "excludedGpuCostKeys"},
 	},
 	{
 		Group:       "CostMockConfigManagement",
@@ -1064,13 +1087,12 @@ var Specs = []runtime.CommandSpec{
 		Short:       "当前 API 模式：WS",
 		OperationID: "CostMockConfigManagement_UpdateCostMockConfig",
 		Method:      "PUT",
-		PathTpl:     "/apis/hydra.io/v1alpha1/analysis-center/cost-mock-config",
+		PathTpl:     "/apis/admin.hydra.io/v1alpha1/cost-mock-config",
 		RequestBody: &runtime.RequestBody{
 			Required: true,
-			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"gpuCosts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cluster": &runtime.SchemaSpec{Type: "string"}, "hourlyPrice": &runtime.SchemaSpec{Type: "number"}, "productName": &runtime.SchemaSpec{Type: "string"}, "sn": &runtime.SchemaSpec{Type: "string"}}}}, "maasTimeBoundPackageCosts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"hourlyCachedInputPrice": &runtime.SchemaSpec{Type: "number"}, "hourlyInputPrice": &runtime.SchemaSpec{Type: "number"}, "hourlyOutputPrice": &runtime.SchemaSpec{Type: "number"}, "upstreamModelName": &runtime.SchemaSpec{Type: "string"}}}}, "maasUsageCosts": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cachedInputPrice": &runtime.SchemaSpec{Type: "number"}, "inputPrice": &runtime.SchemaSpec{Type: "number"}, "outputPrice": &runtime.SchemaSpec{Type: "number"}, "upstreamModelName": &runtime.SchemaSpec{Type: "string"}}}}}}}},
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"config": &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"excludedGpuCostKeys": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "gpus": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"clusterName": &runtime.SchemaSpec{Type: "string"}, "count": &runtime.SchemaSpec{Type: "integer"}, "memory": &runtime.SchemaSpec{Type: "string"}, "nodeName": &runtime.SchemaSpec{Type: "string"}, "price": &runtime.SchemaSpec{Type: "number"}, "product": &runtime.SchemaSpec{Type: "string"}}}}, "upstreamTokenPrices": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cachedPrice": &runtime.SchemaSpec{Type: "number"}, "inPrice": &runtime.SchemaSpec{Type: "number"}, "inputAudioPrice": &runtime.SchemaSpec{Type: "number"}, "inputImagePrice": &runtime.SchemaSpec{Type: "number"}, "maasModelName": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "outPrice": &runtime.SchemaSpec{Type: "number"}, "outputAudioPrice": &runtime.SchemaSpec{Type: "number"}, "outputImagePrice": &runtime.SchemaSpec{Type: "number"}}}}, "upstreamTotalTokenPrices": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"cachedTokenHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "expirationTime": &runtime.SchemaSpec{Type: "string"}, "inputAudioHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "inputImageHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "inputTokenHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "maasModelName": &runtime.SchemaSpec{Type: "string"}, "name": &runtime.SchemaSpec{Type: "string"}, "outputAudioHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "outputImageHourlyPrice": &runtime.SchemaSpec{Type: "number"}, "outputTokenHourlyPrice": &runtime.SchemaSpec{Type: "number"}}}}}}}},
 		},
-		Output: runtime.OutputHints{ListPath: "gpuCosts", DefaultColumns: []string{"cluster", "hourlyPrice", "productName", "sn"},
-		},
+		Output: runtime.OutputHints{ListPath: "excludedGpuCostKeys"},
 	},
 	{
 		Group:       "Image",
@@ -1219,7 +1241,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "MAASService",
 		Use:         "list-maas-models",
-		Short:       "'当前 API 模式：Any",
+		Short:       "当前 API 模式：Any",
 		OperationID: "MAASService_ListMAASModels",
 		Method:      "GET",
 		PathTpl:     "/apis/admin.hydra.io/v1alpha1/maas-models",
@@ -1310,7 +1332,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "ModelManagement",
 		Use:         "list-models",
-		Short:       "'当前 API 模式：CSP",
+		Short:       "当前 API 模式：CSP",
 		OperationID: "ModelManagement_ListModels",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/models",
@@ -1385,7 +1407,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "ModelServingManagement",
 		Use:         "list-model-serving",
-		Short:       "'当前 API 模式：CSP",
+		Short:       "当前 API 模式：CSP",
 		OperationID: "ModelServingManagement_ListModelServing",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/model-serving",
@@ -1429,7 +1451,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "ProviderManagement",
 		Use:         "list-provider",
-		Short:       "'当前 API 模式：CSP",
+		Short:       "当前 API 模式：CSP",
 		OperationID: "ProviderManagement_ListProvider",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/providers",
@@ -1478,7 +1500,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "QueueManagement",
 		Use:         "list-queues",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "QueueManagement_ListQueues",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/queues",
@@ -1498,7 +1520,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "QueueManagement",
 		Use:         "list-queues2",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "QueueManagement_ListQueues2",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspace/{workspace}/queues",
@@ -1642,7 +1664,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSAPIKeyManagement",
 		Use:         "list-my-wsapi-keys",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSAPIKeyManagement_ListMyWSAPIKeys",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/my-apikeys",
@@ -1660,7 +1682,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSAPIKeyManagement",
 		Use:         "list-wsapi-key",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSAPIKeyManagement_ListWSAPIKey",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/apikeys",
@@ -1825,7 +1847,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSDatasetManagement",
 		Use:         "list-private-datasets",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSDatasetManagement_ListPrivateDatasets",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/private-datasets",
@@ -2411,7 +2433,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSFilesStorageService",
 		Use:         "ws-list-pre-pulls",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSFilesStorageService_WSListPrePulls",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/filesstorages/{storageName}/prepulls",
@@ -2656,7 +2678,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSModelManagement",
 		Use:         "list-private-models",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSModelManagement_ListPrivateModels",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/private-models",
@@ -2674,7 +2696,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSModelManagement",
 		Use:         "list-ws-models",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSModelManagement_ListWSModels",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/models",
@@ -2793,7 +2815,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSModelServingManagement",
 		Use:         "list-ws-model-serving",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSModelServingManagement_ListWSModelServing",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/model-serving",
@@ -2873,7 +2895,7 @@ var Specs = []runtime.CommandSpec{
 	{
 		Group:       "WSModelTemplateManagement",
 		Use:         "list-ws-model-templates",
-		Short:       "'当前 API 模式：WS",
+		Short:       "当前 API 模式：WS",
 		OperationID: "WSModelTemplateManagement_ListWSModelTemplates",
 		Method:      "GET",
 		PathTpl:     "/apis/hydra.io/v1alpha1/workspaces/{workspace}/models/{modelId}/model-templates",
