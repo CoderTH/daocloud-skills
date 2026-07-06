@@ -4,9 +4,9 @@
 
 - Backend: `swagger`
 - Repository: https://github.com/DaoCloud/daocloud-api-docs.git
-- Pinned tag: `658460973f77ce60f15c45f9afefbb5d70ee9e21`
-- Files: `docs/openapi/hydra/v0.16.0.json`
-- Resolved SHA: `658460973f77ce60f15c45f9afefbb5d70ee9e21`
+- Pinned tag: `c05fd6920a216f94b31c8cb42db93e57cebef1f6`
+- Files: `docs/openapi/hydra/v0.16.1.json`
+- Resolved SHA: `c05fd6920a216f94b31c8cb42db93e57cebef1f6`
 
 ## AIGuardrailsService
 
@@ -134,7 +134,7 @@
 
 ### `dce llm-studio apikeymanagement list-api-key`
 
-- Summary: '当前 API 模式：CSP
+- Summary: 当前 API 模式：CSP
 - HTTP: `GET /apis/hydra.io/v1alpha1/apikeys`
 - Auth: required
 - Body: none
@@ -332,7 +332,7 @@
 
 ### `dce llm-studio adminfilesstorageservice list-pre-pulls`
 
-- Summary: '当前 API 模式：Any
+- Summary: 当前 API 模式：Any
 - HTTP: `GET /apis/admin.hydra.io/v1alpha1/filesstorages/{storageName}/prepulls`
 - Auth: required
 - Body: none
@@ -447,7 +447,7 @@
 
 ### `dce llm-studio adminmodelmanagement list-models`
 
-- Summary: '当前 API 模式：Any
+- Summary: 当前 API 模式：Any
 - HTTP: `GET /apis/admin.hydra.io/v1alpha1/models`
 - Auth: required
 - Body: none
@@ -545,7 +545,7 @@
 
 ### `dce llm-studio adminmodeltemplatemanagement list-model-templates`
 
-- Summary: '当前 API 模式：Any
+- Summary: 当前 API 模式：Any
 - HTTP: `GET /apis/admin.hydra.io/v1alpha1/models/{modelId}/model-templates`
 - Auth: required
 - Body: none
@@ -666,7 +666,7 @@
 
 ### `dce llm-studio adminprovidermanagement list-providers`
 
-- Summary: '当前 API 模式：Any
+- Summary: 当前 API 模式：Any
 - HTTP: `GET /apis/admin.hydra.io/v1alpha1/providers`
 - Auth: required
 - Body: none
@@ -771,6 +771,26 @@
 - Flags:
   - `--module` (query, default `EXPORT_MODULE_UNSPECIFIED`, one of: EXPORT_MODULE_UNSPECIFIED|EXPORT_MODULE_AI_AUDIT_LOG): module
 
+### `dce llm-studio coreservice list-model-gpu-info`
+
+- Summary: ListModelGPUInfo returns the mapping between model access names and their deployed GPU types.
+- HTTP: `GET /apis/admin.hydra.io/v1alpha1/model-gpu-info`
+- Auth: required
+- Body: none
+- Flags:
+  - `--access-model-name` (query): accessModelName
+- Output: list path `items`; columns `namespace`, `accessModelName`, `cluster`, `lwsName`
+
+### `dce llm-studio coreservice list-node-gpu-info`
+
+- Summary: ListNodeGPUInfo returns GPU hardware info (product, memory) for all nodes across clusters.
+- HTTP: `GET /apis/admin.hydra.io/v1alpha1/node-gpu-info`
+- Auth: required
+- Body: none
+- Flags:
+  - `--cluster` (query): cluster
+- Output: list path `items`; columns `clusterName`, `gpuCount`, `gpuMemory`, `gpuProduct`, `nodeName`
+
 ### `dce llm-studio coreservice list-platform-role-permissions-for-current-user`
 
 - Summary: 当前 API 模式：Any
@@ -785,38 +805,38 @@
 ### `dce llm-studio costmockconfigmanagement create-cost-mock-config`
 
 - Summary: 当前 API 模式：WS
-- HTTP: `POST /apis/hydra.io/v1alpha1/analysis-center/cost-mock-config`
+- HTTP: `POST /apis/admin.hydra.io/v1alpha1/cost-mock-config`
 - Auth: required
 - Body: required
 - Flags: none
-- Output: list path `gpuCosts`; columns `cluster`, `hourlyPrice`, `productName`, `sn`
+- Output: list path `excludedGpuCostKeys`
 
 ### `dce llm-studio costmockconfigmanagement delete-cost-mock-config`
 
 - Summary: 当前 API 模式：WS
-- HTTP: `DELETE /apis/hydra.io/v1alpha1/analysis-center/cost-mock-config`
+- HTTP: `DELETE /apis/admin.hydra.io/v1alpha1/cost-mock-config`
 - Auth: required
 - Body: none
 - Flags: none
-- Output: list path `gpuCosts`; columns `cluster`, `hourlyPrice`, `productName`, `sn`
+- Output: list path `excludedGpuCostKeys`
 
 ### `dce llm-studio costmockconfigmanagement get-cost-mock-config`
 
 - Summary: 当前 API 模式：WS
-- HTTP: `GET /apis/hydra.io/v1alpha1/analysis-center/cost-mock-config`
+- HTTP: `GET /apis/admin.hydra.io/v1alpha1/cost-mock-config`
 - Auth: required
 - Body: none
 - Flags: none
-- Output: list path `gpuCosts`; columns `cluster`, `hourlyPrice`, `productName`, `sn`
+- Output: list path `excludedGpuCostKeys`
 
 ### `dce llm-studio costmockconfigmanagement update-cost-mock-config`
 
 - Summary: 当前 API 模式：WS
-- HTTP: `PUT /apis/hydra.io/v1alpha1/analysis-center/cost-mock-config`
+- HTTP: `PUT /apis/admin.hydra.io/v1alpha1/cost-mock-config`
 - Auth: required
 - Body: required
 - Flags: none
-- Output: list path `gpuCosts`; columns `cluster`, `hourlyPrice`, `productName`, `sn`
+- Output: list path `excludedGpuCostKeys`
 
 ## Image
 
@@ -943,7 +963,7 @@
 
 ### `dce llm-studio maasservice list-maas-models`
 
-- Summary: '当前 API 模式：Any
+- Summary: 当前 API 模式：Any
 - HTTP: `GET /apis/admin.hydra.io/v1alpha1/maas-models`
 - Auth: required
 - Body: none
@@ -1017,7 +1037,7 @@
 
 ### `dce llm-studio modelmanagement list-models`
 
-- Summary: '当前 API 模式：CSP
+- Summary: 当前 API 模式：CSP
 - HTTP: `GET /apis/hydra.io/v1alpha1/models`
 - Auth: required
 - Body: none
@@ -1073,7 +1093,7 @@
 
 ### `dce llm-studio modelservingmanagement list-model-serving`
 
-- Summary: '当前 API 模式：CSP
+- Summary: 当前 API 模式：CSP
 - HTTP: `GET /apis/hydra.io/v1alpha1/model-serving`
 - Auth: required
 - Body: none
@@ -1108,7 +1128,7 @@
 
 ### `dce llm-studio providermanagement list-provider`
 
-- Summary: '当前 API 模式：CSP
+- Summary: 当前 API 模式：CSP
 - HTTP: `GET /apis/hydra.io/v1alpha1/providers`
 - Auth: required
 - Body: none
@@ -1148,7 +1168,7 @@
 
 ### `dce llm-studio queuemanagement list-queues`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/queues`
 - Auth: required
 - Body: none
@@ -1165,7 +1185,7 @@
 
 ### `dce llm-studio queuemanagement list-queues2`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspace/{workspace}/queues`
 - Auth: required
 - Body: none
@@ -1282,7 +1302,7 @@
 
 ### `dce llm-studio wsapikeymanagement list-my-wsapi-keys`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/my-apikeys`
 - Auth: required
 - Body: none
@@ -1297,7 +1317,7 @@
 
 ### `dce llm-studio wsapikeymanagement list-wsapi-key`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/apikeys`
 - Auth: required
 - Body: none
@@ -1431,7 +1451,7 @@
 
 ### `dce llm-studio wsdatasetmanagement list-private-datasets`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/private-datasets`
 - Auth: required
 - Body: none
@@ -1891,7 +1911,7 @@
 
 ### `dce llm-studio wsfilesstorageservice ws-list-pre-pulls`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/filesstorages/{storageName}/prepulls`
 - Auth: required
 - Body: none
@@ -2081,7 +2101,7 @@
 
 ### `dce llm-studio wsmodelmanagement list-private-models`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/private-models`
 - Auth: required
 - Body: none
@@ -2096,7 +2116,7 @@
 
 ### `dce llm-studio wsmodelmanagement list-ws-models`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/models`
 - Auth: required
 - Body: none
@@ -2177,7 +2197,7 @@
 
 ### `dce llm-studio wsmodelservingmanagement list-ws-model-serving`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/model-serving`
 - Auth: required
 - Body: none
@@ -2239,7 +2259,7 @@
 
 ### `dce llm-studio wsmodeltemplatemanagement list-ws-model-templates`
 
-- Summary: '当前 API 模式：WS
+- Summary: 当前 API 模式：WS
 - HTTP: `GET /apis/hydra.io/v1alpha1/workspaces/{workspace}/models/{modelId}/model-templates`
 - Auth: required
 - Body: none
