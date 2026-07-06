@@ -14,8 +14,12 @@ Currently supported products:
 | `global-management`    | Global Management — users, groups, workspaces, roles, audit |
 | `container-management` | Container Management — clusters, namespaces, workloads, storage |
 | `insight`              | Insight — observability, metrics, alerting, and related operations |
+| `operations-management` | Operations Management — cost allocation, operational reports, and alarm reports |
 | `ai-lab`               | AI Lab — notebooks, jobs, datasets, models, inference, queues, and GPU resources |
+| `llm-studio`           | LLM Studio — model catalog, inference serving, API keys, token usage, and workspace AI dashboards |
 | `workbench`            | Application Workbench — applications, pipelines, GitOps, and deployment |
+| `billing-center`       | Billing Center — products, pricing, orders, bills, and transactions |
+| `business-cockpit`     | Business Cockpit — business operations KPIs, revenue metrics, and cost analytics |
 | `elasticsearch`        | Elasticsearch — search cluster lifecycle and instance management |
 | `kafka`                | Kafka — event-streaming cluster lifecycle and instance management |
 | `minio`                | MinIO — object-storage cluster lifecycle and instance management |
@@ -142,7 +146,7 @@ The npm package downloads the matching prebuilt binary from GitHub Releases on i
 Alternatively, download a prebuilt archive from GitHub Releases directly:
 
 ```bash
-VERSION=v0.1.0-rc.6
+VERSION=v0.2.0-rc.4
 OS=darwin
 ARCH=amd64
 PKG="dce-${VERSION}-${OS}-${ARCH}"
