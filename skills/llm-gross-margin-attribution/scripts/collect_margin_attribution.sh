@@ -7,7 +7,6 @@ CURRENT_END=""
 BASELINE_START=""
 BASELINE_END=""
 OUTPUT_DIR=""
-COST_SEARCHES=""
 
 usage() {
   cat <<'EOF'
@@ -16,7 +15,6 @@ Usage:
     --hostname <dce-host> \
     --current-start <RFC3339> --current-end <RFC3339> \
     --baseline-start <RFC3339> --baseline-end <RFC3339> \
-    [--cost-search <pod-or-serving-search>]... \
     [--output-dir <dir>]
 
 Collects live DCE JSON evidence only. It does not parse JSON and does not need
@@ -35,8 +33,6 @@ while [ "$#" -gt 0 ]; do
     --current-end) need_value "$@"; CURRENT_END="$2"; shift 2 ;;
     --baseline-start) need_value "$@"; BASELINE_START="$2"; shift 2 ;;
     --baseline-end) need_value "$@"; BASELINE_END="$2"; shift 2 ;;
-    --cost-search) need_value "$@"; COST_SEARCHES="${COST_SEARCHES}
-$2"; shift 2 ;;
     --output-dir) need_value "$@"; OUTPUT_DIR="$2"; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown arg: $1" >&2; usage >&2; exit 2 ;;
@@ -82,19 +78,13 @@ baseline_date="$(date_part "$BASELINE_START")"
 run_dce auth_status auth status
 run_dce workspaces global-management workspace list-workspaces --page 1 --page-size 200 -o json
 run_dce model_serving llm-studio modelservingmanagement list-model-serving --page.page-size -1 -o json
+run_dce maas_models llm-studio maasservice list-maas-models -o json
+run_dce cost_config_search search "analysis-center cost mock config" --json
+run_dce cost_command_catalog commands --include-hidden --json
 run_dce current_usage llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time "$CURRENT_START" --end-time "$CURRENT_END" --period TIME_PERIOD_DAY -o json
 run_dce baseline_usage llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time "$BASELINE_START" --end-time "$BASELINE_END" --period TIME_PERIOD_DAY -o json
 run_dce current_bills billing-center bill list-bills --billing-time-start "$current_date" --billing-time-end "$current_date" --page 1 --page-size 200 -o json
 run_dce baseline_bills billing-center bill list-bills --billing-time-start "$baseline_date" --billing-time-end "$baseline_date" --page 1 --page-size 200 -o json
-
-i=0
-printf '%s\n' "$COST_SEARCHES" | while IFS= read -r search; do
-  [ -n "$search" ] || continue
-  i=$((i + 1))
-  safe="$(printf '%s' "$search" | tr -c 'A-Za-z0-9_-' '_')"
-  run_dce "current_cost_${i}_${safe}" operations-management fee list-pods-fee --start "$current_date" --end "$current_date" --search "$search" --page 1 --page-size 200 -o json
-  run_dce "baseline_cost_${i}_${safe}" operations-management fee list-pods-fee --start "$baseline_date" --end "$baseline_date" --search "$search" --page 1 --page-size 200 -o json
-done
 
 cat > "$OUTPUT_DIR/README.md" <<EOF
 # LLM Gross Margin Evidence
@@ -108,10 +98,14 @@ Read the JSON files in this directory, then compute:
 
 1. Revenue from Billing Center bill rows.
 2. Token/cache data from API key usage statistics or workspace token endpoints.
-3. Model cost from Gmagpie pod-fee JSON files or a real user-provided cost file.
+3. Model cost from Crane cost config or MaaS model-cost JSON.
 4. Ranked margin impact: model cost, tenant mix, cache hit rate, residual.
 
-Do not infer missing values. Mark missing joins and incomplete cost data.
+Use cost_config_search.json and cost_command_catalog.json to find the generated
+command for the internal Hydra analysis-center cost config endpoint. Do not
+expose the concrete API path in user-facing output. If that endpoint is not
+available and MaaS model cost does not cover the model, mark cost attribution
+incomplete. Do not infer missing values.
 EOF
 
 printf 'Evidence directory: %s\n' "$OUTPUT_DIR"
