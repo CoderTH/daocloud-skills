@@ -149,11 +149,11 @@ sources:
   leopard:
     display_name: billing-center
     repo_url: https://github.com/DaoCloud/daocloud-api-docs.git
-    pinned_tag: 8ffae87adc4776c0354f9ff44fe69b18a8ed5619
+    pinned_tag: 7a68df001114314cc6face7f60ba5c637c7942cd
     backend: swagger
     swagger:
       files:
-        - docs/openapi/leopard/v0.14.0.json
+        - docs/openapi/leopard/v0.15.0.json
 
   hydra:
     display_name: llm-studio

@@ -70,6 +70,21 @@ var Specs = []runtime.CommandSpec{
 		},
 	},
 	{
+		Group:       "Bill",
+		Use:         "query-bills",
+		Short:       "Query bills",
+		Example:     "dce billing-center bill query-bills --file bill-query.json -o json\n",
+		OperationID: "Bill_QueryBills",
+		Method:      "POST",
+		PathTpl:     "/apis/leopard.io/v1alpha1/bills/query",
+		RequestBody: &runtime.RequestBody{
+			Required: true,
+			Schema:   &runtime.SchemaSpec{Type: "object", Properties: map[string]*runtime.SchemaSpec{"end": &runtime.SchemaSpec{Type: "string"}, "page": &runtime.SchemaSpec{Type: "integer"}, "pageSize": &runtime.SchemaSpec{Type: "integer"}, "productName": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "skuId": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}, "start": &runtime.SchemaSpec{Type: "string"}, "userId": &runtime.SchemaSpec{Type: "array", Items: &runtime.SchemaSpec{Type: "string"}}}},
+		},
+		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"type", "amountDue", "billId", "billingItem", "billingMonth", "billingType"},
+		},
+	},
+	{
 		Group:       "Order",
 		Use:         "get-products",
 		Short:       "Order_GetProducts",

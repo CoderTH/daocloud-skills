@@ -33,6 +33,13 @@ package installs, or third-party libraries for this skill.
 - If Crane/DCE cost config or MaaS model-cost data is unavailable, report the
   cost attribution as incomplete. Do not estimate cost from unrelated runtime or
   inventory data.
+- Treat `workspaceId` as optional billing scope: present means the bill is
+  bound to a workspace; absent means the bill is unbound and remains valid
+  account/user-level data, not a malformed record.
+- If workspace or tenant identity is unavailable, downgrade the mix analysis
+  to `userId`/`username` and report it as user-level attribution. Do not treat
+  the absence of tenant data as an error and do not infer a workspace from the
+  user identity.
 - Use a real user-provided model-cost file only as a final fallback and only
   when the user explicitly provides it.
 
@@ -46,13 +53,18 @@ sh scripts/collect_margin_attribution.sh \
   --current-start 2026-06-29T00:00:00+08:00 \
   --current-end 2026-06-29T23:59:59+08:00 \
   --baseline-start 2026-06-28T00:00:00+08:00 \
-  --baseline-end 2026-06-28T23:59:59+08:00
+  --baseline-end 2026-06-28T23:59:59+08:00 \
+  --workspace-ids <id[,id,...]> \
+  --billing-usernames <username[,username,...]>
 ```
 
 The shell collector runs live `dce` queries and writes raw JSON evidence plus an
 internal trace file. It intentionally does not parse JSON; after it writes the
 evidence directory, read those JSON files and compute the ranked attribution
-from real results.
+from real results. `--workspace-ids` may be omitted because the collector
+derives IDs from the workspace list. Pass the usernames discovered from the
+LLM Studio evidence through `--billing-usernames` for the per-user Leopard
+aggregation pass.
 
 ## Data Sources
 
@@ -65,10 +77,36 @@ Minimum live query set:
 dce auth status --hostname <host>
 dce global-management workspace list-workspaces --page 1 --page-size 200 -o json
 dce llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time <start> --end-time <end> --period TIME_PERIOD_DAY -o json
+dce llm-studio wsdashboardmanagement list-ws-user-token-usage --workspace <workspace-id> --start-time <start> --end-time <end> --page.page 1 --page.page-size -1 -o json
 dce llm-studio modelservingmanagement list-model-serving --page.page-size -1 -o json
 dce llm-studio maasservice list-maas-models -o json
-dce billing-center bill list-bills --billing-time-start <date> --billing-time-end <date> --page 1 --page-size 200 -o json
+dce billing-center bill get-account-bill-aggregation \
+  --username <username> \
+  --start-time <current-start-unix> \
+  --end-time <current-end-unix> -o json
+dce billing-center bill query-bills \
+  --set-str start=<current-date> \
+  --set-str end=<current-date> \
+  --set page=1 --set pageSize=200 -o json
 ```
+
+First use the LLM Studio workspace user-token-usage API to identify candidate
+users with activity in the current and baseline windows; activity is a
+candidate set, not proof of billing. For each discovered username,
+call `get-account-bill-aggregation --username <username>` as the primary
+revenue source; it returns amounts grouped by `productName` without bill
+pagination. Sum the per-user results for the account total. Use `query-bills` as
+the fallback source for user/workspace identity and detailed bill inspection
+when the workspace user API is unavailable or the DCE auth mode does not match.
+Users whose Leopard aggregation is empty are excluded from billed-user totals.
+If the per-user aggregation and bill-detail totals disagree, use the per-user
+aggregation for the attribution total and report the discrepancy.
+
+For `query-bills` evidence, convert the analysis window to `YYYY-MM-DD` for
+the request body. Preserve any `workspaceId`, `workspace`, tenant, or resource
+fields returned on each bill item. Classify items with a workspace identifier
+as workspace-bound; classify items without one as unbound. When no tenant
+identity is present, group revenue and usage by `userId`/`username` instead.
 
 Cost config discovery:
 
@@ -87,11 +125,12 @@ Cost config discovery:
    model-cost attribution incomplete. In user-facing output, say only that
    "成本配置数据不可获取"; do not expose the concrete API path/name.
 
-If tenant/workspace-level attribution cannot be joined from API-key usage,
+If workspace/tenant-level attribution cannot be joined from API-key usage,
 discover the available LLM Studio workspace dashboard commands with `dce` and
 run the matching workspace token-usage endpoint for each relevant workspace as
 an optional follow-up. Treat those workspace dashboard rows as enrichment, not
-as a dependency that blocks the base collector.
+as a dependency that blocks the base collector; if they remain unavailable,
+use user-level attribution when `userId`/`username` is available.
 
 For cache metrics, prefer LLM Studio cached-token fields from API-key usage
 statistics. If the deployment also exposes lower-level Prometheus counters
@@ -123,8 +162,10 @@ Compute three ranked impacts:
 
 - `model_cost`: change in model cost per billable token, holding current
   traffic/revenue mix fixed.
-- `tenant_mix`: shift of revenue/token share across workspaces or tenants with
-  different baseline margins.
+- `tenant_or_user_mix`: shift of revenue/token share across workspace-bound
+  bills, unbound bills, tenants, or users with different baseline margins. Use
+  workspace grouping when `workspaceId` is present; otherwise use
+  `userId`/`username` grouping.
 - `cache_hit_rate`: change in cached-token share, converted to saved or added
   model cost using the real model cost basis.
 
