@@ -8,7 +8,7 @@ Core principles:
 
 - Analysis and recommendation only — never auto-create, scale down, scale up, or shift traffic.
 - Confirm each model is self-hosted first through the model-list read: keep only
-  model IDs that start with `maas-`. Non-`maas-` models are resale/pass-through
+  model IDs that start with `maas-` or `a-maas-`. Other-prefix models are resale/pass-through
   or out of scope for GPU ROI right-sizing.
 - ROI cannot replace model-quality assessment. Any "take traffic" suggestion must additionally verify model capability, business effectiveness, context length, latency, and error rate.
 - On missing data, state which part is missing and which conclusion it affects; do not fabricate mock data to force a conclusion.
@@ -26,11 +26,11 @@ A portfolio diagnosis usually lands in one of the following 4 action classes. Th
 
 ## Data collection (API-first via `dce`)
 
-**Enumerate self-hosted models first** (they carry a `maas-` model-id prefix):
+**Enumerate self-hosted models first** (they carry a `maas-` or `a-maas-` model-id prefix):
 
 ```
 dce --insecure llm-studio adminmodelmanagement list-models --page.search "modelId=maas-" -o json
-# client-side: keep only modelId that startswith "maas-" (search is contains-match)
+# client-side: keep only modelId that startswith "maas-" or "a-maas-" (search is contains-match)
 ```
 
 `maas-models` is NOT the enumeration source — it lists knoway gateway routes and is
@@ -53,11 +53,12 @@ usage-only, SKU-only, utilization-only, or retry narration tool messages.
 ```text
 tool call 0:
   dce --insecure llm-studio adminmodelmanagement list-models --page.search "modelId=maas-" -o json
-  client-side: keep only modelId values that start with maas-
+  client-side: keep only modelId values that start with maas- or a-maas-
 
 tool call 1, model bundle for <model-1>:
   1. dce --insecure llm-studio modelservingmanagement list-model-serving -o json
-  2. dce --insecure llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time <start>T00:00:00Z --end-time <today>T00:00:00Z --models <model-1> --period TIME_PERIOD_DAY -o json
+  2a. dce --insecure llm-studio adminmodelmanagement get-model --model-id <modelId> -o json   # read .publicAccessModelName (the request name; do NOT hardcode the public/ prefix)
+  2b. dce --insecure llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time <start>T00:00:00Z --end-time <today>T00:00:00Z --models <publicAccessModelName> --period TIME_PERIOD_DAY -o json   # use publicAccessModelName from 2a; bare modelId → empty/0 (NOT zero demand). Do not drop --models (times out). If usage=0 but serving RUNNING + util>0, re-check the name from get-model.
   3. dce --insecure billing-center product list-sku-infos --page 1 --page-size 200 --product hydra-maas -o json
   4. dce --insecure container-management core get-config-map --cluster kpanda-global-cluster --namespace tokenfactory-system --name tokenfactory-dashboard-resource-cost -o json
   5. dce --insecure operations-management report list-pods --start <start> --end <today+1> --search <model-1> -o json
@@ -88,7 +89,7 @@ Pinned command outputs used for portfolio rows:
 |---|---|
 | self-hosted model list | model-list read: model IDs starting with `maas-` |
 | replicas | model bundle read 1: serving `replicas`; client-side filter by model/serving name |
-| token volume + daily trend | model bundle read 2: `totalUsage` and daily `dataPoints` |
+| token volume + daily trend | model bundle read 2: **revenue = `totalUsage.input`/1e6 × input_¥/M + `totalUsage.output`/1e6 × output_¥/M** (`totalUsage.input` and `totalUsage.output` are two separate token counts — price each and ADD, this is NOT a division; with `--end-time <today>T00:00:00Z` `totalUsage` already covers complete days only and sums all days + all `modelType` rows — do NOT hand-sum `dataPoints`). `dataPoints` are for the daily trend only: values are per-day (NOT cumulative), and each day may have multiple `modelType` rows (`REQUEST_MODEL_TYPE_UNSPECIFIED` + `TEXT_GENERATION`) that you must **sum**, never pick one. Sanity: nonzero GPU util ⟹ billions of tokens/week, not tens of millions. |
 | input/output sale price | model bundle read 3: hydra-maas SKU where `specFields.model-name` == model |
 | GPU hourly price | model bundle read 4: `resourceCostSettings.gpus[].price`, keyed by fixed GPU product mapping |
 | utilization | model bundle read 5: `data.avgGpuUseRatio`, `data.maxGpuUseRatio`, `data.minGpuUseRatio` |
@@ -101,9 +102,23 @@ The output must state the business window and the **effective coverage window** 
 - Reconcile token usage by `create_time`, earliest and latest usage day.
 - Read utilization from the model bundle pod report for the same business window; if the
   returned data covers fewer days, state the effective coverage window.
-- Do not mix a 29-day cost with 30-day revenue into one ROI. On mismatched
-  coverage days, align calculations to the overlapping returned days; if not
-  alignable from the collected batch, mark reduced confidence in the table.
+- ⛔ **Complete-days-only (must never be violated).** Only **complete** calendar days
+  (date strictly before today, UTC) enter the ROI. **Today is partial and future
+  dates have not happened** — `usage-statistics2` counts events only up to now, so
+  these days come back near-zero. Drop them from **both** revenue and cost; never
+  read them as "demand collapsed".
+  - Effective last day = `min(requested_end_date, today − 1 day)`.
+  - **Tail-trim:** drop any trailing `dataPoints` day whose total tokens are below
+    ~20% of the median of the prior full days (an incomplete day), then re-state
+    the effective coverage window.
+  - `window_hours = complete_days × 24`, where `complete_days` is exactly the set
+    of days summed into revenue.
+- ⛔ **Cost and revenue MUST use the identical complete-day set.** Never pair
+  N-day revenue with (N+k)-day cost. Example: user asks a 7-day window but today is
+  day 6 → revenue and cost both use the 5 complete days (`window_hours = 120`),
+  not 168. Mismatching them overstates every model's loss ~1.4× and can flip a
+  healthy `+15%` model to a false break-even. On any residual mismatch, align to
+  the overlapping complete days; if not alignable, mark reduced confidence.
 
 Each key judgment must cite at least two time points or segments:
 
@@ -147,6 +162,16 @@ deployment_share = model_replicas / portfolio_replicas
 share_gap = cost_share - revenue_share
 ```
 
+⛔ **Cost & ROI audit (mandatory, per model).** `gpu_cost = replicas × ¥/hr[THIS
+model's CM product] × window_hours` — CM allocation only; never gmagpie per-pod
+`gpu_fee`, never utilization-scaled, never the wrong GPU's price (GLM-5.1 = B200
+¥50.95/hr, not H200/H100). `roi = (revenue − gpu_cost)/gpu_cost`, **NOT**
+`revenue/gpu_cost` (that ratio = `1 + roi`). Assert `roi ≈ gross_margin/(1 −
+gross_margin)` with the same revenue & cost; a **negative margin must give a
+negative ROI** — if a model shows loss-margin but positive ROI, the cost is
+wrong, redo it. Show the substituted cost line (e.g. `4 × ¥50.95 × 144 =
+¥29,347`) so it is re-checkable.
+
 Trend metrics, at least first vs last window:
 
 ```text
@@ -169,6 +194,14 @@ Prefer scaling down when:
 - margin down or turned negative;
 - `max_gpu_use_ratio` stays under the scale-down guardrail (peak < 70%) after scale-down.
 
+**Compute the target replica count — never state one without the arithmetic.**
+Peak utilization scales inversely with replicas:
+`post_scale_peak ≈ current_max_gpu_use_ratio × old_replicas / new_replicas`.
+Choose the smallest `new_replicas` with `post_scale_peak < 70%`:
+`new_replicas = ceil(current_max_gpu_use_ratio × old_replicas / 0.70)`.
+Example: peak 49%, 4 replicas → `ceil(0.49×4/0.70)=3` → **4→3** (post-peak ≈65%),
+NOT 4→2 (≈98%, breaches guardrail).
+
 Demo expectation: `deepseek-v4-pro`.
 
 ### Reprice / price-check candidate
@@ -179,6 +212,15 @@ Prefer repricing or a price-check (not direct scale-down) when:
 - utilization high and stable;
 - margin persistently negative;
 - unit cost above current sale price.
+
+**Compute the reprice magnitude — never say "several times" / "N倍" by feel.**
+Break-even multiplier = `gpu_cost / revenue` over the same window; required
+increase = `(gpu_cost / revenue − 1) × 100%`. A `−m%` margin needs exactly
+`m%` more revenue. Example: cost ¥29,347 / revenue ¥23,481 = `1.25` →
+**+25%** to break even (a −25% margin never needs a 5× hike). State this is
+break-even at constant volume; if elasticity is a concern, recommend a phased
+raise or partial traffic migration — but never inflate the headline multiple
+beyond `gpu_cost / revenue`.
 
 Demo expectation: `GLM-5.1`.
 

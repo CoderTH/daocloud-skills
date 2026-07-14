@@ -30,7 +30,8 @@ usage-only, SKU-only, utilization-only, or retry narration steps.
 ```text
 tool call 1, model bundle for <model>:
   1. dce --insecure llm-studio modelservingmanagement list-model-serving -o json
-  2. dce --insecure llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time <start>T00:00:00Z --end-time <today>T00:00:00Z --models <model> --period TIME_PERIOD_DAY -o json
+  2a. dce --insecure llm-studio adminmodelmanagement get-model --model-id <modelId> -o json   # read .publicAccessModelName (the request name; do NOT hardcode the public/ prefix)
+  2b. dce --insecure llm-studio apikeymanagement get-api-key-usage-statistics2 --start-time <start>T00:00:00Z --end-time <today>T00:00:00Z --models <publicAccessModelName> --period TIME_PERIOD_DAY -o json   # use publicAccessModelName from 2a; bare modelId → empty/0 (NOT zero demand). Do not drop --models (times out). If usage=0 but serving RUNNING + util>0, re-check the name from get-model; never report "demand collapsed / 空转".
   3. dce --insecure billing-center product list-sku-infos --page 1 --page-size 200 --product hydra-maas -o json
   4. dce --insecure container-management core get-config-map --cluster kpanda-global-cluster --namespace tokenfactory-system --name tokenfactory-dashboard-resource-cost -o json
   5. dce --insecure operations-management report list-pods --start <start> --end <today+1> --search <model> -o json
@@ -50,9 +51,9 @@ tool call 1, model bundle for <model>:
 
 | Need | Field source from the pinned commands |
 |---|---|
-| model source (self-hosted gate) | model-list read: `modelId` starts with `maas-` |
+| model source (self-hosted gate) | model-list read: `modelId` starts with `maas-` or `a-maas-` |
 | serving replicas | bundle read 1: serving `replicas`; client-side filter by model/serving name |
-| **token volume + call time** | bundle read 2: `totalUsage.input` / `totalUsage.output` and daily `dataPoints` |
+| **token volume + call time** | bundle read 2: **revenue = `totalUsage.input`/1e6 × input_¥/M + `totalUsage.output`/1e6 × output_¥/M** (`totalUsage.input` and `totalUsage.output` are two separate token counts — price each and ADD, NOT a division; with `--end-time <today>T00:00:00Z` `totalUsage` covers complete days only and sums all days + all `modelType` rows — do NOT hand-sum `dataPoints`). `dataPoints` are per-day trend only: values are per-day (NOT cumulative), each day may carry multiple `modelType` rows (`REQUEST_MODEL_TYPE_UNSPECIFIED` + `TEXT_GENERATION`) — **sum them**, never pick one series or call one "cumulative". Sanity: nonzero GPU util ⟹ billions of tokens/week. |
 | **sale price** in/out | bundle read 3: SKU `price` where `specFields.model-name` == model; convert `price / 1000` to `¥/M tokens` |
 | **GPU hourly price** | bundle read 4: `resourceCostSettings.gpus[].price`, keyed by fixed GPU product mapping |
 | GPU utilization | bundle read 5: `data.avgGpuUseRatio`, `data.maxGpuUseRatio`, `data.minGpuUseRatio` |
@@ -76,11 +77,30 @@ bundle read 5 pod report      → avg/max/min GPU utilization
 revenue  = Σ( input_tokens/1,000,000 × input_¥_per_M + output_tokens/1,000,000 × output_¥_per_M )
 gpu_cost = Σ_pods( gpu_hourly_price[product] × pod_hours )                            # gpu_hourly_price = resource-cost CM (¥/hr), pod_hours = running hours in window
 margin   = (revenue − gpu_cost) / revenue
-roi      = (revenue − gpu_cost) / gpu_cost
+roi      = (revenue − gpu_cost) / gpu_cost          # NOT revenue/gpu_cost (that ratio = 1 + roi)
 ROI trend = margin this period vs last (period-over-period)
 ```
 
+⛔ **Cost & ROI audit (mandatory).** `gpu_cost = replicas × ¥/hr[CM product] ×
+window_hours` — CM allocation only; never gmagpie per-pod `gpu_fee`, never
+utilization-scaled, never 1 replica or the wrong GPU's price. Assert
+`roi ≈ margin/(1 − margin)` with the same revenue & cost, and a **negative margin
+must give a negative ROI** — a loss-making model can never show positive ROI. If
+they disagree, the cost is wrong: redo it. Report ROI as `(revenue−gpu_cost)/
+gpu_cost`, never `revenue/gpu_cost`. Show the substituted cost line (e.g.
+`4 × ¥17.46 × 144h = ¥10,057`).
+
 > Cost is **allocation-based**: you pay for the reserved GPU whether used or not, so `gpu_cost` does NOT depend on utilization. Utilization is a diagnostic **signal**, never a cost multiplier.
+
+> ⛔ **Window alignment (must never be violated).** `pod_hours` (cost) and the days
+> summed into `revenue` MUST cover the **exact same complete days**. Only days
+> **strictly before today (UTC)** are complete; **today is partial and future dates
+> have not happened** — `usage-statistics2` returns near-zero for them, so drop
+> them from **both** revenue and cost (never read as "demand collapsed").
+> Effective last day = `min(requested_end, today − 1)`; **tail-trim** any trailing
+> day <20% of the prior-day median; then `pod_hours = complete_days × 24`. Never
+> pair N-day revenue with (N+1)-day cost — it overstates the loss and can flip a
+> healthy model to a false break-even.
 
 ## Diagnosis — differential (read signals first, then list possible causes; don't jump to a single verdict)
 
@@ -115,6 +135,21 @@ Before recommending a scale-down, check the **peak** utilization, not the mean:
 if max_gpu_use_ratio (peak) already high (> 70%) → do NOT scale down; a smaller replica count would saturate the survivors.
 high util + loss is a PRICING signal, not a capacity signal.
 ```
+
+**Compute the target replica count — never guess "4→2".** Peak utilization scales
+inversely with replicas: `post_scale_peak ≈ current_max_gpu_use_ratio × old_replicas / new_replicas`.
+Pick the smallest `new_replicas` that keeps `post_scale_peak < 70%`:
+`new_replicas = ceil(current_max_gpu_use_ratio × old_replicas / 0.70)`.
+Always show this arithmetic and the resulting post-scale peak.
+Example: peak 49%, 4 replicas → `ceil(0.49×4/0.70)=3` → recommend **4→3**
+(post-peak ≈66%), NOT 4→2 (post-peak ≈99%, breaches the guardrail). Also state the
+resulting margin at the new replica count (`(revenue − new_cost)/revenue`); do not
+call a strongly-positive result "接近盈亏平衡".
+
+**If the fix is a price change, compute the magnitude — never guess "¥3-4/M" or
+"N倍".** Break-even multiplier = `gpu_cost / revenue` over the same window;
+required increase = `(gpu_cost / revenue − 1) × 100%` (a `−m%` margin needs exactly
+`m%` more revenue). Show the number and which SKU (input/output) you raise.
 
 ## Thresholds (defaults, tunable)
 
