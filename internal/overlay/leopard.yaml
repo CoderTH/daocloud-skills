@@ -1,5 +1,5 @@
 commands:
-  # Only expose the bill aggregation API from leopard.
+  # Expose the bill aggregation and raw bill query APIs from leopard.
   # Everything else is ignored to keep the billing-center surface small.
   get-export-url:                           { ignore: true }
   list-current-members:                     { ignore: true }
@@ -20,6 +20,10 @@ commands:
         --start-time <unix-seconds> \
         --end-time <unix-seconds> \
         -o json
+  query-bills:
+    short: "Query bills"
+    example: |
+      dce billing-center bill query-bills --file bill-query.json -o json
   get-monthly-bills:                        { ignore: true }
   list-monthly-bills:                       { ignore: true }
 
@@ -57,6 +61,13 @@ commands:
   update-sku-discount-rule:                 { ignore: true }
   update-sku-info:                          { ignore: true }
   update-spec-info:                         { ignore: true }
+
+  # New in Leopard v0.15.0; keep unrelated operations APIs hidden.
+  create-account-discount-rule:              { ignore: true }
+  delete-account-discount-rule:              { ignore: true }
+  get-account-discount-rule:                 { ignore: true }
+  list-account-discount-rules:               { ignore: true }
+  update-account-discount-rule:              { ignore: true }
 
   export-transactions:                      { ignore: true }
   activate-voucher:                         { ignore: true }

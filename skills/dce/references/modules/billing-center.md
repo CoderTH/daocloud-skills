@@ -4,9 +4,9 @@
 
 - Backend: `swagger`
 - Repository: https://github.com/DaoCloud/daocloud-api-docs.git
-- Pinned tag: `8ffae87adc4776c0354f9ff44fe69b18a8ed5619`
-- Files: `docs/openapi/leopard/v0.14.0.json`
-- Resolved SHA: `8ffae87adc4776c0354f9ff44fe69b18a8ed5619`
+- Pinned tag: `7a68df001114314cc6face7f60ba5c637c7942cd`
+- Files: `docs/openapi/leopard/v0.15.0.json`
+- Resolved SHA: `7a68df001114314cc6face7f60ba5c637c7942cd`
 
 ## Bill
 
@@ -53,6 +53,16 @@ dce billing-center bill get-account-bill-aggregation \
   - `--billing-time-start` (query): billingTimeStart
   - `--billing-time-end` (query): billingTimeEnd
 - Output: list path `items`; columns `type`, `amountDue`, `billId`, `billingItem`, `billingMonth`, `billingType`; pagination `offset`
+
+### `dce billing-center bill query-bills`
+
+- Summary: Query bills
+- HTTP: `POST /apis/leopard.io/v1alpha1/bills/query`
+- Auth: required
+- Body: required
+- Flags: none
+- Output: list path `items`; columns `type`, `amountDue`, `billId`, `billingItem`, `billingMonth`, `billingType`
+- Example: `dce billing-center bill query-bills --file bill-query.json -o json`
 
 ## Order
 
