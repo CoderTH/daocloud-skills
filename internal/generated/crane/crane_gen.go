@@ -32,7 +32,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetApplicationAgentCount returns the estimated application / agent count KPI.",
 		OperationID: "BusinessOperationService_GetApplicationAgentCount",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/application-agent-count",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/application-agent-count",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -51,7 +51,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetApplicationTypeDistribution returns the estimated application type distribution panel.",
 		OperationID: "BusinessOperationService_GetApplicationTypeDistribution",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/application-type-distribution",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/application-type-distribution",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -70,7 +70,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetAveragePackageConsumptionRate returns the average workspace quota consumption rate.",
 		OperationID: "BusinessOperationService_GetAveragePackageConsumptionRate",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/average-package-consumption-rate",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/average-package-consumption-rate",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -89,7 +89,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetDepartmentApplicationModelGpuFlow returns the department -> application -> model -> GPU flow panel.",
 		OperationID: "BusinessOperationService_GetDepartmentApplicationModelGpuFlow",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/department-application-model-gpu-flow",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/department-application-model-gpu-flow",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -108,7 +108,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetDepartmentBudgetUsageRate returns the department budget usage rate KPI.",
 		OperationID: "BusinessOperationService_GetDepartmentBudgetUsageRate",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/department-budget-usage-rate",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/department-budget-usage-rate",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -127,7 +127,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetDepartmentMonthlyAllocatedCost returns the monthly allocated cost KPI.",
 		OperationID: "BusinessOperationService_GetDepartmentMonthlyAllocatedCost",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/department-monthly-allocated-cost",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/department-monthly-allocated-cost",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -146,7 +146,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetDepartmentUnitBusinessCost returns the estimated unit business cost KPI.",
 		OperationID: "BusinessOperationService_GetDepartmentUnitBusinessCost",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/department-unit-business-cost",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/department-unit-business-cost",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -165,7 +165,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetDepartmentUnitBusinessCostComparison returns the unit business cost comparison panel.",
 		OperationID: "BusinessOperationService_GetDepartmentUnitBusinessCostComparison",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/department-unit-business-cost-comparison",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/department-unit-business-cost-comparison",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -184,7 +184,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetMonthlyARPU returns the average revenue per active tenant in the given window.",
 		OperationID: "BusinessOperationService_GetMonthlyARPU",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/monthly-arpu",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/monthly-arpu",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -203,7 +203,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetMonthlyRevenue returns bill revenue in the given window.",
 		OperationID: "BusinessOperationService_GetMonthlyRevenue",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/monthly-revenue",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/monthly-revenue",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -222,7 +222,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetMonthlyTokenConsumption returns token consumption metrics in the given window.",
 		OperationID: "BusinessOperationService_GetMonthlyTokenConsumption",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/monthly-token-consumption",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/monthly-token-consumption",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -241,7 +241,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetTenantGrowthTrendTop5 returns the top-5 tenant growth trend panel.",
 		OperationID: "BusinessOperationService_GetTenantGrowthTrendTop5",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/tenant-growth-trend-top5",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/tenant-growth-trend-top5",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -260,7 +260,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetTenantModelGpuTokenFlow returns the tenant -> model -> GPU -> token flow panel.",
 		OperationID: "BusinessOperationService_GetTenantModelGpuTokenFlow",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/tenant-model-gpu-token-flow",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/tenant-model-gpu-token-flow",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -279,7 +279,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetTenantValueQuadrant returns the tenant token vs revenue quadrant panel.",
 		OperationID: "BusinessOperationService_GetTenantValueQuadrant",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/tenant-value-quadrant",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/tenant-value-quadrant",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -298,7 +298,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListActiveDepartments returns the count of active departments.",
 		OperationID: "BusinessOperationService_ListActiveDepartments",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/active-departments",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/active-departments",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -317,7 +317,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListActiveTenants returns the count of active tenants with token consumption.",
 		OperationID: "BusinessOperationService_ListActiveTenants",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/active-tenants",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/active-tenants",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -331,7 +331,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListBusinessModels returns the model options for the business dashboard filter.",
 		OperationID: "BusinessOperationService_ListBusinessModels",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/models",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/models",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -350,7 +350,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListBusinessOperationSuggestions returns the aggregated tenant and department suggestions panel.",
 		OperationID: "BusinessOperationService_ListBusinessOperationSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/suggestions",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -369,7 +369,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListDepartmentTokenConsumptionTop returns the top department token consumers.",
 		OperationID: "BusinessOperationService_ListDepartmentTokenConsumptionTop",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/department-token-consumption-top",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/department-token-consumption-top",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -377,7 +377,7 @@ var Specs = []runtime.CommandSpec{
 			{Name: "period", Flag: "period", In: "query", GoType: "string", Help: "Preset period key, such as thisMonth / lastMonth / thisQuarter / thisYear. (query)", Required: false},
 			{Name: "model", Flag: "model", In: "query", GoType: "string", Help: "Optional model keyword filter. (query)", Required: false},
 		},
-		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"department", "rank", "totalTokens"}, Pagination: &runtime.PaginationHint{
+		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"department", "rank", "totalTokens", "userName"}, Pagination: &runtime.PaginationHint{
 			Strategy: "cursor", LimitParam: "limit",
 		},
 		},
@@ -388,7 +388,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListTenantRiskObjects returns the tenant risk object ranking panel.",
 		OperationID: "BusinessOperationService_ListTenantRiskObjects",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/tenant-risk-objects",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/tenant-risk-objects",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -407,7 +407,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListTenantTokenConsumptionTop returns the top tenant token consumers.",
 		OperationID: "BusinessOperationService_ListTenantTokenConsumptionTop",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-operation/tenant-token-consumption-top",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-operation/tenant-token-consumption-top",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start time for the statistics period (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End time for the statistics period (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -426,7 +426,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetApiKeyCount returns the count of distinct API keys used in the given time window.",
 		OperationID: "BusinessValueService_GetApiKeyCount",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/api-key-count",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/api-key-count",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start of the query window (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End of the query window (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -438,7 +438,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetAppConsumptionDistribution returns the consumption distribution across applications.",
 		OperationID: "BusinessValueService_GetAppConsumptionDistribution",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/app-consumption-distribution",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/app-consumption-distribution",
 		Params: []runtime.ParamSpec{
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\". Default is \"today\". (query)", Required: false},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Cluster filter (optional). If empty, all clusters are included football. (query)", Required: false},
@@ -452,19 +452,33 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetCapacityBottleneckForecast returns the predicted number of days until",
 		OperationID: "BusinessValueService_GetCapacityBottleneckForecast",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/capacity-bottleneck-forecast",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/capacity-bottleneck-forecast",
 	},
 	{
 		Group:       "BusinessValueService",
-		Use:         "get-cumulative-output",
-		Short:       "GetCumulativeOutput returns the cumulative token output and growth rate for a given time range.",
-		OperationID: "BusinessValueService_GetCumulativeOutput",
+		Use:         "get-cumulative-token",
+		Short:       "GetCumulativeToken returns cumulative token metrics for an explicit time window.",
+		OperationID: "BusinessValueService_GetCumulativeToken",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/cumulative-output",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/cumulative-token",
 		Params: []runtime.ParamSpec{
-			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\". (query)", Required: false},
+			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Inclusive range start. (query, date-time)", Required: false, Format: "date-time"},
+			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "Exclusive range end. (query, date-time)", Required: false, Format: "date-time"},
 		},
-		Output: runtime.OutputHints{ListPath: "historyPoints", DefaultColumns: []string{"growthRatePercent", "time", "totalTokens"},
+	},
+	{
+		Group:       "BusinessValueService",
+		Use:         "get-cumulative-token-history",
+		Short:       "GetCumulativeTokenHistory returns token totals for each bucket in an explicit time window.",
+		OperationID: "BusinessValueService_GetCumulativeTokenHistory",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/cumulative-token-history",
+		Params: []runtime.ParamSpec{
+			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Inclusive range start. (query, date-time)", Required: false, Format: "date-time"},
+			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "Exclusive range end. (query, date-time)", Required: false, Format: "date-time"},
+			{Name: "span", Flag: "span", In: "query", GoType: "string", Help: "Bucket span used to aggregate history points. (query, one of: CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED|CUMULATIVE_TOKEN_HISTORY_SPAN_HOUR|CUMULATIVE_TOKEN_HISTORY_SPAN_DAY)", Required: false, Default: "CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED", Enum: []string{"CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED", "CUMULATIVE_TOKEN_HISTORY_SPAN_HOUR", "CUMULATIVE_TOKEN_HISTORY_SPAN_DAY"}},
+		},
+		Output: runtime.OutputHints{ListPath: "points", DefaultColumns: []string{"time", "totalTokens"},
 		},
 	},
 	{
@@ -473,7 +487,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetDepartmentTokenUsage returns per-department token usage and budget for the given time window.",
 		OperationID: "BusinessValueService_GetDepartmentTokenUsage",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/department-token-usage",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/department-token-usage",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start of the query window (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End of the query window (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -487,7 +501,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetInternalBusinessStructureDistribution returns internal business structure distribution for WS mode.",
 		OperationID: "BusinessValueService_GetInternalBusinessStructureDistribution",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/internal-business-structure-distribution",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/internal-business-structure-distribution",
 		Params: []runtime.ParamSpec{
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\". Default is \"today\". (query)", Required: false},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Cluster filter (optional). If empty, all clusters are included. (query)", Required: false},
@@ -501,7 +515,19 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetMonthEndForecastMetrics returns month-end revenue and gross profit forecast metrics.",
 		OperationID: "BusinessValueService_GetMonthEndForecastMetrics",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/month-end-forecast",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/month-end-forecast",
+	},
+	{
+		Group:       "BusinessValueService",
+		Use:         "get-period-cost",
+		Short:       "GetPeriodCost returns cost breakdown for an explicit time window.",
+		OperationID: "BusinessValueService_GetPeriodCost",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/period-cost",
+		Params: []runtime.ParamSpec{
+			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Inclusive range start. (query, date-time)", Required: false, Format: "date-time"},
+			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "Exclusive range end. (query, date-time)", Required: false, Format: "date-time"},
+		},
 	},
 	{
 		Group:       "BusinessValueService",
@@ -509,20 +535,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetRatedCapacity returns the rated capacity value (in millions).",
 		OperationID: "BusinessValueService_GetRatedCapacity",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/rated-capacity",
-	},
-	{
-		Group:       "BusinessValueService",
-		Use:         "get-revenue-and-profit-metrics",
-		Short:       "GetRevenueAndProfitMetrics returns revenue, cost, gross profit metrics and optional history.",
-		OperationID: "BusinessValueService_GetRevenueAndProfitMetrics",
-		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/revenue-profit",
-		Params: []runtime.ParamSpec{
-			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\". (query)", Required: false},
-		},
-		Output: runtime.OutputHints{ListPath: "history", DefaultColumns: []string{"grossMarginPercent", "grossMarginYoyRatePp", "grossProfit", "revenue", "revenueGrowthRatePercent", "time"},
-		},
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/rated-capacity",
 	},
 	{
 		Group:       "BusinessValueService",
@@ -530,7 +543,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetRevenueMarginTrendForecast returns 37 daily points (30 historical + 7 forecast)",
 		OperationID: "BusinessValueService_GetRevenueMarginTrendForecast",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/revenue-margin-trend-forecast",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/revenue-margin-trend-forecast",
 		Output: runtime.OutputHints{ListPath: "points", DefaultColumns: []string{"cost", "date", "grossProfit", "revenue"},
 		},
 	},
@@ -540,7 +553,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetRiskSuggestions returns the current risk identification and business suggestions.",
 		OperationID: "BusinessValueService_GetRiskSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/risk-suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/risk-suggestions",
 		Output: runtime.OutputHints{ListPath: "suggestions", DefaultColumns: []string{"type", "content"},
 		},
 	},
@@ -550,7 +563,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetTenantTokenUsage returns per-tenant token usage and charge amount for the given time window.",
 		OperationID: "BusinessValueService_GetTenantTokenUsage",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/tenant-token-usage",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/tenant-token-usage",
 		Params: []runtime.ParamSpec{
 			{Name: "startTime", Flag: "start-time", In: "query", GoType: "string", Help: "Start of the query window (UTC, inclusive). (query, date-time)", Required: false, Format: "date-time"},
 			{Name: "endTime", Flag: "end-time", In: "query", GoType: "string", Help: "End of the query window (UTC, exclusive). (query, date-time)", Required: false, Format: "date-time"},
@@ -564,7 +577,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetTokenThroughput returns the current per-second Token throughput.",
 		OperationID: "BusinessValueService_GetTokenThroughput",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/token-throughput",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/token-throughput",
 	},
 	{
 		Group:       "BusinessValueService",
@@ -572,7 +585,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetValueAttributionModuleBoosts returns module boost percentages from config.",
 		OperationID: "BusinessValueService_GetValueAttributionModuleBoosts",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/business-value/value-attribution-module-boosts",
+		PathTpl:     "/apis/crane.io/v1alpha1/business-value/value-attribution-module-boosts",
 		Params: []runtime.ParamSpec{
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\". (query)", Required: false},
 		},
@@ -585,7 +598,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetCarbonAccount",
 		OperationID: "ComputePowerCollaborationService_GetCarbonAccount",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/carbon-account",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/carbon-account",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -600,7 +613,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetCarbonPath",
 		OperationID: "ComputePowerCollaborationService_GetCarbonPath",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/carbon-path",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/carbon-path",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -615,7 +628,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetClusters",
 		OperationID: "ComputePowerCollaborationService_GetClusters",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/clusters",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/clusters",
 		Output: runtime.OutputHints{ListPath: "clusters", DefaultColumns: []string{"name"},
 		},
 	},
@@ -625,7 +638,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetDcRegions",
 		OperationID: "ComputePowerCollaborationService_GetDcRegions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/dc-regions",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/dc-regions",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -640,7 +653,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetGreenEnergy",
 		OperationID: "ComputePowerCollaborationService_GetGreenEnergy",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/green-energy",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/green-energy",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -655,7 +668,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetGreenLoadScheduling",
 		OperationID: "ComputePowerCollaborationService_GetGreenLoadScheduling",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/green-load-scheduling",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/green-load-scheduling",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -670,7 +683,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetGreenScheduling",
 		OperationID: "ComputePowerCollaborationService_GetGreenScheduling",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/green-scheduling",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/green-scheduling",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -685,7 +698,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetGreenSuggestions",
 		OperationID: "ComputePowerCollaborationService_GetGreenSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/green-suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/green-suggestions",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -700,7 +713,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetGreenSupplyTrend",
 		OperationID: "ComputePowerCollaborationService_GetGreenSupplyTrend",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/green-supply-trend",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/green-supply-trend",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -715,7 +728,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetKpis",
 		OperationID: "ComputePowerCollaborationService_GetKpis",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/kpis",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/kpis",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -730,7 +743,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetPowerTrend",
 		OperationID: "ComputePowerCollaborationService_GetPowerTrend",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/power-trend",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/power-trend",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -745,7 +758,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetProtectionStrategy",
 		OperationID: "ComputePowerCollaborationService_GetProtectionStrategy",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/protection-strategy",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/protection-strategy",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -760,7 +773,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetSuggestions",
 		OperationID: "ComputePowerCollaborationService_GetSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/suggestions",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -775,7 +788,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ComputePowerCollaborationService_GetSynergyValue",
 		OperationID: "ComputePowerCollaborationService_GetSynergyValue",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/compute-power-collaboration/synergy-value",
+		PathTpl:     "/apis/crane.io/v1alpha1/compute-power-collaboration/synergy-value",
 		Params: []runtime.ParamSpec{
 			{Name: "query.cluster", Flag: "query.cluster", In: "query", GoType: "string", Help: "Optional cluster filter; when empty, all clusters are aggregated. (query)", Required: false},
 			{Name: "query.range", Flag: "query.range", In: "query", GoType: "string", Help: "Optional time range token: 24h, 7d or 1m. Defaults to 24h. (query)", Required: false},
@@ -790,7 +803,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetAllocationSummary",
 		OperationID: "FinopsPanelService_GetAllocationSummary",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/allocation-summary",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/allocation-summary",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -804,7 +817,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetAssetMachineCount",
 		OperationID: "FinopsPanelService_GetAssetMachineCount",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/asset-machine-count",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/asset-machine-count",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -816,7 +829,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetAssetReturnMatrix",
 		OperationID: "FinopsPanelService_GetAssetReturnMatrix",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/asset-return-matrix",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/asset-return-matrix",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -830,7 +843,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetAverageMachineProfit",
 		OperationID: "FinopsPanelService_GetAverageMachineProfit",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/average-machine-profit",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/average-machine-profit",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -842,7 +855,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetAverageMachineRevenue",
 		OperationID: "FinopsPanelService_GetAverageMachineRevenue",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/average-machine-revenue",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/average-machine-revenue",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -854,7 +867,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetBudgetForecast",
 		OperationID: "FinopsPanelService_GetBudgetForecast",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/budget-forecast",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/budget-forecast",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -867,7 +880,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetBudgetRemaining",
 		OperationID: "FinopsPanelService_GetBudgetRemaining",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/budget-remaining",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/budget-remaining",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -879,7 +892,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetCostRecoveryRate",
 		OperationID: "FinopsPanelService_GetCostRecoveryRate",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/cost-recovery-rate",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/cost-recovery-rate",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -891,7 +904,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetCostStructureBreakdown",
 		OperationID: "FinopsPanelService_GetCostStructureBreakdown",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/cost-structure-breakdown",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/cost-structure-breakdown",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -905,7 +918,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetExpansionImpact",
 		OperationID: "FinopsPanelService_GetExpansionImpact",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/expansion-impact",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/expansion-impact",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -919,7 +932,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetFinopsSuggestions",
 		OperationID: "FinopsPanelService_GetFinopsSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/suggestions",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -933,7 +946,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetMachineAssetRanking",
 		OperationID: "FinopsPanelService_GetMachineAssetRanking",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/machine-asset-ranking",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/machine-asset-ranking",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -947,7 +960,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetMonthlyCost",
 		OperationID: "FinopsPanelService_GetMonthlyCost",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/monthly-cost",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/monthly-cost",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -959,7 +972,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetMonthlyProfit",
 		OperationID: "FinopsPanelService_GetMonthlyProfit",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/monthly-profit",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/monthly-profit",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -971,7 +984,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetMonthlyRevenue",
 		OperationID: "FinopsPanelService_GetMonthlyRevenue",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/monthly-revenue",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/monthly-revenue",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -983,7 +996,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetRevenueCostTrend",
 		OperationID: "FinopsPanelService_GetRevenueCostTrend",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/revenue-cost-trend",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/revenue-cost-trend",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -996,7 +1009,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetUnitTokenCost",
 		OperationID: "FinopsPanelService_GetUnitTokenCost",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/unit-token-cost",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/unit-token-cost",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -1008,7 +1021,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetUnitTokenProfit",
 		OperationID: "FinopsPanelService_GetUnitTokenProfit",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/unit-token-profit",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/unit-token-profit",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -1020,7 +1033,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetUnitTokenRevenue",
 		OperationID: "FinopsPanelService_GetUnitTokenRevenue",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/unit-token-revenue",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/unit-token-revenue",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -1032,7 +1045,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "FinopsPanelService_GetWeightedPaybackPeriod",
 		OperationID: "FinopsPanelService_GetWeightedPaybackPeriod",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/finops/weighted-payback-period",
+		PathTpl:     "/apis/crane.io/v1alpha1/finops/weighted-payback-period",
 		Params: []runtime.ParamSpec{
 			{Name: "financialPeriod", Flag: "financial-period", In: "query", GoType: "string", Help: "financialPeriod (query, one of: FINANCIAL_PERIOD_THIS_MONTH|FINANCIAL_PERIOD_LAST_MONTH|FINANCIAL_PERIOD_THIS_QUARTER|FINANCIAL_PERIOD_THIS_YEAR)", Required: false, Default: "FINANCIAL_PERIOD_THIS_MONTH", Enum: []string{"FINANCIAL_PERIOD_THIS_MONTH", "FINANCIAL_PERIOD_LAST_MONTH", "FINANCIAL_PERIOD_THIS_QUARTER", "FINANCIAL_PERIOD_THIS_YEAR"}},
 			{Name: "accountingScope", Flag: "accounting-scope", In: "query", GoType: "string", Help: "accountingScope (query, one of: ACCOUNTING_SCOPE_MERGED|ACCOUNTING_SCOPE_EXTERNAL_REVENUE|ACCOUNTING_SCOPE_INTERNAL_ALLOCATION)", Required: false, Default: "ACCOUNTING_SCOPE_MERGED", Enum: []string{"ACCOUNTING_SCOPE_MERGED", "ACCOUNTING_SCOPE_EXTERNAL_REVENUE", "ACCOUNTING_SCOPE_INTERNAL_ALLOCATION"}},
@@ -1044,7 +1057,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetRuntimeMode returns the current deployment runtime mode (csp or ws).",
 		OperationID: "PlatformConfigService_GetRuntimeMode",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/platform-config/runtime-mode",
+		PathTpl:     "/apis/crane.io/v1alpha1/platform-config/runtime-mode",
 	},
 	{
 		Group:       "ProductionOperationsService",
@@ -1052,7 +1065,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ProductionOperationsService_GetRealtimeHeadlines",
 		OperationID: "ProductionOperationsService_GetRealtimeHeadlines",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/production-ops/realtime/headlines",
+		PathTpl:     "/apis/crane.io/v1alpha1/production-ops/realtime/headlines",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster (query)", Required: false},
 		},
@@ -1065,7 +1078,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ProductionOperationsService_GetRealtimeTab",
 		OperationID: "ProductionOperationsService_GetRealtimeTab",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/production-ops/realtime",
+		PathTpl:     "/apis/crane.io/v1alpha1/production-ops/realtime",
 		Params: []runtime.ParamSpec{
 			{Name: "timeWindow", Flag: "time-window", In: "query", GoType: "string", Help: "timeWindow (query)", Required: false},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster (query)", Required: false},
@@ -1076,11 +1089,28 @@ var Specs = []runtime.CommandSpec{
 	},
 	{
 		Group:       "ProductionOperationsService",
+		Use:         "get-singlepage-models-cost",
+		Short:       "ProductionOperationsService_GetSinglepageModelsCost",
+		OperationID: "ProductionOperationsService_GetSinglepageModelsCost",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/singlepage/modelscost",
+		Params: []runtime.ParamSpec{
+			{Name: "timeWindow", Flag: "time-window", In: "query", GoType: "string", Help: "timeWindow (query)", Required: false},
+			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster (query)", Required: false},
+			{Name: "limit", Flag: "limit", In: "query", GoType: "int64", Help: "limit (query, int32)", Required: false, Format: "int32"},
+		},
+		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"modelName", "costAvailable", "costBarPercent", "costDisplayValue", "costPerMillionTokens", "rank"}, Pagination: &runtime.PaginationHint{
+			Strategy: "cursor", LimitParam: "limit",
+		},
+		},
+	},
+	{
+		Group:       "ProductionOperationsService",
 		Use:         "get-synergy-tab",
 		Short:       "ProductionOperationsService_GetSynergyTab",
 		OperationID: "ProductionOperationsService_GetSynergyTab",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/production-ops/synergy",
+		PathTpl:     "/apis/crane.io/v1alpha1/production-ops/synergy",
 		Params: []runtime.ParamSpec{
 			{Name: "timeWindow", Flag: "time-window", In: "query", GoType: "string", Help: "timeWindow (query)", Required: false},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster (query)", Required: false},
@@ -1095,7 +1125,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetCostAttribution returns cost attribution breakdown.",
 		OperationID: "ResourceCostService_GetCostAttribution",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/attribution",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/attribution",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Optional cluster name filter. Empty means all clusters. (query)", Required: false},
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range for token/revenue queries. Default is THIS_MONTH. (query, one of: THIS_MONTH|THIS_WEEK|LAST_MONTH|LAST_7_DAYS|LAST_30_DAYS)", Required: false, Default: "THIS_MONTH", Enum: []string{"THIS_MONTH", "THIS_WEEK", "LAST_MONTH", "LAST_7_DAYS", "LAST_30_DAYS"}},
@@ -1109,7 +1139,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetCostKpis returns GPU KPI summary metrics.",
 		OperationID: "ResourceCostService_GetCostKpis",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/kpis",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/kpis",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Optional cluster name filter. Empty means all clusters. (query)", Required: false},
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range for token/revenue queries. Default is THIS_MONTH. (query, one of: THIS_MONTH|THIS_WEEK|LAST_MONTH|LAST_7_DAYS|LAST_30_DAYS)", Required: false, Default: "THIS_MONTH", Enum: []string{"THIS_MONTH", "THIS_WEEK", "LAST_MONTH", "LAST_7_DAYS", "LAST_30_DAYS"}},
@@ -1121,7 +1151,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetCostOptimization returns cost optimization measures.",
 		OperationID: "ResourceCostService_GetCostOptimization",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/optimization",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/optimization",
 		Output: runtime.OutputHints{ListPath: "items", DefaultColumns: []string{"measure", "value"},
 		},
 	},
@@ -1131,7 +1161,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetCostSuggestions returns dynamic optimization suggestions.",
 		OperationID: "ResourceCostService_GetCostSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/suggestions",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Optional cluster name filter. Empty means all clusters. (query)", Required: false},
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range for token/revenue queries. Default is THIS_MONTH. (query, one of: THIS_MONTH|THIS_WEEK|LAST_MONTH|LAST_7_DAYS|LAST_30_DAYS)", Required: false, Default: "THIS_MONTH", Enum: []string{"THIS_MONTH", "THIS_WEEK", "LAST_MONTH", "LAST_7_DAYS", "LAST_30_DAYS"}},
@@ -1145,7 +1175,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetCostWaterfall returns cost optimization waterfall data.",
 		OperationID: "ResourceCostService_GetCostWaterfall",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/waterfall",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/waterfall",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Optional cluster name filter. Empty means all clusters. (query)", Required: false},
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range for token/revenue queries. Default is THIS_MONTH. (query, one of: THIS_MONTH|THIS_WEEK|LAST_MONTH|LAST_7_DAYS|LAST_30_DAYS)", Required: false, Default: "THIS_MONTH", Enum: []string{"THIS_MONTH", "THIS_WEEK", "LAST_MONTH", "LAST_7_DAYS", "LAST_30_DAYS"}},
@@ -1159,7 +1189,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetGpuEfficiency returns GPU model efficiency ranking.",
 		OperationID: "ResourceCostService_GetGpuEfficiency",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/gpu-efficiency",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/gpu-efficiency",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Optional cluster name filter. Empty means all clusters. (query)", Required: false},
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range for token/revenue queries. Default is THIS_MONTH. (query, one of: THIS_MONTH|THIS_WEEK|LAST_MONTH|LAST_7_DAYS|LAST_30_DAYS)", Required: false, Default: "THIS_MONTH", Enum: []string{"THIS_MONTH", "THIS_WEEK", "LAST_MONTH", "LAST_7_DAYS", "LAST_30_DAYS"}},
@@ -1173,7 +1203,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "GetModelCostRank returns model cost ranking.",
 		OperationID: "ResourceCostService_GetModelCostRank",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/model-cost-rank",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/model-cost-rank",
 		Params: []runtime.ParamSpec{
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "Optional cluster name filter. Empty means all clusters. (query)", Required: false},
 			{Name: "timeRange", Flag: "time-range", In: "query", GoType: "string", Help: "Time range for token/revenue queries. Default is THIS_MONTH. (query, one of: THIS_MONTH|THIS_WEEK|LAST_MONTH|LAST_7_DAYS|LAST_30_DAYS)", Required: false, Default: "THIS_MONTH", Enum: []string{"THIS_MONTH", "THIS_WEEK", "LAST_MONTH", "LAST_7_DAYS", "LAST_30_DAYS"}},
@@ -1187,7 +1217,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "ListCostClusters returns all cluster names that have GPU nodes.",
 		OperationID: "ResourceCostService_ListCostClusters",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/resource-cost/clusters",
+		PathTpl:     "/apis/crane.io/v1alpha1/resource-cost/clusters",
 		Output:      runtime.OutputHints{ListPath: "clusters"},
 	},
 	{
@@ -1196,7 +1226,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetAgentProtection",
 		OperationID: "SecurityProtectionService_GetAgentProtection",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/agent-protection",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/agent-protection",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1211,7 +1241,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetClusters",
 		OperationID: "SecurityProtectionService_GetClusters",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/clusters",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/clusters",
 		Output: runtime.OutputHints{ListPath: "clusters", DefaultColumns: []string{"name", "label"},
 		},
 	},
@@ -1221,7 +1251,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetInterceptTrend",
 		OperationID: "SecurityProtectionService_GetInterceptTrend",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/intercept-trend",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/intercept-trend",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1235,7 +1265,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetKpis",
 		OperationID: "SecurityProtectionService_GetKpis",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/kpis",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/kpis",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1250,7 +1280,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetOutputProtection",
 		OperationID: "SecurityProtectionService_GetOutputProtection",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/output-protection",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/output-protection",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1265,7 +1295,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetRiskObjects",
 		OperationID: "SecurityProtectionService_GetRiskObjects",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/risk-objects",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/risk-objects",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1280,7 +1310,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetRiskTypes",
 		OperationID: "SecurityProtectionService_GetRiskTypes",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/risk-types",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/risk-types",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1295,7 +1325,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetSuggestions",
 		OperationID: "SecurityProtectionService_GetSuggestions",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/suggestions",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/suggestions",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "time window in hours (1-720, default 24) (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "filter by cluster name (query)", Required: false},
@@ -1310,7 +1340,7 @@ var Specs = []runtime.CommandSpec{
 		Short:       "SecurityProtectionService_GetTimeline",
 		OperationID: "SecurityProtectionService_GetTimeline",
 		Method:      "GET",
-		PathTpl:     "/api/v1alpha1/security-protection/timeline",
+		PathTpl:     "/apis/crane.io/v1alpha1/security-protection/timeline",
 		Params: []runtime.ParamSpec{
 			{Name: "hours", Flag: "hours", In: "query", GoType: "int64", Help: "hours (query, int32)", Required: false, Format: "int32"},
 			{Name: "cluster", Flag: "cluster", In: "query", GoType: "string", Help: "cluster (query)", Required: false},
@@ -1322,5 +1352,42 @@ var Specs = []runtime.CommandSpec{
 			Strategy: "offset", TokenParam: "page", LimitParam: "pageSize",
 		},
 		},
+	},
+	{
+		Group:       "SinglePageService",
+		Use:         "get-gain-comparison-rates",
+		Short:       "SinglePageService_GetGainComparisonRates",
+		OperationID: "SinglePageService_GetGainComparisonRates",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/singlepage/gain-comparison-rates",
+		Output: runtime.OutputHints{ListPath: "rates", DefaultColumns: []string{"gainRate", "metricId"},
+		},
+	},
+	{
+		Group:       "SinglePageService",
+		Use:         "get-global-traffic",
+		Short:       "SinglePageService_GetGlobalTraffic",
+		OperationID: "SinglePageService_GetGlobalTraffic",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/singlepage/global-traffic",
+		Output: runtime.OutputHints{ListPath: "nodes", DefaultColumns: []string{"name", "color", "latitude", "longitude", "percentage", "primary"},
+		},
+	},
+	{
+		Group:       "SinglePageService",
+		Use:         "get-gpu-resource-status",
+		Short:       "SinglePageService_GetGpuResourceStatus",
+		OperationID: "SinglePageService_GetGpuResourceStatus",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/singlepage/gpu-resource-status",
+		Output:      runtime.OutputHints{ListPath: "deviceStates"},
+	},
+	{
+		Group:       "SinglePageService",
+		Use:         "get-gross-profit-attribution-config",
+		Short:       "SinglePageService_GetGrossProfitAttributionConfig",
+		OperationID: "SinglePageService_GetGrossProfitAttributionConfig",
+		Method:      "GET",
+		PathTpl:     "/apis/crane.io/v1alpha1/singlepage/gross-profit-attribution-config",
 	},
 }

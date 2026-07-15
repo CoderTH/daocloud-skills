@@ -15,7 +15,7 @@
   },
   "host": "demo-dev.daocloud.io",
   "paths": {
-    "/api/v1alpha1/business-operation/active-departments": {
+    "/apis/crane.io/v1alpha1/business-operation/active-departments": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -73,7 +73,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/active-tenants": {
+    "/apis/crane.io/v1alpha1/business-operation/active-tenants": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -124,7 +124,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/application-agent-count": {
+    "/apis/crane.io/v1alpha1/business-operation/application-agent-count": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -182,7 +182,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/application-type-distribution": {
+    "/apis/crane.io/v1alpha1/business-operation/application-type-distribution": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -240,7 +240,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/average-package-consumption-rate": {
+    "/apis/crane.io/v1alpha1/business-operation/average-package-consumption-rate": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -298,7 +298,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/department-application-model-gpu-flow": {
+    "/apis/crane.io/v1alpha1/business-operation/department-application-model-gpu-flow": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -356,7 +356,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/department-budget-usage-rate": {
+    "/apis/crane.io/v1alpha1/business-operation/department-budget-usage-rate": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -414,7 +414,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/department-monthly-allocated-cost": {
+    "/apis/crane.io/v1alpha1/business-operation/department-monthly-allocated-cost": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -472,7 +472,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/department-token-consumption-top": {
+    "/apis/crane.io/v1alpha1/business-operation/department-token-consumption-top": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -530,7 +530,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/department-unit-business-cost": {
+    "/apis/crane.io/v1alpha1/business-operation/department-unit-business-cost": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -588,7 +588,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/department-unit-business-cost-comparison": {
+    "/apis/crane.io/v1alpha1/business-operation/department-unit-business-cost-comparison": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -646,7 +646,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/models": {
+    "/apis/crane.io/v1alpha1/business-operation/models": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -704,7 +704,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/monthly-arpu": {
+    "/apis/crane.io/v1alpha1/business-operation/monthly-arpu": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -762,7 +762,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/monthly-revenue": {
+    "/apis/crane.io/v1alpha1/business-operation/monthly-revenue": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -820,7 +820,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/monthly-token-consumption": {
+    "/apis/crane.io/v1alpha1/business-operation/monthly-token-consumption": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -878,7 +878,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/suggestions": {
+    "/apis/crane.io/v1alpha1/business-operation/suggestions": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -936,7 +936,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/tenant-growth-trend-top5": {
+    "/apis/crane.io/v1alpha1/business-operation/tenant-growth-trend-top5": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -994,7 +994,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/tenant-model-gpu-token-flow": {
+    "/apis/crane.io/v1alpha1/business-operation/tenant-model-gpu-token-flow": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -1052,7 +1052,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/tenant-risk-objects": {
+    "/apis/crane.io/v1alpha1/business-operation/tenant-risk-objects": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -1110,7 +1110,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/tenant-token-consumption-top": {
+    "/apis/crane.io/v1alpha1/business-operation/tenant-token-consumption-top": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -1168,7 +1168,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-operation/tenant-value-quadrant": {
+    "/apis/crane.io/v1alpha1/business-operation/tenant-value-quadrant": {
       "get": {
         "tags": [
           "BusinessOperationService"
@@ -1226,7 +1226,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/api-key-count": {
+    "/apis/crane.io/v1alpha1/business-value/api-key-count": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1265,7 +1265,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/app-consumption-distribution": {
+    "/apis/crane.io/v1alpha1/business-value/app-consumption-distribution": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1302,7 +1302,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/capacity-bottleneck-forecast": {
+    "/apis/crane.io/v1alpha1/business-value/capacity-bottleneck-forecast": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1325,18 +1325,26 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/cumulative-output": {
+    "/apis/crane.io/v1alpha1/business-value/cumulative-token": {
       "get": {
         "tags": [
           "BusinessValueService"
         ],
-        "summary": "GetCumulativeOutput returns the cumulative token output and growth rate for a given time range.",
-        "operationId": "BusinessValueService_GetCumulativeOutput",
+        "summary": "GetCumulativeToken returns cumulative token metrics for an explicit time window.",
+        "operationId": "BusinessValueService_GetCumulativeToken",
         "parameters": [
           {
             "type": "string",
-            "description": "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\".",
-            "name": "timeRange",
+            "format": "date-time",
+            "description": "Inclusive range start.",
+            "name": "startTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Exclusive range end.",
+            "name": "endTime",
             "in": "query"
           }
         ],
@@ -1344,7 +1352,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/businessvalueGetCumulativeOutputResponse"
+              "$ref": "#/definitions/businessvalueGetCumulativeTokenResponse"
             }
           },
           "default": {
@@ -1356,7 +1364,58 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/department-token-usage": {
+    "/apis/crane.io/v1alpha1/business-value/cumulative-token-history": {
+      "get": {
+        "tags": [
+          "BusinessValueService"
+        ],
+        "summary": "GetCumulativeTokenHistory returns token totals for each bucket in an explicit time window.",
+        "operationId": "BusinessValueService_GetCumulativeTokenHistory",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Inclusive range start.",
+            "name": "startTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Exclusive range end.",
+            "name": "endTime",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED",
+              "CUMULATIVE_TOKEN_HISTORY_SPAN_HOUR",
+              "CUMULATIVE_TOKEN_HISTORY_SPAN_DAY"
+            ],
+            "type": "string",
+            "default": "CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED",
+            "description": "Bucket span used to aggregate history points.",
+            "name": "span",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/businessvalueGetCumulativeTokenHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/business-value/department-token-usage": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1395,7 +1454,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/internal-business-structure-distribution": {
+    "/apis/crane.io/v1alpha1/business-value/internal-business-structure-distribution": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1432,7 +1491,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/month-end-forecast": {
+    "/apis/crane.io/v1alpha1/business-value/month-end-forecast": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1455,7 +1514,46 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/rated-capacity": {
+    "/apis/crane.io/v1alpha1/business-value/period-cost": {
+      "get": {
+        "tags": [
+          "BusinessValueService"
+        ],
+        "summary": "GetPeriodCost returns cost breakdown for an explicit time window.",
+        "operationId": "BusinessValueService_GetPeriodCost",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Inclusive range start.",
+            "name": "startTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Exclusive range end.",
+            "name": "endTime",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/businessvalueGetPeriodCostResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/business-value/rated-capacity": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1478,7 +1576,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/revenue-margin-trend-forecast": {
+    "/apis/crane.io/v1alpha1/business-value/revenue-margin-trend-forecast": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1501,38 +1599,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/revenue-profit": {
-      "get": {
-        "tags": [
-          "BusinessValueService"
-        ],
-        "summary": "GetRevenueAndProfitMetrics returns revenue, cost, gross profit metrics and optional history.",
-        "operationId": "BusinessValueService_GetRevenueAndProfitMetrics",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Time range filter: \"today\", \"this-week\", \"this-month\", \"this-quarter\".",
-            "name": "timeRange",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/businessvalueGetRevenueAndProfitMetricsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        }
-      }
-    },
-    "/api/v1alpha1/business-value/risk-suggestions": {
+    "/apis/crane.io/v1alpha1/business-value/risk-suggestions": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1555,7 +1622,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/tenant-token-usage": {
+    "/apis/crane.io/v1alpha1/business-value/tenant-token-usage": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1594,7 +1661,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/token-throughput": {
+    "/apis/crane.io/v1alpha1/business-value/token-throughput": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1617,7 +1684,7 @@
         }
       }
     },
-    "/api/v1alpha1/business-value/value-attribution-module-boosts": {
+    "/apis/crane.io/v1alpha1/business-value/value-attribution-module-boosts": {
       "get": {
         "tags": [
           "BusinessValueService"
@@ -1648,7 +1715,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/carbon-account": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/carbon-account": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1690,7 +1757,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/carbon-path": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/carbon-path": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1732,7 +1799,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/clusters": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/clusters": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1754,7 +1821,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/dc-regions": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/dc-regions": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1796,7 +1863,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/green-energy": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/green-energy": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1838,7 +1905,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/green-load-scheduling": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/green-load-scheduling": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1880,7 +1947,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/green-scheduling": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/green-scheduling": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1922,7 +1989,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/green-suggestions": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/green-suggestions": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -1964,7 +2031,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/green-supply-trend": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/green-supply-trend": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -2006,7 +2073,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/kpis": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/kpis": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -2048,7 +2115,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/power-trend": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/power-trend": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -2090,7 +2157,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/protection-strategy": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/protection-strategy": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -2132,7 +2199,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/suggestions": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/suggestions": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -2174,7 +2241,7 @@
         }
       }
     },
-    "/api/v1alpha1/compute-power-collaboration/synergy-value": {
+    "/apis/crane.io/v1alpha1/compute-power-collaboration/synergy-value": {
       "get": {
         "tags": [
           "ComputePowerCollaborationService"
@@ -2216,7 +2283,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/allocation-summary": {
+    "/apis/crane.io/v1alpha1/finops/allocation-summary": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2263,7 +2330,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/asset-machine-count": {
+    "/apis/crane.io/v1alpha1/finops/asset-machine-count": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2310,7 +2377,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/asset-return-matrix": {
+    "/apis/crane.io/v1alpha1/finops/asset-return-matrix": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2357,7 +2424,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/average-machine-profit": {
+    "/apis/crane.io/v1alpha1/finops/average-machine-profit": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2404,7 +2471,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/average-machine-revenue": {
+    "/apis/crane.io/v1alpha1/finops/average-machine-revenue": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2451,7 +2518,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/budget-forecast": {
+    "/apis/crane.io/v1alpha1/finops/budget-forecast": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2498,7 +2565,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/budget-remaining": {
+    "/apis/crane.io/v1alpha1/finops/budget-remaining": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2545,7 +2612,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/cost-recovery-rate": {
+    "/apis/crane.io/v1alpha1/finops/cost-recovery-rate": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2592,7 +2659,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/cost-structure-breakdown": {
+    "/apis/crane.io/v1alpha1/finops/cost-structure-breakdown": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2639,7 +2706,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/expansion-impact": {
+    "/apis/crane.io/v1alpha1/finops/expansion-impact": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2686,7 +2753,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/machine-asset-ranking": {
+    "/apis/crane.io/v1alpha1/finops/machine-asset-ranking": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2733,7 +2800,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/monthly-cost": {
+    "/apis/crane.io/v1alpha1/finops/monthly-cost": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2780,7 +2847,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/monthly-profit": {
+    "/apis/crane.io/v1alpha1/finops/monthly-profit": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2827,7 +2894,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/monthly-revenue": {
+    "/apis/crane.io/v1alpha1/finops/monthly-revenue": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2874,7 +2941,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/revenue-cost-trend": {
+    "/apis/crane.io/v1alpha1/finops/revenue-cost-trend": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2921,7 +2988,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/suggestions": {
+    "/apis/crane.io/v1alpha1/finops/suggestions": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -2968,7 +3035,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/unit-token-cost": {
+    "/apis/crane.io/v1alpha1/finops/unit-token-cost": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -3015,7 +3082,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/unit-token-profit": {
+    "/apis/crane.io/v1alpha1/finops/unit-token-profit": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -3062,7 +3129,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/unit-token-revenue": {
+    "/apis/crane.io/v1alpha1/finops/unit-token-revenue": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -3109,7 +3176,7 @@
         }
       }
     },
-    "/api/v1alpha1/finops/weighted-payback-period": {
+    "/apis/crane.io/v1alpha1/finops/weighted-payback-period": {
       "get": {
         "tags": [
           "FinopsPanelService"
@@ -3156,7 +3223,7 @@
         }
       }
     },
-    "/api/v1alpha1/platform-config/runtime-mode": {
+    "/apis/crane.io/v1alpha1/platform-config/runtime-mode": {
       "get": {
         "tags": [
           "PlatformConfigService"
@@ -3179,7 +3246,7 @@
         }
       }
     },
-    "/api/v1alpha1/production-ops/realtime": {
+    "/apis/crane.io/v1alpha1/production-ops/realtime": {
       "get": {
         "tags": [
           "ProductionOperationsService"
@@ -3218,7 +3285,7 @@
         }
       }
     },
-    "/api/v1alpha1/production-ops/realtime/headlines": {
+    "/apis/crane.io/v1alpha1/production-ops/realtime/headlines": {
       "get": {
         "tags": [
           "ProductionOperationsService"
@@ -3247,7 +3314,7 @@
         }
       }
     },
-    "/api/v1alpha1/production-ops/synergy": {
+    "/apis/crane.io/v1alpha1/production-ops/synergy": {
       "get": {
         "tags": [
           "ProductionOperationsService"
@@ -3286,7 +3353,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/attribution": {
+    "/apis/crane.io/v1alpha1/resource-cost/attribution": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3331,7 +3398,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/clusters": {
+    "/apis/crane.io/v1alpha1/resource-cost/clusters": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3354,7 +3421,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/gpu-efficiency": {
+    "/apis/crane.io/v1alpha1/resource-cost/gpu-efficiency": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3399,7 +3466,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/kpis": {
+    "/apis/crane.io/v1alpha1/resource-cost/kpis": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3444,7 +3511,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/model-cost-rank": {
+    "/apis/crane.io/v1alpha1/resource-cost/model-cost-rank": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3489,7 +3556,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/optimization": {
+    "/apis/crane.io/v1alpha1/resource-cost/optimization": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3512,7 +3579,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/suggestions": {
+    "/apis/crane.io/v1alpha1/resource-cost/suggestions": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3557,7 +3624,7 @@
         }
       }
     },
-    "/api/v1alpha1/resource-cost/waterfall": {
+    "/apis/crane.io/v1alpha1/resource-cost/waterfall": {
       "get": {
         "tags": [
           "ResourceCostService"
@@ -3602,7 +3669,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/agent-protection": {
+    "/apis/crane.io/v1alpha1/security-protection/agent-protection": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3645,7 +3712,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/clusters": {
+    "/apis/crane.io/v1alpha1/security-protection/clusters": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3667,7 +3734,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/intercept-trend": {
+    "/apis/crane.io/v1alpha1/security-protection/intercept-trend": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3710,7 +3777,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/kpis": {
+    "/apis/crane.io/v1alpha1/security-protection/kpis": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3753,7 +3820,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/output-protection": {
+    "/apis/crane.io/v1alpha1/security-protection/output-protection": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3796,7 +3863,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/risk-objects": {
+    "/apis/crane.io/v1alpha1/security-protection/risk-objects": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3839,7 +3906,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/risk-types": {
+    "/apis/crane.io/v1alpha1/security-protection/risk-types": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3882,7 +3949,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/suggestions": {
+    "/apis/crane.io/v1alpha1/security-protection/suggestions": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3925,7 +3992,7 @@
         }
       }
     },
-    "/api/v1alpha1/security-protection/timeline": {
+    "/apis/crane.io/v1alpha1/security-protection/timeline": {
       "get": {
         "tags": [
           "SecurityProtectionService"
@@ -3968,6 +4035,134 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/securityprotectionTimelineResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/singlepage/gain-comparison-rates": {
+      "get": {
+        "tags": [
+          "SinglePageService"
+        ],
+        "operationId": "SinglePageService_GetGainComparisonRates",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/singlepageGetGainComparisonRatesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/singlepage/global-traffic": {
+      "get": {
+        "tags": [
+          "SinglePageService"
+        ],
+        "operationId": "SinglePageService_GetGlobalTraffic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/singlepageGetGlobalTrafficResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/singlepage/gpu-resource-status": {
+      "get": {
+        "tags": [
+          "SinglePageService"
+        ],
+        "operationId": "SinglePageService_GetGpuResourceStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/singlepageGpuResourceStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/singlepage/gross-profit-attribution-config": {
+      "get": {
+        "tags": [
+          "SinglePageService"
+        ],
+        "operationId": "SinglePageService_GetGrossProfitAttributionConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/singlepageGetGrossProfitAttributionConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        }
+      }
+    },
+    "/apis/crane.io/v1alpha1/singlepage/modelscost": {
+      "get": {
+        "tags": [
+          "ProductionOperationsService"
+        ],
+        "operationId": "ProductionOperationsService_GetSinglepageModelsCost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "timeWindow",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "cluster",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int32",
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionopsGetSinglepageModelsCostResponse"
             }
           },
           "default": {
@@ -4324,6 +4519,10 @@
         "totalTokens": {
           "type": "number",
           "format": "double"
+        },
+        "userName": {
+          "type": "string",
+          "title": "WS 模式下 panel 直接展示 token_usage_hourly.user_name 作为对象名，\ndepartment 字段保留下来用于内部聚合键。"
         }
       }
     },
@@ -4713,14 +4912,10 @@
         }
       }
     },
-    "businessvalueCumulativeOutputHistoryPoint": {
-      "description": "CumulativeOutputHistoryPoint represents a single point in the cumulative output history.",
+    "businessvalueCumulativeTokenHistoryPoint": {
+      "description": "CumulativeTokenHistoryPoint represents one token-total bucket.",
       "type": "object",
       "properties": {
-        "growthRatePercent": {
-          "type": "number",
-          "format": "double"
-        },
         "time": {
           "type": "string",
           "format": "date-time"
@@ -4730,6 +4925,16 @@
           "format": "double"
         }
       }
+    },
+    "businessvalueCumulativeTokenHistorySpan": {
+      "description": "CumulativeTokenHistorySpan defines the bucket span for cumulative token history.",
+      "type": "string",
+      "default": "CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED",
+      "enum": [
+        "CUMULATIVE_TOKEN_HISTORY_SPAN_UNSPECIFIED",
+        "CUMULATIVE_TOKEN_HISTORY_SPAN_HOUR",
+        "CUMULATIVE_TOKEN_HISTORY_SPAN_DAY"
+      ]
     },
     "businessvalueDepartmentTokenUsageItem": {
       "description": "DepartmentTokenUsageItem represents a single department's usage and budget in the time window.",
@@ -4817,35 +5022,58 @@
         }
       }
     },
-    "businessvalueGetCumulativeOutputResponse": {
-      "description": "GetCumulativeOutputResponse is the response message for GetCumulativeOutput.",
+    "businessvalueGetCumulativeTokenHistoryResponse": {
+      "description": "GetCumulativeTokenHistoryResponse is the response message for GetCumulativeTokenHistory.",
       "type": "object",
       "properties": {
-        "growthDeltaValue": {
-          "description": "Net delta value (current - previous tokens). Used when growth_is_percent is false.",
-          "type": "number",
-          "format": "double"
-        },
-        "growthIsPercent": {
-          "description": "True when growth_rate_percent is valid; false when previous \u003c= 0 (use growth_delta_value instead).",
-          "type": "boolean"
-        },
-        "growthRatePercent": {
-          "description": "Growth rate compared with previous same-period same-progress (percentage).",
-          "type": "number",
-          "format": "double"
-        },
-        "historyPoints": {
-          "description": "History points for non-today ranges; empty for today (frontend samples locally).",
+        "points": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/businessvalueCumulativeOutputHistoryPoint"
+            "$ref": "#/definitions/businessvalueCumulativeTokenHistoryPoint"
           }
+        }
+      }
+    },
+    "businessvalueGetCumulativeTokenResponse": {
+      "description": "GetCumulativeTokenResponse is the response message for GetCumulativeToken.",
+      "type": "object",
+      "properties": {
+        "cacheTokens": {
+          "type": "number",
+          "format": "double"
         },
-        "timeRange": {
-          "description": "Echoed time range.",
-          "type": "string"
+        "inputAudioDuration": {
+          "type": "number",
+          "format": "double"
+        },
+        "inputCharacters": {
+          "type": "number",
+          "format": "double"
+        },
+        "inputImageNumbers": {
+          "type": "number",
+          "format": "double"
+        },
+        "inputTokens": {
+          "type": "number",
+          "format": "double"
+        },
+        "outputAudioDuration": {
+          "type": "number",
+          "format": "double"
+        },
+        "outputImageNumbers": {
+          "type": "number",
+          "format": "double"
+        },
+        "outputTokens": {
+          "type": "number",
+          "format": "double"
+        },
+        "sampleRate": {
+          "type": "number",
+          "format": "double"
         },
         "timestamp": {
           "description": "Response timestamp.",
@@ -4853,7 +5081,7 @@
           "format": "date-time"
         },
         "totalTokens": {
-          "description": "Current cumulative total tokens (input + output + cached) in selected range.",
+          "description": "Current cumulative total tokens (input + output + cache) in selected window.",
           "type": "number",
           "format": "double"
         }
@@ -4942,70 +5170,43 @@
         }
       }
     },
+    "businessvalueGetPeriodCostResponse": {
+      "description": "GetPeriodCostResponse is the response message for GetPeriodCost.",
+      "type": "object",
+      "properties": {
+        "gpuCostAmount": {
+          "description": "GPU resource cost amount in yuan.",
+          "type": "number",
+          "format": "double"
+        },
+        "timestamp": {
+          "description": "Response timestamp.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "totalCostAmount": {
+          "description": "Sum of all cost categories in yuan.",
+          "type": "number",
+          "format": "double"
+        },
+        "upstreamModelCostAmount": {
+          "description": "Upstream usage-based model cost amount in yuan.",
+          "type": "number",
+          "format": "double"
+        },
+        "upstreamTotalModelCostAmount": {
+          "description": "Upstream total-token package model cost amount in yuan.",
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
     "businessvalueGetRatedCapacityResponse": {
       "description": "GetRatedCapacityResponse is the response message for GetRatedCapacity.",
       "type": "object",
       "properties": {
         "ratedCapacityMillion": {
           "description": "Rated capacity value in millions (e.g., 2.10 means 2.10M tok/s).",
-          "type": "number",
-          "format": "double"
-        }
-      }
-    },
-    "businessvalueGetRevenueAndProfitMetricsResponse": {
-      "description": "GetRevenueAndProfitMetricsResponse is the response message for GetRevenueAndProfitMetrics.",
-      "type": "object",
-      "properties": {
-        "costYoyRatePercent": {
-          "type": "number",
-          "format": "double"
-        },
-        "grossMarginPercent": {
-          "type": "number",
-          "format": "double"
-        },
-        "grossMarginYoyRatePp": {
-          "type": "number",
-          "format": "double"
-        },
-        "grossProfit": {
-          "type": "number",
-          "format": "double"
-        },
-        "history": {
-          "description": "History points for non-today ranges; empty for today (frontend samples locally).",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/businessvalueRevenueAndProfitHistoryPoint"
-          }
-        },
-        "revenueYoyDeltaAmount": {
-          "description": "Revenue net delta amount (current - previous). Used when revenue_yoy_is_percent is false.",
-          "type": "number",
-          "format": "double"
-        },
-        "revenueYoyIsPercent": {
-          "description": "True when revenue_yoy_rate_percent is valid; false when previous revenue \u003c= 0 (use revenue_yoy_delta_amount instead).",
-          "type": "boolean"
-        },
-        "revenueYoyRatePercent": {
-          "type": "number",
-          "format": "double"
-        },
-        "timeRange": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "totalCost": {
-          "type": "number",
-          "format": "double"
-        },
-        "totalRevenue": {
           "type": "number",
           "format": "double"
         }
@@ -5140,36 +5341,6 @@
           "description": "Integer metric value used for rank-bar rendering.",
           "type": "string",
           "format": "int64"
-        }
-      }
-    },
-    "businessvalueRevenueAndProfitHistoryPoint": {
-      "description": "RevenueAndProfitHistoryPoint represents a single point in the revenue/profit history.",
-      "type": "object",
-      "properties": {
-        "grossMarginPercent": {
-          "type": "number",
-          "format": "double"
-        },
-        "grossMarginYoyRatePp": {
-          "type": "number",
-          "format": "double"
-        },
-        "grossProfit": {
-          "type": "number",
-          "format": "double"
-        },
-        "revenue": {
-          "type": "number",
-          "format": "double"
-        },
-        "revenueGrowthRatePercent": {
-          "type": "number",
-          "format": "double"
-        },
-        "time": {
-          "type": "string",
-          "format": "date-time"
         }
       }
     },
@@ -6304,6 +6475,39 @@
         }
       }
     },
+    "productionopsGetSinglepageModelsCostRequest": {
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "timeWindow": {
+          "type": "string"
+        }
+      }
+    },
+    "productionopsGetSinglepageModelsCostResponse": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "$ref": "#/definitions/productionopsGetSinglepageModelsCostRequest"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/productionopsSinglepageModelCostItem"
+          }
+        },
+        "meta": {
+          "$ref": "#/definitions/productionopsTabMeta"
+        }
+      }
+    },
     "productionopsGetSynergyTabResponse": {
       "type": "object",
       "properties": {
@@ -6505,6 +6709,51 @@
         },
         "type": {
           "type": "string"
+        }
+      }
+    },
+    "productionopsSinglepageModelCostItem": {
+      "type": "object",
+      "properties": {
+        "costAvailable": {
+          "type": "boolean"
+        },
+        "costBarPercent": {
+          "type": "number",
+          "format": "double"
+        },
+        "costDisplayValue": {
+          "type": "string"
+        },
+        "costPerMillionTokens": {
+          "type": "number",
+          "format": "double"
+        },
+        "modelName": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestBarPercent": {
+          "type": "number",
+          "format": "double"
+        },
+        "requestCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "requestDisplayValue": {
+          "type": "string"
+        },
+        "requestRate": {
+          "type": "number",
+          "format": "double"
+        },
+        "totalTokens": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -7106,6 +7355,198 @@
           "format": "int32"
         }
       }
+    },
+    "singlepageGainComparisonRate": {
+      "type": "object",
+      "properties": {
+        "gainRate": {
+          "type": "number",
+          "format": "double"
+        },
+        "metricId": {
+          "type": "string"
+        }
+      }
+    },
+    "singlepageGetGainComparisonRatesResponse": {
+      "type": "object",
+      "properties": {
+        "rates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/singlepageGainComparisonRate"
+          }
+        }
+      }
+    },
+    "singlepageGetGlobalTrafficResponse": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/singlepageGlobalTrafficNode"
+          }
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/singlepageGlobalTrafficRoute"
+          }
+        }
+      }
+    },
+    "singlepageGetGrossProfitAttributionConfigResponse": {
+      "type": "object",
+      "properties": {
+        "decrease": {
+          "$ref": "#/definitions/singlepageGrossProfitAttributionScenario"
+        },
+        "equal": {
+          "$ref": "#/definitions/singlepageGrossProfitAttributionScenario"
+        },
+        "increase": {
+          "$ref": "#/definitions/singlepageGrossProfitAttributionScenario"
+        }
+      }
+    },
+    "singlepageGlobalTrafficNode": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "name": {
+          "type": "string"
+        },
+        "percentage": {
+          "type": "number",
+          "format": "double"
+        },
+        "primary": {
+          "type": "boolean"
+        }
+      }
+    },
+    "singlepageGlobalTrafficRoute": {
+      "type": "object",
+      "properties": {
+        "fromNode": {
+          "type": "string"
+        },
+        "intensity": {
+          "type": "number",
+          "format": "double"
+        },
+        "toNode": {
+          "type": "string"
+        }
+      }
+    },
+    "singlepageGpuDeviceState": {
+      "type": "string",
+      "title": "- GPU_STATE_BUSY: 繁忙 (green)\n - GPU_STATE_IDLE: 空闲/冷却 (yellow/gray)\n - GPU_STATE_ERROR: 异常 (red)",
+      "default": "GPU_STATE_BUSY",
+      "enum": [
+        "GPU_STATE_BUSY",
+        "GPU_STATE_IDLE",
+        "GPU_STATE_ERROR"
+      ]
+    },
+    "singlepageGpuResourceStatusResponse": {
+      "type": "object",
+      "properties": {
+        "busyCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "繁忙 GPU 卡数"
+        },
+        "deviceStates": {
+          "type": "array",
+          "title": "每张卡的状态 (grid)",
+          "items": {
+            "$ref": "#/definitions/singlepageGpuDeviceState"
+          }
+        },
+        "errorCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "异常 GPU 卡数"
+        },
+        "gpuTotal": {
+          "type": "integer",
+          "format": "int32",
+          "title": "GPU 总数（卡数）"
+        },
+        "hbmUsagePct": {
+          "type": "number",
+          "format": "double",
+          "title": "HBM 使用率 (%)"
+        },
+        "idleCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "空闲 GPU 卡数"
+        },
+        "kvCacheHitPct": {
+          "type": "number",
+          "format": "double",
+          "title": "KV Cache 命中率 (%)"
+        },
+        "memUsagePct": {
+          "type": "number",
+          "format": "double",
+          "title": "显存使用率 (%)"
+        },
+        "networkThroughputGbps": {
+          "type": "number",
+          "format": "double",
+          "title": "网络吞吐量 (Gb/s)"
+        },
+        "utilizationPct": {
+          "type": "number",
+          "format": "double",
+          "title": "GPU 利用率 (%)"
+        }
+      }
+    },
+    "singlepageGrossProfitAttributionReason": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "percentage": {
+          "type": "number",
+          "format": "double"
+        },
+        "reasonId": {
+          "type": "string"
+        }
+      }
+    },
+    "singlepageGrossProfitAttributionScenario": {
+      "type": "object",
+      "properties": {
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/singlepageGrossProfitAttributionReason"
+          }
+        }
+      }
     }
   },
   "tags": [
@@ -7132,6 +7573,9 @@
     },
     {
       "name": "SecurityProtectionService"
+    },
+    {
+      "name": "SinglePageService"
     }
   ]
 }
